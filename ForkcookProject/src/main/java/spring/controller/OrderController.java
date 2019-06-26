@@ -1,5 +1,5 @@
 package spring.controller;
 
-public class BoardController {
+public class OrderController {
 
 }
