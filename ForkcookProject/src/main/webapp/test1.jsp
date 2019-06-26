@@ -10,7 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-테스트파일입니다
-333
+this is a test file
 </body>
 </html>
