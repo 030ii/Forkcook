@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+   	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="mainLayout" template="/WEB-INF/layout/layout.jsp">
+		<put-attribute name="top" value="/WEB-INF/layout/top.jsp"/>
+		<put-attribute name="bottom" value="/WEB-INF/layout/bottom.jsp"/>
+		<put-attribute name="leftmenu" value="/WEB-INF/layout/leftmenu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+	</definition>
+	<definition name="main.tiles" extends="mainLayout">
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+	</definition>
+	
+	<!-- macro -->
+	<!-- /*/*는 앞에서부터 차례대로 /{1}/{2}로 읽어줌 -->
+	<definition name="/*/*" extends="mainLayout">
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+</tiles-definitions>
