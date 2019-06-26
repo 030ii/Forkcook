@@ -1,5 +1,5 @@
 package spring.data;
 
-public class MemberDao {
+public class CartDao {
 
 }

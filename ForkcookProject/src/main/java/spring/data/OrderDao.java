@@ -1,5 +1,5 @@
 package spring.data;
 
-public class GuestDao {
+public class OrderDao {
 
 }

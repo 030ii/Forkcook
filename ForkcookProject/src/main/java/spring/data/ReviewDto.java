@@ -1,5 +1,5 @@
 package spring.data;
 
-public class MemberDto {
+public class ReviewDto {
 
 }
