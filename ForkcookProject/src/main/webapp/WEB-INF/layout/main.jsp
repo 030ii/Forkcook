@@ -12,5 +12,11 @@
 </head>
 <body>
 main
+<br>
+<h3>UI 테스트</h3>
+<button class="btn btn-success btn-pill">
+    <i class="fa fa-download mr-2"></i>Download
+</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
 </body>
 </html>
