@@ -16,59 +16,16 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 <!-- icon -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-<style type="text/css">
-	div.layout{
-		border: 0px solid gray; 
-		position: absolute;
-	}
-	#top{
-		text-align: center;
-		font-size: 35pt;
-		width: 100%;
-	}
-	
-	#leftmenu{
-		left: 20px;
-		top: 100px;
-		width:200px;
-		height:450px;
-		text-align: center;
-		font-size: 20pt;
-	}
-	#main{
-		left: 250px;
-		top: 100px;
-		width:1000px;
-		height:450px;		
-		font-size: 20pt;
-	}
-	#bottom{
-		text-align: center;
-		font-size: 35pt;
-		width: 100%;
-		top:570px;
-	}
-	
-	a:link{color: black; text-decoration: none;}
-	a:HOVER {
-		color: gray; text-decoration: underline; 
-		font-weight: bold; cursor: pointer;
-	}	
-</style>
 </head>
 <body>
-<div id="top" class="layout">
-	<tiles:insertAttribute name="top"/>
-</div>
-<div id="leftmenu" class="layout">
-	<tiles:insertAttribute name="leftmenu"/>
+<div id="header" class="layout">
+	<tiles:insertAttribute name="header"/>
 </div>
 <div id="main" class="layout">
 	<tiles:insertAttribute name="main"/>
 </div>
-<div id="bottom" class="layout">
-	<tiles:insertAttribute name="bottom"/>
+<div id="footer" class="layout">
+	<tiles:insertAttribute name="footer"/>
 </div>
 
 <!-- JavaScript Dependencies: jQuery, Popper.js, Bootstrap JS, Shards JS -->

@@ -5,9 +5,8 @@
 
 <tiles-definitions>
 	<definition name="mainLayout" template="/WEB-INF/layout/layout.jsp">
-		<put-attribute name="top" value="/WEB-INF/layout/top.jsp"/>
-		<put-attribute name="bottom" value="/WEB-INF/layout/bottom.jsp"/>
-		<put-attribute name="leftmenu" value="/WEB-INF/layout/leftmenu.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
 	</definition>
 	<definition name="main.tiles" extends="mainLayout">
