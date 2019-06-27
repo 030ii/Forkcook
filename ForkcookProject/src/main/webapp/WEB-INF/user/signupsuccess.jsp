@@ -10,6 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-결제페이지
+회원가입을 축하합니다
 </body>
 </html>

@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+장바구니목록
+<button type="button" onclick="location.href='order/orderform.do'">주문하기</button>
 </body>
 </html>

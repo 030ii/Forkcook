@@ -10,6 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+주문이 완료되었습니다
 </body>
 </html>
