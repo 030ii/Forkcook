@@ -59,7 +59,7 @@ public class BoardController {
 	
 	@RequestMapping("/board/update.do")
 	public ModelAndView update(){
-		// TODO : 게시글 추가 기능 
+		// TODO : 게시글 수정 기능 
 		ModelAndView model=new ModelAndView();
 		model.setViewName("/service/boardcontent");
 		return model;
@@ -67,7 +67,7 @@ public class BoardController {
 	
 	@RequestMapping("/board/delete.do")
 	public ModelAndView delete(){
-		// TODO : 게시글 추가 기능 
+		// TODO : 게시글 삭제 기능 
 		ModelAndView model=new ModelAndView();
 		model.setViewName("/service/boardlist");
 		return model;

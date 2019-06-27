@@ -12,4 +12,49 @@ public class QnaController {
 		model.setViewName("/service/qnalist");
 		return model;
 	}
+	
+	@RequestMapping("/qna/content.do")
+	public ModelAndView content(){
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/service/qnacontent");
+		return model;
+	}
+	
+	@RequestMapping("/qna/form.do")
+	public ModelAndView form(){
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/service/qnaform");
+		return model;
+	}
+	
+	@RequestMapping("/qna/write.do")
+	public ModelAndView write(){
+		// TODO : 문의 추가 기능 
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/service/qnacontent");
+		return model;
+	}
+	
+	@RequestMapping("/qna/updateform.do")
+	public ModelAndView updateform(){
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/service/qnaupdateform");
+		return model;
+	}
+	
+	@RequestMapping("/qna/update.do")
+	public ModelAndView update(){
+		// TODO : 문의 수정 기능 
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/service/qnacontent");
+		return model;
+	}
+	
+	@RequestMapping("/qna/delete.do")
+	public ModelAndView delete(){
+		// TODO : 문의 삭제 기능 
+		ModelAndView model=new ModelAndView();
+		model.setViewName("/service/qnalist");
+		return model;
+	}
 }
