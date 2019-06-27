@@ -11,5 +11,7 @@
 </head>
 <body>
 menulist
+onclick="location.href='form.do'"
+<button type="button" onclick="location.href='menu/detail.do'">메뉴상세보기 페이지 이동</button>
 </body>
 </html>

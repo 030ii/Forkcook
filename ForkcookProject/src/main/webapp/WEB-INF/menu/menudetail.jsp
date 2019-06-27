@@ -10,6 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+메뉴 상세페이지 입니다
 </body>
 </html>
