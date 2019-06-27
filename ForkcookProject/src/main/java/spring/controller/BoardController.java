@@ -21,7 +21,7 @@ public class BoardController {
 		totalCount=service.getTotalCount();
 		
 		model.addObject("totalCount",totalCount);
-		model.setViewName("/cs/boardlist");
+		model.setViewName("/service/boardlist");
 		return model;
 	}	
 }
