@@ -10,6 +10,10 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+qna list입니다
+<c:set var="root" value="<%=request.getContextPath() %>" />
+<button type="button" onclick="location.href='${root}/qna/write.do'">문의 작성</button>
+<button type="button" onclick="location.href='${root}/qna/edit.do'">문의 수정</button>
+<button type="button" onclick="location.href='${root}/qna/delete.do'">문의 삭제</button>
 </body>
 </html>
