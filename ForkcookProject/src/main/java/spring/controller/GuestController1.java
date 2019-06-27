@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class GuestController {
+public class GuestController1 {
 	@RequestMapping("/guest/list.do")
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
