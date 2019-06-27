@@ -10,6 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+<a href="../store/detail.do">매장 상세보기</a>
 </body>
 </html>
