@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 <body>
-<c:set var="root" value="<%=request.getContextPath()%>"/>
-<h2>매장 상세 페이지</h2>
-<br>
-<button type="button" onclick="location.href='${root}/partner/partnerqna.do'">매장문의</button>
-<button type="button" onclick="location.href='${root}/order/order.do'">주문하기</button>
+<c:set var="root" value="<%=request.getContextPath() %>" />
+브랜드 소개 페이지입니다.
+<button type="button" onclick="location.href='${root}/store/list.do'">매장 보러가기</button>
+<button type="button" onclick="location.href='${root}/menu/list.do'">메뉴 구경하기</button>
 </body>
 </html>

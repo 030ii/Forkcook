@@ -10,6 +10,9 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+<c:set var="root" value="<%=request.getContextPath()%>"/>
+<h2>매장 페이지</h2>
+<br>
+<a href="${root}/store/detail.do">매장 상세보기</a>
 </body>
 </html>
