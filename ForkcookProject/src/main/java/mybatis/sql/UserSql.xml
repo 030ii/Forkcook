@@ -4,8 +4,8 @@
 	<select id="userTotalCount" resultType="int">
 		select count(*) from users
 	</select>
-	<!-- <insert id="userInsert" parameterType="udto">
+	<insert id="userInsert" parameterType="udto">
 		insert into users values (seq_users.nextval,#{id},
 		#{pass},#{name},#{phone},sysdate,1)
-	</insert> -->
+	</insert>
 </mapper>

@@ -10,4 +10,9 @@ public class UserDao extends SqlSessionDaoSupport {
 		int n=getSqlSession().selectOne("user.userTotalCount");
 		return n;
 	}
+	
+	public void insertUser(UserDto dto)
+	{
+		getSqlSession().insert("user.userInsert",dto);
+	}
 }
