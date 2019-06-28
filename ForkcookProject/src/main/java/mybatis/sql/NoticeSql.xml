@@ -4,4 +4,19 @@
 	<select id="noticeTotalCount" resultType="int">
 		select count(*) from springboard
 	</select>
+	
+	<insert id="noticeInsert" parameterType="ndto">
+		insert into springboard values (seq1.nextval,#{writer},
+		#{subject},#{content},0,sysdate)
+	</insert>
+	
+	<select id="noticePagingList" parameterType="HashMap" resultType="ndto">
+	   <![CDATA[
+	   	select a.* from (select ROWNUM as RNUM,
+		b.* from (select * from springboard order by num desc)b )a 
+		where a.RNUM>=#{start} and a.RNUM<=#{end}
+		 ]]>		
+	</select>
+	
+	
 </mapper>

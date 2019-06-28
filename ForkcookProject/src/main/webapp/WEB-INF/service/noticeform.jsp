@@ -15,27 +15,34 @@
 가맹점이나 관리자만 접근 가능한 페이지 입니다<br>
 <br>
 <br>
-
-제목 : <input type="text">
-<br>
-
-가맹점 : 
-<select>
-	<option>강남점</option>
-	<option>분당점</option>
-</select>
-<br>
-
-내용 : 
-<textarea></textarea>
-<br>
-
-사진 업로드 :
-<input>
-<br>
-
-<c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/notice/list.do'">취소하기(목록으로 가기)</button>
-<button type="button" onclick="location.href='${root}/notice/write.do'">작성하기(작성한 글 페이지로 감)</button>
+<form action="writes.do" method="post">
+	<table class="table table-striped" style="width: 400px;">
+		<caption><b>게시판글쓰기</b></caption>
+		<tr>
+			<th style="width: 100px;">작성자</th>
+			<td>
+				<input type="text" name="writer" class="form-control">
+			</td>
+		</tr>
+		<tr>
+			<th style="width: 100px;">제 목</th>
+			<td>
+				<input type="text" name="subject" class="form-control">
+			</td>
+		</tr>
+		<tr>			
+			<td colspan="2">
+				<textarea rows="5" cols="40" name="content" class="form-control"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right">
+				<c:set var="root" value="<%=request.getContextPath() %>" />
+            <button type="button" onclick="location.href='${root}/notice/list.do'">취소하기</button>
+            <button type="submit" >작성하기</button>
+			</td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>
