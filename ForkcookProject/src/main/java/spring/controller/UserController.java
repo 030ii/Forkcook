@@ -1,18 +1,33 @@
 package spring.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import spring.service.UserService;
 
 @Controller
 public class UserController {
 	//TODO : 회원가입 이동
 	
+	@Autowired
+	private UserService service;
+	
 	//로그인페이지
 	@RequestMapping("/user/login.do")
-	public String login(){
+	public ModelAndView login(){
 		
-		return "/user/login";  
+		ModelAndView model=new ModelAndView();
+		
+		//db연결 확인위해 데이터 갯수 출력부분
+		int totalCount;
+		totalCount=service.getTotalCount();
+		model.addObject("totalCount", totalCount);
+		
+		model.setViewName("/user/login");
+		
+		return model;
 	}
 	
 	//로그인하기 버튼 클릭->로그인되고 메인으로 포워드(일단 loginsuccess로 이동,나중에수정)
@@ -62,4 +77,5 @@ public class UserController {
 					
 			return "/layout/main";
 		}
+		
 }

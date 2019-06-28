@@ -5,11 +5,13 @@ import org.springframework.stereotype.Service;
 
 import spring.data.UserDao;
 
+@Service
 public class UserService {
-	@Service
-	public class NoticeService {
-		@Autowired
-		private UserDao dao;
-		
+	@Autowired
+	private UserDao dao;
+	
+	public int getTotalCount()
+	{
+		return dao.getTotalCount();
 	}
 }

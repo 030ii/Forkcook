@@ -12,6 +12,7 @@
 <body>
 <c:set var="root" value="<%=request.getContextPath()%>"/>
 회원로그인폼
+/데이터 갯수 : ${totalCount }
 <form action="logingo.do" method="get">
 	아이디 : <input type="text" name="id" size="7"><br>
 	비밀번호 : <input type="password" name="pass" size="7"><br>

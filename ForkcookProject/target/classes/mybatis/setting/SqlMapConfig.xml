@@ -3,8 +3,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="spring.data.NoticeDto" alias="ndto"/>
+		<typeAlias type="spring.data.UserDto" alias="udto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/sql/NoticeSql.xml"/>
+		<mapper resource="mybatis/sql/UserSql.xml"/>
 	</mappers>
 </configuration>
