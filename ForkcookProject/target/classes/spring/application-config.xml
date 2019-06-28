@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!-- Uncomment and add your base-package here:
+         <context:component-scan
+            base-package="org.springframework.samples.service"/>  -->
+   <!-- db setting -->
+   <bean
+   class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="locations">
+         <value>WEB-INF/dbserver.properties</value>
+      </property>
+   </bean>
+   <bean id="dataSource"
+   class="org.apache.commons.dbcp.BasicDataSource">
+      <property name="driverClassName" value="${DRIVER}"/>
+      <property name="url" value="${URL}"/>
+      <property name="username" value="${USERNAME}"/>   
+      <property name="password" value="${PASSWORD}"/>
+   </bean>
+   <bean id="sqlSessionFactory"
+   class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+      <property name="configLocation">
+         <value>classpath:mybatis/setting/SqlMapConfig.xml</value>
+      </property>
+   </bean>
+   <bean id="sqlSessionTemplate"
+   class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactory"/>
+   </bean>
+</beans>
