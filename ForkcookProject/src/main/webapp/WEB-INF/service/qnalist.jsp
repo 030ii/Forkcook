@@ -13,10 +13,18 @@
 qna list입니다<br>
 매장별 보기 : 전체 | 강남점 | 분당점 | 삼성점<br>
 문의글 검색하기<br>
-<a href="content.do">문의 클릭</a><br>
-<a href="content.do">문의 클릭</a><br>
-<a href="content.do">문의 클릭</a><br>
-<a href="content.do">문의 클릭</a><br>
+<b>문의 목록</b>
+<c:forEach var="dto" items="${list}">
+<tr>
+<c:set var="no" value="${no-1}"/>
+<a href="content.do?num=${dto.num}&pageNum=${currentPage}">${dto.subject}</a>
+<td align="center">${dto.writer }</td>
+<td><fmt:formatDate value="${dto.writeday }"
+				   pattern="yyyy-MM-dd"/>
+<td>
+</tr>
+</c:forEach>
+<br>
 페이징 처리
 <br>
 <br>

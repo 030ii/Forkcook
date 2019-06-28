@@ -13,15 +13,18 @@
 <body>
 문의글 입니다 <br>
 <pre>
-제목 : 결제가 안됩니다 살려주세용
-등록 날짜 : 2019년 6월 27일
+제목 : ${dto.subject}
+등록 날짜 : ${dto.writeday}
 가맹점 : 강남점 
-내용 : 주문 하고 싶은데 결제에서 오류가 나용... 피자 먹고싶어요..
-사진 : 사진
+내용 : ${dto.content}
+사진 : ${dto.image}
 </pre>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/qna/list.do'">목록 보기</button>
-<button type="button" onclick="location.href='${root}/qna/updateform.do'">문의 수정(수정폼으로 이동)</button>
-<button type="button" onclick="location.href='${root}/qna/delete.do'">문의 삭제(삭제 후 목록으로 이동)</button>
+<button type="button" class="btn btn-info btn-sm"
+	  onclick="location.href='${root}/qna/list.do'">목록</button>
+<button type="button" class="btn btn-success btn-sm"
+	  onclick="location.href='updateform.do?num=${dto.num}&pageNum=${pageNum}'">수정</button>
+<button type="button" class="btn btn-danger btn-sm"
+	  onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">삭제</button>
 </body>
 </html>

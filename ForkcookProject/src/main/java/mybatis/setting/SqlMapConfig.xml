@@ -4,9 +4,11 @@
 	<typeAliases>
 		<typeAlias type="spring.data.NoticeDto" alias="ndto"/>
 		<typeAlias type="spring.data.UserDto" alias="udto"/>
+		<typeAlias type="spring.data.QnaDto" alias="qdto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/sql/NoticeSql.xml"/>
 		<mapper resource="mybatis/sql/UserSql.xml"/>
+		<mapper resource="mybatis/sql/QnaSql.xml"/>
 	</mappers>
 </configuration>
