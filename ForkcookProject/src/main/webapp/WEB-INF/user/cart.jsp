@@ -11,6 +11,7 @@
 </head>
 <body>
 장바구니목록
+<!-- 로그인 안했을 시에 장바구니 누르면 '먼저로그인하세요' 창 뜨게 해야함  -->
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" onclick="location.href='${root}/order/orderform.do'">주문하기</button>
 </body>

@@ -10,8 +10,9 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-주문이 완료되었습니다
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<a href="${root}/main.do">메인페이지로</a>
+회원가입 약관(체크하면 페이지 넘어가게)
+<input type="checkbox">동의
+<button type="button" onclick="location.href='${root}/user/signup.do'">약관 확인</button>
 </body>
 </html>

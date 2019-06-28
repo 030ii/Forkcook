@@ -12,9 +12,28 @@
 <body>
 회원가입 폼
 <form action="signupform.do" method="get">
-	이름 : <input type="text" name="name" size="7"><br>
-	아이디 : <input type="text" name="id" size="7"><br>
-	<input type="submit" value="서버로 전송">
+	<table border="1">
+	<caption></caption>
+	<tr>
+		<th>아이디</th>
+		<td><input type="text" name="id" size="7"></td>
+	</tr>
+	<tr>
+		<th>이름(닉네임)</th>
+		<td><input type="text" name="id" size="7"></td>
+	</tr>
+	<tr>
+		<th>비밀번호</th>
+		<td><input type="password" name="pass" size="7"></td>
+	</tr>
+	<tr>
+		<th>핸드폰</th>
+		<td><input type="text" name="phone" size="7"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="submit" value="가입완료"></td>
+	</tr>
+	</table>
 </form>
 </body>
 </html>

@@ -11,5 +11,7 @@
 </head>
 <body>
 결제페이지
+<c:set var="root" value="<%=request.getContextPath() %>" />
+<button type="button" onclick="location.href='${root}/order/ordersuccess.do'">결제 완료</button>
 </body>
 </html>

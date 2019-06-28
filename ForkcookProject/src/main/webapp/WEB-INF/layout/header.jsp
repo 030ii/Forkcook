@@ -30,7 +30,7 @@
 	<div class="btnContainer">
 		<ul class="loginNo">
 			<li><a href="${root}/user/login.do">로그인</a></li>
-			<li><a href="${root}/user/signup.do">회원가입</a></li>
+			<li><a href="${root}/user/membership.do">회원가입</a></li>
 			<li><a href="${root}/cart/list.do">장바구니</a></li>
 		</ul>
 		<ul class="loginYes">

@@ -25,12 +25,19 @@ public class UserController {
 		return model;
 	}
 	
-	//회원가입폼으로 이동
-	@RequestMapping("/user/signup.do")
-	public String signup(){
+	//회원가입 약관으로 이동
+	@RequestMapping("/user/membership.do")
+	public String membership(){
 		
-		return "/user/signup";  
+		return "/user/membership";
 	}
+	
+	//회원가입폼으로 이동
+		@RequestMapping("/user/signup.do")
+		public String signup(){
+			
+			return "/user/signup";  
+		}
 	
 	//회원가입폼에서 완료페이지로
 	@RequestMapping("/user/signupform.do")

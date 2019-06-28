@@ -9,9 +9,17 @@ public class OrderController {
 	
 	//결제페이지에서 결제완료페이지로
 	@RequestMapping("/order/orderform.do")
-	public ModelAndView list(){
+	public ModelAndView order(){
 		ModelAndView model = new ModelAndView();
-		model.setViewName("/order/ordersuccess");
+		model.setViewName("/order/order");
 		return model;
 	}
+	
+	//결제페이지에서 결제완료페이지로
+		@RequestMapping("/order/ordersuccess.do")
+		public ModelAndView ordersuccess(){
+			ModelAndView model = new ModelAndView();
+			model.setViewName("/order/ordersuccess");
+			return model;
+		}
 }
