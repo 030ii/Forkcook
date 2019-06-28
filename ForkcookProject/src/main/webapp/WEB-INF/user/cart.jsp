@@ -11,6 +11,7 @@
 </head>
 <body>
 장바구니목록
-<button type="button" onclick="location.href='order/orderform.do'">주문하기</button>
+<c:set var="root" value="<%=request.getContextPath() %>" />
+<button type="button" onclick="location.href='${root}/order/orderform.do'">주문하기</button>
 </body>
 </html>

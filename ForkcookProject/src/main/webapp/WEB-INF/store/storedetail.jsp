@@ -14,6 +14,6 @@
 <h2>매장 상세 페이지</h2>
 <br>
 <button type="button" onclick="location.href='${root}/partner/partnerqna.do'">매장문의</button>
-<button type="button" onclick="location.href='${root}/order/order.do'">주문하기</button>
+<button type="button" onclick="location.href='${root}/menu/list.do'">주문하기</button>
 </body>
 </html>
