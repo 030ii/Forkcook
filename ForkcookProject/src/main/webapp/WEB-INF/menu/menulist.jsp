@@ -11,18 +11,9 @@
 </head>
 <body>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
+	
+	
 <button type="button" onclick="location.href='${root}/menu/detail.do'">메뉴상세보기 페이지 이동</button>
 
-<div class="menu">
-		<ul>
-		    <li><a href="${root}/menu/info.do">전체</a></li>
-			<li><a href="${root}/menu/info.do">면</a></li>
-			<li><a href="${root}/menu/list.do">빵</a></li>
-			<li><a href="${root}/menu/list.do">양식</a></li>
-			<li><a href="${root}/menu/list.do">일식</a></li>
-			<li><a href="${root}/menu/list.do">중식</a></li>
-			<li><a href="${root}/menu/list.do">디저트</a></li>
-		</ul>
-</div>
 </body>
 </html>	

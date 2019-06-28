@@ -2,7 +2,7 @@ package spring.data;
 
 import java.sql.Timestamp;
 
-public class BoardDto {
+public class NoticeDto {
 	private int num;
 	private String writer;
 	private String subject;

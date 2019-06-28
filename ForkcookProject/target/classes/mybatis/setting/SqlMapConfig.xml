@@ -2,9 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="spring.data.BoardDto" alias="bdto"/>
+		<typeAlias type="spring.data.NoticeDto" alias="ndto"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/sql/BoardSql.xml"/>
+		<mapper resource="mybatis/sql/NoticeSql.xml"/>
 	</mappers>
 </configuration>

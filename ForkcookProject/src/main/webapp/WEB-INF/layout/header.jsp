@@ -23,7 +23,7 @@
 			<li><a href="${root}/brand/info.do">브랜드 소개</a></li>
 			<li><a href="${root}/menu/list.do">메뉴</a></li>
 			<li><a href="${root}/store/list.do">매장</a></li>
-			<li><a href="${root}/board/list.do">공지</a></li>
+			<li><a href="${root}/notice/list.do">공지</a></li>
 			<li><a href="${root}/qna/list.do">고객센터</a></li>
 		</ul>
 	</div>

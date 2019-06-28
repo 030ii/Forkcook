@@ -3,12 +3,12 @@ package spring.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import spring.data.BoardDao;
+import spring.data.NoticeDao;
 
 @Service
-public class BoardService {
+public class NoticeService {
 	@Autowired
-	private BoardDao dao;
+	private NoticeDao dao;
 	
 	public int getTotalCount(){
 		return dao.getTotalCount();

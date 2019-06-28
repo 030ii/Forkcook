@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.data.BoardDto;
-import spring.service.BoardService;
+import spring.data.NoticeDto;
+import spring.service.NoticeService;
 
 @Controller
-public class BoardController {
+public class NoticeController {
 	@Autowired
-	private BoardService service;
+	private NoticeService service;
 
-	@RequestMapping("/board/list.do")
+	@RequestMapping("/notice/list.do")
 	public ModelAndView list(){
 		ModelAndView model=new ModelAndView();
 
@@ -24,52 +24,52 @@ public class BoardController {
 		totalCount=service.getTotalCount();
 
 		model.addObject("totalCount",totalCount);
-		model.setViewName("/service/boardlist");
+		model.setViewName("/service/noticelist");
 		return model;
 	}	
 
-	@RequestMapping("/board/content.do")
+	@RequestMapping("/notice/content.do")
 	public ModelAndView content(){
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/boardcontent");
+		model.setViewName("/service/noticecontent");
 		return model;
 	}
 	
-	@RequestMapping("/board/form.do")
+	@RequestMapping("/notice/form.do")
 	public ModelAndView form(){
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/boardform");
+		model.setViewName("/service/noticeform");
 		return model;
 	}
 	
-	@RequestMapping("/board/write.do")
+	@RequestMapping("/notice/write.do")
 	public ModelAndView write(){
 		// TODO : 게시글 추가 기능 
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/boardcontent");
+		model.setViewName("/service/noticecontent");
 		return model;
 	}
 	
-	@RequestMapping("/board/updateform.do")
+	@RequestMapping("/notice/updateform.do")
 	public ModelAndView updateform(){
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/boardupdateform");
+		model.setViewName("/service/noticeupdateform");
 		return model;
 	}
 	
-	@RequestMapping("/board/update.do")
+	@RequestMapping("/notice/update.do")
 	public ModelAndView update(){
 		// TODO : 게시글 수정 기능 
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/boardcontent");
+		model.setViewName("/service/noticecontent");
 		return model;
 	}
 	
-	@RequestMapping("/board/delete.do")
+	@RequestMapping("/notice/delete.do")
 	public ModelAndView delete(){
 		// TODO : 게시글 삭제 기능 
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/boardlist");
+		model.setViewName("/service/noticelist");
 		return model;
 	}
 }

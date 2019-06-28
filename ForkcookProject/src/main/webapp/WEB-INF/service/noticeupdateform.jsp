@@ -36,8 +36,8 @@
 <br>
 
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/board/list.do'">취소하기(목록으로 가기)</button>
-<button type="button" onclick="location.href='${root}/board/update.do'">수정하기(수정한 글 페이지로 감)</button>
+<button type="button" onclick="location.href='${root}/notice/list.do'">취소하기(목록으로 가기)</button>
+<button type="button" onclick="location.href='${root}/notice/update.do'">수정하기(수정한 글 페이지로 감)</button>
 
 </body>
 </html>

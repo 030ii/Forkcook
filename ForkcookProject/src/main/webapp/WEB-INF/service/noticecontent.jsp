@@ -20,11 +20,11 @@
 사진 : 사진
 </pre>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/board/list.do'">목록 보기</button>
+<button type="button" onclick="location.href='${root}/notice/list.do'">목록 보기</button>
 <br>
 <br>
 아래 버튼은 가맹점주나 관리자 페이지에서 구현될 버튼들입니다<br>
-<button type="button" onclick="location.href='${root}/board/updateform.do'">게시글 수정(수정폼으로 이동)</button>
-<button type="button" onclick="location.href='${root}/board/delete.do'">게시글 삭제(삭제 후 목록으로 이동)</button>
+<button type="button" onclick="location.href='${root}/notice/updateform.do'">게시글 수정(수정폼으로 이동)</button>
+<button type="button" onclick="location.href='${root}/notice/delete.do'">게시글 삭제(삭제 후 목록으로 이동)</button>
 </body>
 </html>
