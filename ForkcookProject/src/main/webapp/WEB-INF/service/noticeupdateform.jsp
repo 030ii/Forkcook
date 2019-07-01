@@ -8,36 +8,47 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
 </head>
 <body>
-공지 수정 페이지<br>
-가맹점이나 관리자만 접근 가능한 페이지 입니다<br>
-아래 폼에 값들이 채워있어야 합니다
-<br>
-<br>
-
-제목 : <input type="text" value="제목제목">
-<br>
-
-가맹점 : 
-<select>
-	<option>강남점</option>
-	<option>분당점</option>
-</select>
-<br>
-
-내용 : 
-<textarea>내용내용</textarea>
-<br>
-
-사진 업로드 :
-<input>
-<br>
-
-<c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/notice/list.do'">취소하기(목록으로 가기)</button>
-<button type="button" onclick="location.href='${root}/notice/update.do'">수정하기(수정한 글 페이지로 감)</button>
+<form action="update.do" method="post">
+	<table class="table table-striped" style="width: 400px;">
+		<caption><b>게시판글수정</b></caption>
+		<tr>
+			<th style="width: 100px;">작성자</th>
+			<td>
+				<input type="text" name="writer" class="form-control"
+					value="${dto.writer}">
+			</td>
+		</tr>
+		<tr>
+			<th style="width: 100px;">제 목</th>
+			<td>
+				<input type="text" name="subject" class="form-control"
+					value="${dto.subject}">
+			</td>
+		</tr>
+		<tr>			
+			<td colspan="2">
+				<textarea rows="5" cols="40" name="content" class="form-control">${dto.content}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<!-- hidden list -->
+				<input type="hidden" name="num" value="${dto.num}">
+				<input type="hidden" name="pageNum" value="${pageNum}">
+				
+				<button style="width: 100px;" type="submit">수정하기</button>
+				
+				<button style="width: 100px;" type="button"
+				onclick="location.href='list.do?pageNum=${pageNum}'">목록</button>
+				
+				<button style="width: 100px;" type="button"
+				onclick="history.back()">취소</button>
+			</td>
+		</tr>
+	</table>
+</form>
 
 </body>
 </html>

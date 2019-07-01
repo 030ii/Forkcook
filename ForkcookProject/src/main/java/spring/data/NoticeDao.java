@@ -26,10 +26,6 @@ public class NoticeDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("notice.noticePagingList",map);
 	}
 	
-	public void updateReadCount(int num){
-		getSqlSession().update("noticeUpdateReadcount",num);
-	}
-	
 	public NoticeDto getData(int num){
 		return getSqlSession().selectOne("noticeSelectData",num); // 바로 리턴해도 됨 
 	}

@@ -88,11 +88,15 @@ public class NoticeController {
 	}
 
 	@RequestMapping("/notice/content.do")
-	public ModelAndView content(){
-		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/noticecontent");
-		return model;
+	public String content(Model model,@RequestParam int num,@RequestParam int pageNum){
+		//데이타 가져오기
+		NoticeDto dto=service.getData(num);
+		//model 에 저장
+		model.addAttribute("dto", dto);
+		model.addAttribute("pageNum", pageNum);		
+		return "/service/noticecontent";
 	}
+
 	
 	@RequestMapping("/notice/form.do")
 	public ModelAndView form(){
@@ -110,11 +114,25 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/notice/updateform.do")
-	public ModelAndView updateform(){
+	public ModelAndView updateForm(@RequestParam int num,
+			@RequestParam int pageNum)
+	{
 		ModelAndView model=new ModelAndView();
+		NoticeDto dto=service.getData(num);
+		model.addObject("dto",dto);
+		model.addObject("pageNum",pageNum);
 		model.setViewName("/service/noticeupdateform");
 		return model;
 	}
+	
+	@RequestMapping(value="/notice/update.do",method=RequestMethod.POST)
+	public String update(@ModelAttribute NoticeDto dto,
+			@RequestParam String pageNum)
+	{
+		service.noticeUpdate(dto);		
+		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
+	}
+
 	
 	@RequestMapping("/notice/update.do")
 	public ModelAndView update(){
@@ -125,10 +143,14 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/notice/delete.do")
-	public ModelAndView delete(){
-		// TODO : 게시글 삭제 기능 
-		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/noticelist");
-		return model;
+	public String delete(@RequestParam int num,@RequestParam String pageNum)
+	{
+		//삭제
+		service.noticeDelete(num);
+		//목록으로 이동(보던 페이지로)
+		return "redirect:list.do?pageNum="+pageNum;
 	}
+
+	
+	
 }

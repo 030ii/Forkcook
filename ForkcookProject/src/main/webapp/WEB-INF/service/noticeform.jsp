@@ -8,7 +8,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+$(function() {
+   $("#wkrtjd").click(function() {
+	   if($(this).val()!==''){
+		   alert("입력란을 확인해주세요");
+	   }
+	
 
+	  
+  });
+});
+</script>
 </head>
 <body>
 공지 작성 페이지<br>
@@ -16,8 +27,7 @@
 <br>
 <br>
 <form action="writes.do" method="post">
-	<table class="table table-striped" style="width: 400px;">
-		<caption><b>게시판글쓰기</b></caption>
+	<table class="table" style="width: 400px;">
 		<tr>
 			<th style="width: 100px;">작성자</th>
 			<td>
@@ -39,7 +49,7 @@
 			<td colspan="2" align="right">
 				<c:set var="root" value="<%=request.getContextPath() %>" />
             <button type="button" onclick="location.href='${root}/notice/list.do'">취소하기</button>
-            <button type="submit" >작성하기</button>
+            <button type="submit" id="wkrtjd">작성하기</button>
 			</td>
 		</tr>
 	</table>
