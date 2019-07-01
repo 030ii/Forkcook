@@ -27,7 +27,7 @@
 		<td><input type="password" name="pass" size="7"></td>
 	</tr>
 	<tr>
-		<th>핸드폰</th>
+		<th>핸드폰( - 빼고 입력)</th>
 		<td><input type="text" name="phone" size="7"></td>
 	</tr>
 	<tr>

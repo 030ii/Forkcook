@@ -15,4 +15,8 @@ public class UserDao extends SqlSessionDaoSupport {
 	{
 		getSqlSession().insert("user.userInsert",dto);
 	}
+	public void insertUser2(UserDto dto)
+	{
+		getSqlSession().insert("user.userInsert2",dto);
+	}
 }

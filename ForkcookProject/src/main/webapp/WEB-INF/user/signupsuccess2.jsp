@@ -10,9 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-장바구니목록
-<!-- 로그인 안했을 시에 장바구니 누르면 '먼저로그인하세요' 창 뜨게 해야함  -->
-<c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/order/orderform.do'">결제하러가기</button>
+비회원로그인성공
 </body>
 </html>

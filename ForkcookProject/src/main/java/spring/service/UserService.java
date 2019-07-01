@@ -20,4 +20,9 @@ public class UserService {
 	{
 		dao.insertUser(dto);
 	}
+	
+	public void insertUser2(UserDto dto)
+	{
+		dao.insertUser2(dto);
+	}
 }

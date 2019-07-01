@@ -17,14 +17,14 @@
 	방문날짜 : <input type="text" name="date" size="25" placeholder="나중에 날짜선택 템플릿으로"><br>
 	방문시간 : <input type="text" name="time" size="25"><br>
 	결제정보 : <input type="text" name="pay" size="25"><br>
-	
+</form>
 	---------------------------------<br>
 	주문할메뉴(db에서 불러오기)
 	메뉴 : 수량 : 가격 :
 	총가격 : 
 	
 	<!-- <input type="submit" value="결제하기"> -->
-</form>
+
 
 <button type="button" onclick="location.href='${root}/order/ordersuccess.do'">결제 완료</button>
 </body>

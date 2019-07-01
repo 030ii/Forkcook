@@ -32,9 +32,18 @@ public class UserController {
 		return model;
 	}
 	
+	//비회원로그인
+		@RequestMapping("/user/login2.do")
+		public String login2(@ModelAttribute UserDto dto)
+		{
+			service.insertUser2(dto);
+			
+			return "/user/signupsuccess2";
+		}
+		
 	//로그인하기 버튼 클릭->로그인되고 메인으로 포워드(일단 loginsuccess로 이동,나중에수정)
-	@RequestMapping("/user/logingo.do")
-	public ModelAndView list()
+	@RequestMapping("/user/login1.do")
+	public ModelAndView login1()
 	{
 		ModelAndView model=new ModelAndView();
 		model.setViewName("/user/loginsuccess");
