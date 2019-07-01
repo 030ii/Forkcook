@@ -4,4 +4,20 @@
 	<select id="menuTotalCount" resultType="int">
 		select count(*) from menu
 	</select>
+	<insert id="menuInsert" parameterType="mdto">
+		insert into menu values (seq_menu.nextval,#{name},#{category},#{persons},#{price},#{image},'0.0',#{shortmsg},#{longmsg})
+	</insert>
+	<select id="menuList" resultType="mdto">
+	   	select * from menu	
+	</select>
+	<select id="menuSelectData" parameterType="int" resultType="mdto">
+		select * from menu where num=#{num}
+	</select>
+	<update id="menuUpdate" parameterType="mdto">
+		update menu set name=#{name},category=#{category},persons=#{persons},price=#{price},image=#{image},rate=#{rate},shortmsg=#{shortmsg},longmsg=#{longmsg} 
+		where num=#{num}
+	</update>
+	<delete id="menuDelete" parameterType="int">
+		delete from menu where num=#{num}
+	</delete>
 </mapper>

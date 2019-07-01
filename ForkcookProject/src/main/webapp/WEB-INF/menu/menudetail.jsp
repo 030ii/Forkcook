@@ -15,7 +15,16 @@
     <table style="width: 400px;" class="table table-bordered">
     <caption><b>메뉴 상세보기</b></caption>
     <tr>
-      
+		num : ${dto.num}<br>
+		name : ${dto.name}<br>
+		category : ${dto.category}<br>  
+		persons : ${dto.persons}<br>
+		price : ${dto.price}<br>
+		image : ${dto.image}<br>
+		rate : ${dto.rate}<br>
+		shortmsg : ${dto.shortmsg}<br>
+		longmsg : ${dto.longmsg}<br>
+		<br><br><hr><br><br>
     </tr>
     
     <tr>
