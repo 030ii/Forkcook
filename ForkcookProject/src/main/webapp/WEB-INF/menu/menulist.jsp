@@ -10,12 +10,12 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-	데이터 갯수 : ${totalCount}
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-	<button type="button" onclick="location.href='${root}/menu/detail.do'">메뉴상세보기 페이지 이동</button>
 
-<!-- TODO : CSS는 추후에 UI kit에 맞게 다시 재배열 -->
 <!-- TODO : 카테고리별 분류 -->
+<!-- TODO : CSS는 추후에 UI kit에 맞게 다시 재배열 -->
+<!-- TODO : 메뉴에 마우스 오버시 장바구니/상세보기 나오게 하기 -->
+
 	<c:forEach var="dto" items="${list}">
 		<div class="card" style="width: 20rem;">
 			<img class="card-img-top" src="../image/${dto.image}" alt="Card image cap">

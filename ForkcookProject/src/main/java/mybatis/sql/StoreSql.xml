@@ -4,4 +4,20 @@
 	<select id="storeTotalCount" resultType="int">
 		select count(*) from store
 	</select>
+	<insert id="storeInsert" parameterType="sdto">
+		insert into store values (seq_store.nextval,#{name},#{area},#{addr},#{phone},#{mainimage},#{mapimage},#{opertime},#{shortmsg},#{longmsg})
+	</insert>
+	<select id="storeList" resultType="sdto">
+	   	select * from store	
+	</select>
+	<select id="storeSelectData" parameterType="int" resultType="sdto">
+		select * from store where num=#{num}
+	</select>
+	<update id="storeUpdate" parameterType="sdto">
+		update store set name=#{name},area=#{area},addr=#{addr},phone=#{phone},mainimage=#{mainimage},mapimage=#{mapimage},opertime=#{opertime},shortmsg=#{shortmsg},longmsg=#{longmsg} 
+		where num=#{num}
+	</update>
+	<delete id="storeDelete" parameterType="int">
+		delete from store where num=#{num}
+	</delete>
 </mapper>

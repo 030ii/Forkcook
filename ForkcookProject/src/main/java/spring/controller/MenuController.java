@@ -21,11 +21,6 @@ public class MenuController {
 	@RequestMapping("/menu/list.do")
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
-		
-			//db연결 확인위해 데이터 갯수 출력부분
-			//int totalCount;
-			//totalCount=service.getTotalCount();
-			//model.addObject("totalCount", totalCount);
 				
 		// 메뉴 리스트 가져오기
 		List<MenuDto> list = service.getList();
@@ -35,13 +30,13 @@ public class MenuController {
 	}
 
 	@RequestMapping("/menu/detail.do")
-   public String content(Model model,@RequestParam int num){
+	public String content(Model model,@RequestParam int num){
       //데이타 가져오기
       MenuDto dto=service.getData(num);
       //model 에 저장
       model.addAttribute("dto", dto);    
       return "/menu/menudetail";
-   }
+	}
 	
 	@RequestMapping("/menu/review.do")
 	public ModelAndView review(){
