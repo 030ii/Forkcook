@@ -2,13 +2,27 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="spring.data.CartDto" alias="cdto"/>
+		<typeAlias type="spring.data.MenuDto" alias="mdto"/>
 		<typeAlias type="spring.data.NoticeDto" alias="ndto"/>
-		<typeAlias type="spring.data.UserDto" alias="udto"/>
+		<typeAlias type="spring.data.OrderDto" alias="odto"/>
 		<typeAlias type="spring.data.QnaDto" alias="qdto"/>
+		<typeAlias type="spring.data.ReqnaDto" alias="rqdto"/>
+		<typeAlias type="spring.data.ReviewDto" alias="rdto"/>
+		<typeAlias type="spring.data.StoreDto" alias="sdto"/>
+		<typeAlias type="spring.data.StoreuserDto" alias="sudto"/>
+		<typeAlias type="spring.data.UserDto" alias="udto"/>
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/sql/CartSql.xml"/>
+		<mapper resource="mybatis/sql/MenuSql.xml"/>
 		<mapper resource="mybatis/sql/NoticeSql.xml"/>
-		<mapper resource="mybatis/sql/UserSql.xml"/>
+		<mapper resource="mybatis/sql/OrderSql.xml"/>
 		<mapper resource="mybatis/sql/QnaSql.xml"/>
+		<mapper resource="mybatis/sql/ReqnaSql.xml"/>
+		<mapper resource="mybatis/sql/ReviewSql.xml"/>
+		<mapper resource="mybatis/sql/StoreSql.xml"/>
+		<mapper resource="mybatis/sql/StoreuserSql.xml"/>
+		<mapper resource="mybatis/sql/UserSql.xml"/>
 	</mappers>
 </configuration>
