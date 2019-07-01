@@ -20,7 +20,7 @@
 	</tr>
 	<tr>
 		<th>이름(닉네임)</th>
-		<td><input type="text" name="id" size="7"></td>
+		<td><input type="text" name="name" size="7"></td>
 	</tr>
 	<tr>
 		<th>비밀번호</th>
