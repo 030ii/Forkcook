@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 	<select id="userTotalCount" resultType="int">
-		select count(*) from users
+		select count(*) from users1
 	</select>
 	<insert id="userInsert" parameterType="udto">
-		insert into users values (seq_users.nextval,#{id},
-		#{pass},#{name},#{phone},sysdate,1)
+		insert into users1 values (seq_users.nextval,#{id},
+		#{name},#{pass},#{phone},sysdate)
 	</insert>
 </mapper>

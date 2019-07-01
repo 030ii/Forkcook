@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.UserDto;
@@ -50,14 +49,6 @@ public class UserController {
 		return "/user/membership";
 	}
 	
-	/*@RequestMapping(value="/user/signup.do",method = {RequestMethod.GET, RequestMethod.POST})
-	public String signup(@ModelAttribute UserDto dto)
-	{
-		service.insertUser(dto);
-		//목록으로 이동
-		return "redirect:main.do";
-	}*/
-	
 	//회원가입폼으로 이동
 		@RequestMapping("/user/signup.do")
 		public String signup(@ModelAttribute UserDto dto){
@@ -65,25 +56,15 @@ public class UserController {
 			return "/user/signup";  
 		}
 	
-	/*//회원가입폼에서 완료페이지로
+	//회원가입폼에서 완료페이지로
 	@RequestMapping("/user/signupform.do")
-	public ModelAndView signupform()
+	public String readData(@ModelAttribute UserDto dto)
 	{
-		ModelAndView model=new ModelAndView();
-		model.setViewName("/user/signupsuccess");
+		service.insertUser(dto);
 		
-		return model;
-	}*/
+		return "/user/signupsuccess";
+	}
 		
-		//회원가입폼에서 완료페이지로
-		@RequestMapping("/user/signupform.do")
-		public String signupform(@ModelAttribute UserDto dto)
-		{
-			//service.insertUser(dto);에러남..
-			
-			return "/user/signupsuccess";
-		}
-	
 	//마이페이지로 이동
 		@RequestMapping("/user/mypage.do")
 		public String mypg(){

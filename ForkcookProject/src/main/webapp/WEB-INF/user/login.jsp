@@ -11,8 +11,13 @@
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath()%>"/>
-회원로그인폼
-/데이터 갯수 : ${totalCount }
+<!-- 
+
+회원 : 아이디랑 비번 체크해서 로그인성공/실패 나누기 ->성공시 메인화면
+비회원 : 로그인하면 회원데이타 저장하고 장바구니로 이동
+-->
+
+데이터 갯수 : ${totalCount }
 <form action="logingo.do" method="get">
 	아이디 : <input type="text" name="id" size="7"><br>
 	비밀번호 : <input type="password" name="pass" size="7"><br>
@@ -21,7 +26,7 @@
 <a href="${root}/user/membership.do">회원가입하기</a>
 <hr>
 비회원 주문조회
-<!-- (로그인시 회원정보 테이블에 insert) -->
+<!-- (로그인과 동시에 회원정보 테이블에 insert) -->
 <form action="logingo.do" method="get">
 	핸드폰 : <input type="text" name="hp" size="7"><br>
 	이름 : <input type="password" name="pass" size="7"><br>
