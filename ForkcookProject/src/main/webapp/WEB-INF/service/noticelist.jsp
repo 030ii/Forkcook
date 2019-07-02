@@ -8,19 +8,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 총 <strong>${totalCount}</strong> 개의 글이 있습니다<br>
 공지사항 게시판<br>
 매장별 보기 : 전체 | 강남점 | 분당점 | 삼성점<br>
 게시글 검색하기<br>
+	<input type="text" id="word" list="list">	
+	<button type="button" id="btnsearch">검색</button>
+	<br><br>
 <table>
 	<tr style="background:gray;">
 		<th style="width: 60px;">번호</th>
 		<th style="width: 300px;">제 목</th>
 		<th style="width: 80px;">작성자</th>
-		<th style="width: 60px;">조회</th>
 		<th style="width: 100px;">작성일</th>	
+		<c:forEach var="dto" items="${list}">
+		<tr>
+			<td align="center">${no}</td>
+			<c:set var="no" value="${no-1}"/>
+			<td>
+				<a href="content.do?num=${dto.num}&pageNum=${currentPage}">${dto.subject}</a>
+			</td>
+			<td align="center">${dto.writer }</td>
+			<td align="center">
+				<fmt:formatDate value="${dto.writeday }"
+				   pattern="yyyy-MM-dd"/>
+			</td>
+		</tr>
+	</c:forEach>
+		
 	</tr>
 </table>
 <div>

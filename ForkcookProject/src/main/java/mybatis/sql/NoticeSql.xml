@@ -2,21 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="notice">
 	<select id="noticeTotalCount" resultType="int">
-		select count(*) from springboard
+		select count(*) from notice
 	</select>
 	
 	<insert id="noticeInsert" parameterType="ndto">
-		insert into springboard values (seq1.nextval,#{writer},
-		#{subject},#{content},0,sysdate)
+		insert into notice values (seq1.nextval,
+		#{subject},#{content},'0.jpg',sysdate)
 	</insert>
 	
 	<select id="noticePagingList" parameterType="HashMap" resultType="ndto">
 	   <![CDATA[
 	   	select a.* from (select ROWNUM as RNUM,
-		b.* from (select * from springboard order by num desc)b )a 
+		b.* from (select * from notice order by num desc)b )a 
 		where a.RNUM>=#{start} and a.RNUM<=#{end}
 		 ]]>		
 	</select>
+	
+	<select id="noticeSelectData" parameterType="int" resultType="ndto">
+		select * from notice where num=#{num}
+	</select>
+	
+	 <update id="noticeUpdate" parameterType="ndto">
+		update notice set 
+		subject=#{subject},content=#{content},image=#{image},writeday=sysdate
+		 where num=#{num}
+   </update>
+	
+	
 	
 	
 </mapper>

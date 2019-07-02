@@ -25,6 +25,26 @@ public class NoticeService {
 	{
 		return dao.getList(start, end);
 	}
+	
+	public NoticeDto getData(int num)
+	{
+		return dao.getData(num);
+	}
+	
+	
+	
+	public void noticeDelete(int num)
+	{
+		dao.noticeDelete(num);
+	}
+	
+	public void noticeUpdate(NoticeDto dto)	
+	{
+		dao.noticeUpdate(dto);
+	}
+
+
+
 
 
 }
