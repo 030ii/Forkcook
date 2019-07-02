@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
+	<!-- db연결 확인용 데이터 갯수 출력(나중에 지울것) -->
 	<select id="userTotalCount" resultType="int">
 		select count(*) from users
 	</select>
+	<!-- 회원가입 -->
 	<insert id="userInsert" parameterType="udto">
 		insert into users values (seq_users.nextval,#{id},
 		#{name},#{pass},#{phone},sysdate,1)
 	</insert>
+	<!-- 비회원으로 로그인(비회원 회원가입) -->
 	<insert id="userInsert2" parameterType="udto">
 		insert into users (num,name,phone,gaipday,usertype) values (seq_users.nextval,
 		#{name},#{phone},sysdate,2)
 	</insert>
+	<!-- 로그인 정보를  users테이블과 비교 -->
+	<!-- <select id="userLogin" parameterType="HashMap" resultType="int">
+			select count(*) from users where id like #{id}
+	</select> -->
+	<!-- <select id="loginCheck" resultType="String">
+		select name from users where id=#{id}
+	</select>
+	<select id="viewUser" parameterType="String" resultType="udto">
+		select * from users where id=#{id}
+	</select> -->
+	<!-- 아이디중복확인 -->
+	<select id="overlapTest" resultType="String" parameterType="String">
+		<![CDATA[
+			select count(id) from users where id = #{id}
+		]]>
+	</select>
+	<select id="loginIdentify" resultType="int" parameterType="String" >
+		<![CDATA[
+ 			select count(*) from users where id=#{id} and pass=#{pass};
+ 		]]>
+	</select>
+
 </mapper>

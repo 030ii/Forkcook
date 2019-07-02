@@ -54,5 +54,4 @@ public class UserDto {
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
 	}
-
 }

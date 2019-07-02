@@ -8,6 +8,43 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+/* $(document).ready(function(){
+	$("#login_btn").unbind("click").click(function(e){
+		e.preventDefault();
+		fn_login();
+	});
+});
+
+function fn_login(){
+	if($("#id").val().length<1){
+		alert("아이디를 입력해주세요");
+		}else if($("#pass").val().length<1){
+			alert("비밀번호를 입력해주세요");
+		}
+} */
+
+$(document).ready(function(){
+	$("#login_btn").click(function(){
+		var id = $("#id").val();
+		var pass = $("#pass").val();
+		if(id == ""){
+			alert("아이디를 입력해주세요");
+			$("#id").focus();//입력 포커스 이동
+			return;//함수 종료
+		}
+		if(pass == ""){
+			alert("비밀번호를 입력하세요");
+			$("#pass").focus();
+			return;
+		}
+		//폼 내부의 데이터를 전송할 주소
+		//document.form1.acriont="${path}/user/login1.do"
+		//제출
+		//document.form1.submit();
+	});
+});
+</script>
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath()%>"/>
@@ -17,10 +54,10 @@
 -->
 
 데이터 갯수 : ${totalCount }
-<form action="login1.do" method="get">
-	아이디 : <input type="text" name="id" size="7"><br>
-	비밀번호 : <input type="password" name="pass" size="7"><br>
-	<input type="submit" value="회원으로 로그인">
+<form method="get" name="form1">
+	아이디 : <input type="text" name="id" size="7" id="id"><br>
+	비밀번호 : <input type="password" name="pass" size="7" id="pass"><br>
+	<input type="submit" value="회원으로 로그인" id="login_btn">
 </form>
 <a href="${root}/user/membership.do">회원가입하기</a>
 <hr>
