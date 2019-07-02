@@ -16,7 +16,7 @@ $(document).ready(function(){
             alert('필수 약관에 동의해주세요');
         }else{
         	console.log('asdf');
-            window.location.href = '/SpringTilesMybatis/user/signup.do';
+            window.location.href = '/ForkcookProject/user/signup.do';
         }
     });
 });
