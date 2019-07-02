@@ -18,35 +18,30 @@ public class MenuController {
 	@Autowired
 	private MenuService service;
 	
-	@RequestMapping("/menu/list.do")
+	@RequestMapping("/main/menu/list.do")
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
 				
 		// 메뉴 리스트 가져오기
 		List<MenuDto> list = service.getList();
 		model.addObject("list", list);
-		model.setViewName("/menu/menulist");
+		model.setViewName("/main/menu/menulist");
 		return model;
 	}
 
-	@RequestMapping("/menu/detail.do")
+	@RequestMapping("/main/menu/detail.do")
 	public String content(Model model,@RequestParam int num){
       //데이타 가져오기
       MenuDto dto=service.getData(num);
       //model 에 저장
       model.addAttribute("dto", dto);    
-      return "/menu/menudetail";
+      return "/main/menu/menudetail";
 	}
 	
-	@RequestMapping("/menu/review.do")
+	@RequestMapping("/main/menu/review.do")
 	public ModelAndView review(){
 		ModelAndView model = new ModelAndView();
-		model.setViewName("/menu/review");
+		model.setViewName("/main/menu/review");
 		return model;
-	}
-	
-	
-	
-	
-	
+	}	
 }

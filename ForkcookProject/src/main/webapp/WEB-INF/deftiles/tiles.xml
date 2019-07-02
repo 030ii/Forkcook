@@ -15,7 +15,23 @@
 	
 	<!-- macro -->
 	<!-- /*/*는 앞에서부터 차례대로 /{1}/{2}로 읽어줌 -->
-	<definition name="/*/*" extends="mainLayout">
+	<definition name="/main/*/*" extends="mainLayout">
 		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+	
+	<!-- 관리자 페이지 -->
+	<definition name="adminLayout" template="/WEB-INF/layout-admin/layout-admin.jsp">
+		<put-attribute name="header-admin" value="/WEB-INF/layout-admin/header-admin.jsp"/>
+		<put-attribute name="main-admin" value="/WEB-INF/layout-admin/main-admin.jsp"/>
+	</definition>
+	<definition name="admin.tiles" extends="adminLayout">
+		<put-attribute name="admin" value="/WEB-INF/layout-admin/main-admin.jsp"/>
+	</definition>
+	
+	<!-- macro -->
+	<!-- /*/*는 앞에서부터 차례대로 /{1}/{2}로 읽어줌 -->
+	<definition name="/admin/*/*" extends="adminLayout">
+		<put-attribute name="admin" value="/WEB-INF/{1}/{2}.jsp"/>
 	</definition>
 </tiles-definitions>
