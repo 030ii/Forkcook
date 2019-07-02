@@ -11,7 +11,7 @@
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<form action="menudetail.do" method="post">
+<form action="main/menudetail.do" method="post">
     <table style="width: 400px;" class="table table-bordered">
     <caption><b>메뉴 상세보기</b></caption>
     <tr>
@@ -37,16 +37,11 @@
     
     <tr>
       <td colspan="2" align="right">     
-      <button type="button" style="width: 100px;"
-        class="btn btn-basic btn-sm"
-        onclick="location.href='${root}/menu/review.do'">리뷰보기</button>	
-        <button type="button" style="width: 100px; margin-left: 175px;"
-        class="btn btn-basic btn-sm"
-        onclick="history.back()">닫 기</button>		
+      	<button type="button" style="width: 100px;" class="btn btn-basic btn-sm" onclick="location.href='${root}/main/menu/review.do'">리뷰보기</button>	
+        <button type="button" style="width: 100px; margin-left: 175px;" class="btn btn-basic btn-sm" onclick="history.back()">닫 기</button>		
       </td>
     </tr> 
-    
-    
+
     </table>
 </form>
 </body>

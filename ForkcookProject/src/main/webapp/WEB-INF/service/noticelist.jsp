@@ -74,6 +74,6 @@
 <br><br>
 아래 버튼은 가맹점주나 관리자 페이지에서 구현될 버튼들입니다<br>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/notice/form.do'">게시글 작성</button>
+<button type="button" onclick="location.href='${root}/main/notice/form.do'">게시글 작성</button>
 </body>
 </html>

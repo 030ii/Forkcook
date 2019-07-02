@@ -27,7 +27,7 @@
 			opertime : ${dto.opertime}<br> 
 			shortmsg : ${dto.shortmsg}<br> 
 			longmsg : ${dto.longmsg}<br>
-			<a href="${root}/store/detail.do?num=${dto.num}" class="btn btn-primary">매장 상세보기&rarr;</a>
+			<a href="${root}/main/store/detail.do?num=${dto.num}" class="btn btn-primary">매장 상세보기&rarr;</a>
 		  </div>
 		</div>
 		<br>

@@ -7,19 +7,26 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class OrderController {
 	
-	//결제페이지에서 결제완료페이지로
-	@RequestMapping("/order/orderform.do")
+	@RequestMapping("/main/order/order.do")
 	public ModelAndView order(){
 		ModelAndView model = new ModelAndView();
-		model.setViewName("/order/order");
+		model.setViewName("/main/order/order");
 		return model;
 	}
 	
 	//결제페이지에서 결제완료페이지로
-		@RequestMapping("/order/ordersuccess.do")
+	@RequestMapping("/main/order/orderform.do")
+	public ModelAndView orderform(){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("/main/order/order");
+		return model;
+	}
+	
+	//결제페이지에서 결제완료페이지로
+		@RequestMapping("/main/order/ordersuccess.do")
 		public ModelAndView ordersuccess(){
 			ModelAndView model = new ModelAndView();
-			model.setViewName("/order/ordersuccess");
+			model.setViewName("/main/order/ordersuccess");
 			return model;
 		}
 }

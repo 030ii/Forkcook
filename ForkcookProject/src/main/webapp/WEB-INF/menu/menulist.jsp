@@ -18,11 +18,11 @@
 
 	<c:forEach var="dto" items="${list}">
 		<div class="card" style="width: 20rem;">
-			<img class="card-img-top" src="../image/${dto.image}" alt="Card image cap">
+			<img class="card-img-top" src="../../image/${dto.image}" alt="Card image cap">
 			<div class="card-body">
 				<h4 class="card-title">${dto.name}</h4>
 				<p class="card-text">${dto.shortmsg}</p>
-				<a href="${root}/menu/detail.do?num=${dto.num}" class="btn btn-primary">자세히 보기&rarr;</a>
+				<a href="${root}/main/menu/detail.do?num=${dto.num}" class="btn btn-primary">자세히 보기&rarr;</a>
 			</div>
 		</div>
 		<br>

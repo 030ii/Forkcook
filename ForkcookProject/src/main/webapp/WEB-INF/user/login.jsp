@@ -59,7 +59,7 @@ $(document).ready(function(){
 	비밀번호 : <input type="password" name="pass" size="7" id="pass"><br>
 	<input type="submit" value="회원으로 로그인" id="login_btn">
 </form>
-<a href="${root}/user/membership.do">회원가입하기</a>
+<a href="${root}/main/user/membership.do">회원가입하기</a>
 <hr>
 비회원 주문조회
 <!-- (로그인과 동시에 회원정보 테이블에 insert) -->

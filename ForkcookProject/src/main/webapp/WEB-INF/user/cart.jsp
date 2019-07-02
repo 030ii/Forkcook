@@ -13,6 +13,6 @@
 장바구니목록
 <!-- 로그인 안했을 시에 장바구니 누르면 '먼저로그인하세요' 창 뜨게 해야함  -->
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/order/orderform.do'">결제하러가기</button>
+<button type="button" onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class StoreController {
 	@Autowired
 	private StoreService service;
 	
-	@RequestMapping("/store/list.do")
+	@RequestMapping("/main/store/list.do")
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
 		
@@ -30,28 +30,15 @@ public class StoreController {
 		List<StoreDto> list = service.getList();
 		model.addObject("list", list);
 		
-		model.setViewName("/store/storelist");
+		model.setViewName("/main/store/storelist");
 		return model;
 	}
-	@RequestMapping("/store/detail.do")
+	@RequestMapping("/main/store/detail.do")
 	public String content(Model model,@RequestParam int num){
 		//데이타 가져오기
 	    StoreDto dto=service.getData(num);
 	    //model 에 저장
 	    model.addAttribute("dto", dto);   
-	    return "/store/storedetail";
-	}
-	
-	@RequestMapping("/partner/partnerqna.do")
-	public ModelAndView partnerqna(){
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/partner/partnerqna");
-		return model;
-	}
-	@RequestMapping("/order/order.do")
-	public ModelAndView order(){
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/order/order");
-		return model;
+	    return "/main/store/storedetail";
 	}
 }

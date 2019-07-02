@@ -12,6 +12,6 @@
 <body>
 주문이 완료되었습니다
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<a href="${root}/main.do">메인페이지로</a>
+<a href="${root}/main/main.do">메인페이지로</a>
 </body>
 </html>

@@ -26,6 +26,6 @@
 	<!-- <input type="submit" value="결제하기"> -->
 
 
-<button type="button" onclick="location.href='${root}/order/ordersuccess.do'">결제 완료</button>
+<button type="button" onclick="location.href='${root}/main/order/ordersuccess.do'">결제 완료</button>
 </body>
 </html>

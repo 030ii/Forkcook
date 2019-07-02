@@ -19,11 +19,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 
-	@RequestMapping("/notice/list.do")
-	public ModelAndView list(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage
-			)
-	{
+	@RequestMapping("/main/notice/list.do")
+	public ModelAndView list(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
 		ModelAndView model=new ModelAndView();
 
 		int totalCount;//총 데이타 갯수
@@ -83,34 +80,34 @@ public class NoticeController {
 		model.addObject("no", no);
 		model.addObject("totalPage", totalPage);
 		model.addObject("totalCount",totalCount);
-		model.setViewName("/service/noticelist");
+		model.setViewName("/main/service/noticelist");
 		
 		return model;
 	}
 	
 
 
-	@RequestMapping("/notice/content.do")
+	@RequestMapping("/main/notice/content.do")
 	public String content(Model model,@RequestParam int num,@RequestParam int pageNum){
 		//데이타 가져오기
 		NoticeDto dto=service.getData(num);
 		//model 에 저장
 		model.addAttribute("dto", dto);
 		model.addAttribute("pageNum", pageNum);		
-		return "/service/noticecontent";
+		return "/main/service/noticecontent";
 	}
 
 	
-	@RequestMapping("/notice/form.do")
+	@RequestMapping("/main/notice/form.do")
 	public ModelAndView form(){
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/noticeform");
+		model.setViewName("/main/service/noticeform");
 		return model;
 	}
 	
 
 	
-	@RequestMapping(value="/notice/write.do",method=RequestMethod.POST)
+	@RequestMapping(value="/main/notice/write.do",method=RequestMethod.POST)
 	public String readData(@ModelAttribute NoticeDto dto)
 	{
 		service.insertNotice(dto);		
@@ -118,7 +115,7 @@ public class NoticeController {
 		return "redirect:list.do";
 	}
 	
-	@RequestMapping("/notice/updateform.do")
+	@RequestMapping("/main/notice/updateform.do")
 	public ModelAndView updateForm(@RequestParam int num,
 			@RequestParam String pageNum)
 	{
@@ -126,12 +123,12 @@ public class NoticeController {
 		NoticeDto dto=service.getData(num);
 		model.addObject("dto",dto);
 		model.addObject("pageNum",pageNum);
-		model.setViewName("/service/noticeupdateform");
+		model.setViewName("/main/service/noticeupdateform");
 		return model;
 	}
 
 	// 컨텐츠(content)에서 바로 수정 눌렀을 경우에는 pageNum가 있어서 파라미터에 pageNum이 있는 경우의 update함수
-	@RequestMapping(value="/notice/updatec.do",method=RequestMethod.POST)
+	@RequestMapping(value="/main/notice/updatec.do",method=RequestMethod.POST)
 	public String updatec(@ModelAttribute NoticeDto dto,@RequestParam String pageNum)
 	{
 		service.noticeUpdate(dto);
@@ -139,7 +136,7 @@ public class NoticeController {
 	}
 	
 	// 목록(list)에서 바로 수정 눌렀을 경우에는 pageNum가 없어서 파라미터에 pageNum이 없는 경우의 update함수
-	@RequestMapping(value="/notice/updatel.do",method=RequestMethod.POST)
+	@RequestMapping(value="/main/notice/updatel.do",method=RequestMethod.POST)
 	public String updatel(@ModelAttribute NoticeDto dto)
 	{
 		service.noticeUpdate(dto);	
@@ -151,7 +148,7 @@ public class NoticeController {
 	
 
 	
-	@RequestMapping("/notice/delete.do")
+	@RequestMapping("/main/notice/delete.do")
 	public String delete(@RequestParam int num,@RequestParam String pageNum)
 	{
 		//삭제

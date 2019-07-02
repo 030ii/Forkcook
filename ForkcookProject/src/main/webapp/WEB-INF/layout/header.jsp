@@ -16,7 +16,7 @@
 		<img src="${root}/image/08.png" width="50" align="center">Spring5+Tiles3+Mybatis3+Oracle
 	</a>-->
 	<div>
-		<a href="${root}/main.do">forkcook 로고</a>
+		<a href="${root}/main/main.do">forkcook 로고</a>
 	</div>
 	<div class="menu">
 		<ul>
@@ -29,14 +29,14 @@
 	</div>
 	<div class="btnContainer">
 		<ul class="loginNo">
-			<li><a href="${root}/user/login.do">로그인</a></li>
-			<li><a href="${root}/user/membership.do">회원가입</a></li>
-			<li><a href="${root}/cart/list.do">장바구니</a></li>
+			<li><a href="${root}/main/user/login.do">로그인</a></li>
+			<li><a href="${root}/main/user/membership.do">회원가입</a></li>
+			<li><a href="${root}/main/cart/list.do">장바구니</a></li>
 		</ul>
 		<ul class="loginYes">
-			<li><a href="${root}/user/logout.do">로그아웃</a></li>
-			<li><a href="${root}/user/mypage.do">마이페이지</a></li>
-			<li><a href="${root}/cart/list.do">장바구니</a></li>
+			<li><a href="${root}/main/user/logout.do">로그아웃</a></li>
+			<li><a href="${root}/main/user/mypage.do">마이페이지</a></li>
+			<li><a href="${root}/main/cart/list.do">장바구니</a></li>
 		</ul>
 	</div>
 </body>

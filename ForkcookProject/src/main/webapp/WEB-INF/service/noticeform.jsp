@@ -40,7 +40,7 @@ $(function() {
 		<tr>
 			<td colspan="2" align="right">
 				<c:set var="root" value="<%=request.getContextPath() %>" />
-            <button type="button" onclick="location.href='${root}/notice/list.do'">취소하기</button>
+            <button type="button" onclick="location.href='${root}/main/notice/list.do'">취소하기</button>
             <button type="submit" id="wkrtjd">작성하기</button>
 			</td>
 		</tr>

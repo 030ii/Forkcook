@@ -28,7 +28,7 @@
 	</div>
 	<br>
 	<button type="button"
-		onclick="location.href='${root}/partner/partnerqna.do'">매장문의</button>
-	<button type="button" onclick="location.href='${root}/menu/list.do'">주문하기</button>
+		onclick="location.href='${root}/main/partner/partnerqna.do'">매장문의</button>
+	<button type="button" onclick="location.href='${root}/main/menu/list.do'">주문하기</button>
 </body>
 </html>

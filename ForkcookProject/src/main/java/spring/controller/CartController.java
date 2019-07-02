@@ -7,11 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CartController {
 
-	@RequestMapping("/cart/list.do")
+	@RequestMapping("/main/cart/list.do")
 	public ModelAndView cart(){
 		ModelAndView model=new ModelAndView();
 		
-		model.setViewName("/user/cart");
+		model.setViewName("/main/user/cart");
 		return model;
 	}	
 	

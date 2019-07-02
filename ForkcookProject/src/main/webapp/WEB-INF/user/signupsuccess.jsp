@@ -12,6 +12,6 @@
 <body>
 회원가입을 축하합니다
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/user/login.do'">로그인하러가가기</button>
+<button type="button" onclick="location.href='${root}/main/user/login.do'">로그인하러가가기</button>
 </body>
 </html>
