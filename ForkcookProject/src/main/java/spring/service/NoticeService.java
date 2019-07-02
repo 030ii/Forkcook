@@ -16,6 +16,7 @@ public class NoticeService {
 	public int getTotalCount(){
 		return dao.getTotalCount();
 	}
+	
 	public void insertNotice(NoticeDto dto)
 	{
 		dao.insertnotice(dto);
@@ -26,6 +27,9 @@ public class NoticeService {
 		return dao.getList(start, end);
 	}
 	
+	
+
+	
 	public NoticeDto getData(int num)
 	{
 		return dao.getData(num);
@@ -34,7 +38,7 @@ public class NoticeService {
 	
 	
 	public void noticeDelete(int num)
-	{
+	{	
 		dao.noticeDelete(num);
 	}
 	

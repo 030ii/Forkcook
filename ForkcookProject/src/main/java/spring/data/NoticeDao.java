@@ -26,15 +26,21 @@ public class NoticeDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("notice.noticePagingList",map);
 	}
 	
-	public NoticeDto getData(int num){
-		return getSqlSession().selectOne("noticeSelectData",num); // 바로 리턴해도 됨 
-	}
+	
 	
 	public void noticeUpdate(NoticeDto dto){
-		getSqlSession().update("noticeUpdate",dto);
+		getSqlSession().update("notice.noticeUpdate",dto);
 	}
 	
 	public void noticeDelete(int num){
-		getSqlSession().delete("noticeDelete",num);
+		getSqlSession().delete("notice.noticeDelete",num);
 	}
+	
+	
+	
+	public NoticeDto getData(int num)
+	{
+		return getSqlSession().selectOne("notice.noticeSelectData",num);
+	}
+
 }

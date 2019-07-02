@@ -24,8 +24,9 @@
 	<tr style="background:gray;">
 		<th style="width: 60px;">번호</th>
 		<th style="width: 300px;">제 목</th>
-		<th style="width: 80px;">작성자</th>
 		<th style="width: 100px;">작성일</th>	
+		
+		
 		<c:forEach var="dto" items="${list}">
 		<tr>
 			<td align="center">${no}</td>
@@ -33,11 +34,12 @@
 			<td>
 				<a href="content.do?num=${dto.num}&pageNum=${currentPage}">${dto.subject}</a>
 			</td>
-			<td align="center">${dto.writer }</td>
 			<td align="center">
 				<fmt:formatDate value="${dto.writeday }"
-				   pattern="yyyy-MM-dd"/>
+				   pattern="yyyy-MM-dd"/>		
 			</td>
+			<th><button type="button" onclick="location.href='updateform.do?num=${dto.num}&pageNum=${pageNum}'">수정</button></th>
+	       <th><button type="button" onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">삭제</button></th>
 		</tr>
 	</c:forEach>
 		

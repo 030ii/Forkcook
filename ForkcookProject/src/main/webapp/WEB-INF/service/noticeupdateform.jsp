@@ -10,16 +10,19 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-<form action="update.do" method="post">
+
+	<c:choose>
+		<c:when test="${not empty pageNum}">
+			<form action="updatec.do" method="post">
+				<input type="hidden" name="pageNum" value="${pageNum}">
+		</c:when>
+		<c:otherwise>
+			<form action="updatel.do" method="post">	
+		</c:otherwise>
+	</c:choose>
+				
 	<table class="table table-striped" style="width: 400px;">
 		<caption><b>게시판글수정</b></caption>
-		<tr>
-			<th style="width: 100px;">작성자</th>
-			<td>
-				<input type="text" name="writer" class="form-control"
-					value="${dto.writer}">
-			</td>
-		</tr>
 		<tr>
 			<th style="width: 100px;">제 목</th>
 			<td>
@@ -34,9 +37,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<!-- hidden list -->
 				<input type="hidden" name="num" value="${dto.num}">
-				<input type="hidden" name="pageNum" value="${pageNum}">
 				
 				<button style="width: 100px;" type="submit">수정하기</button>
 				

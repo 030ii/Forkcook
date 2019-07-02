@@ -84,8 +84,11 @@ public class NoticeController {
 		model.addObject("totalPage", totalPage);
 		model.addObject("totalCount",totalCount);
 		model.setViewName("/service/noticelist");
+		
 		return model;
 	}
+	
+
 
 	@RequestMapping("/notice/content.do")
 	public String content(Model model,@RequestParam int num,@RequestParam int pageNum){
@@ -105,17 +108,19 @@ public class NoticeController {
 		return model;
 	}
 	
-	@RequestMapping(value="/notice/writes.do",method=RequestMethod.POST)
+
+	
+	@RequestMapping(value="/notice/write.do",method=RequestMethod.POST)
 	public String readData(@ModelAttribute NoticeDto dto)
 	{
-		service.insertNotice(dto);	
+		service.insertNotice(dto);		
 		
 		return "redirect:list.do";
 	}
 	
 	@RequestMapping("/notice/updateform.do")
 	public ModelAndView updateForm(@RequestParam int num,
-			@RequestParam int pageNum)
+			@RequestParam String pageNum)
 	{
 		ModelAndView model=new ModelAndView();
 		NoticeDto dto=service.getData(num);
@@ -124,23 +129,27 @@ public class NoticeController {
 		model.setViewName("/service/noticeupdateform");
 		return model;
 	}
-	
-	@RequestMapping(value="/notice/update.do",method=RequestMethod.POST)
-	public String update(@ModelAttribute NoticeDto dto,
-			@RequestParam String pageNum)
+
+	// 컨텐츠(content)에서 바로 수정 눌렀을 경우에는 pageNum가 있어서 파라미터에 pageNum이 있는 경우의 update함수
+	@RequestMapping(value="/notice/updatec.do",method=RequestMethod.POST)
+	public String updatec(@ModelAttribute NoticeDto dto,@RequestParam String pageNum)
 	{
-		service.noticeUpdate(dto);		
+		service.noticeUpdate(dto);
 		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
+	}
+	
+	// 목록(list)에서 바로 수정 눌렀을 경우에는 pageNum가 없어서 파라미터에 pageNum이 없는 경우의 update함수
+	@RequestMapping(value="/notice/updatel.do",method=RequestMethod.POST)
+	public String updatel(@ModelAttribute NoticeDto dto)
+	{
+		service.noticeUpdate(dto);	
+		return "redirect:list.do";
+		
 	}
 
 	
-	@RequestMapping("/notice/update.do")
-	public ModelAndView update(){
-		// TODO : 게시글 수정 기능 
-		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/noticecontent");
-		return model;
-	}
+	
+
 	
 	@RequestMapping("/notice/delete.do")
 	public String delete(@RequestParam int num,@RequestParam String pageNum)

@@ -18,15 +18,22 @@
 		 ]]>		
 	</select>
 	
+	
 	<select id="noticeSelectData" parameterType="int" resultType="ndto">
 		select * from notice where num=#{num}
 	</select>
 	
 	 <update id="noticeUpdate" parameterType="ndto">
 		update notice set 
-		subject=#{subject},content=#{content},image=#{image},writeday=sysdate
+		subject=#{subject},content=#{content},writeday=sysdate
 		 where num=#{num}
    </update>
+   
+	<delete id="noticeDelete" parameterType="int">
+		delete from notice where num=#{num}
+	</delete>
+	
+   
 	
 	
 	
