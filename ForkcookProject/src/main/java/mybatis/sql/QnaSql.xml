@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qna">
+	<select id="qnaTotalCount" resultType="int">
+		select count(*) from qna
+	</select>
 	<select id="qnaSelectData" parameterType="int" resultType="qdto">
 		select * from qna where num=#{num}
 	</select>
+	<select id="qnaPagingList" parameterType="HashMap" resultType="qdto">
+	   <![CDATA[
+	   	select a.* from (select ROWNUM as RNUM,
+		b.* from (select * from qna order by num desc)b )a 
+		where a.RNUM>=#{start} and a.RNUM<=#{end}
+		 ]]>		
+	</select>
 	<insert id="qnaInsert" parameterType="qdto">
-		insert into users values (seq1.nextval,#{writer},
-		#{subject},#{content},0,sysdate)
+		insert into qna values (seq_qna.nextval,#{unum},#{sdto.num},
+		#{subject},#{content},#{image},sysdate)
 	</insert>
 	<update id="qnaUpdate" parameterType="qdto">
-		update qna set writer=#{writer},
+		update qna set
 		subject=#{subject},content=#{content},writeday=sysdate
 		 where num=#{num}
 	</update>

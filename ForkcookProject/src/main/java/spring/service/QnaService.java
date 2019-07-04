@@ -14,14 +14,12 @@ public class QnaService {
 	@Autowired
 	private QnaDao dao;
 	
-	public int getTotalCount()
-	{
+	public int getTotalCount(){
 		return dao.getTotalCount();
 	}
-
-	public void insertBoard(QnaDto dto)
+	public void insertQna(QnaDto dto)
 	{
-		dao.insertQna(dto);
+		dao.insertqna(dto);
 	}
 	
 	public List<QnaDto> getList(int start,int end)
@@ -34,13 +32,15 @@ public class QnaService {
 		return dao.getData(num);
 	}
 	
-	public void qnaUpdate(QnaDto dto)
-	{
-		dao.qnaUpdate(dto);
-	}
+	
 	
 	public void qnaDelete(int num)
 	{
 		dao.qnaDelete(num);
+	}
+	
+	public void qnaUpdate(QnaDto dto)	
+	{
+		dao.qnaUpdate(dto);
 	}
 }
