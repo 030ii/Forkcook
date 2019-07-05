@@ -37,6 +37,7 @@
 			<li><a href="${root}/main/user/logout.do">로그아웃</a></li>
 			<li><a href="${root}/main/user/mypage.do">마이페이지</a></li>
 			<li><a href="${root}/main/cart/list.do">장바구니</a></li>
+			<li><a href="${root}/admin/main.do">관리자 전용 페이지로 가기</a></li>
 		</ul>
 	</div>
 </body>

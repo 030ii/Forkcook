@@ -39,6 +39,7 @@
 	<div class="btnContainer">
 		<ul>
 			<li><a href="${root}/admin/storeuser/logout.do">로그아웃</a></li>
+			<li><a href="${root}/main/main.do">회원 전용 페이지로 가기</a></li>
 		</ul>
 	</div>
 </body>
