@@ -11,6 +11,6 @@
 
 </head>
 <body>
-main
+admin-main
 </body>
 </html>

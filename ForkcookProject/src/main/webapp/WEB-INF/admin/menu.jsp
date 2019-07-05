@@ -10,6 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+관리자 메뉴 관리 페이지
 </body>
 </html>

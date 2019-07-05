@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 <body>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-<body>
 <!-- <a href="${root}/main.do">
 		<img src="${root}/image/08.png" width="50" align="center">Spring5+Tiles3+Mybatis3+Oracle
 	</a>-->
