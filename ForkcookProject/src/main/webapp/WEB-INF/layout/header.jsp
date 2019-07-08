@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 <body>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-<body>
 <!-- <a href="${root}/main.do">
 		<img src="${root}/image/08.png" width="50" align="center">Spring5+Tiles3+Mybatis3+Oracle
 	</a>-->
@@ -37,6 +37,7 @@
 			<li><a href="${root}/main/user/logout.do">로그아웃</a></li>
 			<li><a href="${root}/main/user/mypage.do">마이페이지</a></li>
 			<li><a href="${root}/main/cart/list.do">장바구니</a></li>
+			<li><a href="${root}/admin/main.do">관리자 전용 페이지로 가기</a></li>
 		</ul>
 	</div>
 </body>

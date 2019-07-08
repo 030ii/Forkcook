@@ -185,7 +185,13 @@
    			<artifactId>ojdbc6</artifactId>
   			 <version>11.2.0.3</version>
   		</dependency>
-
+		
+		<!--  Spring jdbc -->
+	      <dependency>
+	          <groupId>org.springframework</groupId>
+	          <artifactId>spring-jdbc</artifactId>
+	          <version>${spring-framework.version}</version>
+	      </dependency>
 
 	</dependencies>
 	<artifactId>ForkcookProject</artifactId>

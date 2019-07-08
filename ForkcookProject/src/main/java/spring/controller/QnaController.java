@@ -14,20 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 import spring.data.QnaDto;
 import spring.service.QnaService;
 
+
+
 @Controller
 public class QnaController {
 	@Autowired
 	private QnaService service;
 	
-	@RequestMapping("/qna/list.do")
-	public ModelAndView list()
-	{
-		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/qnalist");
-		return model;
-		
-	}
-	/*@RequestMapping("/qna/list.do")
+
+	@RequestMapping("/main/qna/list.do")
 	public ModelAndView list(
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage
 			)
@@ -91,61 +86,73 @@ public class QnaController {
 		model.addObject("no", no);
 		model.addObject("totalPage", totalPage);
 		model.addObject("totalCount",totalCount);
-		model.setViewName("/service/qnalist");
-		return model;
-	}*/
-	
-	@RequestMapping(value="/qna/write.do",method=RequestMethod.POST)
-	public ModelAndView list(@ModelAttribute QnaDto dto){
-		service.insertBoard(dto);
-		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/qnalist");
+		model.setViewName("/main/service/qnalist");
 		return model;
 	}
-	
-	@RequestMapping("/qna/content.do")
-	public String content(Model model,@RequestParam int num,
-				@RequestParam int pageNum){
+
+	@RequestMapping("/main/qna/content.do")
+	public String content(Model model,@RequestParam int num,@RequestParam int pageNum){
 		//데이타 가져오기
 		QnaDto dto=service.getData(num);
 		//model 에 저장
 		model.addAttribute("dto", dto);
 		model.addAttribute("pageNum", pageNum);		
-		return "/qna/content";
+		return "/main/service/qnacontent";
 	}
+
 	
-	@RequestMapping("/qna/form.do")
+	@RequestMapping("/main/qna/form.do")
 	public ModelAndView form(){
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/service/qnaform");
-		return model;
 		
+		model.setViewName("/main/service/qnaform");
+		return model;
 	}
 	
-	@RequestMapping("/qna/updateform.do")
+	@RequestMapping(value="/main/qna/write.do",method=RequestMethod.POST)
+	public String readData(@ModelAttribute QnaDto dto)
+	{
+		
+		
+		
+		service.insertQna(dto);	
+		return "redirect:list.do";
+	}
+	
+	@RequestMapping("/main/qna/updateform.do")
 	public ModelAndView updateForm(@RequestParam int num,
-			@RequestParam int pageNum)
+			@RequestParam String pageNum)
 	{
 		ModelAndView model=new ModelAndView();
 		QnaDto dto=service.getData(num);
 		model.addObject("dto",dto);
 		model.addObject("pageNum",pageNum);
-		model.setViewName("/qna/updateform");
+		model.setViewName("/main/service/qnaupdateform");
 		return model;
 	}
 	
-	@RequestMapping(value="/qna/update.do",method=RequestMethod.POST)
-	public String update(@ModelAttribute QnaDto dto,
+	@RequestMapping(value="/main/qna/update1.do",method=RequestMethod.POST)
+	public String update1(@ModelAttribute QnaDto dto,
 			@RequestParam String pageNum)
 	{
 		service.qnaUpdate(dto);		
 		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
 	}
 	
-	@RequestMapping("/qna/delete.do")
+	@RequestMapping(value="/main/qna/update2.do",method=RequestMethod.POST)
+	public String update2(@ModelAttribute QnaDto dto)
+	{
+		service.qnaUpdate(dto);		
+		return "redirect:list.do";
+	}
+
+	
+	@RequestMapping("/main/qna/delete.do")
 	public String delete(@RequestParam int num,@RequestParam String pageNum)
 	{
+		//삭제
 		service.qnaDelete(num);
+		//목록으로 이동(보던 페이지로)
 		return "redirect:list.do?pageNum="+pageNum;
 	}
 }

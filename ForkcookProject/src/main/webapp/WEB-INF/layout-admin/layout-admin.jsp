@@ -16,7 +16,7 @@
 	<tiles:insertAttribute name="header-admin"/>
 </div>
 <div id="main-admin" class="layout">
-	<tiles:insertAttribute name="main-admin"/>
+	<tiles:insertAttribute name="admin"/>
 </div>
 </body>
 </html>

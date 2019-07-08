@@ -23,7 +23,7 @@
 	<!-- 관리자 페이지 -->
 	<definition name="adminLayout" template="/WEB-INF/layout-admin/layout-admin.jsp">
 		<put-attribute name="header-admin" value="/WEB-INF/layout-admin/header-admin.jsp"/>
-		<put-attribute name="main-admin" value="/WEB-INF/layout-admin/main-admin.jsp"/>
+		<put-attribute name="admin" value="/WEB-INF/layout-admin/main-admin.jsp"/>
 	</definition>
 	<definition name="admin.tiles" extends="adminLayout">
 		<put-attribute name="admin" value="/WEB-INF/layout-admin/main-admin.jsp"/>

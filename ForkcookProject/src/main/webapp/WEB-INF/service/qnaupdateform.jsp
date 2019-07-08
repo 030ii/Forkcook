@@ -11,27 +11,29 @@
 
 </head>
 <body>
-<form action="update.do" method="post">
+<c:choose>
+		<c:when test="${not empty pageNum}">
+			<form action="update1.do" method="post">
+				<input type="hidden" name="pageNum" value="${pageNum}">
+		</c:when>
+		<c:otherwise>
+			<form action="update2.do" method="post">	
+		</c:otherwise>
+	</c:choose>
 	문의 수정 페이지
 	<br> 아래 폼에 값들이 채워있어야 합니다
-	<br> 작성자 : ${dto.writer}
+	<br> 작성자 : 
 	<br> 제목 :
-	<input type="text" value="${dto.subject}">
-	<br> 가맹점 :
-	<select>
-		<option>강남점</option>
-		<option>분당점</option>
-	</select>
+	<input type="text" value="${dto.subject}" class="form-control" name="subject">
 	<br> 내용 :
-	<textarea name="content" class="form-control">${dto.content}</textarea>
+	<textarea class="form-control" name="content">${dto.content}</textarea>
 	<br> 사진 업로드 :
 
 
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 	<input type="hidden" name="num" value="${dto.num}">
-	<input type="hidden" name="pageNum" value="${pageNum}">
 	<button type="button" onclick="history.back()">취소하기(목록으로 가기)</button>
-	<button type="submit" onclick="location.href='${root}/qna/update.do'">수정하기(수정한문의글 페이지로 감)</button>
+	<button type="submit" onclick="location.href='${root}/main/qna/content.do'">수정하기(수정한문의글 페이지로 감)</button>
 </form>
 </body>
 </html>

@@ -18,44 +18,48 @@
 				alert("이미지는 최대 갯수가 3개입니다");
 				return false;
 			}
-			var s = '<input type="file" name="upfile" class="form-control" style="width: 250px;">';
-			s += '<button type="button" class="btn btn-sm btn-danger" style="width: 60px;">추가</button>';
+			var s = '<input type="file" name="upfile" class="form-control">';
+			s += '<button type="button" class="btn btn-sm btn-danger">추가</button>';
 			s += '<br>';
 			$("div.files").append(s);
 
 		});
+		$("#inqna").click(function() {
+			   if($(this).val()!==''){
+				   alert("입력란을 확인해주세요");
+			   } 
+		  });
 
 	});
 </script>
 </head>
 <body>
-	<form action="write.do" method="post">
-		qna 작성 페이지 <br> <br> 작성자 : ${dto.writer}<br> 문의 제목 : <input
-			type="text"> <br> 가맹점 선택 : <select>
-			<option>전체</option>
-			<option>강남점</option>
-			<option>분당점</option>
-			<option>잠실점</option>
-			<option>강동점</option>
-			<option>역삼점</option>
-			<option>삼성역점</option>
-			<option>서귀포점</option>
-			<option>해운대점</option>
-			<option>춘천점</option>
-			<option>일산점</option>
-		</select> <br> 내용 :
-		<textarea></textarea>
+	<form action="write.do" method="post" enctype="multipart/form-data">
+		qna 작성 페이지 <br> <br> 
+<%-- 		<input type="hidden" name="unum" value="${udto.num}"> --%>
+<%-- 		작성자 : <input type="text" name="uname" value="${dto.name}"><br> --%>
+		<input type="hidden" name="unum" value="1">
+		작성자 : <input type="text" name="uname" value="회원1"><br> 
+		문의 제목 : <input type="text" name="subject" class="form-control" required="required"> <br>
+		가맹점 선택 : 
+		<select>
+			<c:forEach var="sdto" items="${slist}">	
+        		<option value="${sdto.num}">${sdto.name}</option>
+ 	  		</c:forEach>
+		</select>
+		<br> 내용 :
+		<textarea name="content" class="form-control" required="required"></textarea>
 		<br> 사진 업로드 : <input type="file" name="upfile"
 			class="form-control">
 		<button type="button" class="btn btn-sm btn-info">추가</button>
 
 		<br> <br>
-
+	
 		<c:set var="root" value="<%=request.getContextPath()%>" />
-		<button type="button" class="btn btn-success btn-sm"
-			onclick="location.href='${root}/qna/list.do'">작성하기</button>
-		<button type="button" class="btn btn-danger btn-sm"
-			onclick="location.href='${root}/qna/list.do'">취소하기</button>
+		<button type="submit" id="inqna">작성하기</button>
+		<button type="button"
+			onclick="location.href='${root}/main/qna/list.do'">취소하기</button>
 	</form>
+	
 </body>
 </html>
