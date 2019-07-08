@@ -1,6 +1,6 @@
 package spring.data;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +30,31 @@ public class UserDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("user.userLogin",dto);
 	}
 	
-	/*//로그인체크
-	public boolean loginCheck(UserDto dto){
-		String name = getSqlSession().selectOne("user.loginCheck", dto);
-		return (name == null) ? false:true;
+	public UserDto userLogin2(UserDto dto)
+	{
+		return getSqlSession().selectOne("user.userLogin2",dto);
 	}
-	//로그인정보
-	public UserDto viewUser(UserDto dto){
-		return getSqlSession().selectOne("user.viewUser", dto);
+	
+	public int idCheck(String id)
+	{
+		int n=getSqlSession().selectOne("user.idCheck", id);
+		return n;
 	}
-	//로그아웃
-	public void logout(HttpSession session){}*/
 	
+	//이 밑으로는 관리자 페이지
+	public List<UserDto> getList(){
+		return getSqlSession().selectList("user.userList");
+	}
 	
+	public void userDelete(int num){
+		getSqlSession().delete("user.userDelete",num);
+	}
+	
+	public UserDto getData(int num){
+		return getSqlSession().selectOne("user.userSelectData",num); 
+	}
+	
+	public void userUpdate(UserDto dto){
+		getSqlSession().update("user.userUpdate",dto);
+	}
 }

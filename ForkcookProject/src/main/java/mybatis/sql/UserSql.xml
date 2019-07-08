@@ -19,22 +19,26 @@
 	<select id="userLogin" parameterType="udto" resultType="udto">
 			select * from users where id = #{id} and pass = #{pass}
 	</select>
-	<!-- <select id="loginCheck" resultType="String">
-		select name from users where id=#{id}
+	<!-- (비회원)로그인 정보를  users테이블과 비교 -->
+	<select id="userLogin2" parameterType="udto" resultType="udto">
+			select * from users where phone = #{phone} and name = #{name}
 	</select>
-	<select id="viewUser" parameterType="String" resultType="udto">
-		select * from users where id=#{id}
-	</select> -->
+	
+	<select id="userList" resultType="udto">
+	   	select * from users
+	</select>
+	<delete id="userDelete" parameterType="int">
+		delete from users where num=#{num}
+	</delete>
+	<select id="userSelectData" parameterType="int" resultType="udto">
+		select * from users where num=#{num}
+	</select>
+	<update id="userUpdate" parameterType="udto">
+		update users set name=#{name},phone=#{phone} where num=#{num}
+	</update>
 	<!-- 아이디중복확인 -->
-	<!-- <select id="overlapTest" resultType="String" parameterType="String">
-		<![CDATA[
-			select count(id) from users where id = #{id}
-		]]>
+	<select id="idCheck" resultType="int" parameterType="String">
+		select count(id) from users where id = #{id,jdbcType=VARCHAR}
 	</select>
-	<select id="loginIdentify" resultType="int" parameterType="String" >
-		<![CDATA[
- 			select count(*) from users where id=#{id} and pass=#{pass};
- 		]]>
-	</select> -->
 
 </mapper>
