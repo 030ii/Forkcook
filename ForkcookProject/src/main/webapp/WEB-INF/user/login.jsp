@@ -38,8 +38,8 @@ $(document).ready(function(){
 			$("#pass").focus();
 			return;
 		}
-		//폼 내부의 데이터를 전송할 주소
-		//document.form1.acriont="${path}/user/login1.do"
+		//폼 내부의 데이터를 전송할 주소 (form에 action으로 매핑주소를 주면 아이디 입력 안했는데도 페이지 넘어가버림)
+		document.form1.action="login1.do"
 		//제출
 		//document.form1.submit();
 	});
@@ -52,7 +52,9 @@ $(document).ready(function(){
 회원 : 아이디랑 비번 체크해서 로그인성공/실패 나누기 ->성공시 메인화면
 비회원 : 로그인하면 회원데이타 저장하고 장바구니로 이동
 -->
-
+id : ${udto.id }님 로그인 중<br>
+phone : ${phone }<br>
+pass : ${pass }<br>
 데이터 갯수 : ${totalCount }
 <form method="get" name="form1">
 	아이디 : <input type="text" name="id" size="7" id="id"><br>
@@ -60,6 +62,7 @@ $(document).ready(function(){
 	<input type="submit" value="회원으로 로그인" id="login_btn">
 </form>
 <a href="${root}/main/user/membership.do">회원가입하기</a>
+<a href="${root}/main/user/login1.do">로그인성공</a>
 <hr>
 비회원 주문조회
 <!-- (로그인과 동시에 회원정보 테이블에 insert) -->

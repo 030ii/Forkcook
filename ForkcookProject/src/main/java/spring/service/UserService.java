@@ -31,12 +31,12 @@ public class UserService {
 		dao.insertUser2(dto);
 	}
 	
-	public int userLogin()
+	public UserDto userLogin(UserDto dto)
 	{
-		return dao.userLogin();
+		return dao.userLogin(dto);
 	}
 	
-	//로그인체크
+	/*//로그인체크
 	public boolean loginCheck(UserDto dto, HttpSession session){
 		boolean result = UserDao.loginCheck(dto);
 		if (result) {//true일경우 세션에 등록
@@ -57,6 +57,6 @@ public class UserService {
 		//session.removeAttribute("id");
 		//세션 정보를 초기화 시킴
 		session.invalidate();
-	}
+	}*/
 
 }

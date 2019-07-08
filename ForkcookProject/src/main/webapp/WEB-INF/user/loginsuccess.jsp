@@ -11,5 +11,8 @@
 </head>
 <body>
 로그인성공
+id : ${udto.id }<br>
+phone : ${udto.phone }
+
 </body>
 </html>

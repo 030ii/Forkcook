@@ -4,9 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.UserDao;
@@ -72,11 +73,31 @@ public class UserController {
 	}*/
 		
 	//로그인하기 버튼 클릭->로그인되고 메인으로 포워드(일단 loginsuccess로 이동,나중에수정)
-	/*@RequestMapping("/main/user/login1.do")
-	public String login1()
+	//@SessionAttributes({"id","phone"})
+	@RequestMapping("/main/user/login1.do")
+	public ModelAndView login1(@ModelAttribute UserDto dto, HttpSession session)
 	{
-		return "/main/user/loginsuccess";
-	}*/
+		ModelAndView model = new ModelAndView();
+		
+		UserDto user = service.userLogin(dto);
+		
+		if(user != null){
+		// 세션 저장 System.out.println(user.getName());
+		session.setAttribute("loginInfo", user);//세션저장
+		model.addObject("udto",user);//값 보내기
+		
+		model.setViewName("/main/user/loginsuccess");
+		}
+		else {
+			model.setViewName("/main/user/loginfail");
+		}
+		return model;
+		
+		/*model.addAttribute("id",dto.getId());
+		model.addAttribute("phone",dto.getPhone());
+		 
+		return */
+	}
 	
 	//회원가입 약관으로 이동
 	@RequestMapping("/main/user/membership.do")
@@ -110,9 +131,12 @@ public class UserController {
 		
 	//로그아웃
 		@RequestMapping("/main/user/logout.do")
-		public String logout(){
+		public String logout(HttpSession session){
 					
-			return "/main/layout/main";
+			//session.removeAttribute("id"); 세션변수 개별삭제
+			session.invalidate();//세션 정보 초기화
+			
+			return "/main/user/logout";
 		}
 		
 }

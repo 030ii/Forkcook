@@ -25,13 +25,12 @@ public class UserDao extends SqlSessionDaoSupport {
 		getSqlSession().insert("user.userInsert2",dto);
 	}
 	
-	public int userLogin()
+	public UserDto userLogin(UserDto dto)
 	{
-		int n=getSqlSession().selectOne("user.userLogin");
-		return n;
+		return getSqlSession().selectOne("user.userLogin",dto);
 	}
 	
-	//로그인체크
+	/*//로그인체크
 	public boolean loginCheck(UserDto dto){
 		String name = getSqlSession().selectOne("user.loginCheck", dto);
 		return (name == null) ? false:true;
@@ -41,7 +40,7 @@ public class UserDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("user.viewUser", dto);
 	}
 	//로그아웃
-	public void logout(HttpSession session){}
+	public void logout(HttpSession session){}*/
 	
 	
 }

@@ -16,9 +16,9 @@
 		#{name},#{phone},sysdate,2)
 	</insert>
 	<!-- 로그인 정보를  users테이블과 비교 -->
-	<!-- <select id="userLogin" parameterType="HashMap" resultType="int">
-			select count(*) from users where id like #{id}
-	</select> -->
+	<select id="userLogin" parameterType="udto" resultType="udto">
+			select * from users where id = #{id} and pass = #{pass}
+	</select>
 	<!-- <select id="loginCheck" resultType="String">
 		select name from users where id=#{id}
 	</select>
@@ -26,7 +26,7 @@
 		select * from users where id=#{id}
 	</select> -->
 	<!-- 아이디중복확인 -->
-	<select id="overlapTest" resultType="String" parameterType="String">
+	<!-- <select id="overlapTest" resultType="String" parameterType="String">
 		<![CDATA[
 			select count(id) from users where id = #{id}
 		]]>
@@ -35,6 +35,6 @@
 		<![CDATA[
  			select count(*) from users where id=#{id} and pass=#{pass};
  		]]>
-	</select>
+	</select> -->
 
 </mapper>
