@@ -35,7 +35,7 @@
 			<input type="text" name="price" required><br>	
 		
 		메뉴 사진 :
-			<input type="text" name="image" value="test.png"><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
+			<input type="text" name="image" value="test.png" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
 			
 		메뉴 요약 : 
 			<input type="text" name="shortmsg" required><br>
