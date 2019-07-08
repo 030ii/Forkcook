@@ -22,25 +22,29 @@ public class MenuController {
 	@Autowired
 	private MenuService service;
 	
+	// 일반 -> 메뉴 페이지로 이동 
+	// 관리자 -> 메뉴 관리 페이지로 이동
 	@RequestMapping("/{mainadmin}/menu/list.do")
-	public ModelAndView list(@PathVariable String mainadmin){
+	public ModelAndView list(@PathVariable String mainadmin){ // path의 mainadmin 부분을 변수로 가짐
 		ModelAndView model = new ModelAndView();
-				
-		// 메뉴 리스트 가져오기
-		List<MenuDto> list = service.getList();
-	
-		model.addObject("list", list);
 		
-		if(mainadmin.equals("main")) {
-			model.setViewName("/main/menu/menulist");
+		int totalCount = service.getTotalCount(); 		// 메뉴 총 개수 가져오기
+		List<MenuDto> list = service.getList(); 		// 메뉴 리스트 가져오기
+	
+		model.addObject("totalCount", totalCount); 		// 메뉴 총 개수값 추가
+		model.addObject("list", list); 					// 메뉴 리스트 값들 추가
+		
+		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
+			model.setViewName("/main/menu/menulist"); 	// 일반 모드의 메뉴 목록 화면으로 이동
 		}
-		else if(mainadmin.equals("admin")) {
-			model.setViewName("/admin/admin/menu");
+		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
+			model.setViewName("/admin/admin/menu"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
 		}
 		
 		return model;
 	}
 
+	// 일반 -> 메뉴 상세보기 페이지로 이동
 	@RequestMapping("/main/menu/detail.do")
 	public String content(Model model,@RequestParam int num){
       //데이타 가져오기
@@ -50,6 +54,8 @@ public class MenuController {
       return "/main/menu/menudetail";
 	}
 	
+	// TODO : 추후에는 없애고 메뉴 상세페이지 밑에 리뷰 목록 붙일 것임
+	// 일반 -> 메뉴 리뷰 페이지로 이동
 	@RequestMapping("/main/menu/review.do")
 	public ModelAndView review(){
 		ModelAndView model = new ModelAndView();
@@ -65,7 +71,7 @@ public class MenuController {
 		return model;
 	}	
 	
-	// 관리자 -> 메뉴 관리 -> 메뉴 추가하기 
+	// 관리자 -> 메뉴 관리 -> DB에 메뉴 추가한 뒤 목록으로 redirect 
 	@RequestMapping(value="/admin/menu/write.do",method=RequestMethod.POST)
 	public String write(@ModelAttribute MenuDto dto){
 		service.insertMenu(dto); // 추가
@@ -82,14 +88,14 @@ public class MenuController {
 		return model;
 	}	
 	
-	// 관리자 -> 메뉴 관리 -> 메뉴 수정하기 
+	// 관리자 -> 메뉴 관리 -> DB에 메뉴 수정한 뒤 목록으로 redirect 
 	@RequestMapping(value="/admin/menu/update.do",method=RequestMethod.POST)
 	public String update(@ModelAttribute MenuDto dto){
 		service.menuUpdate(dto); // 추가
 		return "redirect:list.do"; // 목록 새로고침
 	}	
 	
-	// 관리자 -> 메뉴 관리 -> 삭제하기
+	// 관리자 -> 메뉴 관리 -> DB에 메뉴 삭제하고 목록으로 redirect
 	@RequestMapping("/admin/menu/delete.do")
 	public String delete(@RequestParam int num){
 		// 삭제
