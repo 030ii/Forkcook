@@ -17,9 +17,9 @@ public class QnaService {
 	public int getTotalCount(){
 		return dao.getTotalCount();
 	}
-	public void insertQna(QnaDto dto)
+	public void qnaInsert(QnaDto dto)
 	{
-		dao.insertqna(dto);
+		dao.qnaInsert(dto);
 	}
 	
 	public List<QnaDto> getList(int start,int end)
@@ -32,12 +32,11 @@ public class QnaService {
 		return dao.getData(num);
 	}
 	
-	
-	
 	public void qnaDelete(int num)
 	{
 		dao.qnaDelete(num);
 	}
+	
 	
 	public void qnaUpdate(QnaDto dto)	
 	{

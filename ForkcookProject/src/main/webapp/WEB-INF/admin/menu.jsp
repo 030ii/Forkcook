@@ -11,6 +11,7 @@
 </head>
 <body>
 	관리자 메뉴 관리 페이지
+	<div>총 ${totalCount}개의 메뉴가 있습니다</div>
 	<button type="button" onclick="location.href='writeform.do'">새로운 메뉴 추가하기</button>
 	<table border=1>
 		<tr>
