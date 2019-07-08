@@ -32,12 +32,11 @@ public class QnaService {
 		return dao.getData(num);
 	}
 	
-	
-	
 	public void qnaDelete(int num)
 	{
 		dao.qnaDelete(num);
 	}
+	
 	
 	public void qnaUpdate(QnaDto dto)	
 	{

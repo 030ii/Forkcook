@@ -16,7 +16,7 @@
 	</select>
 	<insert id="qnaInsert" parameterType="qdto">
 		insert into qna values (seq_qna.nextval,2,2,
-		#{subject},#{content},'aaa.jpg',sysdate,2)
+		#{subject},#{content},'aaa.jpg',sysdate,1)
 	</insert>
 	<update id="qnaUpdate" parameterType="qdto">
 		update qna set

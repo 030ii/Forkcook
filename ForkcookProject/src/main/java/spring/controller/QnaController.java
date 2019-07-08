@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,17 +22,12 @@ public class QnaController {
 	@Autowired
 	private QnaService service;
 	
-
-	@RequestMapping("/main/qna/list.do")
-	public ModelAndView list(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage
-			)
-	{
-		ModelAndView model=new ModelAndView();
-
-		int totalCount;//총 데이타 갯수
-
-		totalCount=service.getTotalCount();
+	@RequestMapping("/{mainadmin}/qna/list.do")
+	public ModelAndView list(@PathVariable String mainadmin, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+		ModelAndView model = new ModelAndView();
+		
+		int totalCount = service.getTotalCount(); 		// 메뉴 총 개수 가져오기
+		 					
 		//페이징 복사한거
 		//페이징처리에 필요한 변수들 선언
 		int totalPage; //총 페이지수
@@ -87,19 +83,34 @@ public class QnaController {
 		model.addObject("totalPage", totalPage);
 		model.addObject("totalCount",totalCount);
 		model.setViewName("/main/service/qnalist");
+
+		
+		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
+			model.setViewName("/main/service/qnalist"); 	// 일반 모드의 메뉴 목록 화면으로 이동
+		}
+		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
+			model.setViewName("/admin/admin/qna"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
+		}
+		
 		return model;
 	}
-
-	@RequestMapping("/main/qna/content.do")
-	public String content(Model model,@RequestParam int num,@RequestParam int pageNum){
+	
+	@RequestMapping("/{mainadmin}/qna/content.do")
+	public String content(@PathVariable String mainadmin,Model model,@RequestParam int num,@RequestParam int pageNum){
 		//데이타 가져오기
 		QnaDto dto=service.getData(num);
 		//model 에 저장
 		model.addAttribute("dto", dto);
-		model.addAttribute("pageNum", pageNum);		
-		return "/main/service/qnacontent";
+		model.addAttribute("pageNum", pageNum);	
+		
+		if(mainadmin.equals("main")) { 
+			return "/main/service/qnacontent";// 일반 모드일 경우 
+		}
+		/*else if(mainadmin.equals("admin")) {*/ 			// 관리자 모드일 경우
+		else {
+			return "/admin/admin/qnacontent"; 	  // 관리자 모드의 메뉴 관리(목록) 화면으로 이동
+		}		
 	}
-
 	
 	@RequestMapping("/main/qna/form.do")
 	public ModelAndView form(){
@@ -146,13 +157,18 @@ public class QnaController {
 		return "redirect:list.do";
 	}
 
-	
-	@RequestMapping("/main/qna/delete.do")
-	public String delete(@RequestParam int num,@RequestParam String pageNum)
+	@RequestMapping("/{mainadmin}/qna/delete.do")
+	public String adminqnadelete(@PathVariable String mainadmin,@RequestParam int num,@RequestParam String pageNum)
 	{
 		//삭제
 		service.qnaDelete(num);
-		//목록으로 이동(보던 페이지로)
-		return "redirect:list.do?pageNum="+pageNum;
+		
+		if(mainadmin.equals("main")) { 
+			return "redirect:list.do?pageNum="+pageNum;// 일반 모드일 경우 
+		}
+		/*else if(mainadmin.equals("admin")) {*/ 			// 관리자 모드일 경우
+		else {
+			return "redirect:list.do?pageNum="+pageNum; 	  // 관리자 모드의 메뉴 관리(목록) 화면으로 이동
+		}
 	}
 }

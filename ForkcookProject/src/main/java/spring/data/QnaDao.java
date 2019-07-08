@@ -37,4 +37,5 @@ public class QnaDao extends SqlSessionDaoSupport{
 	public void qnaDelete(int num){
 		getSqlSession().delete("qna.qnaDelete",num);
 	}
+	
 }
