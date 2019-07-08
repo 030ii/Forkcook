@@ -115,7 +115,7 @@ public class QnaController {
 		
 		
 		
-		service.insertQna(dto);	
+		service.qnaInsert(dto);	
 		return "redirect:list.do";
 	}
 	

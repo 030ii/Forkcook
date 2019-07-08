@@ -14,7 +14,7 @@ public class QnaDao extends SqlSessionDaoSupport{
 		return n;
 	}
 	
-	public void insertqna(QnaDto dto){
+	public void qnaInsert(QnaDto dto){
 		getSqlSession().insert("qna.qnaInsert",dto);
 	}
 	
