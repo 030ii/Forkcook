@@ -33,8 +33,8 @@ public class ReqnaService {
 		dao.reqnaUpdate(dto);
 	}
 	
-	public List<ReqnaDto> getQnaList(int qnum){
+	public List<ReqnaDto> getReqnaList(int qnum){
 		
-		return dao.getQnaList(qnum);
+		return dao.getReqnaList(qnum);
 	}
 }

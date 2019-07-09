@@ -107,8 +107,8 @@ public class QnaController {
 		model.addAttribute("dto", dto);
 		model.addAttribute("pageNum", pageNum);	
 		
-		List<ReqnaDto> qlist=service2.getQnaList(dto.getNum());
-		model.addAttribute("qlist",qlist);
+		List<ReqnaDto> reqlist=service2.getReqnaList(dto.getNum());
+		model.addAttribute("reqlist",reqlist);
 		
 		if(mainadmin.equals("main")) { 
 			return "/main/service/qnacontent";// 일반 모드일 경우 

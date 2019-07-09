@@ -29,9 +29,9 @@
 <!-- 답변 있음 -->
 	<!-- TODO : 답변 content 가져오기! -->
 	<div>
-		<c:forEach  var="qdto" items="${qlist}">
-			<b>제 목 : </b>${qdto.subject}<br><br><br>
-			<b>내 용 : </b>${qdto.content}
+		<c:forEach  var="rqdto" items="${reqlist}">
+			<b>제 목 : </b>${rqdto.subject}<br><br><br>
+			<b>내 용 : </b>${rqdto.content}
 		</c:forEach>
 	</div>
 	<button type="button" onclick="location.href='reqnaupdate.do?num=${dto.num}&pageNum=${pageNum}'">답변 수정</button>
