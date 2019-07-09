@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.QnaDto;
+import spring.data.ReqnaDto;
 import spring.service.QnaService;
+import spring.service.ReqnaService;
 
 
 
@@ -21,6 +23,8 @@ import spring.service.QnaService;
 public class QnaController {
 	@Autowired
 	private QnaService service;
+	@Autowired
+	private ReqnaService service2;
 	
 	@RequestMapping("/{mainadmin}/qna/list.do")
 	public ModelAndView list(@PathVariable String mainadmin, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
@@ -102,6 +106,9 @@ public class QnaController {
 		//model 에 저장
 		model.addAttribute("dto", dto);
 		model.addAttribute("pageNum", pageNum);	
+		
+		List<ReqnaDto> qlist=service2.getQnaList(dto.getNum());
+		model.addAttribute("qlist",qlist);
 		
 		if(mainadmin.equals("main")) { 
 			return "/main/service/qnacontent";// 일반 모드일 경우 

@@ -15,9 +15,13 @@
 		 ]]>		
 	</select>
 	<insert id="reqnaInsert" parameterType="rqdto">
-		insert into reqna value (seq_reqna.naxtval,#{qnum},#{snum},#{subject},#{content},'reqna4.jpg',sysdate)
+		insert into reqna values (seq_reqna.naxtval,4,4,#{subject},#{content},'reqna4.jpg',sysdate)
 	</insert>
 	<update id="reqnaUpdate" parameterType="rqdto">
 		update reqna set subject=#{subject},content=#{content},writeday=sysdate where num=#{num}
 	</update>
+	<select id="reqnaSelectData2" parameterType="int" resultType="rqdto">
+		select * from reqna where qnum=#{qnum}
+	</select>
+	
 </mapper>

@@ -15,7 +15,7 @@
 <pre>
 제목 : ${dto.subject}
 등록 날짜 : <fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm"/><br>
-가맹점 : ${sdto.name}<br>
+가맹점 : ${dto.unum}<br>
 내용 : ${dto.content}<br>
 사진 : ${dto.image}
 </pre>
@@ -28,7 +28,12 @@
 <c:if test="${dto.qnastate==2}">
 <!-- 답변 있음 -->
 	<!-- TODO : 답변 content 가져오기! -->
-	<div>답변이 있습니다.</div>
+	<div>
+		<c:forEach  var="qdto" items="${qlist}">
+			<b>제 목 : </b>${qdto.subject}<br><br><br>
+			<b>내 용 : </b>${qdto.content}
+		</c:forEach>
+	</div>
 	<button type="button" onclick="location.href='reqnaupdate.do?num=${dto.num}'">답변 수정</button>
 	<button type="button" onclick="location.href='reqnadelete.do?num=${dto.num}'">답변 삭제</button>
 </c:if>

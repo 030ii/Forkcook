@@ -36,4 +36,8 @@ public class ReqnaDao extends SqlSessionDaoSupport {
 	public void reqnaUpdate(ReqnaDto dto){
 		getSqlSession().update("reqna.reqnaUpdate",dto);
 	}
+	public List<ReqnaDto> getQnaList(int qnum){
+		
+		return getSqlSession().selectList("reqna.reqnaSelectData2",qnum);
+	}
 }

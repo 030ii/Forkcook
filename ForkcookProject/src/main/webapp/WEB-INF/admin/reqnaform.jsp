@@ -9,7 +9,14 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
+$(function() {
+   $("#reqna").click(function() {
+	     if($("#subject").val()!==""){
+	        alert("저장 되었습니다");
+	      }
 
+  });
+});
 </script>
 </head>
 <body>
@@ -18,11 +25,26 @@
 <br>
 <br>
 <form action="write.do" method="post">
-	
-
-				<button type="submit">작성하기</button>
+	<table class="table">
+		<tr>
+			<th>제 목</th>
+			<td>
+				<input type="text" name="subject" class="form-control" required="required">
+			</td>
+		</tr>
+		<tr>
+			<th>내 용</th>			
+			<td colspan="2">
+				<textarea rows="5" cols="40" name="content" class="form-control" required="required"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right">
+				<button type="submit" id="reqna">작성하기</button>
             <button type="button" onclick="location.href='list.do'">취소하기</button>
-		
+			</td>
+		</tr>
+	</table>
 </form>
 </body>
 </html>
