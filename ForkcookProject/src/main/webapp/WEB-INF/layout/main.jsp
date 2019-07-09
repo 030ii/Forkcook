@@ -11,11 +11,24 @@
 
 </head>
 <body>
-main
+<c:set var="root" value="<%=request.getContextPath() %>" />
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
 
-<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-    <h3 class="uk-card-title">Default</h3>
-    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+   <ul class="uk-slideshow-items">
+       <li>
+           <img src="${root}/image/maindish.png" alt="" uk-cover>
+       </li>
+       <li>
+           <img src="${root}/image/main2.jpg" alt="" uk-cover>
+       </li>
+       <li>
+           <img src="${root}/image/main3.jpg" alt="" uk-cover>
+       </li>
+   </ul>
+
+   <a class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+   <a class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
 </div>
 </body>
 </html>

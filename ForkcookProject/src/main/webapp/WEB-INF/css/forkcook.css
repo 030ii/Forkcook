@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+.fk-navbar {
+	background-color: #f8f8f8;
+}
+
+.fk-navbar li a {
+	color: #706243 !important;
+	font-weight: bold;
+	font-size: 15px !important;
+}
+
+/* logo */
+.logo { 
+	height: 65px;
+}

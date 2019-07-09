@@ -7,16 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+ <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#idchk_btn").click(function(){
-		//var id = $("#id").val();
-		//var pass = $("#pass").val();
-		//if($("#id").val().length <4){
-		//	alert("아이디는 4자 이상으로 입력해주세요");
-		//}
-		//else{
+		var id = $("#id").val();
+		var pass = $("#pass").val();
+		if($("#id").val().length <4){
+			alert("아이디는 4자 이상으로 입력해주세요");
+		}
+		else{
 			
 			var userid = $("#id").val();
 			console.log(userid);
@@ -41,7 +41,7 @@ $(function(){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			       }
 			});
-		//}
+		}
 		//폼 내부의 데이터를 전송할 주소 (form에 action으로 매핑주소를 주면 아이디 입력 안했는데도 페이지 넘어가버림)
 		//document.form1.action="signupform.do"
 	});
