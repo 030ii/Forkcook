@@ -1,6 +1,8 @@
 package spring.controller;
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,26 +30,25 @@ public class ReqnaController {
 	public String readData(@ModelAttribute ReqnaDto dto)
 	{
 		
-		
-		
-		service.reqnaInsert(dto);	
+		service.reqnaInsert(dto);
 		return "redirect:list.do";
 	}
 	
 	@RequestMapping("/admin/qna/reqnaupdate.do")
-	public ModelAndView reqnaupdateForm(@RequestParam int num)
+	public ModelAndView reqnaupdateForm(@RequestParam int num,@RequestParam String pageNum)
 	{
 		ModelAndView model=new ModelAndView();
 		ReqnaDto dto=service.getData(num);
 		model.addObject("dto",dto);
+		model.addObject("pageNum", pageNum);
 		model.setViewName("/admin/admin/reqnaupdate");
 		return model;
 	}
 	
-	@RequestMapping("/admin/qna/update.do")
-	public String reqnaUpdate(@ModelAttribute ReqnaDto dto)
+	@RequestMapping(value="/admin/qna/update.do",method=RequestMethod.POST)
+	public String reqnaUpdate(@ModelAttribute ReqnaDto dto,@RequestParam String pageNum)
 	{
-		service.reqnaUpdate(dto);		
-		return "redirect:list.do";
+		service.reqnaUpdate(dto);
+		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
 	}
 }

@@ -34,7 +34,7 @@
 			<b>내 용 : </b>${qdto.content}
 		</c:forEach>
 	</div>
-	<button type="button" onclick="location.href='reqnaupdate.do?num=${dto.num}'">답변 수정</button>
+	<button type="button" onclick="location.href='reqnaupdate.do?num=${dto.num}&pageNum=${pageNum}'">답변 수정</button>
 	<button type="button" onclick="location.href='reqnadelete.do?num=${dto.num}'">답변 삭제</button>
 </c:if>
 

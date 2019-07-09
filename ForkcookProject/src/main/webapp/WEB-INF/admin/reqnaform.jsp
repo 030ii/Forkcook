@@ -27,15 +27,27 @@ $(function() {
 <form action="write.do" method="post">
 	<table class="table">
 		<tr>
+			<th>가맹점</th>
+			<td>
+				<input type="hidden" name="snum" value="1">
+			</td>
+		</tr>
+		<tr>
 			<th>제 목</th>
 			<td>
-				<input type="text" name="subject" class="form-control" required="required">
+				<input type="text" name="subject" class="form-control" required>
+			</td>
+		</tr>
+		<tr>
+			<th>이미지 첨부</th>
+			<td>
+				<input type="text" name="image" value="test.jpg" required>
 			</td>
 		</tr>
 		<tr>
 			<th>내 용</th>			
 			<td colspan="2">
-				<textarea rows="5" cols="40" name="content" class="form-control" required="required"></textarea>
+				<textarea rows="5" cols="40" name="content" class="form-control" required></textarea>
 			</td>
 		</tr>
 		<tr>
