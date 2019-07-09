@@ -37,7 +37,6 @@ public class QnaService {
 		dao.qnaDelete(num);
 	}
 	
-	
 	public void qnaUpdate(QnaDto dto)	
 	{
 		dao.qnaUpdate(dto);
