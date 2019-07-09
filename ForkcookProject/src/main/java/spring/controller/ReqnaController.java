@@ -19,19 +19,19 @@ public class ReqnaController {
 	@Autowired
 	private ReqnaService service;
 	@RequestMapping("/admin/qna/reqnaform.do")
-	public ModelAndView form(){
+	public ModelAndView form(@RequestParam int num){
 		ModelAndView model=new ModelAndView();
-		
+		ReqnaDto dto=service.getData(num);
+		model.addObject("dto",dto);
 		model.setViewName("/admin/admin/reqnaform");
 		return model;
 	}
 	
 	@RequestMapping(value="/admin/qna/write.do",method=RequestMethod.POST)
-	public String readData(@ModelAttribute ReqnaDto dto)
+	public String readData(@ModelAttribute ReqnaDto dto,@RequestParam String pageNum)
 	{
-		
 		service.reqnaInsert(dto);
-		return "redirect:list.do";
+		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping("/admin/qna/reqnaupdate.do")
