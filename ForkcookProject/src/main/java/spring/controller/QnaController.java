@@ -130,9 +130,6 @@ public class QnaController {
 	@RequestMapping(value="/main/qna/write.do",method=RequestMethod.POST)
 	public String readData(@ModelAttribute QnaDto dto)
 	{
-		
-		
-		
 		service.qnaInsert(dto);	
 		return "redirect:list.do";
 	}

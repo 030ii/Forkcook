@@ -28,10 +28,11 @@ public class ReqnaController {
 	}
 	
 	@RequestMapping(value="/admin/qna/write.do",method=RequestMethod.POST)
-	public String readData(@ModelAttribute ReqnaDto dto,@RequestParam String pageNum)
+	public String readData(@ModelAttribute ReqnaDto dto,
+			@RequestParam String pageNum)
 	{
 		service.reqnaInsert(dto);
-		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
+		return "redirect:list.do";
 	}
 	
 	@RequestMapping("/admin/qna/reqnaupdate.do")

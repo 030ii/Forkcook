@@ -10,12 +10,12 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(function() {
-   $("#reqna").click(function() {
+   /* $("#reqna").click(function() {
 	     if($("#subject").val()!==""){
 	        alert("저장 되었습니다");
 	      }
 
-  });
+  }); */
 });
 </script>
 </head>
@@ -29,13 +29,13 @@ $(function() {
 		<tr>
 			<th>No.</th>
 			<td>
-				<input type="hidden" name="qnum" value="1">
+				<input type="hidden" name="qnum" value="${dto.qnum}">
 			</td>
 		</tr>
 		<tr>
 			<th>가맹점</th>
 			<td>
-				<input type="hidden" name="snum" value="1">
+				<input type="hidden" name="snum" value="${dto.snum}">
 			</td>
 		</tr>
 		<tr>
@@ -47,7 +47,7 @@ $(function() {
 		<tr>
 			<th>이미지 첨부</th>
 			<td>
-				<input type="hidden" name="image" value="test.jpg" required>
+				<input type="hidden" name="image" value="1.jpg">
 			</td>
 		</tr>
 		<tr>
@@ -60,7 +60,7 @@ $(function() {
 			<td colspan="2" align="right">
 			<input type="hidden" name="num" value="${dto.num}">
 			<input type="hidden" name="pageNum" value="${pageNum}"> 
-			<button type="submit" id="reqna" onclick="location.href='content.do?num=${dto.num}&pageNum=${pageNum}'">작성하기</button>
+			<button type="submit">작성하기</button>
             <button type="button" onclick="history.back()">취소하기</button>
 			</td>
 		</tr>

@@ -5,6 +5,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <c:set var="root" value="<%=request.getContextPath() %>" />
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -16,6 +17,7 @@
 		<title>포크쿡에 오신 것을 환영합니다</title>
 	</head>
 	<body>
+
 		<div id="header" class="layout">
 			<tiles:insertAttribute name="header" />
 		</div>
