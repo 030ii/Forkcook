@@ -1,10 +1,13 @@
 package spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.data.OrderDto;
 import spring.service.OrderService;
 
 @Controller
@@ -40,8 +43,13 @@ public class OrderController {
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
 		
+		// DB에서 데이터 가져오기
 		int totalCount = service.getTotalCount();
+		List<OrderDto> list = service.getList();
+		
+		// 가져온 데이터 저장
 		model.addObject("totalCount", totalCount);
+		model.addObject("list",list);
 		
 		model.setViewName("/admin/admin/order");
 		return model;

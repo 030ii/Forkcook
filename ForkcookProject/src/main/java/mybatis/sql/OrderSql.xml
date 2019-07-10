@@ -4,4 +4,16 @@
 	<select id="orderTotalCount" resultType="int">
 		select count(*) from orders
 	</select>
+	<insert id="orderInsert">
+	
+	</insert>
+	<select id="orderList" resultType="odto">
+		select * from orders
+	</select>
+	<update id="orderUpdate">
+	
+	</update>
+	<delete id="orderDelete">
+	
+	</delete>
 </mapper>
