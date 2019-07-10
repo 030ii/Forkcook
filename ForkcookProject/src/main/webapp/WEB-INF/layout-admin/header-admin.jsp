@@ -19,6 +19,7 @@
 		<ul>
 			<li>----관리자용 페이지----</li>
 			<li><a href="${root}/admin/user/list.do">회원 관리</a></li>
+			<li><a href="${root}/admin/storeuser/list.do">가맹점 회원 관리</a></li>
 			<li><a href="${root}/admin/menu/list.do">메뉴 관리</a></li>
 			<li><a href="${root}/admin/review/list.do">메뉴리뷰 관리</a></li>
 			<li><a href="${root}/admin/store/list.do">매장 관리</a></li>
