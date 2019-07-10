@@ -4,4 +4,24 @@
 	<select id="reqnaTotalCount" resultType="int">
 		select count(*) from reqna
 	</select>
+	<select id="reqnaSelectData" parameterType="int" resultType="rqdto">
+		select * from reqna where num=#{num}
+	</select>
+	<select id="reqnaPagingList" parameterType="HashMap" resultType="rqdto">
+	   <![CDATA[
+	   	select a.* from (select ROWNUM as RNUM,
+		b.* from (select * from reqna order by num desc)b )a 
+		where a.RNUM>=#{start} and a.RNUM<=#{end}
+		 ]]>		
+	</select>
+	<insert id="reqnaInsert" parameterType="rqdto">
+		insert into reqna values (seq_reqna.naxtval,#{qnum},#{snum},#{subject},#{content},#{image},sysdate)
+	</insert>
+	<update id="reqnaUpdate" parameterType="rqdto">
+		update reqna set subject=#{subject},content=#{content},writeday=sysdate where num=#{num}
+	</update>
+	<select id="reqnaSelectData2" parameterType="int" resultType="rqdto">
+		select * from reqna where qnum=#{qnum}
+	</select>
+	
 </mapper>

@@ -7,17 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <script type="text/javascript">
 $(function(){
 	$("#idchk_btn").click(function(){
+
 		 var id = $("#id").val();
 		var pass = $("#pass").val();
 		if($("#id").val().length <4){
 			alert("아이디는 4자 이상으로 입력해주세요");
 		}
 		else{ 
-			
 			var userid = $("#id").val();
 			$.ajax({
 				type:'get',

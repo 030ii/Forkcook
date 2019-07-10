@@ -29,7 +29,7 @@
     
     <tr>
       <td colspan="2">
-      <img src="/image/03.png" width="50px;">
+      
       <div style="width: 380px; height: 130px;"
       name="content" class="form-control"></div>
       </td>

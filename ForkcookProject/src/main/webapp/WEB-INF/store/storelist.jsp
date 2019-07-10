@@ -22,11 +22,11 @@
 			area : ${dto.area}<br>
 			addr : ${dto.addr}<br>
 			phone : ${dto.phone}<br>
-			mainimage : ../image/${dto.mainimage}<br> 
-			mapimage : ${dto.mapimage}<br>
+			<!-- mainimage : ../image/${dto.mainimage}<br> 
+			mapimage : ${dto.mapimage}<br> -->
 			opertime : ${dto.opertime}<br> 
-			shortmsg : ${dto.shortmsg}<br> 
-			longmsg : ${dto.longmsg}<br>
+			<!-- shortmsg : ${dto.shortmsg}<br> 
+			longmsg : ${dto.longmsg}<br> -->
 			<a href="${root}/main/store/detail.do?num=${dto.num}" class="btn btn-primary">매장 상세보기&rarr;</a>
 		  </div>
 		</div>
