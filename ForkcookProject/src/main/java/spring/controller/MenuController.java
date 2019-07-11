@@ -53,16 +53,7 @@ public class MenuController {
       model.addAttribute("dto", dto);    
       return "/main/menu/menudetail";
 	}
-	
-	// TODO : 추후에는 없애고 메뉴 상세페이지 밑에 리뷰 목록 붙일 것임
-	// 일반 -> 메뉴 리뷰 페이지로 이동
-	@RequestMapping("/main/menu/review.do")
-	public ModelAndView review(){
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/main/menu/review");
-		return model;
-	}	
-	
+		
 	// 관리자 -> 메뉴 관리 -> 메뉴 추가 페이지로 이동 
 	@RequestMapping("/admin/menu/writeform.do")
 	public ModelAndView writeform(){

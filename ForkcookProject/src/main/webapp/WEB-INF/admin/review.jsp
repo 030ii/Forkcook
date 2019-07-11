@@ -11,5 +11,33 @@
 </head>
 <body>
 관리자 메뉴리뷰 관리 페이지
+
+<div>총 ${totalCount}개의 리뷰가 있습니다</div>
+	<table border=1>
+		<tr>
+			<th>No.</th>
+			<th>num</th>
+			<th>unum</th>
+			<th>mnum</th>
+			<th>내용</th>
+			<th>평점</th>
+			<th>작성일</th>
+			<th>관리</th>
+		</tr>
+		<c:forEach var="dto" items="${list}" varStatus="status">
+			<tr>
+				<td>${status.count}</td>
+				<td>${dto.num}</td>
+				<td>${dto.unum}</td>
+				<td>${dto.mnum}</td>
+				<td>${dto.content}</td>
+				<td>${dto.rate}</td>
+				<td>${dto.writeday}</td>
+				<td>
+					<button type="button" onclick="location.href='delete.do?num=${dto.num}'">삭제</button>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

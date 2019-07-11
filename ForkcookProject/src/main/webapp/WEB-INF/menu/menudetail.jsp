@@ -37,12 +37,46 @@
     
     <tr>
       <td colspan="2" align="right">     
-      	<button type="button" style="width: 100px;" class="btn btn-basic btn-sm" onclick="location.href='${root}/main/menu/review.do'">리뷰보기</button>	
+      	<button type="button" style="width: 100px;" class="btn btn-basic btn-sm" onclick="location.href='${root}/main/review/review.do'">리뷰보기</button>	
         <button type="button" style="width: 100px; margin-left: 175px;" class="btn btn-basic btn-sm" onclick="history.back()">닫 기</button>		
       </td>
     </tr> 
 
     </table>
+    
+    <div class="count">
+		수량:<br>
+		<button type="button" id="minus">-</button>
+		<!-- <input type="text" value=0 id="count"> -->
+		<span class="count-span">1</span>
+		<button type="button" id="plus">+</button>
+		가격:<span class="price">${dto.price}</span>
+	</div>
+	<div class="intocart">
+		<button type="button" class="intocart-btn">장바구니담기</button>
+	</div>
+		
+<script type="text/javascript">
+//수량 증가, 감소
+	var clicks = 1;
+	$("#plus").click(function() {
+		clicks++;
+		$('.count-span').html(clicks);
+		$('.price').html(clicks*${dto.price});
+	});
+
+	$("#minus").click(function() {
+		clicks--;
+		if (clicks < 1) {
+			clicks=1;
+			$('.count-span').html(clicks);
+			$('.price').html(1*${dto.price});
+		} else {
+			$('.count-span').html(clicks);
+			$('.price').html(clicks*${dto.price});
+		}
+	});
+</script>
 </form>
 </body>
 </html>

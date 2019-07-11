@@ -4,4 +4,13 @@
 	<select id="reviewTotalCount" resultType="int">
 		select count(*) from review
 	</select>
+	<select id="reviewList" resultType="rdto">
+	   	select * from review
+	</select>
+	<delete id="reviewDelete" parameterType="int">
+		delete from review where num=#{num}
+	</delete>
+	<insert id="reviewInsert" parameterType="rdto">
+		insert into review (num,content,rate,writeday) values (seq_review.nextval,#{content},#{rate},sysdate)
+	</insert>
 </mapper>

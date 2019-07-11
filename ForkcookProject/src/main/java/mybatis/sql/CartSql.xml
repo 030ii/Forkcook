@@ -4,4 +4,12 @@
 	<select id="cartTotalCount" resultType="int">
 		select count(*) from cart
 	</select>
+	<!-- <select id="menuList" resultType="cdto">
+		select m.name as menuname,c.mcount as mcount, m.price as menuprice
+		from menu m, cart c
+		where c.num = m.num;
+	</select> -->
+	<select id="cartList" resultType="cdto">
+		select * from cart
+	</select>
 </mapper>
