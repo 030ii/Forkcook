@@ -4,13 +4,19 @@
 	<select id="reviewTotalCount" resultType="int">
 		select count(*) from review
 	</select>
-	<select id="reviewList" resultType="rdto">
+	<select id="reviewListAdmin" resultType="rdto">
 	   	select * from review
+	</select>
+	<select id="reviewListUser" resultType="rdto" parameterType="int">
+	   	select * from review where mnum=#{mnum}
 	</select>
 	<delete id="reviewDelete" parameterType="int">
 		delete from review where num=#{num}
 	</delete>
 	<insert id="reviewInsert" parameterType="rdto">
-		insert into review (num,content,rate,writeday) values (seq_review.nextval,#{content},#{rate},sysdate)
+		insert into review (num,mnum,unum,content,rate,writeday) values (seq_review.nextval,#{mnum},#{unum},#{content},#{rate},sysdate)
 	</insert>
+	<update id="reviewUpdate" parameterType="rdto">
+		update review set content=#{content},rate=#{rate} where num=#{num}
+	</update>
 </mapper>

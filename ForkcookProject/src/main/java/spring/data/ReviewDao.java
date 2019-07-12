@@ -12,8 +12,12 @@ public class ReviewDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("review.reviewTotalCount");
 	}
 	
-	public List<ReviewDto> getList(){
-		return getSqlSession().selectList("review.reviewList");
+	public List<ReviewDto> getListAdmin(){
+		return getSqlSession().selectList("review.reviewListAdmin");
+	}
+	
+	public List<ReviewDto> getListUser(int mnum){
+		return getSqlSession().selectList("review.reviewListUser",mnum);
 	}
 	
 	public void reviewDelete(int num){
@@ -23,5 +27,9 @@ public class ReviewDao extends SqlSessionDaoSupport{
 	public void reviewInsert(ReviewDto dto)
 	{
 		getSqlSession().insert("review.reviewInsert",dto);
+	}
+	
+	public void reviewUpdate(ReviewDto dto){
+		getSqlSession().update("review.reviewUpdate",dto);
 	}
 }

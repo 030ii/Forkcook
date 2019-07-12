@@ -19,8 +19,12 @@ public class ReviewService {
 		return dao.getTotalCount();
 	}
 	
-	public List<ReviewDto> getList(){
-		return dao.getList();
+	public List<ReviewDto> getListAdmin(){
+		return dao.getListAdmin();
+	}
+	
+	public List<ReviewDto> getListUser(int mnum){
+		return dao.getListUser(mnum);
 	}
 	
 	public void reviewDelete(int num){
@@ -29,6 +33,10 @@ public class ReviewService {
 	
 	public void reviewInsert(ReviewDto dto){
 		dao.reviewInsert(dto);
+	}
+	
+	public void reviewUpdate(ReviewDto dto){
+		dao.reviewUpdate(dto);
 	}
 
 }

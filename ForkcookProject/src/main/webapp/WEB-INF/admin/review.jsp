@@ -32,7 +32,7 @@
 				<td>${dto.mnum}</td>
 				<td>${dto.content}</td>
 				<td>${dto.rate}</td>
-				<td>${dto.writeday}</td>
+				<td><fmt:formatDate value="${dto.writeday }" pattern="MM-dd HH:mm"/></td>
 				<td>
 					<button type="button" onclick="location.href='delete.do?num=${dto.num}'">삭제</button>
 				</td>

@@ -23,14 +23,15 @@ public class ReviewController {
 	// TODO : 추후에는 없애고 메뉴 상세페이지 밑에 리뷰 목록 붙일 것임
 	// 일반 -> 메뉴 리뷰 페이지로 이동
 	@RequestMapping("/main/review/review.do")
-	public ModelAndView review(){
+	public ModelAndView review(@RequestParam int mnum){
 		ModelAndView model = new ModelAndView();
 		
 		int totalCount = service.getTotalCount();
-		List<ReviewDto> list = service.getList();
+		List<ReviewDto> list = service.getListUser(mnum);
 		
 		model.addObject("totalCount", totalCount);
 		model.addObject("list", list);
+		model.addObject("mnum", mnum);
 		model.setViewName("/main/menu/review");
 		return model;
 	}
@@ -40,8 +41,14 @@ public class ReviewController {
 	public String readData(@ModelAttribute ReviewDto dto)
 	{
 		service.reviewInsert(dto);
-
-		return "redirect:review.do";
+		return "redirect:review.do?mnum="+dto.getMnum();
+	}
+	
+	//리뷰 수정
+	@RequestMapping("/main/review/update.do")
+	public String update(@RequestParam int num,@ModelAttribute ReviewDto dto){
+		service.reviewUpdate(dto);
+		return "redirect:review.do?mnum="+dto.getMnum();
 	}
 	
 	//review삭제 (user&관리자)
@@ -66,13 +73,12 @@ public class ReviewController {
 					
 		int totalCount = service.getTotalCount();
 		// review 리스트 가져오기
-		List<ReviewDto> list = service.getList();
+		List<ReviewDto> list = service.getListAdmin();
 		
 		model.addObject("totalCount", totalCount);
 		model.addObject("list", list);
 		model.setViewName("/admin/admin/review");
 			
 		return model;
-		}
-	
+	}
 }
