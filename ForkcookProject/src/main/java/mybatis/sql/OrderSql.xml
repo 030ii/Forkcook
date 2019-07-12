@@ -8,7 +8,9 @@
 	
 	</insert>
 	<select id="orderList" resultType="odto">
-		select * from orders
+		select distinct o.ordernum, u.name as uname, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	
+		from orders o, users u, store s, (select o.ordernum, sum(o.mtotalprice) as totalprice from orders o group by o.ordernum) g
+		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum
 	</select>
 	<update id="orderUpdate">
 	

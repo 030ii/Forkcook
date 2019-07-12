@@ -6,14 +6,36 @@ public class OrderDto {
 	private int num;
 	private String ordernum;
 	private int unum;
+	private String uname;
 	private int snum;
+	private String sname;
 	private int mnum;
 	private int mcount;
 	private String mtotalprice;
 	private String ordertype;
 	private Timestamp orderdate;
 	private String orderstate;
+	private String totalprice;
 	
+	
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public String getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(String totalprice) {
+		this.totalprice = totalprice;
+	}
 	public int getNum() {
 		return num;
 	}

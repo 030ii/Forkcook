@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.OrderDto;
@@ -52,6 +53,14 @@ public class OrderController {
 		model.addObject("list",list);
 		
 		model.setViewName("/admin/admin/order");
+		return model;
+	}
+	
+	@RequestMapping("/admin/order/content.do")
+	public ModelAndView content(@RequestParam String ordernum){
+		ModelAndView model = new ModelAndView();
+		
+		model.setViewName("/admin/admin/ordercontent");
 		return model;
 	}
 }
