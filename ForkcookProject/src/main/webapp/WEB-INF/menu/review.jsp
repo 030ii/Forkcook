@@ -10,7 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(function(){
-	//$("div.updateForm").hide();
 	$("div.updateForm").css("display","none");
 	
 	//리뷰 추가
@@ -25,8 +24,7 @@ $(function(){
 			data:{'rate':rate,"content":content},
 			success:function(data){
 				alert("리뷰가 등록되었습니다.");
-				//자동 새로고침 어떻게함 ㅜ
-				$('#reviewTable').html(data);
+				location.href='review.do';
 				//입력 텍스트 초기화
 				$("#rate").val('');
 				$("#content").val('');
@@ -72,6 +70,8 @@ $(function(){
 		<input type="button" value="리뷰수정" id="update-btn">
 	</div>
 <hr>
+<div id="reviewTable">
+</div>
   <div id="reviewTable">
 	<table border=1>
 		<tr>
