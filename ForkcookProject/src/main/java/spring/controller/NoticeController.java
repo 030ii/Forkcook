@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 
-	@RequestMapping("/main/notice/list.do")
-	public ModelAndView list(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
+	@RequestMapping("/{mainadmin}/notice/list.do")
+	public ModelAndView list(@PathVariable String mainadmin,@RequestParam(value="pageNum",defaultValue="1") int currentPage){
 		ModelAndView model=new ModelAndView();
 
 		int totalCount;//총 데이타 갯수
@@ -82,32 +83,46 @@ public class NoticeController {
 		model.addObject("totalCount",totalCount);
 		model.setViewName("/main/service/noticelist");
 		
+		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
+			model.setViewName("/main/service/noticelist"); 	// 일반 모드의 메뉴 목록 화면으로 이동
+		}
+		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
+			model.setViewName("/admin/admin/notice"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
+		}
+		
 		return model;
 	}
 	
 
 
-	@RequestMapping("/main/notice/content.do")
-	public String content(Model model,@RequestParam int num,@RequestParam int pageNum){
+	@RequestMapping("/{mainadmin}/notice/content.do")
+	public String content(@PathVariable String mainadmin,Model model,@RequestParam int num,@RequestParam int pageNum){
 		//데이타 가져오기
 		NoticeDto dto=service.getData(num);
 		//model 에 저장
 		model.addAttribute("dto", dto);
-		model.addAttribute("pageNum", pageNum);		
-		return "/main/service/noticecontent";
+		model.addAttribute("pageNum", pageNum);
+		
+		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
+			return "/main/service/noticecontent"; 	// 일반 모드의 메뉴 목록 화면으로 이동
+		}
+		else { 			// 관리자 모드일 경우
+			return "/admin/admin/noticecontent";	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
+		}
+
 	}
 
 	
-	@RequestMapping("/main/notice/form.do")
+	@RequestMapping("/admin/notice/form.do")
 	public ModelAndView form(){
 		ModelAndView model=new ModelAndView();
-		model.setViewName("/main/service/noticeform");
+		model.setViewName("/admin/admin/noticeform");
 		return model;
 	}
 	
 
 	
-	@RequestMapping(value="/main/notice/write.do",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/notice/write.do",method=RequestMethod.POST)
 	public String readData(@ModelAttribute NoticeDto dto)
 	{
 		service.insertNotice(dto);		
@@ -115,7 +130,7 @@ public class NoticeController {
 		return "redirect:list.do";
 	}
 	
-	@RequestMapping("/main/notice/updateform.do")
+	@RequestMapping("/admin/notice/updateform.do")
 	public ModelAndView updateForm(@RequestParam int num,
 			@RequestParam String pageNum)
 	{
@@ -123,12 +138,12 @@ public class NoticeController {
 		NoticeDto dto=service.getData(num);
 		model.addObject("dto",dto);
 		model.addObject("pageNum",pageNum);
-		model.setViewName("/main/service/noticeupdateform");
+		model.setViewName("/admin/admin/noticeupdateform");
 		return model;
 	}
 
 	// 컨텐츠(content)에서 바로 수정 눌렀을 경우에는 pageNum가 있어서 파라미터에 pageNum이 있는 경우의 update함수
-	@RequestMapping(value="/main/notice/updatec.do",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/notice/updatec.do",method=RequestMethod.POST)
 	public String updatec(@ModelAttribute NoticeDto dto,@RequestParam String pageNum)
 	{
 		service.noticeUpdate(dto);
@@ -136,7 +151,7 @@ public class NoticeController {
 	}
 	
 	// 목록(list)에서 바로 수정 눌렀을 경우에는 pageNum가 없어서 파라미터에 pageNum이 없는 경우의 update함수
-	@RequestMapping(value="/main/notice/updatel.do",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/notice/updatel.do",method=RequestMethod.POST)
 	public String updatel(@ModelAttribute NoticeDto dto)
 	{
 		service.noticeUpdate(dto);	
@@ -148,7 +163,7 @@ public class NoticeController {
 	
 
 	
-	@RequestMapping("/main/notice/delete.do")
+	@RequestMapping("/admin/notice/delete.do")
 	public String delete(@RequestParam int num,@RequestParam String pageNum)
 	{
 		//삭제

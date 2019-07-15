@@ -12,7 +12,7 @@
 <body>
 	<table style="width: 500px;" class="table table-bordered">
 		<tr>
-			<th>${dto.subject}<span style="margin-left: 200px;"> <fmt:formatDate
+			<th>제 목 : ${dto.subject}<span style="margin-left: 200px;"> <fmt:formatDate
 						value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm" />
 			</span>
 			</th>
@@ -26,12 +26,6 @@
 	<div>
 		<button type="button" style="width: 80px;"
 			onclick="location.href='list.do?pageNum=${pageNum}'">목록</button>
-
-		<button type="button" style="width: 80px;"
-			onclick="location.href='updateform.do?num=${dto.num}&pageNum=${pageNum}'">수정</button>
-
-		<button type="button" style="width: 80px;"
-			onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">삭제</button>
 	</div>
 </body>
 </html>

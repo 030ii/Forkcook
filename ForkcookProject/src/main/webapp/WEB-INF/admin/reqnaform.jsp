@@ -29,13 +29,13 @@ $(function() {
 		<tr>
 			<th>No.</th>
 			<td>
-				<input type="hidden" name="qnum" value="${dto.qnum}">
+				<input type="hidden" name="qnum" value="1">
 			</td>
 		</tr>
 		<tr>
 			<th>가맹점</th>
 			<td>
-				<input type="hidden" name="snum" value="${dto.snum}">
+				<input type="hidden" name="snum" value="1">
 			</td>
 		</tr>
 		<tr>
@@ -59,7 +59,7 @@ $(function() {
 		<tr>
 			<td colspan="2" align="right">
 			<input type="hidden" name="num" value="${dto.num}">
-			<input type="hidden" name="pageNum" value="${pageNum}"> 
+			<input type="hidden" name="pageNum" value="${pageNum}">
 			<button type="submit">작성하기</button>
             <button type="button" onclick="history.back()">취소하기</button>
 			</td>
