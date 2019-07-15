@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="order">
 	<select id="orderTotalCount" resultType="int">
-		select count(*) from orders
+		select count(distinct ordernum) from orders
 	</select>
 	<insert id="orderInsert">
 	
@@ -13,7 +13,7 @@
 	<select id="orderList" resultType="odto">
 		select distinct o.ordernum, u.name as uname, u.phone as uphone, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	
 		from orders o, users u, store s, (select o.ordernum, sum(o.mtotalprice) as totalprice from orders o group by o.ordernum) g
-		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum
+		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum order by o.orderdate desc
 	</select>
 	<select id="orderListData" parameterType="String" resultType="odto">
 		select distinct o.ordernum, u.name as uname, u.phone as uphone, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalcount, g.totalprice	

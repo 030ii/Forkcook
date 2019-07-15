@@ -28,7 +28,8 @@
 		</tr>
 		<c:forEach var="dto" items="${list}" varStatus="status">
 			<tr>
-				<td>${status.count}</td>
+				<td>${totalCount}</td>
+				<c:set var="totalCount" value="${totalCount-1}"/>
 				<td>${dto.ordernum}</td>
 				<td>${dto.uname}</td>
 				<!-- <td>${dto.uphone}</td> -->
