@@ -15,36 +15,38 @@
 <body>
 총 <strong>${totalCount}</strong> 개의 글이 있습니다<br>
 공지사항 게시판<br>
-매장별 보기 : 전체 | 강남점 | 분당점 | 삼성점<br>
+<br><br>
+	<c:set var="root" value="<%=request.getContextPath() %>" />
+매장별 보기 : <a href="${root}/admin/notice/list.do">전체</a> |
+ 			<a href="">강남점</a> |
+ 			<a href="">분당점</a> |
+ 			<a href="">부산점</a><br>
 게시글 검색하기<br>
 	<input type="text" id="word" list="list">	
 	<button type="button" id="btnsearch">검색</button>
-	<br><br>
-<table>
-	<tr style="background:gray;">
-		<th style="width: 60px;">번호</th>
-		<th style="width: 300px;">제 목</th>
-		<th style="width: 100px;">작성일</th>	
-		
-		
-		<c:forEach var="dto" items="${list}">
+	
+ <br>
+	<div>총 ${totalCount}개의 공지글이 있습니다</div>
+	<table border=1>
 		<tr>
-			<td align="center">${no}</td>
-			<c:set var="no" value="${no-1}"/>
-			<td>
-				<a href="content.do?num=${dto.num}&pageNum=${currentPage}">${dto.subject}</a>
-			</td>
-			<td align="center">
-				<fmt:formatDate value="${dto.writeday }"
-				   pattern="yyyy-MM-dd"/>		
-			</td>
-			<th><button type="button" onclick="location.href='updateform.do?num=${dto.num}&pageNum=${pageNum}'">수정</button></th>
-	       <th><button type="button" onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">삭제</button></th>
+			<th>No.</th>
+			<th>제목</th>
+			<th>날짜</th>
+			<th>수정</th>
+			<th>삭제</th>
 		</tr>
-	</c:forEach>
-		
-	</tr>
-</table>
+		<c:forEach var="dto" items="${list}" varStatus="status">
+			<tr>
+				<td>${status.count}</td>
+				<td><a href="content.do?num=${dto.num}&pageNum=${currentPage}">${dto.subject}</a></td>
+				<td><fmt:formatDate value="${dto.writeday }"
+				   pattern="yyyy-MM-dd"/></td>
+				<td><button type="button" onclick="location.href='updateform.do?num=${dto.num}&pageNum=${pageNum}'">수정</button></td>
+	       		<td><button type="button" onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">삭제</button></td>
+
+			</tr>
+		</c:forEach>
+	</table>
 <div>
 	<ul  class="pagination">
 		<c:if test="${startPage>1}">
@@ -69,10 +71,9 @@
 		</c:if>
 	</ul>
 </div>
-
-
 <br><br>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" onclick="location.href='${root}/admin/notice/form.do'">게시글 작성</button>
+
 </body>
 </html>

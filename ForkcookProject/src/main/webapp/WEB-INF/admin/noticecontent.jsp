@@ -18,9 +18,10 @@
 			</th>
 		</tr>
 		<tr height="250">
-			<td valign="top"><br> <pre>
+			<td valign="top"><br> 
+				
 					<span>${dto.content}</span>
-				</pre></td>
+			</td>
 		</tr>
 	</table>
 	<div>

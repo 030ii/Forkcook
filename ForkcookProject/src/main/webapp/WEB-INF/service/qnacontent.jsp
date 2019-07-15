@@ -20,6 +20,22 @@
 내용 : ${dto.content}<br>
 사진 : ${dto.image}
 </pre>
+<hr>
+<c:if test="${dto.qnastate==1}">
+<!-- 답변 없음 -->
+	<div>문의 확인 중 입니다.</div>
+</c:if>
+<c:if test="${dto.qnastate==2}">
+<!-- 답변 있음 -->
+	<!-- TODO : 답변 content 가져오기! -->
+	<div>
+		<c:forEach  var="rqdto" items="${reqlist}">
+			<b>제 목 : </b>${rqdto.subject}<br><br><br>
+			<b>내 용 : </b>${rqdto.content}
+		</c:forEach>
+	</div>
+</c:if>
+<hr>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" class="btn btn-info btn-sm"
 	  onclick="history.back()">뒤로가기</button>
