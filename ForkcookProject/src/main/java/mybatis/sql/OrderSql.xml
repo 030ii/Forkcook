@@ -7,15 +7,25 @@
 	<insert id="orderInsert">
 	
 	</insert>
-	<select id="orderList" resultType="odto">
-		select distinct o.ordernum, u.name as uname, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	
-		from orders o, users u, store s, (select o.ordernum, sum(o.mtotalprice) as totalprice from orders o group by o.ordernum) g
-		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum
-	</select>
 	<update id="orderUpdate">
 	
 	</update>
-	<delete id="orderDelete">
-	
+	<select id="orderList" resultType="odto">
+		select distinct o.ordernum, u.name as uname, u.phone as uphone, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	
+		from orders o, users u, store s, (select o.ordernum, sum(o.mtotalprice) as totalprice from orders o group by o.ordernum) g
+		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum
+	</select>
+	<select id="orderListData" parameterType="String" resultType="odto">
+		select distinct o.ordernum, u.name as uname, u.phone as uphone, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalcount, g.totalprice	
+		from orders o, users u, store s, (select o.ordernum, sum(o.mcount) as totalcount, sum(o.mtotalprice) as totalprice from orders o group by o.ordernum) g
+		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum and o.ordernum = #{ordernum,jdbcType=VARCHAR}
+	</select>
+	<select id="orderMenuData" parameterType="String" resultType="odto">
+		select m.name as mname, o.mcount, o.mtotalprice 
+		from orders o, menu m
+		where o.mnum = m.num and o.ordernum = #{ordernum,jdbcType=VARCHAR}
+	</select>
+	<delete id="orderDelete" parameterType="String">
+		delete from orders where ordernum = #{ordernum,jdbcType=VARCHAR}
 	</delete>
 </mapper>

@@ -7,17 +7,38 @@ public class OrderDto {
 	private String ordernum;
 	private int unum;
 	private String uname;
+	private String uphone;
 	private int snum;
 	private String sname;
 	private int mnum;
+	private String mname;
 	private int mcount;
 	private String mtotalprice;
 	private String ordertype;
 	private Timestamp orderdate;
 	private String orderstate;
+	private String totalcount;
 	private String totalprice;
 	
 	
+	public String getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(String totalcount) {
+		this.totalcount = totalcount;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getUphone() {
+		return uphone;
+	}
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
+	}
 	public String getUname() {
 		return uname;
 	}

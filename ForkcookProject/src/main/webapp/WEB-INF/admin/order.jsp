@@ -18,6 +18,7 @@
 			<th>No.</th>
 			<th>주문번호</th>
 			<th>주문자명</th>
+			<!-- <th>주문자 연락처</th> -->
 			<th>매장명</th>
 			<th>총 결제 금액</th>
 			<th>주문 유형</th>
@@ -30,6 +31,7 @@
 				<td>${status.count}</td>
 				<td>${dto.ordernum}</td>
 				<td>${dto.uname}</td>
+				<!-- <td>${dto.uphone}</td> -->
 				<td>${dto.sname}</td>
 				<td>${dto.totalprice}</td>
 				<td>

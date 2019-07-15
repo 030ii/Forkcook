@@ -20,4 +20,16 @@ public class OrderService {
 	public List<OrderDto> getList(){
 		return dao.getList();
 	}
+	
+	public OrderDto getListData(String ordernum){
+		return dao.getListData(ordernum);
+	}
+	
+	public List<OrderDto> getMenuData(String ordernum){
+		return dao.getMenuData(ordernum);
+	}
+	
+	public void orderDelete(String ordernum){
+		dao.orderDelete(ordernum);
+	}
 }

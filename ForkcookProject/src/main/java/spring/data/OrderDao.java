@@ -14,4 +14,17 @@ public class OrderDao extends SqlSessionDaoSupport{
 	public List<OrderDto> getList(){
 		return getSqlSession().selectList("order.orderList");
 	}
+	
+	public OrderDto getListData(String ordernum){
+		return getSqlSession().selectOne("order.orderListData", ordernum);
+	}
+	
+	public List<OrderDto> getMenuData(String ordernum){
+		return getSqlSession().selectList("order.orderMenuData", ordernum);
+	}
+	
+	public void orderDelete(String ordernum){
+		getSqlSession().delete("order.orderDelete",ordernum);
+	}
+	
 }

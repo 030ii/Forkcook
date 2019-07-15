@@ -40,6 +40,7 @@ public class OrderController {
 	}
 	
 	//************************관리자용************************//
+	// 관리자 -> 주문 관리 -> 주문 목록 페이지로 이동
 	@RequestMapping("/admin/order/list.do")
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
@@ -56,11 +57,26 @@ public class OrderController {
 		return model;
 	}
 	
+	// 관리자 -> 주문 관리 -> 주문 상세보기 페이지로 이동
 	@RequestMapping("/admin/order/content.do")
 	public ModelAndView content(@RequestParam String ordernum){
 		ModelAndView model = new ModelAndView();
 		
+		
+		OrderDto ld = service.getListData(ordernum); // 기본 주문 정보 데이터 가져오기
+		List<OrderDto> md = service.getMenuData(ordernum); // 메뉴 주문 정보 데이터 가져오기
+		
+		model.addObject("ld",ld);
+		model.addObject("md",md);
 		model.setViewName("/admin/admin/ordercontent");
 		return model;
 	}
+	
+	// 관리자 -> 주문 관리 -> DB에 메뉴 삭제하고 목록으로 redirect
+	@RequestMapping("/admin/order/delete.do")
+	public String delete(@RequestParam String ordernum){
+		// 삭제
+		service.orderDelete(ordernum);
+		return "redirect:list.do"; // 목록 새로고침
+	}	
 }
