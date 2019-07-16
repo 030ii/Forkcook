@@ -31,14 +31,15 @@
 	<div>
 		<c:forEach  var="rqdto" items="${reqlist}">
 			<b>제 목 : </b>${rqdto.subject}<br><br><br>
-			<b>내 용 : </b>${rqdto.content}
+			<b>내 용 : </b>${rqdto.content}<br><br>
+			<button type="button" onclick="location.href='reqnaupdate.do?num=${rqdto.num}&pageNum=${pageNum}'">답변 수정</button>
+			<button type="button" onclick="location.href='reqnadelete.do?num=${rqdto.num}'">답변 삭제</button>
+			<hr>
 		</c:forEach>
 	</div>
-	<button type="button" onclick="location.href='reqnaupdate.do?num=${dto.num}&pageNum=${pageNum}'">답변 수정</button>
-	<button type="button" onclick="location.href='reqnadelete.do?num=${dto.num}'">답변 삭제</button>
+	
 </c:if>
 
-<hr>
 
 <button type="button" onclick="location.href='list.do'">목록</button>
 <button type="button" onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">해당 문의 삭제하기</button>
