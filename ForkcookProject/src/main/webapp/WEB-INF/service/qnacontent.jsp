@@ -31,11 +31,10 @@
 	<div>
 		<c:forEach  var="rqdto" items="${reqlist}">
 			<b>제 목 : </b>${rqdto.subject}<br><br><br>
-			<b>내 용 : </b>${rqdto.content}
+			<b>내 용 : </b>${rqdto.content}<hr>
 		</c:forEach>
 	</div>
 </c:if>
-<hr>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" class="btn btn-info btn-sm"
 	  onclick="history.back()">뒤로가기</button>
