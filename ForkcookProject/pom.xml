@@ -192,6 +192,13 @@
 	          <artifactId>spring-jdbc</artifactId>
 	          <version>${spring-framework.version}</version>
 	      </dependency>
+	      
+	      <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+    		<groupId>commons-fileupload</groupId>
+    		<artifactId>commons-fileupload</artifactId>
+    		<version>1.2.2</version>
+		</dependency>
 
 	</dependencies>
 	<artifactId>ForkcookProject</artifactId>

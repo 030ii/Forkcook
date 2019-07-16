@@ -1,6 +1,9 @@
 package spring.data;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewDto {
 	private int num;
@@ -9,6 +12,8 @@ public class ReviewDto {
 	private String content;
 	private double rate;
 	private Timestamp writeday;
+	private String image;
+	private ArrayList<MultipartFile> upfile;
 	
 	public int getNum() {
 		return num;
@@ -46,6 +51,16 @@ public class ReviewDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
-	
-	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public ArrayList<MultipartFile> getUpfile() {
+		return upfile;
+	}
+	public void setUpfile(ArrayList<MultipartFile> upfile) {
+		this.upfile = upfile;
+	}
 }

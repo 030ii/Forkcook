@@ -33,7 +33,7 @@ public class CartController {
 		return model;
 	}
 	
-	@RequestMapping(value="/main/cart/update.do",method=RequestMethod.POST)
+	@RequestMapping(value="/main/cart/update.do",method=RequestMethod.GET)
 	public String update(@ModelAttribute CartDto dto){
 		service.countUpdate(dto);
 		return "redirect:list.do";

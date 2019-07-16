@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
+<c:set var="root" value="<%=request.getContextPath() %>" />
 <!-- 로그인 안했을 시에 장바구니 누르면 '먼저로그인하세요' 창 뜨게 해야함  -->
 
 	총 ${totalCount}개의 장바구니 내역이 있습니다.<br>
@@ -48,7 +49,6 @@
 		</c:forEach>
 	</table>
 </div>
-	<c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
 <button type="button" onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
 
