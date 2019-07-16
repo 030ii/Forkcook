@@ -41,6 +41,14 @@ public class UserDao extends SqlSessionDaoSupport {
 		return n;
 	}
 	
+	public List<UserDto> userMypage(int num){
+		return getSqlSession().selectList("user.userMypage",num);
+	}
+	
+	public int userUpdate(int num){
+		return getSqlSession().update("user.userUpdate",num);
+	}
+	
 	//이 밑으로는 관리자 페이지
 	public List<UserDto> getList(){
 		return getSqlSession().selectList("user.userList");
@@ -54,7 +62,4 @@ public class UserDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("user.userSelectData",num); 
 	}
 	
-	public void userUpdate(UserDto dto){
-		getSqlSession().update("user.userUpdate",dto);
-	}
 }

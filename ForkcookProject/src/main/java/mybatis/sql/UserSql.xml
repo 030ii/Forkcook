@@ -23,7 +23,19 @@
 	<select id="userLogin2" parameterType="udto" resultType="udto">
 			select * from users where phone = #{phone} and name = #{name}
 	</select>
+	<!-- 아이디중복확인 -->
+	<select id="idCheck" resultType="int" parameterType="String">
+		select count(id) from users where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<!-- 마이페이지에 유저 정보 출력 -->
+	<select id="userMypage" resultType="udto" parameterType="int">
+	   	select * from users where num=#{num}
+	</select>
+	<update id="userUpdate" parameterType="udto">
+		update users set name=#{name},phone=#{phone} where num=#{num}
+	</update>
 	
+	<!-- 이 밑으로 관리자 페이지 -->
 	<select id="userList" resultType="udto">
 	   	select * from users
 	</select>
@@ -33,12 +45,4 @@
 	<select id="userSelectData" parameterType="int" resultType="udto">
 		select * from users where num=#{num}
 	</select>
-	<update id="userUpdate" parameterType="udto">
-		update users set name=#{name},phone=#{phone} where num=#{num}
-	</update>
-	<!-- 아이디중복확인 -->
-	<select id="idCheck" resultType="int" parameterType="String">
-		select count(id) from users where id = #{id,jdbcType=VARCHAR}
-	</select>
-
 </mapper>

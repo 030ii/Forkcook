@@ -46,6 +46,14 @@ public class UserService {
 		return dao.idCheck(id);
 	}
 	
+	public List<UserDto> userMypage(int num){
+		return dao.userMypage(num);
+	}
+	
+	public int userUpdate(int num){
+		return dao.userUpdate(num);
+	}
+	
 	//이 밑으로는 관리자 페이지
 	public List<UserDto> getList(){
 		return dao.getList();
@@ -59,7 +67,4 @@ public class UserService {
 		return dao.getData(num);
 	}
 	
-	public void userUpdate(UserDto dto){
-		dao.userUpdate(dto);
-	}
 }

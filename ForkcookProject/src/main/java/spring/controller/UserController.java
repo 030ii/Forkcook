@@ -107,7 +107,6 @@ public class UserController {
 	}
 		
 	//아이디 중복확인
-	
 	@RequestMapping(value = "/main/user/idCheck.do", method = RequestMethod.GET)
 	public @ResponseBody String postIdCheck(HttpServletRequest req,@RequestParam("id") String id){
 		int n = service.idCheck(id);
@@ -130,10 +129,36 @@ public class UserController {
 	}
 		
 	//마이페이지로 이동
-		@RequestMapping("/main/user/mypage.do")
+		/*@RequestMapping("/main/user/mypage.do")
 		public String mypg(){
 			
 			return "/main/user/mypage";  
+		}*/
+		
+	// 마이페이지 내 정보 출력
+		@RequestMapping("/main/user/mypage.do")
+		public ModelAndView myinfo(@RequestParam int num){
+			ModelAndView model = new ModelAndView();
+			List<UserDto> list = service.userMypage(num);
+			model.addObject("list", list);
+			model.setViewName("/main/user/mypage");
+			return model;
+		}
+		
+	// 마이페이지 > 정보 수정페이지로
+		@RequestMapping("/main/user/myupdate.do")
+		public ModelAndView myupdate(@RequestParam int num, HttpSession session){
+			ModelAndView model = new ModelAndView();
+			List<UserDto> list = service.userMypage(num);
+			service.userUpdate(num);
+			
+			session.setAttribute("loginInfo", list);//세션저장
+			model.addObject("udto",list);//값 보내기
+				
+			model.setViewName("/main/user/mypageupdate");
+				
+			return model;
+			
 		}
 		
 	//로그아웃
@@ -168,20 +193,4 @@ public class UserController {
 		return "redirect:list.do"; // 목록 새로고침
 	}
 	
-	//user 수정하는 페이지로 이동
-	@RequestMapping("/admin/user/updateform.do")
-	public ModelAndView updateform(@RequestParam int num){
-		ModelAndView model=new ModelAndView();
-		UserDto dto=service.getData(num);
-		model.addObject("dto",dto);
-		model.setViewName("/admin/admin/userupdateform");
-		return model;
-	}	
-	
-	// 관리자 user수정
-	@RequestMapping(value="/admin/user/update.do",method=RequestMethod.POST)
-	public String update(@ModelAttribute UserDto dto){
-		service.userUpdate(dto); // 추가
-		return "redirect:list.do"; // 목록 새로고침
-	}
 }

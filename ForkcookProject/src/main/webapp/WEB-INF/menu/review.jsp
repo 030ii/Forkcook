@@ -68,7 +68,7 @@ $(function(){
 </script>
 </head>
 <body>
-<리뷰보기페이지입니다>
+리뷰보기페이지입니다
 <div>총 ${totalCount}개의 리뷰가 있습니다</div>
 <hr>
 	

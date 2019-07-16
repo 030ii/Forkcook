@@ -4,12 +4,19 @@
 	<select id="cartTotalCount" resultType="int">
 		select count(*) from cart
 	</select>
-	<!-- <select id="menuList" resultType="cdto">
-		select m.name as menuname,c.mcount as mcount, m.price as menuprice
-		from menu m, cart c
-		where c.num = m.num;
-	</select> -->
 	<select id="cartList" resultType="cdto">
-		select * from cart
+		select m.name as menuname,c.mcount, c.mtotalprice
+		from menu m, cart c
+		where c.mnum = m.num
 	</select>
+	<!-- 장바구니에서 + - 클릭하면 수량 변함 -->
+	<update id="countUpdate" parameterType="cdto">
+		update cart set mcount=#{mcount}, mtotalprice=#{mtotalprice} where num=#{num}
+	</update>
+	<insert id="cartInsert" parameterType="cdto">
+		insert into cart values (seq_menu.nextval,#{unum},#{snum},#{mnum},#{mcount},#{mtotalprice})
+	</insert>
+	<delete id="cartDelete" parameterType="int">
+		delete from cart where num=#{num}
+	</delete>
 </mapper>

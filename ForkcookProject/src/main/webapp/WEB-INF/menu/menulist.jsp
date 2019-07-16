@@ -25,17 +25,10 @@
 				<a href="${root}/main/menu/detail.do?num=${dto.num}" class="btn btn-primary">자세히 보기&rarr;</a>
 			</div>
 		</div>
-	<!-- 아래는 장바구니 담는 코드(수량조절&카드담기버튼) -->
-		<div class="count">
-			수량:<br>
-			<button type="button" class="minus">-</button>
-			<!-- <input type="text" value=0 id="count"> -->
-			<span class="count-span mcount">1</span>
-			<button type="button" class="plus">+</button>
-		</div>
-		<div class="intocart">
-			<button type="button" class="intocart-btn">장바구니담기</button>
-		</div>
+			<button type="button" class="intoCart-btn"
+				onclick="location.href='${root}/main/cart/insert.do?num=${dto.num}'">장바구니담기</button>
+			<button type="button" class="goOrder-btn"
+				onclick="location.href='${root}/main/cart/insert.do?num=${dto.num}'">바로주문하기</button>
 		<br>
 	</c:forEach>
 	
@@ -45,25 +38,5 @@
 </div>
 <button type="button" id="like">Like</button>
 
-<script type="text/javascript">
-$(function(){
-	$(".plus").click(function(){
-		var mcount = $(this).parent('.count').children('.mcount');
-		var mcountnum = parseInt(mcount.text());
-		mcountnum++;
-		mcount.text(mcountnum);
-	});
-	$(".minus").click(function(){
-		var mcount = $(this).parent('.count').children('.mcount');
-		var mcountnum = parseInt(mcount.text());
-		mcountnum--;
-		if(mcountnum<1){
-		mcount.text(1);
-		}else{
-			mcount.text(mcountnum);
-		}
-	});
-});
-</script>
 </body>
 </html>
