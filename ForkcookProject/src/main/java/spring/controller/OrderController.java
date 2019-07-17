@@ -79,4 +79,22 @@ public class OrderController {
 		service.orderDelete(ordernum);
 		return "redirect:list.do"; // 목록 새로고침
 	}	
+	
+	//************************가맹점용************************//
+	// 가맹점 -> 현장 주문 관리 -> 주문 목록 페이지로 이동
+	@RequestMapping("/admin/now/list.do")
+	public ModelAndView nowlist(){
+		ModelAndView model = new ModelAndView();
+		
+		// DB에서 데이터 가져오기
+//		int totalCount = service.getTotalCount();
+//		List<OrderDto> list = service.getList();
+//		
+//		// 가져온 데이터 저장
+//		model.addObject("totalCount", totalCount);
+//		model.addObject("list",list);
+		
+		model.setViewName("/admin/partner/now");
+		return model;
+	}
 }

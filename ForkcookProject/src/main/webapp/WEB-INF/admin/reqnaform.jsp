@@ -24,44 +24,38 @@ $(function() {
 
 <br>
 <br>
-<form action="write.do" method="post">
+<form action="reqwrite.do" method="post">
 	<table class="table">
-		<tr>
-			<th>No.</th>
-			<td>
-				<input type="hidden" name="qnum" value="1">
-			</td>
-		</tr>
 		<tr>
 			<th>가맹점</th>
 			<td>
-				<input type="hidden" name="snum" value="1">
+				<input type="text" name="snum" value="2" readonly>
 			</td>
 		</tr>
 		<tr>
 			<th>제 목</th>
 			<td>
-				<input type="text" name="subject" class="form-control" required>
+				<input type="text" name="subject" required>
 			</td>
 		</tr>
 		<tr>
 			<th>이미지 첨부</th>
 			<td>
-				<input type="hidden" name="image" value="1.jpg">
+				<input type="text" name="image" value="1.jpg" required>
 			</td>
 		</tr>
 		<tr>
-			<th>내 용</th>			
-			<td colspan="2">
-				<textarea rows="5" cols="40" name="content" class="form-control" required></textarea>
+			<th>내 용</th>
+			<td>
+				<textarea name="content" required></textarea>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="right">
-			<input type="hidden" name="num" value="${dto.num}">
-			<input type="hidden" name="pageNum" value="${pageNum}">
-			<button type="submit">작성하기</button>
-            <button type="button" onclick="history.back()">취소하기</button>
+			<td>
+				<input type="hidden" name="qnum" value="${qnum}">
+				<input type="hidden" name="pageNum" value="${pageNum}">
+				<button type="submit">작성하기</button>
+            	<button type="button" onclick="history.back()">취소하기</button>
 			</td>
 		</tr>
 	</table>

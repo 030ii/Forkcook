@@ -24,8 +24,8 @@ public class ReqnaDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("reqna.reqnaPagingList",map);
 	}
 	
-	public void reqnaInsert(ReqnaDto dto){
-		getSqlSession().insert("reqna.reqnaInsert",dto);
+	public void reqnaInsert(ReqnaDto reqdto){
+		getSqlSession().insert("reqna.reqnaInsert",reqdto);
 	}
 	
 	
@@ -33,9 +33,14 @@ public class ReqnaDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("reqna.reqnaSelectData",num); // 바로 리턴해도 됨 
 	}
 	
-	public void reqnaUpdate(ReqnaDto dto){
-		getSqlSession().update("reqna.reqnaUpdate",dto);
+	public void reqnaUpdate(ReqnaDto reqdto){
+		getSqlSession().update("reqna.reqnaUpdate",reqdto);
 	}
+	
+	public void reqnaDelete(int num){
+		getSqlSession().delete("reqna.reqnaDelete", num);
+	}
+	
 	public List<ReqnaDto> getReqnaList(int qnum){
 		
 		return getSqlSession().selectList("reqna.reqnaSelectData2",qnum);

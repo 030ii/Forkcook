@@ -27,15 +27,17 @@
 			<th>날짜</th>
 			<th>삭제</th>
 		</tr>
-		<c:forEach var="dto" items="${list}" varStatus="status">
+		<c:forEach var="qdto" items="${qlist}" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
-				<td><a href="content.do?num=${dto.num}&pageNum=${currentPage}">${dto.subject}</a></td>
-				<td>${dto.unum}</td>
-				<td><fmt:formatDate value="${dto.writeday }"
+				<td><a href="content.do?num=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
+				<td>${qdto.unum}</td>
+				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 				<td>
-					<button type="button" onclick="location.href='delete.do?num=${dto.num}&pageNum=${pageNum}'">삭제</button>
+					<c:if test="${qdto.qnastate==1}">
+						<button type="button" onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>

@@ -4,4 +4,25 @@
 	<select id="storeuserTotalCount" resultType="int">
 		select count(*) from storeuser
 	</select>
+	<select id="idCheck" resultType="int" parameterType="String">
+		select count(id) from storeuser where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<insert id="storeuserInsert" parameterType="sudto">
+		insert into storeuser values (seq_storeuser.nextval,#{snum},#{id},#{pass},sysdate,2)
+	</insert>
+	<select id="storeuserList" resultType="sudto">
+	   	select su.num, su.id, s.name as sname, s.area as sarea, su.gaipday, su.usertype 
+	   	from storeuser su, store s
+		where su.snum = s.num
+	</select>
+	<select id="storeuserSelectData" parameterType="int" resultType="sudto">
+		select * from storeuser where num=#{num}
+	</select>
+	<update id="storeuserUpdate" parameterType="sudto">
+		update storeuser set snum=#{snum}, pass=#{pass}
+		where num=#{num}
+	</update>
+	<delete id="storeuserDelete" parameterType="int">
+		delete from storeuser where num=#{num}
+	</delete>
 </mapper>
