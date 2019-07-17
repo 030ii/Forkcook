@@ -20,6 +20,12 @@ public class ReviewDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("review.reviewListUser",mnum);
 	}
 	
+	//전체데이타얻기
+	public ReviewDto getData(int num)
+	{
+		return getSqlSession().selectOne("review.reviewAllData",num);
+	}
+		
 	public void reviewDelete(int num){
 		getSqlSession().delete("review.reviewDelete",num);
 	}

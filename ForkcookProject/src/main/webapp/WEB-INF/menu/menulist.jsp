@@ -16,19 +16,19 @@
 <!-- TODO : CSS는 추후에 UI kit에 맞게 다시 재배열 -->
 <!-- TODO : 메뉴에 마우스 오버시 장바구니/상세보기 나오게 하기 -->
 
-	<c:forEach var="dto" items="${list}">
+	<c:forEach var="mdto" items="${list}">
 		<div class="card" style="width: 20rem;">
-			<img class="card-img-top" src="../../image/${dto.image}" alt="Card image cap">
+			<img class="card-img-top" src="../../image/${mdto.image}" alt="Card image cap">
 			<div class="card-body">
-				<h4 class="card-title">${dto.name}</h4>
-				<p class="card-text">${dto.shortmsg}</p>
-				<a href="${root}/main/menu/detail.do?num=${dto.num}" class="btn btn-primary">자세히 보기&rarr;</a>
+				<h4 class="card-title">${mdto.name}</h4>
+				<p class="card-text">${mdto.shortmsg}</p>
+				<a href="${root}/main/menu/detail.do?num=${mdto.num}" class="btn btn-primary">자세히 보기&rarr;</a>
 			</div>
 		</div>
 			<button type="button" class="intoCart-btn"
-				onclick="location.href='${root}/main/cart/insert.do?num=${dto.num}'">장바구니담기</button>
+				onclick="location.href='${root}/main/cart/insert.do?unum=1&mnum=${mdto.num}&mcount=1&mtotalprice=${mdto.price }'">장바구니담기</button>
 			<button type="button" class="goOrder-btn"
-				onclick="location.href='${root}/main/cart/insert.do?num=${dto.num}'">바로주문하기</button>
+				onclick="location.href='${root}/main/cart/fkdfkdk.do?num=${mdto.num}'">바로주문하기</button>
 		<br>
 	</c:forEach>
 	

@@ -7,7 +7,7 @@ public class CartDto {
 	private int mnum;
 	private String menuname;
 	private int mcount;
-	private int mtotalprice;
+	private String mtotalprice;
 	
 	public int getNum() {
 		return num;
@@ -39,12 +39,14 @@ public class CartDto {
 	public void setMcount(int mcount) {
 		this.mcount = mcount;
 	}
-	public int getMtotalprice() {
+	
+	public String getMtotalprice() {
 		return mtotalprice;
 	}
-	public void setMtotalprice(int mtotalprice) {
+	public void setMtotalprice(String mtotalprice) {
 		this.mtotalprice = mtotalprice;
 	}
+
 	public String getMenuname() {
 		return menuname;
 	}

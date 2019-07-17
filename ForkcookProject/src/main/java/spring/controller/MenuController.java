@@ -47,9 +47,9 @@ public class MenuController {
 	@RequestMapping("/main/menu/detail.do")
 	public String content(Model model,@RequestParam int num){
       //데이타 가져오기
-      MenuDto dto=service.getData(num);
+      MenuDto mdto=service.getData(num);
       //model 에 저장
-      model.addAttribute("dto", dto);    
+      model.addAttribute("mdto", mdto);    
       return "/main/menu/menudetail";
 	}
 		

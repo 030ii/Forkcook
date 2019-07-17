@@ -11,19 +11,19 @@
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<form action="main/menudetail.do" method="post">
-    <table style="width: 400px;" class="table table-bordered">
+
+<table style="width: 400px;" class="table table-bordered">
     <caption><b>메뉴 상세보기</b></caption>
     <tr>
-		num : ${dto.num}<br>
-		name : ${dto.name}<br>
-		category : ${dto.category}<br>  
-		persons : ${dto.persons}<br>
-		price : ${dto.price}<br>
-		image : ${dto.image}<br>
-		rate : ${dto.rate}<br>
-		shortmsg : ${dto.shortmsg}<br>
-		longmsg : ${dto.longmsg}<br>
+		num : ${mdto.num}<br>
+		name : ${mdto.name}<br>
+		category : ${mdto.category}<br>  
+		persons : ${mdto.persons}<br>
+		price : ${mdto.price}<br>
+		image : ${mdto.image}<br>
+		rate : ${mdto.rate}<br>
+		shortmsg : ${mdto.shortmsg}<br>
+		longmsg : ${mdto.longmsg}<br>
 		<br><br><hr><br><br>
     </tr>
     
@@ -37,7 +37,7 @@
     
     <tr>
       <td colspan="2" align="right">     
-      	<button type="button" style="width: 100px;" class="btn btn-basic btn-sm" onclick="location.href='${root}/main/review/review.do?mnum=${dto.num}'">리뷰보기</button>	
+      	<button type="button" style="width: 100px;" class="btn btn-basic btn-sm" onclick="location.href='${root}/main/review/review.do?mnum=${mdto.num}'">리뷰보기</button>	
         <button type="button" style="width: 100px; margin-left: 175px;" class="btn btn-basic btn-sm" onclick="history.back()">닫 기</button>		
       </td>
     </tr> 
@@ -50,7 +50,7 @@
 		<!-- <input type="text" value=0 id="count"> -->
 		<span class="count-span">1</span>
 		<button type="button" id="plus">+</button>
-		가격:<span class="price">${dto.price}</span>
+		가격:<span class="price">${mdto.price}</span>
 	</div>
 	<div class="intocart">
 		<button type="button" class="intocart-btn">장바구니담기</button>
@@ -62,7 +62,7 @@
 	$("#plus").click(function() {
 		clicks++;
 		$('.count-span').html(clicks);
-		$('.price').html(clicks*${dto.price});
+		$('.price').html(clicks*${mdto.price});
 	});
 
 	$("#minus").click(function() {
@@ -70,13 +70,23 @@
 		if (clicks < 1) {
 			clicks=1;
 			$('.count-span').html(clicks);
-			$('.price').html(1*${dto.price});
+			$('.price').html(1*${mdto.price});
 		} else {
 			$('.count-span').html(clicks);
-			$('.price').html(clicks*${dto.price});
+			$('.price').html(clicks*${mdto.price});
 		}
 	});
+	
+	$(".intocart-btn").click(function() {
+		var mnum =~~.val();
+		var mcount =~~.val();
+		var mtotalprice =${mdto.price}*clicks;
+		
+		window.location.href="insert.do?mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
+	});
+	
+	
 </script>
-</form>
+
 </body>
 </html>

@@ -27,6 +27,11 @@ public class ReviewService {
 		return dao.getListUser(mnum);
 	}
 	
+	public ReviewDto getData(int num)
+	{
+		return dao.getData(num);
+	}
+	
 	public void reviewDelete(int num){
 		dao.reviewDelete(num);
 	}

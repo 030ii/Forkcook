@@ -1,5 +1,6 @@
 package spring.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -96,8 +97,27 @@ public class ReviewController {
 	//review삭제 (user&관리자)
 	@RequestMapping("/{mainadmin}/review/delete.do")
 	public String delete(@PathVariable String mainadmin,@RequestParam int num,
-			@RequestParam int mnum){
+			@RequestParam int mnum, HttpServletRequest request){
 		
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+		//db에서 삭제하기 전에 이미지 지우기
+		String image=service.getData(num).getImage();
+		if(!image.equals("noimage"))
+		{
+			//이미지가 여러개일경우 , 로 분리
+			String []myImg=image.split(",");
+			for(String s:myImg)
+			{
+				//파일 객체로 생성
+				File f=new File(path+"\\"+s);
+				//존재할경우 삭제
+				if(f.exists())
+					f.delete();
+			}
+		}
+				
 		service.reviewDelete(num);
 		
 		if(mainadmin.equals("main")) { // 일반 모드일 경우 
