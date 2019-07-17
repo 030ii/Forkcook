@@ -34,6 +34,14 @@ public class QnaDao extends SqlSessionDaoSupport{
 		getSqlSession().update("qna.qnaUpdate",qdto);
 	}
 
+	public void qnastateUpdate(int num){
+
+		System.out.println("------3");
+		getSqlSession().update("qna.qnastateUpdate",num);
+
+		System.out.println("------4");
+	}
+	
 	public void qnaDelete(int num){
 		getSqlSession().delete("qna.qnaDelete",num);
 	}

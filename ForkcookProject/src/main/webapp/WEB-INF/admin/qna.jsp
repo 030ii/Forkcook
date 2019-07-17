@@ -35,7 +35,9 @@
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 				<td>
-					<button type="button" onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+					<c:if test="${qdto.qnastate==1}">
+						<button type="button" onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>

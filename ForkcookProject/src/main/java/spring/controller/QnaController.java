@@ -161,13 +161,15 @@ public class QnaController {
 		return "redirect:list.do";
 	}
 
+	// 일반 사용자 -> 문의삭제
+	// 관리자 -> 문의삭제 
 	@RequestMapping("/{mainadmin}/qna/delete.do")
 	public String adminqnadelete(@PathVariable String mainadmin,@RequestParam int num,@RequestParam String pageNum)
 	{
 		//삭제
+//		reqservice.reqnaDelete(num);
 		qservice.qnaDelete(num);
-		reqservice.reqnaDelete(num);
-		
+	
 		if(mainadmin.equals("main")) { 
 			return "redirect:list.do?pageNum="+pageNum;// 일반 모드일 경우 
 		}

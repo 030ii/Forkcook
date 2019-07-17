@@ -26,19 +26,18 @@
 </c:if>
 <c:if test="${qdto.qnastate==2}">
 <!-- 답변 있음 -->
-	<!-- TODO : 답변 content 가져오기! -->
 	<div>
 		<c:forEach  var="reqdto" items="${reqlist}">
 			<b>제 목 : </b>${reqdto.subject}<br><br><br>
 			<b>내 용 : </b>${reqdto.content}<br><br>
 			<button type="button" onclick="location.href='requpdate.do?num=${reqdto.num}&pageNum=${pageNum}'">답변 수정</button>
-			<button type="button" onclick="location.href='delete.do?num=${reqdto.num}&pageNum=${pageNum}'">답변 삭제</button>
+			<button type="button" onclick="location.href='reqdelete.do?rnum=${reqdto.num}&pageNum=${pageNum}'">답변 삭제</button>
 			<hr>
 		</c:forEach>
 	</div>
 	
 </c:if>
-<button type="button" onclick="location.href='reqform.do?num=${qdto.num}'">답변 추가</button>
+<button type="button" onclick="location.href='reqform.do?qnum=${qdto.num}&pageNum=${pageNum}'">답변 추가</button>
 <button type="button" onclick="location.href='list.do'">목록</button>
 <button type="button" onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">해당 문의 삭제하기</button>
 </body>
