@@ -22,15 +22,15 @@ import spring.service.ReqnaService;
 @Controller
 public class QnaController {
 	@Autowired
-	private QnaService service;
+	private QnaService qservice;
 	@Autowired
-	private ReqnaService service2;
+	private ReqnaService reqservice;
 	
 	@RequestMapping("/{mainadmin}/qna/list.do")
 	public ModelAndView list(@PathVariable String mainadmin, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		ModelAndView model = new ModelAndView();
 		
-		int totalCount = service.getTotalCount(); 		// 메뉴 총 개수 가져오기
+		int totalCount = qservice.getTotalCount(); 		// 메뉴 총 개수 가져오기
 		 					
 		//페이징 복사한거
 		//페이징처리에 필요한 변수들 선언
@@ -76,10 +76,10 @@ public class QnaController {
 		no=totalCount-(currentPage-1)*perPage;		
 
 		//2. 리스트 가져오기
-		List<QnaDto> list=service.getList(startNum, endNum);
+		List<QnaDto> qlist=qservice.getList(startNum, endNum);
 
 		//3. 페이징에 필요한 변수들 request에 저장		
-		model.addObject("list", list);
+		model.addObject("qlist", qlist);
 		model.addObject("currentPage", currentPage);
 		model.addObject("startPage", startPage);
 		model.addObject("endPage", endPage);
@@ -102,12 +102,12 @@ public class QnaController {
 	@RequestMapping("/{mainadmin}/qna/content.do")
 	public String content(@PathVariable String mainadmin,Model model,@RequestParam int num,@RequestParam int pageNum){
 		//데이타 가져오기
-		QnaDto dto=service.getData(num);
+		QnaDto qdto=qservice.getData(num);
 		//model 에 저장
-		model.addAttribute("dto", dto);
+		model.addAttribute("qdto", qdto);
 		model.addAttribute("pageNum", pageNum);	
 		
-		List<ReqnaDto> reqlist=service2.getReqnaList(dto.getNum());
+		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
 		
 		if(mainadmin.equals("main")) { 
@@ -130,7 +130,7 @@ public class QnaController {
 	@RequestMapping(value="/main/qna/write.do",method=RequestMethod.POST)
 	public String readData(@ModelAttribute QnaDto dto)
 	{
-		service.qnaInsert(dto);	
+		qservice.qnaInsert(dto);	
 		return "redirect:list.do";
 	}
 	
@@ -139,25 +139,25 @@ public class QnaController {
 			@RequestParam String pageNum)
 	{
 		ModelAndView model=new ModelAndView();
-		QnaDto dto=service.getData(num);
-		model.addObject("dto",dto);
+		QnaDto qdto=qservice.getData(num);
+		model.addObject("qdto",qdto);
 		model.addObject("pageNum",pageNum);
 		model.setViewName("/main/service/qnaupdateform");
 		return model;
 	}
 	
 	@RequestMapping(value="/main/qna/update1.do",method=RequestMethod.POST)
-	public String update1(@ModelAttribute QnaDto dto,
+	public String update1(@ModelAttribute QnaDto qdto,
 			@RequestParam String pageNum)
 	{
-		service.qnaUpdate(dto);		
-		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
+		qservice.qnaUpdate(qdto);		
+		return "redirect:content.do?num="+qdto.getNum()+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping(value="/main/qna/update2.do",method=RequestMethod.POST)
-	public String update2(@ModelAttribute QnaDto dto)
+	public String update2(@ModelAttribute QnaDto qdto)
 	{
-		service.qnaUpdate(dto);		
+		qservice.qnaUpdate(qdto);		
 		return "redirect:list.do";
 	}
 
@@ -165,7 +165,8 @@ public class QnaController {
 	public String adminqnadelete(@PathVariable String mainadmin,@RequestParam int num,@RequestParam String pageNum)
 	{
 		//삭제
-		service.qnaDelete(num);
+		qservice.qnaDelete(num);
+		reqservice.reqnaDelete(num);
 		
 		if(mainadmin.equals("main")) { 
 			return "redirect:list.do?pageNum="+pageNum;// 일반 모드일 경우 

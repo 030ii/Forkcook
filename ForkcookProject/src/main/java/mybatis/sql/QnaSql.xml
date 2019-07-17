@@ -23,6 +23,9 @@
 		subject=#{subject},content=#{content},writeday=sysdate
 		 where num=#{num}
 	</update>
+<!-- 	<update id="stateUpdate" parameterType="qdto">
+		update qna set qnastate=2 where num=#{num}
+	</update> --> <!-- qnastate 2로 바꾸는 쿼리문 -->
 	<delete id="qnaDelete" parameterType="int">
 		delete from qna where num=#{num}
 	</delete>

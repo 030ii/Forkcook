@@ -14,8 +14,8 @@ public class QnaDao extends SqlSessionDaoSupport{
 		return n;
 	}
 	
-	public void qnaInsert(QnaDto dto){
-		getSqlSession().insert("qna.qnaInsert",dto);
+	public void qnaInsert(QnaDto qdto){
+		getSqlSession().insert("qna.qnaInsert",qdto);
 	}
 	
 	public List<QnaDto> getList(int start,int end){
@@ -30,10 +30,10 @@ public class QnaDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("qna.qnaSelectData",num); // 바로 리턴해도 됨 
 	}
 	
-	public void qnaUpdate(QnaDto dto){
-		getSqlSession().update("qna.qnaUpdate",dto);
+	public void qnaUpdate(QnaDto qdto){
+		getSqlSession().update("qna.qnaUpdate",qdto);
 	}
-	
+
 	public void qnaDelete(int num){
 		getSqlSession().delete("qna.qnaDelete",num);
 	}
