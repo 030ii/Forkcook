@@ -23,10 +23,10 @@ public class CartService {
 		return dao.getList();
 	}
 	
-	public void countUpdate(int num){
-		dao.countUpdate(num);
+	public void countUpdate(CartDto dto){
+		dao.countUpdate(dto);
 	}
-	public int countSelect(int num)
+	public CartDto countSelect(int num)
 	{
 		return dao.countSelect(num);
 	}

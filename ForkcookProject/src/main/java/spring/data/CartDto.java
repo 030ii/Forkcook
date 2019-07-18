@@ -6,9 +6,17 @@ public class CartDto {
 	private int snum;
 	private int mnum;
 	private String menuname;
+	private String mprice;
 	private int mcount;
 	private String mtotalprice;
 	
+	
+	public String getMprice() {
+		return mprice;
+	}
+	public void setMprice(String mprice) {
+		this.mprice = mprice;
+	}
 	public int getNum() {
 		return num;
 	}

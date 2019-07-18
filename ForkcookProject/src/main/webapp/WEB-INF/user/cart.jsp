@@ -67,15 +67,17 @@ $(function(){
 			<th>메뉴</th>
 			<th>수량</th>
 			<th>가격</th>
+			<th>해당 메뉴 총 가격</th>
 			<th>삭제</th>
 		</tr>
 		
 		<c:forEach var="dto" items="${list}" varStatus="status">
-		<tr>
+		<tr class="cartitem">
 			<td>
 				<div class="checkBox">
-  	  			<input type="checkbox" name="chkBox" class="chkBox" data-num="${dto.num}">
-  	  			</div>${dto.menuname}
+  	  				<input type="checkbox" name="chkBox" class="chkBox" data-num="${dto.num}">
+  	  			</div>
+  	  			${dto.menuname}
   	  		</td>
 			<td>
 			  <div class="count">
@@ -85,7 +87,8 @@ $(function(){
 				<button type="button" class="plus">+</button>
 			  </div>
 			</td>
-			<td>${dto.mtotalprice}</td>
+			<td class="price">${dto.mprice}</td>
+			<td class="mtotalprice" data-mnum="${dto.mnum}">${dto.mtotalprice}</td>
 			<td>
 				<button type="button" onclick="location.href='delete.do?num=${dto.num}'">삭제</button>
 			</td>
@@ -100,35 +103,32 @@ $(function(){
 //갯수 조절 버튼
 $(function(){
 	$(".plus").click(function(){
-		var mcount = $(this).parent('.count').children('.mcount');
-		var mcountnum = parseInt(mcount.text());
-		mcountnum++;
-		mcount.text(mcountnum);
-		
-		var num=$("span.mcount").data("num");
-		alert(num);
-		var n=$("span.mcount");
+		var mcount = $(this).parent('div.count').children('span.mcount');
+		var mtotalprice = $(this).parents('tr.cartitem').find('td.mtotalprice');
+		var num = mcount.data("num");
+		var mnum = mtotalprice.data("mnum");
+		console.log(mnum);
 		
 		$.ajax({
 			type:'get',
-			url:"update.aj",
-			data:{"num":num},
-			dataType:"xml",
+			url:"updatemplus.aj",
+			data:{"num":num,"mnum":mnum},
+			dataType:"text",
 			success:function(redata){
-				var mcount=$(redata).find("mcount").text();
-				console.log(mcount);
-				$(n).text(mcount);
+				var result = JSON.parse(redata);
+				//console.log(result.mcount);
+				//console.log(result.mtotalprice);
+				
+				mcount.text(result.mcount);
+				mtotalprice.text(result.mtotalprice);
 			},
 			error:function(err){
-				alert("errorcode:"+err.status);//에러코드 출력
-				//200: 응답페이지 오류 : chudata.jsp문제
-				//404: 매핑오류거나 jsp를 못찾거나
-				//500: 문법오류
+				alert("errorcode:"+err.status+"message:"+err.responseText);
 			}
 		});
 	});
 	$(".minus").click(function(){
-		var mcount = $(this).parent('.count').children('.mcount');
+		var mcount = $(this).parent('div.count').children('span.mcount');
 		console.log(mcount);
 		var mcountnum = parseInt(mcount.text());
 		mcountnum--;

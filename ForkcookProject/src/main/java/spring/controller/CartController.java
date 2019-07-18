@@ -2,11 +2,14 @@ package spring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.CartDto;
@@ -33,17 +36,23 @@ public class CartController {
 	}
 	
 	//장바구니 수량
-	@RequestMapping("/main/cart/update.aj")
-	public ModelAndView chu(@RequestParam int num)
+	@RequestMapping(value="/main/cart/updatemplus.aj", method=RequestMethod.GET)
+	public @ResponseBody String countPlus(
+			HttpServletRequest req, 
+			@RequestParam("num") int num,
+			@RequestParam("mnum") int mnum
+			)
 	{
-		System.out.println("num="+num);
-		service.countUpdate(num);
-		int mcount=service.countSelect(num);
+		CartDto dtobefore = new CartDto();
+		dtobefore.setNum(num);
+		dtobefore.setMnum(mnum);
+		service.countUpdate(dtobefore); // mcount(수량), mtotalcount(메뉴별 총 금액) 증가
 		
-		ModelAndView model=new ModelAndView();
-		model.addObject("mcount",mcount);
-		model.setViewName("user/cartdata");
-		return model;
+		CartDto dtoafter =service.countSelect(num); // 증가된 mcount(수량), mtotalcount(메뉴별 총 금액) 가져오기
+		int mcount = dtoafter.getMcount();
+		String mtotalprice = dtoafter.getMtotalprice();
+		
+		return "{\"mcount\":"+mcount+",\"mtotalprice\":"+mtotalprice+"}";
 	}
 	
 	@RequestMapping(value="/main/cart/insert.do",method=RequestMethod.GET)

@@ -5,16 +5,18 @@
 		select count(*) from cart
 	</select>
 	<select id="cartList" resultType="cdto">
-		select c.num, c.unum, c.snum, m.name as menuname,c.mcount, c.mtotalprice
+		select c.num, c.unum, c.mnum, c.snum, m.name as menuname, m.price as mprice, c.mcount, c.mtotalprice
 		from menu m, cart c
 		where c.mnum = m.num
 	</select>
 	<!-- 장바구니에서 + - 클릭하면 수량 변함 mtotalprice=2  -->
-	<update id="countUpdate" parameterType="int">
-		update cart set mcount=mcount+1, mtotalprice+1 where num=#{num}
+	<update id="countUpdate" parameterType="cdto">
+		update cart
+		set mcount=mcount+1, mtotalprice=mtotalprice+(select price from menu where num=#{mnum})
+		where num=#{num}
 	</update>
-	<select id="countSelect" parameterType="int" resultType="int">
-		select mcount from cart where num=#{num}
+	<select id="countSelect" parameterType="int" resultType="cdto">
+		select mcount,mtotalprice from cart where num=#{num}
 	</select>
 	<!-- 메뉴에서 카트로 음식 넣기 -->
 	<insert id="cartInsert" parameterType="cdto">

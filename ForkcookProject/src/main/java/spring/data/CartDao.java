@@ -16,10 +16,10 @@ public class CartDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("cart.cartList");
 	}
 	
-	public void countUpdate(int num){
-		getSqlSession().update("cart.countUpdate",num);
+	public void countUpdate(CartDto dto){
+		getSqlSession().update("cart.countUpdate",dto);
 	}
-	public int countSelect(int num)
+	public CartDto countSelect(int num)
 	{
 		return getSqlSession().selectOne("cart.countSelect",num);
 	}
