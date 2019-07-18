@@ -23,9 +23,14 @@ public class CartService {
 		return dao.getList();
 	}
 	
-	public void countUpdate(CartDto dto){
-		dao.countUpdate(dto);
+	public void countUpdatePlus(CartDto dto){
+		dao.countUpdatePlus(dto);
 	}
+	
+	public void countUpdateMinus(CartDto dto){
+		dao.countUpdateMinus(dto);
+	}
+	
 	public CartDto countSelect(int num)
 	{
 		return dao.countSelect(num);
