@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -83,17 +84,21 @@ public class OrderController {
 	//************************가맹점용************************//
 	// 가맹점 -> 현장 주문 관리 -> 주문 목록 페이지로 이동
 	@RequestMapping("/admin/now/list.do")
+//	@RequestMapping (value = {"login.do", "login2.do"} )
 	public ModelAndView nowlist(){
+		// TODO : 아직 가맹점 로그인 세션 저장을 안하므로 일단 임의로 snum을 3으로 세팅
+		int snum = 3;
+		
 		ModelAndView model = new ModelAndView();
 		
 		// DB에서 데이터 가져오기
-//		int totalCount = service.getTotalCount();
-//		List<OrderDto> list = service.getList();
-//		
+		int totalCount = service.getNowTotalCount(snum);
+		List<OrderDto> list = service.getList();
+
 //		// 가져온 데이터 저장
-//		model.addObject("totalCount", totalCount);
-//		model.addObject("list",list);
-		
+		model.addObject("totalCount", totalCount);
+		model.addObject("list",list);
+					
 		model.setViewName("/admin/partner/now");
 		return model;
 	}
