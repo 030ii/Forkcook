@@ -81,10 +81,12 @@ $(function(){
   	  		</td>
 			<td>
 			  <div class="count">
-				<button type="button" class="minus">-</button>
+				<!-- <button type="button" class="minus">-</button> -->
+				<img src="${root}/image/menu-minus.png" class="minus" style="width: 30px;">
 				<input type="hidden" name="num" value="${dto.num}"/>
 				<span class="mcount" data-num="${dto.num}">${dto.mcount }</span>
-				<button type="button" class="plus">+</button>
+				<img src="${root}/image/menu-plus.png" class="plus" style="width: 30px;">
+				<!-- <button type="button" class="plus">+</button> -->
 			  </div>
 			</td>
 			<td class="price">${dto.mprice}</td>
@@ -100,18 +102,18 @@ $(function(){
 <button type="button" onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
 
 <script type="text/javascript">
-//갯수 조절 버튼
+//수량 조절
 $(function(){
 	$(".plus").click(function(){
 		var mcount = $(this).parent('div.count').children('span.mcount');
 		var mtotalprice = $(this).parents('tr.cartitem').find('td.mtotalprice');
 		var num = mcount.data("num");
 		var mnum = mtotalprice.data("mnum");
-		console.log(mnum);
+		//console.log(mnum);
 		
 		$.ajax({
 			type:'get',
-			url:"updatemplus.aj",
+			url:"updateplus.aj",
 			data:{"num":num,"mnum":mnum},
 			dataType:"text",
 			success:function(redata){
@@ -129,14 +131,32 @@ $(function(){
 	});
 	$(".minus").click(function(){
 		var mcount = $(this).parent('div.count').children('span.mcount');
-		console.log(mcount);
+		var mtotalprice = $(this).parents('tr.cartitem').find('td.mtotalprice');
+		var num = mcount.data("num");
+		var mnum = mtotalprice.data("mnum");
 		var mcountnum = parseInt(mcount.text());
-		mcountnum--;
-		if(mcountnum<1){
-		mcount.text(1);
+		//console.log(mcountnum);
+		
+		if(mcountnum>1){
+			$.ajax({
+				type:'get',
+				url:"updateminus.aj",
+				data:{"num":num,"mnum":mnum},
+				dataType:"text",
+				success:function(redata){
+					var result = JSON.parse(redata);
+					
+					mcount.text(result.mcount);
+					mtotalprice.text(result.mtotalprice);
+				},
+				error:function(err){
+					alert("errorcode:"+err.status+"message:"+err.responseText);
+				}
+			});
 		}else{
-			mcount.text(mcountnum);
+			return;
 		}
+		
 	});
 });
 
@@ -153,8 +173,6 @@ $("#allCheck").click(function(){
 $(".chkBox").click(function(){
 	$("#allCheck").prop("checked",false);
 });
-
-
 </script>
 </body>
 </html>

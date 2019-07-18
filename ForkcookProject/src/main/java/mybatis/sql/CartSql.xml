@@ -9,10 +9,15 @@
 		from menu m, cart c
 		where c.mnum = m.num
 	</select>
-	<!-- 장바구니에서 + - 클릭하면 수량 변함 mtotalprice=2  -->
-	<update id="countUpdate" parameterType="cdto">
+	<!-- 장바구니에서 + - 클릭하면 수량 변함 -->
+	<update id="countUpdatePlus" parameterType="cdto">
 		update cart
 		set mcount=mcount+1, mtotalprice=mtotalprice+(select price from menu where num=#{mnum})
+		where num=#{num}
+	</update>
+	<update id="countUpdateMinus" parameterType="cdto">
+		update cart
+		set mcount=mcount-1, mtotalprice=mtotalprice-(select price from menu where num=#{mnum})
 		where num=#{num}
 	</update>
 	<select id="countSelect" parameterType="int" resultType="cdto">
