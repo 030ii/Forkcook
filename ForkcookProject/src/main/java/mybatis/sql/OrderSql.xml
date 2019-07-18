@@ -4,6 +4,18 @@
 	<select id="orderTotalCount" resultType="int">
 		select count(distinct ordernum) from orders
 	</select>
+	<select id="orderNowTotalCount" parameterType="int" resultType="int">
+		select count(distinct ordernum) from orders 
+		where ordertype = 'A' and snum = #{snum}
+	</select>
+	<select id="orderReserveTotalCount" parameterType="int" resultType="int">
+		select count(distinct ordernum) from orders
+		where ordertype = 'B' and snum = #{snum}
+	</select>
+	<select id="orderFinishTotalCount" parameterType="int" resultType="int">
+		select count(distinct ordernum) from orders
+		where orderstate = 4 and snum = #{snum}
+	</select>
 	<insert id="orderInsert">
 	
 	</insert>
@@ -11,7 +23,7 @@
 	
 	</update>
 	<select id="orderList" resultType="odto">
-		select distinct o.ordernum, u.name as uname, u.phone as uphone, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	
+		select distinct o.ordernum, u.name as uname, u.phone as uphone, o.snum, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	
 		from orders o, users u, store s, (select o.ordernum, sum(o.mtotalprice) as totalprice from orders o group by o.ordernum) g
 		where o.unum = u.num and o.snum = s.num and o.ordernum = g.ordernum order by o.orderdate desc
 	</select>

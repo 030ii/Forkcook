@@ -17,6 +17,18 @@ public class OrderService {
 		return dao.getTotalCount();
 	}
 	
+	public int getNowTotalCount(int snum){
+		return dao.getNowTotalCount(snum);
+	}
+	
+	public int getReserveTotalCount(int snum){
+		return dao.getReserveTotalCount(snum);
+	}
+	
+	public int getFinishTotalCount(int snum){
+		return dao.getFinishTotalCount(snum);
+	}
+	
 	public List<OrderDto> getList(){
 		return dao.getList();
 	}

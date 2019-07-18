@@ -11,6 +11,18 @@ public class OrderDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("order.orderTotalCount");
 	}
 	
+	public int getNowTotalCount(int snum){
+		return getSqlSession().selectOne("order.orderNowTotalCount", snum);
+	}
+	
+	public int getReserveTotalCount(int snum){
+		return getSqlSession().selectOne("order.orderReserveTotalCount", snum);
+	}
+	
+	public int getFinishTotalCount(int snum){
+		return getSqlSession().selectOne("order.orderFinishTotalCount", snum);
+	}
+	
 	public List<OrderDto> getList(){
 		return getSqlSession().selectList("order.orderList");
 	}
