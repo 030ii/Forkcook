@@ -37,8 +37,6 @@
 </c:if>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" class="btn btn-info btn-sm"
-	  onclick="history.back()">뒤로가기</button>
-<button type="button" class="btn btn-info btn-sm"
 	  onclick="location.href='${root}/main/qna/list.do'">목록</button>
 <c:if test="${qdto.qnastate==1}">
 <button type="button" class="btn btn-success btn-sm"
