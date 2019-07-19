@@ -8,6 +8,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+// 주문 삭제
+function deleteOrder(ordernum){
+	var result = confirm('해당 주문을 DB에서도 지웁니다. 정말 삭제하시겠습니까?'); 
+	if(result) { //yes 
+	    $.ajax({
+	        url: 'delete.do?ordernum='+ordernum,
+	        method: 'DELETE',
+	        success: function () {
+	            location.reload(); // 새로고침
+	        },
+	        error: function (error) {
+	            alert('주문 취소에 실패했습니다. 관리자에게 문의해주세요.');
+	        }
+	    });
+    }
+}
+</script>
 </head>
 <body>
 	관지라 주문 페이지<br>
@@ -56,7 +74,7 @@
 				</td>
 				<td>
 					<button type="button" onclick="location.href='content.do?ordernum=${dto.ordernum}'">상세보기</button>
-					<button type="button" onclick="location.href='delete.do?ordernum=${dto.ordernum}'">삭제</button>
+					<button type="button" onclick="deleteOrder(${dto.ordernum})">주문 삭제</button>
 				</td>
 			</tr>
 		</c:forEach>

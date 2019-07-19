@@ -2,11 +2,16 @@ package spring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.OrderDto;
@@ -73,7 +78,7 @@ public class OrderController {
 		return model;
 	}
 	
-	// 관리자 -> 주문 관리 -> 주문 상세보기 페이지로 이동
+	// 관리자&가맹점주 -> 주문 상세보기 -> 주문 상세보기 페이지로 이동
 	@RequestMapping("/admin/order/content.do")
 	public ModelAndView content(@RequestParam String ordernum){
 		ModelAndView model = new ModelAndView();
@@ -87,33 +92,18 @@ public class OrderController {
 		return model;
 	}
 	
-	// 관리자 -> 주문 관리 -> DB에 메뉴 삭제하고 목록으로 redirect
-	@RequestMapping("/admin/order/delete.do")
-	public String delete(@RequestParam String ordernum){
-		// 삭제
-		service.orderDelete(ordernum);
-		return "redirect:list.do"; // 목록 새로고침
-	}	
+//	// 관리자&가맹점주 -> 주문 삭제 -> DB에 메뉴 삭제하고 목록으로 redirect
+//	@RequestMapping("/admin/order/delete.do")
+//	public String delete(@RequestParam String ordernum){
+//		// 삭제
+//		service.orderDelete(ordernum);
+//		return "redirect:list.do"; // 목록 새로고침
+//	}	
 	
-	//************************가맹점용************************//
-	// 가맹점 -> 현장 주문 관리 -> 주문 목록 페이지로 이동
-//	@RequestMapping("/admin/now/list.do")
-////	@RequestMapping (value = {"login.do", "login2.do"} )
-//	public ModelAndView nowlist(){
-//		
-//		
-////		requesturi
-//		
-//		ModelAndView model = new ModelAndView();
-//		
-//		// DB에서 데이터 가져오기
-//		List<OrderDto> list = service.getList();
-//
-////		// 가져온 데이터 저장
-//		model.addObject("totalCount", totalCount);
-//		model.addObject("list",list);
-//					
-//		model.setViewName("/admin/partner/now");
-//		return model;
-//	}
+	@RequestMapping(value="/admin/order/delete.do",method=RequestMethod.DELETE)
+	@CrossOrigin
+	public @ResponseBody void dataDelete(HttpServletRequest req,@RequestParam String ordernum){
+		System.out.println("=------------------");
+		service.orderDelete(ordernum);
+	}
 }

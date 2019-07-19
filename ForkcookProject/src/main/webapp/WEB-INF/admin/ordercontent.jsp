@@ -8,16 +8,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-$(function() {
-   $("#deleteBtn").click(function() {
-	   var result = confirm('해당 주문을 DB에서도 지웁니다. 정말 삭제하시겠습니까?'); 
-	   if(result) { //yes 
-		   var ordernum = $('input:hidden[name=ordernum]').val();
-		   location.href='delete.do?ordernum='+ordernum;
-	   }
-  });
-});
+<script type="text/javascript">
+// 주문 삭제
+function deleteOrder(ordernum){
+	var result = confirm('해당 주문을 DB에서도 지웁니다. 정말 삭제하시겠습니까?'); 
+	if(result) { //yes 
+	    $.ajax({
+	        url: 'delete.do?ordernum='+ordernum,
+	        method: 'DELETE',
+	        success: function () {
+	            window.location.href = "list.do"; // 해당 페이지로 이동
+	        },
+	        error: function (error) {
+	            alert('주문 취소에 실패했습니다. 관리자에게 문의해주세요.');
+	        }
+	    });
+    }
+}
 </script>
 </head>
 <body>
@@ -59,8 +66,7 @@ $(function() {
 	totalcount(총 수량) : ${ld.totalcount}개<br>
 	totalprice(총 금액) : ${ld.totalprice}원<br>
 </div>
-<input type="hidden" name="ordernum" value="${ld.ordernum}"/>
-<button type="button" onclick="location.href='list.do'">목록</button>
-<button type="button" id="deleteBtn">해당 주문 취소(DB 삭제)</button>
+<button type="button" onclick="history.back()">목록</button>
+<button type="button" onclick="deleteOrder(${ld.ordernum})">해당 주문 삭제</button><!-- TODO : 관리자만 해당 버튼 보이도록 하기 -->
 </body>
 </html>
