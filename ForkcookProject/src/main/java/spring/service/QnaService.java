@@ -37,12 +37,14 @@ public class QnaService {
 		dao.qnaDelete(num);
 	}
 	
-	public void qnastateUpdate(int qnum)
+	public void qnastateUpdate1(int qnum)
 	{
-		System.out.println("----------5");
-		dao.qnastateUpdate(qnum);
-
-		System.out.println("----------6");
+		dao.qnastateUpdate1(qnum);
+	}
+	
+	public void qnastateUpdate2(int qnum)
+	{
+		dao.qnastateUpdate2(qnum);
 	}
 	
 	public void qnaUpdate(QnaDto qdto)	

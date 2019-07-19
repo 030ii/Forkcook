@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.data.QnaDto;
 import spring.data.ReqnaDto;
 import spring.service.QnaService;
 import spring.service.ReqnaService;
@@ -34,30 +35,37 @@ public class ReqnaController {
 	public String reqnawrite(@ModelAttribute ReqnaDto reqdto,@RequestParam int pageNum)
 	{
 		int qnum = reqdto.getQnum();
-		System.out.println(qnum);
 		reqservice.reqnaInsert(reqdto);
-		qservice.qnastateUpdate(qnum);
-		return "redirect:content.do?num="+qnum+"&pageNum="+pageNum;
+		qservice.qnastateUpdate1(qnum);
+		return "redirect:content.do?qnum="+qnum+"&pageNum="+pageNum;
 	}
 	
-	@RequestMapping("/admin/qna/requpdate.do")
-	public ModelAndView reqnaupdateForm(@RequestParam int num,@RequestParam String pageNum)
+	@RequestMapping("/admin/qna/requpdateform.do")
+	public ModelAndView reqnaupdateForm(@RequestParam int reqnum,@RequestParam String pageNum)
 	{
-		System.out.println("2222222222");
 		ModelAndView model=new ModelAndView();
-		ReqnaDto reqdto=reqservice.getData(num);
+		ReqnaDto reqdto=reqservice.getData(reqnum);
 		model.addObject("reqdto",reqdto);
 		model.addObject("pageNum", pageNum);
-		model.setViewName("/admin/admin/reqnaupdate");
+		model.setViewName("/admin/admin/reqnaupdateform");
 		return model;
 	}
 	
 	@RequestMapping(value="/admin/qna/requpdate.do",method=RequestMethod.POST)
 	public String reqnaUpdate(@ModelAttribute ReqnaDto reqdto,@RequestParam String pageNum)
 	{
-		System.out.println("--------------1");
 		reqservice.reqnaUpdate(reqdto);
-		return "redirect:content.do?num="+reqdto.getQnum()+"&pageNum="+pageNum;
+		return "redirect:content.do?qnum="+reqdto.getQnum()+"&pageNum="+pageNum;
+	}
+	
+	@RequestMapping("/admin/qna/reqdelete.do")
+	public String reqnadelete(@RequestParam int reqnum,@RequestParam String pageNum,@ModelAttribute QnaDto qdto)
+	{
+		//삭제
+		int qnum=qdto.getNum();
+		qservice.qnastateUpdate2(qnum);
+		//reqservice.reqnaDelete(reqnum);
+		return "redirect:list.do?pageNum="+pageNum;
 	}
 	
 	// 관리자 -> 답변삭제

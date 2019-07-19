@@ -100,9 +100,9 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/{mainadmin}/qna/content.do")
-	public String content(@PathVariable String mainadmin,Model model,@RequestParam int num,@RequestParam int pageNum){
+	public String content(@PathVariable String mainadmin,Model model,@RequestParam int qnum,@RequestParam int pageNum){
 		//데이타 가져오기
-		QnaDto qdto=qservice.getData(num);
+		QnaDto qdto=qservice.getData(qnum);
 		//model 에 저장
 		model.addAttribute("qdto", qdto);
 		model.addAttribute("pageNum", pageNum);	
@@ -135,11 +135,11 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/main/qna/updateform.do")
-	public ModelAndView updateForm(@RequestParam int num,
+	public ModelAndView updateForm(@RequestParam int qnum,
 			@RequestParam String pageNum)
 	{
 		ModelAndView model=new ModelAndView();
-		QnaDto qdto=qservice.getData(num);
+		QnaDto qdto=qservice.getData(qnum);
 		model.addObject("qdto",qdto);
 		model.addObject("pageNum",pageNum);
 		model.setViewName("/main/service/qnaupdateform");
@@ -151,7 +151,7 @@ public class QnaController {
 			@RequestParam String pageNum)
 	{
 		qservice.qnaUpdate(qdto);		
-		return "redirect:content.do?num="+qdto.getNum()+"&pageNum="+pageNum;
+		return "redirect:content.do?qnum="+qdto.getNum()+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping(value="/main/qna/update2.do",method=RequestMethod.POST)
@@ -163,19 +163,28 @@ public class QnaController {
 
 	// 일반 사용자 -> 문의삭제
 	// 관리자 -> 문의삭제 
-	@RequestMapping("/{mainadmin}/qna/delete.do")
-	public String adminqnadelete(@PathVariable String mainadmin,@RequestParam int num,@RequestParam String pageNum)
+	/*@RequestMapping("/{mainadmin}/qna/delete.do")
+	public String adminqnadelete(@PathVariable String mainadmin,@RequestParam int qnum,@RequestParam String pageNum,@RequestParam int reqnum)
 	{
 		//삭제
-//		reqservice.reqnaDelete(num);
-		qservice.qnaDelete(num);
+		reqservice.reqnaDelete(reqnum);
+		qservice.qnaDelete(qnum);
 	
 		if(mainadmin.equals("main")) { 
 			return "redirect:list.do?pageNum="+pageNum;// 일반 모드일 경우 
 		}
-		/*else if(mainadmin.equals("admin")) {*/ 			// 관리자 모드일 경우
+		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
 		else {
 			return "redirect:list.do?pageNum="+pageNum; 	  // 관리자 모드의 메뉴 관리(목록) 화면으로 이동
 		}
+	}*/
+	
+	@RequestMapping("/main/qna/delete.do")
+	public String delete(@RequestParam int qnum,@RequestParam String pageNum)
+	{
+		//삭제
+		qservice.qnaDelete(qnum);
+		//목록으로 이동(보던 페이지로)
+		return "redirect:list.do?pageNum="+pageNum;
 	}
 }

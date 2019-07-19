@@ -23,9 +23,9 @@ public class ReqnaService {
 		dao.reqnaInsert(reqdto);
 	}
 	
-	public ReqnaDto getData(int num)
+	public ReqnaDto getData(int reqnum)
 	{
-		return dao.getData(num);
+		return dao.getData(reqnum);
 	}
 	
 	public void reqnaUpdate(ReqnaDto reqdto)	
@@ -33,13 +33,13 @@ public class ReqnaService {
 		dao.reqnaUpdate(reqdto);
 	}
 	
-	public void reqnaDelete(int num)
+	public void reqnaDelete(int reqnum)
 	{
-		dao.reqnaDelete(num);
+		dao.reqnaDelete(reqnum);
 	}
 	
-	public List<ReqnaDto> getReqnaList(int qnum){
+	public List<ReqnaDto> getReqnaList(int reqnum){
 		
-		return dao.getReqnaList(qnum);
+		return dao.getReqnaList(reqnum);
 	}
 }

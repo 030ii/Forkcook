@@ -23,8 +23,11 @@
 		subject=#{subject},content=#{content},writeday=sysdate
 		 where num=#{num}
 	</update>
- 	<update id="qnastateUpdate" parameterType="int">
+ 	<update id="qnastateUpdate1" parameterType="int">
 		update qna set qnastate=2 where num=#{num}
+	</update>
+	<update id="qnastateUpdate2" parameterType="int">
+		update qna set qnastate=1 where num=#{num}
 	</update> 
 	<delete id="qnaDelete" parameterType="int">
 		delete from qna where num=#{num}

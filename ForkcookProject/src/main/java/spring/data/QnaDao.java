@@ -34,12 +34,12 @@ public class QnaDao extends SqlSessionDaoSupport{
 		getSqlSession().update("qna.qnaUpdate",qdto);
 	}
 
-	public void qnastateUpdate(int num){
-
-		System.out.println("------3");
-		getSqlSession().update("qna.qnastateUpdate",num);
-
-		System.out.println("------4");
+	public void qnastateUpdate1(int num){
+		getSqlSession().update("qna.qnastateUpdate1",num);
+	}
+	
+	public void qnastateUpdate2(int num){
+		getSqlSession().update("qna.qnastateUpdate2",num);
 	}
 	
 	public void qnaDelete(int num){

@@ -13,7 +13,8 @@
 	<b>관리자 문의 관리 페이지</b>
 	<br><br>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-매장별 보기 : <a href="${root}/admin/qna/list.do">전체</a> |
+			매장별 보기 : 
+			<a href="${root}/admin/qna/list.do">전체</a> |
  			<a href="">강남점</a> |
  			<a href="">분당점</a> |
  			<a href="">부산점</a>
@@ -30,43 +31,43 @@
 		<c:forEach var="qdto" items="${qlist}" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
-				<td><a href="content.do?num=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
+				<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
 				<td>${qdto.unum}</td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 				<td>
 					<c:if test="${qdto.qnastate==1}">
-						<button type="button" onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+						<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
 					</c:if>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<!-- 페이지 번호 출력 -->
-<div style="width: 600px;text-align: center;">
-	<ul  class="pagination">
-		<c:if test="${startPage>1}">
-			<li>
-				<a href="list.do?pageNum=${startPage-1}">◀</a>
-			</li>
-		</c:if>
-		<c:forEach var="pp" begin="${startPage}" end="${endPage}">
-			<li>
-			  <c:if test="${pp==currentPage}">
-				<a href="list.do?pageNum=${pp}">${pp}</a>
-			  </c:if>
-			  <c:if test="${pp!=currentPage}">
-				<a href="list.do?pageNum=${pp}">${pp}</a>
-			  </c:if>	
-			</li>
-		</c:forEach>
-		<c:if test="${endPage<totalPage}">	
-			<li>
-				<a href="list.do?pageNum=${endPage+1}">▶</a>
-			</li>
-		</c:if>
-	</ul>
-</div>
-<br>
+	<div style="width: 600px;text-align: center;">
+		<ul  class="pagination">
+			<c:if test="${startPage>1}">
+				<li>
+					<a href="list.do?pageNum=${startPage-1}">◀</a>
+				</li>
+			</c:if>
+			<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+				<li>
+				  <c:if test="${pp==currentPage}">
+					<a href="list.do?pageNum=${pp}">${pp}</a>
+				  </c:if>
+				  <c:if test="${pp!=currentPage}">
+					<a href="list.do?pageNum=${pp}">${pp}</a>
+				  </c:if>	
+				</li>
+			</c:forEach>
+			<c:if test="${endPage<totalPage}">	
+				<li>
+					<a href="list.do?pageNum=${endPage+1}">▶</a>
+				</li>
+			</c:if>
+		</ul>
+	</div>
+	<br>
 </body>
 </html>

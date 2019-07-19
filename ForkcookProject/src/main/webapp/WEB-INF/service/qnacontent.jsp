@@ -41,8 +41,8 @@
 <button type="button" class="btn btn-info btn-sm"
 	  onclick="location.href='${root}/main/qna/list.do'">목록</button>
 <button type="button" class="btn btn-success btn-sm"
-	  onclick="location.href='updateform.do?num=${qdto.num}&pageNum=${pageNum}'">수정</button>
+	  onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
 <button type="button" class="btn btn-danger btn-sm"
-	  onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+	  onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
 </body>
 </html>

@@ -29,20 +29,20 @@ public class ReqnaDao extends SqlSessionDaoSupport {
 	}
 	
 	
-	public ReqnaDto getData(int num){
-		return getSqlSession().selectOne("reqna.reqnaSelectData",num); // 바로 리턴해도 됨 
+	public ReqnaDto getData(int reqnum){
+		return getSqlSession().selectOne("reqna.reqnaSelectData",reqnum); // 바로 리턴해도 됨 
 	}
 	
 	public void reqnaUpdate(ReqnaDto reqdto){
 		getSqlSession().update("reqna.reqnaUpdate",reqdto);
 	}
 	
-	public void reqnaDelete(int num){
-		getSqlSession().delete("reqna.reqnaDelete", num);
+	public void reqnaDelete(int reqnum){
+		getSqlSession().delete("reqna.reqnaDelete", reqnum);
 	}
 	
-	public List<ReqnaDto> getReqnaList(int qnum){
+	public List<ReqnaDto> getReqnaList(int reqnum){
 		
-		return getSqlSession().selectList("reqna.reqnaSelectData2",qnum);
+		return getSqlSession().selectList("reqna.reqnaSelectData2",reqnum);
 	}
 }

@@ -30,14 +30,14 @@
 		<c:forEach var="qdto" items="${qlist}" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
-				<td><a href="content.do?num=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
+				<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
 				<td>${qdto.unum}</td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 				<td>
 					<button type="button"
-	  					onclick="location.href='updateform.do?num=${qdto.num}&pageNum=${pageNum}'">수정</button>
-					<button type="button" onclick="location.href='delete.do?num=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+	  					onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
+					<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
 				</td>
 			</tr>
 		</c:forEach>
