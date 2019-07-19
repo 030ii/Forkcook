@@ -25,7 +25,7 @@
 			<th>제목</th>
 			<th>매장</th>
 			<th>날짜</th>
-			<th>삭제</th>
+			<th>수정/삭제</th>
 		</tr>
 		<c:forEach var="qdto" items="${qlist}" varStatus="status">
 			<tr>
@@ -35,9 +35,11 @@
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 				<td>
-					<button type="button"
-	  					onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
-					<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+					<c:if test="${qdto.qnastate==1}">
+						<button type="button"
+	  						onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
+						<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>

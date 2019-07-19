@@ -38,6 +38,8 @@
 		</div>
 	</c:if>
 	<button type="button" onclick="location.href='list.do'">목록</button>
+	<c:if test="${qdto.qnastate==1}">
 	<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">해당 문의 삭제하기</button>
+	</c:if>
 </body>
 </html>

@@ -20,7 +20,7 @@
 		<input type="hidden" name="qnum" value="${reqdto.qnum}">
 		<input type="hidden" name="num" value="${reqdto.num}">
 		<input type="hidden" name="pageNum" value="${pageNum}">
-		<button type="button" onclick="location.href='list.do'">취소하기(목록으로 가기)</button>
+		<button type="button" onclick="history.back()">취소하기(뒤로 가기)</button>
 		<button type="submit">수정하기(수정한문의글 페이지로 감)</button>
 	</form>
 </body>

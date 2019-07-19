@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.data.QnaDto;
 import spring.data.ReqnaDto;
 import spring.service.QnaService;
 import spring.service.ReqnaService;
@@ -59,16 +58,14 @@ public class ReqnaController {
 	}
 	
 	@RequestMapping("/admin/qna/reqdelete.do")
-	public String reqnadelete(@RequestParam int reqnum,@RequestParam String pageNum,@ModelAttribute QnaDto qdto)
+	public String reqnadelete(@RequestParam int reqnum,@RequestParam String pageNum)
 	{
 		//삭제
-		int qnum=qdto.getNum();
+		ReqnaDto reqdto=reqservice.getData(reqnum);
+		int qnum=reqdto.getQnum();
 		qservice.qnastateUpdate2(qnum);
-		//reqservice.reqnaDelete(reqnum);
-		return "redirect:list.do?pageNum="+pageNum;
+		reqservice.reqnaDelete(reqnum);
+		return "redirect:content.do?qnum="+reqdto.getQnum()+"&pageNum="+pageNum;
 	}
 	
-	// 관리자 -> 답변삭제
-	// /admin/qna/reqdelete.do	
-	// return "redirect:content.do?num="+qnum+"&pageNum="+pageNum;
 }

@@ -13,6 +13,10 @@ $(function() {
    $("#wkrtjd").click(function() {
 	     if($("#subject").val()!==""){
 	        alert("저장 되었습니다");
+	      } else {
+	    	  $("#subject").val()==""{
+	    		  alert("내용을 입력해주세요");
+	    	  }
 	      }
 
   });
