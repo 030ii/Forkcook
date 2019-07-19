@@ -11,5 +11,6 @@
 </head>
 <body>
 가맹점용 예약주문 관리 페이지
+총 ${totalCount}개의 주문이 있습니다.<br>
 </body>
 </html>

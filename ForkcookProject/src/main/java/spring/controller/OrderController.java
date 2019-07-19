@@ -40,21 +40,36 @@ public class OrderController {
 		return model;
 	}
 	
-	//************************관리자용************************//
-	// 관리자 -> 주문 관리 -> 주문 목록 페이지로 이동
-	@RequestMapping("/admin/order/list.do")
-	public ModelAndView list(){
-		ModelAndView model = new ModelAndView();
+	//************************관리자용&가맹점용************************//
+	// 관리자 -> 주문 관리(list.do) -> 주문 목록 페이지로 이동
+	// 가맹점 -> 현장주문 관리(now.do) -> 현장주문 목록 페이지로 이동
+	// 가맹점 -> 예약주문 관리(reserve.do) -> 예약주문 목록 페이지로 이동
+	// 가맹점 -> 완료주문 관리(finish.do) -> 완료주문 목록 페이지로 이동
+	//@RequestMapping("/admin/order/list.do")
+	@RequestMapping("/admin/order/{listpage}")
+	public ModelAndView list(@PathVariable String listpage){
+		int totalCount = 0;
+		int snum = 3; // TODO : 아직 가맹점 로그인 세션 저장을 안하므로 일단 임의로 snum을 3으로 세팅
 		
-		// DB에서 데이터 가져오기
-		int totalCount = service.getTotalCount();
+		ModelAndView model = new ModelAndView();
 		List<OrderDto> list = service.getList();
 		
-		// 가져온 데이터 저장
-		model.addObject("totalCount", totalCount);
-		model.addObject("list",list);
+		if(listpage.equals("list")){ 				// 관리자용 -> 주문 관리
+			totalCount = service.getTotalCount();
+			model.setViewName("/admin/admin/order");
+		} else if(listpage.equals("now")){ 			// 가맹점용 -> 현장주문 관리
+			totalCount = service.getNowTotalCount(snum);
+			model.setViewName("/admin/partner/now");
+		} else if(listpage.equals("reserve")){		// 가맹점용 -> 예약주문 관리
+			totalCount = service.getReserveTotalCount(snum);
+			model.setViewName("/admin/partner/reserve");
+		} else if(listpage.equals("finish")){		// 가맹점용 -> 완료주문 관리
+			totalCount = service.getFinishTotalCount(snum);
+			model.setViewName("/admin/partner/finish");
+		}
 		
-		model.setViewName("/admin/admin/order");
+		model.addObject("list",list);
+		model.addObject("totalCount", totalCount);
 		return model;
 	}
 	
@@ -62,7 +77,6 @@ public class OrderController {
 	@RequestMapping("/admin/order/content.do")
 	public ModelAndView content(@RequestParam String ordernum){
 		ModelAndView model = new ModelAndView();
-		
 		
 		OrderDto ld = service.getListData(ordernum); // 기본 주문 정보 데이터 가져오기
 		List<OrderDto> md = service.getMenuData(ordernum); // 메뉴 주문 정보 데이터 가져오기
@@ -83,23 +97,23 @@ public class OrderController {
 	
 	//************************가맹점용************************//
 	// 가맹점 -> 현장 주문 관리 -> 주문 목록 페이지로 이동
-	@RequestMapping("/admin/now/list.do")
-//	@RequestMapping (value = {"login.do", "login2.do"} )
-	public ModelAndView nowlist(){
-		// TODO : 아직 가맹점 로그인 세션 저장을 안하므로 일단 임의로 snum을 3으로 세팅
-		int snum = 3;
-		
-		ModelAndView model = new ModelAndView();
-		
-		// DB에서 데이터 가져오기
-		int totalCount = service.getNowTotalCount(snum);
-		List<OrderDto> list = service.getList();
-
-//		// 가져온 데이터 저장
-		model.addObject("totalCount", totalCount);
-		model.addObject("list",list);
-					
-		model.setViewName("/admin/partner/now");
-		return model;
-	}
+//	@RequestMapping("/admin/now/list.do")
+////	@RequestMapping (value = {"login.do", "login2.do"} )
+//	public ModelAndView nowlist(){
+//		
+//		
+////		requesturi
+//		
+//		ModelAndView model = new ModelAndView();
+//		
+//		// DB에서 데이터 가져오기
+//		List<OrderDto> list = service.getList();
+//
+////		// 가져온 데이터 저장
+//		model.addObject("totalCount", totalCount);
+//		model.addObject("list",list);
+//					
+//		model.setViewName("/admin/partner/now");
+//		return model;
+//	}
 }
