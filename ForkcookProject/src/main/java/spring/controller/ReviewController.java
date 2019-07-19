@@ -32,7 +32,7 @@ public class ReviewController {
 	public ModelAndView review(@RequestParam int mnum){
 		ModelAndView model = new ModelAndView();
 		
-		int totalCount = service.getTotalCount();
+		int totalCount = service.getMenuCount(mnum);
 		List<ReviewDto> list = service.getListUser(mnum);
 		
 		model.addObject("totalCount", totalCount);

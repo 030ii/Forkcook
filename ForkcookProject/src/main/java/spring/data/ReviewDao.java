@@ -12,6 +12,10 @@ public class ReviewDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("review.reviewTotalCount");
 	}
 	
+	public int getMenuCount(int mnum){
+		return getSqlSession().selectOne("review.reviewMenuCount",mnum);
+	}
+	
 	public List<ReviewDto> getListAdmin(){
 		return getSqlSession().selectList("review.reviewListAdmin");
 	}

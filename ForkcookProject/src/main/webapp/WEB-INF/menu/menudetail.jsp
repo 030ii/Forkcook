@@ -30,8 +30,7 @@
     <tr>
       <td colspan="2">
       
-      <div style="width: 380px; height: 130px;"
-      name="content" class="form-control"></div>
+      <div style="width: 380px; height: 130px;" name="content" class="form-control"></div>
       </td>
     </tr>   
     

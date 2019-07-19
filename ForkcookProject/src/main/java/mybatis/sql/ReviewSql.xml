@@ -4,6 +4,9 @@
 	<select id="reviewTotalCount" resultType="int">
 		select count(*) from review
 	</select>
+	<select id="reviewMenuCount" resultType="int" parameterType="int">
+		select count(*) from review where mnum=#{mnum}
+	</select>
 	<select id="reviewAllData" parameterType="int" resultType="rdto">
 		select * from review where num=#{num}
 	</select>

@@ -19,6 +19,11 @@ public class ReviewService {
 		return dao.getTotalCount();
 	}
 	
+	public int getMenuCount(int mnum)
+	{
+		return dao.getMenuCount(mnum);
+	}
+	
 	public List<ReviewDto> getListAdmin(){
 		return dao.getListAdmin();
 	}
