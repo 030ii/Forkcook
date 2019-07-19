@@ -9,17 +9,17 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#inqna").click(function() {
-			if ($("#subject").val() !== "") {
-				alert("저장 되었습니다");
-			} else {
-				$("#subject").val() == ""
-				{
-					alert("내용을 입력해주세요");
-				}
-			}
-		});
+$(function() {
+	   $("#inqna").click(function() {
+		     if($("#subject").val()!==""){
+		        alert("저장 되었습니다");
+		      }else{
+		    	  $("#subject").val()==""{
+		    		  alert("내용을 입력해주세요");
+		    	  }
+		      }
+
+	  });
 	});
 </script>
 </head>
