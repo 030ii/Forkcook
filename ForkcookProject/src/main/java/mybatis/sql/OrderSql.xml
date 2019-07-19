@@ -20,7 +20,22 @@
 	
 	</insert>
 	<update id="orderUpdate">
-	
+		
+	</update>
+	<update id="orderUpdateState2" parameterType="String"><!-- 2:조리중 -->
+		update orders set orderstate = 2 where ordernum = #{ordernum,jdbcType=VARCHAR}
+	</update>
+	<update id="orderUpdateState3" parameterType="String"><!-- 3:조리완료 -->
+		update orders set orderstate = 3 where ordernum = #{ordernum,jdbcType=VARCHAR}
+	</update>
+	<update id="orderUpdateState4" parameterType="String"><!-- 4:전달완료 -->
+		update orders set orderstate = 4 where ordernum = #{ordernum,jdbcType=VARCHAR}
+	</update>
+	<update id="orderUpdateState7" parameterType="String"><!-- 7:사용자 취소됨 -->
+		update orders set orderstate = 7 where ordernum = #{ordernum,jdbcType=VARCHAR}
+	</update>
+	<update id="orderUpdateState8" parameterType="String"><!-- 8:가맹점 취소됨 -->
+		update orders set orderstate = 8 where ordernum = #{ordernum,jdbcType=VARCHAR}
 	</update>
 	<select id="orderList" resultType="odto">
 		select distinct o.ordernum, u.name as uname, u.phone as uphone, o.snum, s.name as sname, o.ordertype, o.orderdate, o.orderstate, g.totalprice	

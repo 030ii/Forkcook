@@ -8,6 +8,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	// 주문 삭제
+	function updateOrderstate(state,ordernum){
+		var result = confirm('상태를 변경하시겠습니까?'); 
+		if(result) { //yes 
+		    $.ajax({
+		        url: 'update/'+state+'.do?ordernum='+ordernum,
+		        method: 'POST',
+		        success: function () {
+		            location.reload(); // 새로고침
+		        },
+		        error: function (error) {
+		            alert('문제가 발생하여 주문 상태가 변경되지 않았습니다. 관리자에게 문의해주세요.');
+		        }
+		    });
+	    }
+	}
+</script>
 </head>
 <body>
 	가맹점용 현장주문 관리 페이지<br>
@@ -46,11 +64,15 @@
 						    <c:when test="${dto.orderstate eq 7}">사용자 취소</c:when>
 						    <c:when test="${dto.orderstate eq 8}">가맹점 취소</c:when>
 						    <c:otherwise>잘못된 상태</c:otherwise>
-						</c:choose>
+						</c:choose><br>
+						<button type="button" onclick="updateOrderstate('state2',${dto.ordernum})">조리시작</button><br>
+						<button type="button" onclick="updateOrderstate('state3',${dto.ordernum})">조리완료</button><br>
+						<button type="button" onclick="updateOrderstate('state4',${dto.ordernum})">전달완료</button>
+						
 					</td>
 					<td>
-						<button type="button" onclick="location.href='content.do?ordernum=${dto.ordernum}'">상세보기</button>
-						<button type="button" onclick="location.href='delete.do?ordernum=${dto.ordernum}'">삭제</button>
+						<button type="button" onclick="location.href='content.do?ordernum=${dto.ordernum}'">상세보기</button><br>
+						<button type="button" onclick="updateOrderstate('state8',${dto.ordernum})">주문취소</button>
 					</td>
 				</tr>
 			</c:if>

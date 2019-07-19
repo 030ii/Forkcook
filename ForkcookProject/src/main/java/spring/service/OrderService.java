@@ -44,4 +44,20 @@ public class OrderService {
 	public void orderDelete(String ordernum){
 		dao.orderDelete(ordernum);
 	}
+
+	public void orderUpdateState2(String ordernum){
+		dao.orderUpdateState2(ordernum);
+	}
+	public void orderUpdateState3(String ordernum){
+		dao.orderUpdateState3(ordernum);
+	}
+	public void orderUpdateState4(String ordernum){
+		dao.orderUpdateState4(ordernum);
+	}
+	public void orderUpdateState7(String ordernum){
+		dao.orderUpdateState7(ordernum);
+	}
+	public void orderUpdateState8(String ordernum){
+		dao.orderUpdateState8(ordernum);
+	}
 }

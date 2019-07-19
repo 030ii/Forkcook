@@ -92,18 +92,26 @@ public class OrderController {
 		return model;
 	}
 	
-//	// 관리자&가맹점주 -> 주문 삭제 -> DB에 메뉴 삭제하고 목록으로 redirect
-//	@RequestMapping("/admin/order/delete.do")
-//	public String delete(@RequestParam String ordernum){
-//		// 삭제
-//		service.orderDelete(ordernum);
-//		return "redirect:list.do"; // 목록 새로고침
-//	}	
-	
+	// 관리자 -> 주문 삭제
 	@RequestMapping(value="/admin/order/delete.do",method=RequestMethod.DELETE)
 	@CrossOrigin
 	public @ResponseBody void dataDelete(HttpServletRequest req,@RequestParam String ordernum){
-		System.out.println("=------------------");
 		service.orderDelete(ordernum);
 	}
+	
+	// 가맹점 -> 주문 상태 변경(2:조리중)
+	// 가맹점 -> 주문 상태 변경(3:조리완료)
+	// 가맹점 -> 주문 상태 변경(4:전달완료)
+	// 사용자 -> 주문 상태 변경(7:사용자취소)
+	// 가맹점 -> 주문 상태 변경(8:가맹점취소)
+	@RequestMapping(value="/admin/order/update/{state}.do",method=RequestMethod.POST)
+	@CrossOrigin
+	public @ResponseBody void orderstate(@PathVariable String state, HttpServletRequest req,@RequestParam String ordernum){
+		if(state.equals("state2")) service.orderUpdateState2(ordernum);
+		else if(state.equals("state3")) service.orderUpdateState3(ordernum);
+		else if(state.equals("state4")) service.orderUpdateState4(ordernum);
+		else if(state.equals("state7")) service.orderUpdateState7(ordernum);
+		else if(state.equals("state8")) service.orderUpdateState8(ordernum);
+	}
+	
 }

@@ -9,22 +9,22 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-// 주문 삭제
-function deleteOrder(ordernum){
-	var result = confirm('해당 주문을 DB에서도 지웁니다. 정말 삭제하시겠습니까?'); 
-	if(result) { //yes 
-	    $.ajax({
-	        url: 'delete.do?ordernum='+ordernum,
-	        method: 'DELETE',
-	        success: function () {
-	            window.location.href = "list.do"; // 해당 페이지로 이동
-	        },
-	        error: function (error) {
-	            alert('주문 취소에 실패했습니다. 관리자에게 문의해주세요.');
-	        }
-	    });
-    }
-}
+	// 주문 삭제
+	function deleteOrder(ordernum){
+		var result = confirm('해당 주문을 DB에서도 지웁니다. 정말 삭제하시겠습니까?'); 
+		if(result) { //yes 
+		    $.ajax({
+		        url: 'delete.do?ordernum='+ordernum,
+		        method: 'DELETE',
+		        success: function () {
+		            window.location.href = "list.do"; // 해당 페이지로 이동
+		        },
+		        error: function (error) {
+		            alert('주문 취소에 실패했습니다. 관리자에게 문의해주세요.');
+		        }
+		    });
+	    }
+	}
 </script>
 </head>
 <body>

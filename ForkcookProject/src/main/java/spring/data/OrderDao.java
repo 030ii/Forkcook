@@ -39,4 +39,20 @@ public class OrderDao extends SqlSessionDaoSupport{
 		getSqlSession().delete("order.orderDelete",ordernum);
 	}
 	
+	public void orderUpdateState2(String ordernum){
+		getSqlSession().update("order.orderUpdateState2",ordernum);
+	}
+	public void orderUpdateState3(String ordernum){
+		getSqlSession().update("order.orderUpdateState3",ordernum);
+	}
+	public void orderUpdateState4(String ordernum){
+		getSqlSession().update("order.orderUpdateState4",ordernum);
+	}
+	public void orderUpdateState7(String ordernum){
+		getSqlSession().update("order.orderUpdateState7",ordernum);
+	}
+	public void orderUpdateState8(String ordernum){
+		getSqlSession().update("order.orderUpdateState8",ordernum);
+	}
+	
 }
