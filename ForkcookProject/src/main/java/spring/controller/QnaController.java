@@ -26,8 +26,8 @@ public class QnaController {
 	@Autowired
 	private ReqnaService reqservice;
 	
-	@RequestMapping("/{mainadmin}/qna/list.do")
-	public ModelAndView list(@PathVariable String mainadmin, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+	@RequestMapping("/{mainadmin}/qna/{listpartner}.do")
+	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartner, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		ModelAndView model = new ModelAndView();
 		
 		int totalCount = qservice.getTotalCount(); 		// 메뉴 총 개수 가져오기
@@ -94,6 +94,10 @@ public class QnaController {
 		}
 		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
 			model.setViewName("/admin/admin/qna"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
+			
+			if(listpartner.equals("partner")) {
+				model.setViewName("/admin/partner/partnerqna");
+			}
 		}
 		
 		return model;

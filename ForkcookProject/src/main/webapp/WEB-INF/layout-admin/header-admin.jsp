@@ -34,7 +34,7 @@
 			<li><a href="${root}/admin/order/now.do">현장주문 관리</a></li>
 			<li><a href="${root}/admin/order/reserve.do">예약주문 관리</a></li>
 			<li><a href="${root}/admin/order/finish.do">완료주문 관리</a></li>
-			<li><a href="${root}/admin/partnerqna/list.do">매장문의 관리</a></li>
+			<li><a href="${root}/admin/qna/partner.do">매장문의 관리</a></li>
 		</ul>
 	</div>
 	<div class="btnContainer">
