@@ -1,7 +1,10 @@
 @CHARSET "UTF-8";
 
+/* 상단바 */
 .fk-navbar {
 	background-color: #f8f8f8;
+	padding-left:20px;
+	padding-right:20px;
 }
 
 .fk-navbar li a {
@@ -15,9 +18,45 @@
 	height: 65px;
 }
 
+/* 관리자 왼쪽 메뉴 */
+.fk-left-slidebar {
+	width:217px;
+	top: 80px;
+    position: fixed;
+    height: calc(100vh);
+    background: #443c2a;
+    z-index:100;
+}
+
+.fk-left-slidebar ul {
+	margin:0;
+    padding: 0;
+    list-style: none;
+}
+
+.fk-left-slidebar ul li {
+	line-height: 55px;
+}
+
+.fk-left-slidebar ul li:hover{
+	background-color:#565041;
+}
+
+.fk-left-slidebar ul li a {
+	color:#ffffff;
+	font-weight:bold;
+}
+
+/* 관리자 오른쪽 영역 */
+#main-admin {
+	margin-left:237px;
+	margin-right:20px;
+	position:relative;
+}
+
 .fk-heading {
     display: block;
-    padding-top: 76px;
+    padding-top: 30px;
     font-weight: bold;
     font-size: 30px;
     line-height: 36px;
