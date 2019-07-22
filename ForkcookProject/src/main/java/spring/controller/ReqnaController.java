@@ -22,11 +22,20 @@ public class ReqnaController {
 	private QnaService qservice;
 	
 	@RequestMapping("/admin/qna/reqform.do")
-	public ModelAndView form(@RequestParam int qnum,@RequestParam int pageNum){
+	public ModelAndView reqform(@RequestParam int qnum,@RequestParam int pageNum){
 		ModelAndView model=new ModelAndView();
 		model.addObject("qnum",qnum);
 		model.addObject("pageNum",pageNum);
 		model.setViewName("/admin/admin/reqnaform");
+		return model;
+	}
+	
+	@RequestMapping("/admin/qna/preqform.do")
+	public ModelAndView preqform(@RequestParam int qnum,@RequestParam int pageNum){
+		ModelAndView model=new ModelAndView();
+		model.addObject("qnum",qnum);
+		model.addObject("pageNum",pageNum);
+		model.setViewName("/admin/partner/reqnaform");
 		return model;
 	}
 	
@@ -37,6 +46,15 @@ public class ReqnaController {
 		reqservice.reqnaInsert(reqdto);
 		qservice.qnastateUpdate1(qnum);
 		return "redirect:content.do?qnum="+qnum+"&pageNum="+pageNum;
+	}
+	
+	@RequestMapping(value="/admin/qna/preqwrite.do",method=RequestMethod.POST)
+	public String preqnawrite(@ModelAttribute ReqnaDto reqdto,@RequestParam int pageNum)
+	{
+		int qnum = reqdto.getQnum();
+		reqservice.reqnaInsert(reqdto);
+		qservice.qnastateUpdate1(qnum);
+		return "redirect:pqcontent.do?qnum="+qnum+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping("/admin/qna/requpdateform.do")
@@ -50,11 +68,29 @@ public class ReqnaController {
 		return model;
 	}
 	
+	@RequestMapping("/admin/qna/pqupdateform.do")
+	public ModelAndView pqupdateForm(@RequestParam int reqnum,@RequestParam String pageNum)
+	{
+		ModelAndView model=new ModelAndView();
+		ReqnaDto reqdto=reqservice.getData(reqnum);
+		model.addObject("reqdto",reqdto);
+		model.addObject("pageNum", pageNum);
+		model.setViewName("/admin/partner/reqnaupdateform");
+		return model;
+	}
+	
 	@RequestMapping(value="/admin/qna/requpdate.do",method=RequestMethod.POST)
 	public String reqnaUpdate(@ModelAttribute ReqnaDto reqdto,@RequestParam String pageNum)
 	{
 		reqservice.reqnaUpdate(reqdto);
 		return "redirect:content.do?qnum="+reqdto.getQnum()+"&pageNum="+pageNum;
+	}
+	
+	@RequestMapping(value="/admin/qna/pqupdate.do",method=RequestMethod.POST)
+	public String pqUpdate(@ModelAttribute ReqnaDto reqdto,@RequestParam String pageNum)
+	{
+		reqservice.reqnaUpdate(reqdto);
+		return "redirect:pqcontent.do?qnum="+reqdto.getQnum()+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping("/admin/qna/reqdelete.do")
@@ -66,6 +102,17 @@ public class ReqnaController {
 		qservice.qnastateUpdate2(qnum);
 		reqservice.reqnaDelete(reqnum);
 		return "redirect:content.do?qnum="+reqdto.getQnum()+"&pageNum="+pageNum;
+	}
+	
+	@RequestMapping("/admin/qna/preqdelete.do")
+	public String preqnadelete(@RequestParam int reqnum,@RequestParam String pageNum)
+	{
+		//삭제
+		ReqnaDto reqdto=reqservice.getData(reqnum);
+		int qnum=reqdto.getQnum();
+		qservice.qnastateUpdate2(qnum);
+		reqservice.reqnaDelete(reqnum);
+		return "redirect:pqcontent.do?qnum="+reqdto.getQnum()+"&pageNum="+pageNum;
 	}
 	
 }

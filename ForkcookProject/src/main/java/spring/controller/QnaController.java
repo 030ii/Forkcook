@@ -123,6 +123,18 @@ public class QnaController {
 		}		
 	}
 	
+	@RequestMapping("/admin/qna/pqcontent.do")
+	public String pqcontent(@RequestParam int qnum,@RequestParam int pageNum,Model model)
+	{
+		QnaDto qdto=qservice.getData(qnum);
+		model.addAttribute("qdto", qdto);
+		model.addAttribute("pageNum", pageNum);
+		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
+		model.addAttribute("reqlist",reqlist);
+		
+		return "/admin/partner/qnacontent";
+	}
+	
 	@RequestMapping("/main/qna/form.do")
 	public ModelAndView form(){
 		ModelAndView model=new ModelAndView();
@@ -180,6 +192,13 @@ public class QnaController {
 		else {
 			return "redirect:list.do?pageNum="+pageNum; 	  // 관리자 모드의 메뉴 관리(목록) 화면으로 이동
 		}
+	}
+	
+	@RequestMapping("admin/qna/pqdelete.do")
+	public String pqdelete(@RequestParam int qnum,@RequestParam String pageNum)
+	{
+		qservice.qnaDelete(qnum);
+		return "redirect:partner.do?pageNum="+pageNum;
 	}
 	
 	/*@RequestMapping("/main/qna/delete.do")
