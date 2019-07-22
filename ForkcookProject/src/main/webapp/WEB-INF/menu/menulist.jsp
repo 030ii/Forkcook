@@ -15,7 +15,32 @@
 <!-- TODO : 카테고리별 분류 -->
 <!-- TODO : CSS는 추후에 UI kit에 맞게 다시 재배열 -->
 <!-- TODO : 메뉴에 마우스 오버시 장바구니/상세보기 나오게 하기 -->
-
+<table class="uk-table uk-table-hover uk-table-divider">
+    <thead>
+        <tr>
+            <th>Table Heading</th>
+            <th>Table Heading</th>
+            <th>Table Heading</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Table Data</td>
+            <td>Table Data</td>
+            <td>Table Data</td>
+        </tr>
+        <tr>
+            <td>Table Data</td>
+            <td>Table Data</td>
+            <td>Table Data</td>
+        </tr>
+        <tr>
+            <td>Table Data</td>
+            <td>Table Data</td>
+            <td>Table Data</td>
+        </tr>
+    </tbody>
+</table>
 	<c:forEach var="mdto" items="${list}">
 		<div class="card" style="width: 20rem;">
 			<img class="card-img-top" src="../../image/${mdto.image}" alt="Card image cap">

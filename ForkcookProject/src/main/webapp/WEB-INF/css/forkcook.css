@@ -14,3 +14,41 @@
 .logo { 
 	height: 65px;
 }
+
+.fk-heading {
+    display: block;
+    padding-top: 76px;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #1e1e1e;
+}
+
+.fk-desc {
+	font-size:20px;
+    line-height: 26px;
+    float:left;
+}
+
+.fk-float-right {
+	float:right;
+	margin-top:15px;
+}
+
+.fk-btn {
+	cursor : pointer;
+	font-weight: bold;
+    background-color: transparent;
+    color: #505050;
+    border: 1px solid #c7c7c7;
+    padding: 0 10px;
+    vertical-align: middle;
+    font-size: .875rem;
+    line-height: 38px;
+    text-align: center;
+}
+
+.fk-btn:hover {
+	background-color: #ffd767bf;
+}
+
