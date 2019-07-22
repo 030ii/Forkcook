@@ -40,7 +40,17 @@ public class CartService {
 		dao.insertCart(dto);
 	}
 	
+	public int getMenuCount(int mnum)
+	{
+		return dao.getMenuCount(mnum);
+	}
+	
+	public void insertCartDetail(CartDto dto){
+		dao.insertCartDetail(dto);
+	}
+	
 	public void cartDelete(int num){
 		dao.cartDelete(num);
 	}
+
 }

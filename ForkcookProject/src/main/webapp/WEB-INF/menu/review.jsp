@@ -62,11 +62,10 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-	  // hover 색상 바뀌기
 	  $('#stars li').on('mouseover', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // 현재 커서올라간 별
 	   
-	    // hovere되지 않은 별에 효과 없애기
+	    // hover 효과
 	    $(this).parent().children('li.star').each(function(e){
 	      if (e < onStar) {
 	        $(this).addClass('hover');
@@ -97,6 +96,7 @@ $(document).ready(function(){
 	      
 	      //=>ratingValue가 1,2,3,4,5 값 중에 하나
 	      //얘의 값을 form 값으로 보내야함
+	      
 	    }
 	  });
 	});
@@ -108,25 +108,25 @@ $(document).ready(function(){
 <div>총 ${totalCount}개의 리뷰가 있습니다</div>
 <hr>
 등록폼<br>
-<form action="insert.do" method="post" class="form-inline" enctype="multipart/form-data">
+<form action="insert.do" method="post" class="form-inline" name="insertForm" enctype="multipart/form-data">
 	<div class="addReview">
 		평점 : 
 			<section class='rating-widget'>
 			  <div class='rating-stars text-center'>
 			    <ul id='stars'>
-			      <li class='star' title='Poor' data-value='1'>
+			      <li class='star' title='1점' data-value='1'>
 			        <i class='fa fa-star fa-fw'></i>
 			      </li>
-			      <li class='star' title='Fair' data-value='2'>
+			      <li class='star' title='2점' data-value='2'>
 			        <i class='fa fa-star fa-fw'></i>
 			      </li>
-			      <li class='star' title='Good' data-value='3'>
+			      <li class='star' title='3점' data-value='3'>
 			        <i class='fa fa-star fa-fw'></i>
 			      </li>
-			      <li class='star' title='Excellent' data-value='4'>
+			      <li class='star' title='4점' data-value='4'>
 			        <i class='fa fa-star fa-fw'></i>
 			      </li>
-			      <li class='star' title='WOW!!!' data-value='5'>
+			      <li class='star' title='5점' data-value='5'>
 			        <i class='fa fa-star fa-fw'></i>
 			      </li>
 			    </ul>
@@ -140,6 +140,15 @@ $(document).ready(function(){
 		<input type="submit" value="리뷰등록" id="add-btn">
 	</div>
 </form>
+<hr>
+<a>이미지 모아보기>></a>(나중에 : 클릭하면 이미지들만 크게 보이도록)<br>
+	<c:forEach var="dto" items="${list}" varStatus="status">
+		<c:forTokens var="myimg" items="${dto.image }" delims=",">
+			<a href="../../save/${myimg }" target="_new">
+			  <img src="../../save/${myimg }" style="width: 100px;">
+			</a>
+		</c:forTokens>
+	</c:forEach>
 <hr>
 <div id="reviewTable">
 </div>
@@ -187,7 +196,23 @@ $(document).ready(function(){
                   		<button type="button" class="cancle">취소</button>
               	 	</form>
             	</td>
-				<td> <span class="star-prototype">${dto.rate}</span></td>
+				<td>
+				<%-- <img src="${root}/image/star0.png" style="width: 20px"> --%>
+						<script type="text/javascript">
+							var span = document.getElementById("spanstar");
+							var s = "<img src='${root}/image/star10.png'>";
+							var rate = "<fmt:formatNumber value='${dto.rate }' pattern='0'/>";
+							console.log("rate:"+rate);
+							
+							for(var i=0;i<rate;i++){
+								span.innerHTML+=s;
+							}
+							
+						</script>
+					<span class="star-prototype" id="spanstar">
+ 						<fmt:formatNumber value="${dto.rate }" pattern="0"/>
+					</span>
+				</td>
 				<td><fmt:formatDate value="${dto.writeday }" pattern="MM-dd HH:mm"/></td>
 				<td>
 					<!-- 해야될것 ------

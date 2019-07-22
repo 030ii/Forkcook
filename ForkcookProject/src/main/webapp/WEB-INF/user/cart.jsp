@@ -20,7 +20,7 @@ $(function(){
 		
 		//선택된 체크박스가 없을경우 경고
 		if(selcnt.length==0){
-			alert("삭제할 글을 선택해주세요");
+			alert("삭제할 항목을 선택해주세요");
 			return false;
 		}
 		
@@ -52,15 +52,21 @@ $(function(){
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <!-- 로그인 안했을 시에 장바구니 누르면 '먼저로그인하세요' 창 뜨게 해야함  -->
 
-	총 ${totalCount}개의 장바구니 내역이 있습니다.<br>
+<div class="cartlist">
+<c:choose>
+		<c:when test="${totalCount ==0 }">
+			장바구니가 비어있습니다.
+		</c:when>
+		
+	<c:otherwise>
+총 ${totalCount}개의 장바구니 내역이 있습니다.<br>
 	<div class="chkAll">
   		<input type="checkbox" name="allCheck" id="allCheck">모두선택
 	</div>
-  	  	
 	<div class="selDel" style="display: block;">
 		<button type="button" id="delBtn">선택삭제</button>
 	</div>
-<div class="cartlist">
+
 	<table border=1>
 		<caption>장바구니 목록</caption>
 		<tr>
@@ -95,9 +101,10 @@ $(function(){
 				<button type="button" onclick="location.href='delete.do?num=${dto.num}'">삭제</button>
 			</td>
 		</tr>
-		</c:forEach>
+		</c:forEach></c:otherwise></c:choose>
 	</table>
 </div>
+<br>장바구니 총 금액 :
 <button type="button" onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
 <button type="button" onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
 

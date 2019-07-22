@@ -49,7 +49,7 @@ public class MenuController {
       //데이타 가져오기
       MenuDto mdto=service.getData(num);
       //model 에 저장
-      model.addAttribute("mdto", mdto);    
+      model.addAttribute("mdto", mdto);
       return "/main/menu/menudetail";
 	}
 		
