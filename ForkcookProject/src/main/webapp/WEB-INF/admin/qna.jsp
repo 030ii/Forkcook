@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-	<b>관리자 문의 관리 페이지</b>
+	<div class="fk-heading">관리자 문의 관리 페이지</div>
 	<br><br>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 			매장별 보기 : 
@@ -18,16 +18,19 @@
  			<a href="">강남점</a> |
  			<a href="">분당점</a> |
  			<a href="">부산점</a>
- <br>
-	<div>총 ${totalCount}개의 문의글이 있습니다</div>
-	<table border=1>
-		<tr>
-			<th>No.</th>
-			<th>제목</th>
-			<th>매장</th>
-			<th>날짜</th>
-		</tr>
-		<c:forEach var="qdto" items="${qlist}" varStatus="status">
+ 	<br>
+	<p class="fk-desc">총 ${totalCount}개의 문의글이 있습니다</p>
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+	    <thead>
+	        <tr>
+	            <th>No.</th>
+				<th>제목</th>
+				<th>매장</th>
+				<th>날짜</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<c:forEach var="qdto" items="${qlist}" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
 				<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
@@ -35,7 +38,8 @@
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 			</tr>
-		</c:forEach>
+			</c:forEach>
+	    </tbody>
 	</table>
 	<!-- 페이지 번호 출력 -->
 	<div style="width: 600px;text-align: center;">

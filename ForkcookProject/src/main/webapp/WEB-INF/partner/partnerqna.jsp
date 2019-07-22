@@ -13,26 +13,29 @@
 	가맹점용 문의 관리 페이지<br>
 	아직 가맹점 회원 로그인 세션의 코드가 없으므로,<br>
 	일단 '포크쿡 강남점(snum값=2)'의 화면이라고 가정하여 구현하겠음<br>
-	<b>가맹점 문의 관리 페이지</b>
-	<br><br>
-	<div>총 ${totalCount}개의 문의글이 있습니다</div>
-	<table border=1>
-		<c:forEach var="qdto" items="${qlist}" varStatus="status">
-			<c:if test="${qdto.snum == '2'}">
-		<tr>
-			<th>No.</th>
-			<th>제목</th>
-			<th>날짜</th>
-		</tr>
-			<tr>
-				<td>${status.count}</td>
+	
+	<div class="fk-heading">가맹점 문의 관리 페이지</div>
+	<p class="fk-desc">총 ${totalCount}개의 문의글이 있습니다</p>
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+	    <thead>
+	        <tr>
+	            <th>No.</th>
+				<th>제목</th>
+				<th>날짜</th>
+	        </tr>
+	    </thead>
+	    <c:forEach var="qdto" items="${qlist}" varStatus="status">
+		<c:if test="${qdto.snum == '2'}">
+	    <tbody>
+		    <tr>
+		        <td>${status.count}</td>
 				<td><a href="pqcontent.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
 				<td><fmt:formatDate value="${qdto.writeday }"
-				   pattern="yyyy-MM-dd"/></td>
-			</tr>
-			</c:if>
-		</c:forEach>
-		
+				   	pattern="yyyy-MM-dd"/></td>
+		    </tr>    
+	    </tbody>
+	    </c:if>
+		</c:forEach>	
 	</table>
 	<!-- 페이지 번호 출력 -->
 	<div style="width: 600px;text-align: center;">
