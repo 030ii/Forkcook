@@ -7,10 +7,10 @@
 
 <!-- 상단바 -->
 <div class="uk-section-primary uk-preserve-color">
-    <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-light; top: 200">
-        <nav class="uk-navbar-container fk-navbar" uk-navbar>
+	<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">    
+        <nav class="uk-navbar-container fk-navbar" uk-navbar style="position: relative; z-index: 980;">
 		    <div class="uk-navbar-left">
-		        <ul class="uk-navbar-nav">
+		        <ul class="uk-navbar-nav fk-nav">
 		        	<li><a href="${root}/admin/main.do"><img class="logo" alt="forkcook" src="${root}/image/logo.png"></a></li>
 		            <li><a href="${root}/admin/main.do">관리자로 로그인하셨습니다</a></li>
 		        </ul>

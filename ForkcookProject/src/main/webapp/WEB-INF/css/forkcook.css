@@ -45,6 +45,7 @@
 .fk-left-slidebar ul li a {
 	color:#ffffff;
 	font-weight:bold;
+	margin-left: 20px;
 }
 
 /* 관리자 오른쪽 영역 */
