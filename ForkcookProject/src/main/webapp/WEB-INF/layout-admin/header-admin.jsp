@@ -17,12 +17,9 @@
 		    </div>
 		    <div class="uk-navbar-right">
 		        <ul class="uk-navbar-nav">
-		        	<c:if test="${udto.num == null}"><!-- 로그인 세션에 의한 관리자 정보가 없으면 -->
-			        	<li><a href="${root}/admin/storeuser/login.do">로그인</a></li>
-					</c:if>
-	        		<c:if test="${udto.num != null}"><!-- 로그인 세션에 의한 관리자 정보가 있으면 -->
-						<li><a href="${root}/admin/storeuser/logout.do">로그아웃</a></li>
-		            </c:if>
+		        	<ul>
+		        		<li><a href="${root}/admin/storeuser/logout.do">로그아웃</a></li>
+		        	</ul>
 		        </ul>
 		    </div>
 		</nav>

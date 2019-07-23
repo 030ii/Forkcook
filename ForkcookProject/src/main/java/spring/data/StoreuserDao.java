@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class StoreuserDao extends SqlSessionDaoSupport {
+	public StoreuserDto storeuserLogin(StoreuserDto dto){
+		return getSqlSession().selectOne("storeuser.storeuserLogin", dto);
+	}
+	
 	public int getTotalCount(){
 		return getSqlSession().selectOne("storeuser.storeuserTotalCount");
 	}

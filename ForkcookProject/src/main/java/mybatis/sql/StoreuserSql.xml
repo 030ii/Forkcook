@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="storeuser">
+	<!-- 로그인 정보를  users테이블과 비교 -->
+	<select id="storeuserLogin" parameterType="sudto" resultType="sudto">
+		select * from storeuser where id = #{id} and pass = #{pass}
+	</select>
 	<select id="storeuserTotalCount" resultType="int">
 		select count(*) from storeuser
 	</select>

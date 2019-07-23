@@ -17,11 +17,27 @@
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	</head>
 	<body>
-		<div id="header-admin" class="layout">
-			<tiles:insertAttribute name="header-admin"/>
-		</div>
-		<div id="main-admin" class="layout">
-			<tiles:insertAttribute name="admin"/>
-		</div>
+		<c:choose> 
+		    <c:when test="${not empty adminLoginInfo}">
+		        <div id="header-admin" class="layout">
+					<tiles:insertAttribute name="header-admin"/>
+				</div>
+				<div id="main-admin" class="layout">
+					<tiles:insertAttribute name="admin"/>
+				</div>
+		    </c:when>
+		    <c:otherwise>
+		        포크쿡 관리자/가맹점용 페이지 입니다<br>
+		        로그인 해주세요<br>	        
+		        <form action="adminlogin.do" method="get">
+					아이디 : <input type="text" name="id" required="required"><br>
+					비밀번호 : <input type="password" name="pass" required="required"><br>
+					<input type="submit" value="로그인하기">
+					<c:if test="${not empty msg}">
+						<span class="uk-label uk-label-danger">로그인에 실패했습니다. 다시 로그인해주세요.</span>
+					</c:if>
+				</form>
+		    </c:otherwise>                  
+		</c:choose>
 	</body>
 </html>

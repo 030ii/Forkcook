@@ -3,6 +3,7 @@ package spring.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,4 +91,13 @@ public class StoreuserController {
 		service.storeuserDelete(num);
 		return "redirect:list.do"; // 목록 새로고침
 	}	
+	
+	// 관리자 로그아웃
+	@RequestMapping("/admin/storeuser/logout.do")
+	public String logout(HttpSession session){		
+		//session.removeAttribute("id"); 세션변수 개별삭제
+		session.invalidate();//세션 정보 초기화
+		
+		return "redirect:/admin/main.do";
+	}
 }

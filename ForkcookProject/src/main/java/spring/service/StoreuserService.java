@@ -13,6 +13,10 @@ public class StoreuserService {
 	@Autowired
 	private StoreuserDao dao;
 	
+	public StoreuserDto storeuserLogin(StoreuserDto dto){
+		return dao.storeuserLogin(dto);
+	}
+	
 	public int getTotalCount()
 	{
 		return dao.getTotalCount();
