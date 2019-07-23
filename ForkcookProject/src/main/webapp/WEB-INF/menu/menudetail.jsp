@@ -83,8 +83,7 @@
 		console.log("mnum:"+mnum);
 		console.log("mcount:"+mcount);
 		console.log("mtotalprice:"+mtotalprice);
-		console.log(${mdto.num});
-		window.location.href="insertdetail.do?num=${mdto.num}&unum=1&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
+		window.location.href="insertdetail.do?unum=1&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
 	});
 	
 	

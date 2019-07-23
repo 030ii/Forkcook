@@ -23,6 +23,10 @@ public class CartService {
 		return dao.getList();
 	}
 	
+	public void cartUpdate(CartDto dto){
+		dao.cartUpdate(dto);
+	}
+	
 	public void countUpdatePlus(CartDto dto){
 		dao.countUpdatePlus(dto);
 	}
@@ -40,9 +44,9 @@ public class CartService {
 		dao.insertCart(dto);
 	}
 	
-	public int getMenuCount(int mnum)
+	public int getMenuCount(CartDto dto)
 	{
-		return dao.getMenuCount(mnum);
+		return dao.getMenuCount(dto);
 	}
 	
 	public void insertCartDetail(CartDto dto){

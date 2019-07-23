@@ -16,6 +16,10 @@ public class CartDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("cart.cartList");
 	}
 	
+	public void cartUpdate(CartDto dto){
+		getSqlSession().update("cart.cartUpdate",dto);
+	}
+	
 	public void countUpdatePlus(CartDto dto){
 		getSqlSession().update("cart.countUpdatePlus",dto);
 	}
@@ -32,8 +36,8 @@ public class CartDao extends SqlSessionDaoSupport {
 		getSqlSession().insert("cart.cartInsert",dto);
 	}
 	
-	public int getMenuCount(int mnum){
-		return getSqlSession().selectOne("cart.cartMenuCount",mnum);
+	public int getMenuCount(CartDto dto){
+		return getSqlSession().selectOne("cart.cartMenuCount",dto);
 	}
 	
 	public void insertCartDetail(CartDto dto){
