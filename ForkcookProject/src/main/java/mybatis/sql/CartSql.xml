@@ -11,7 +11,7 @@
 	</select>
 	<update id="cartUpdate" parameterType="cdto">
 		update cart
-		set mcount=#{mcount}, mtotalprice=#{mtotalprice}
+		set mcount=mcount+#{mcount}, mtotalprice=mtotalprice+#{mtotalprice}
 		where num=#{num}
 	</update>
 	<!-- 장바구니에서 + - 클릭하면 수량 변함 -->
