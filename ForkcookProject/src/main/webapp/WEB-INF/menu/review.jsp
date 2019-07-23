@@ -7,24 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet" href="style.css"> -->
-<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-<!-- bar-rating -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="/ratingstar/fontawesome-stars.css"> -->
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$(".updatebtn").click(function(){
 			var updateform = $(this).parents('.updatetr').find('.updateform');
 			var updatespan = $(this).parents('.updatetr').find('.updatespan');
+			var updateform2 = $(this).parents('.updatetr').find('.updateform');
+			
+			$('.updateform').css("display","none");
 			updateform.css("display","block");
-			updatespan.css("display","none");
 		});
 		
 		$(".cancle").click(function(){
 			var updateform = $(this).parents('.updatetr').find('.updateform');
 			var updatespan = $(this).parents('.updatetr').find('.updatespan');
+			
 			updateform.css("display","none");
 			updatespan.css("display","block");
 		});
@@ -61,6 +60,7 @@
 }
 </style>
 <script type="text/javascript">
+//등록폼의 별점
 $(document).ready(function(){
 	  $('#stars li').on('mouseover', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // 현재 커서올라간 별
@@ -85,21 +85,19 @@ $(document).ready(function(){
 	  $('#stars li').on('click', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // 현재 선택된 별
 	    var stars = $(this).parent().children('li.star');
-	    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+	    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10); // 이전 선택된 별
 	    
-	    for (i = 0; i < stars.length; i++) {
+	    for (i = 0; i < stars.length; i++) { // 이전 선택한 별 css 제거
 	      $(stars[i]).removeClass('selected');
 	    }
-	    
-	    for (i = 0; i < onStar; i++) {
+	    for (i = 0; i < onStar; i++) { // 현재 선택한 별 css 추가
 	      $(stars[i]).addClass('selected');
-	      
-	      //=>ratingValue가 1,2,3,4,5 값 중에 하나
-	      //얘의 값을 form 값으로 보내야함
-	      
 	    }
-	  });
-	});
+	    
+	    $('#insertRate').val(onStar); // input hidden으로 선택한 별점 보내기
+	 });
+});
+
 </script>
 </head>
 <body>
@@ -108,47 +106,71 @@ $(document).ready(function(){
 <div>총 ${totalCount}개의 리뷰가 있습니다</div>
 <hr>
 등록폼<br>
-<form action="insert.do" method="post" class="form-inline" name="insertForm" enctype="multipart/form-data">
-	<div class="addReview">
-		평점 : 
-			<section class='rating-widget'>
-			  <div class='rating-stars text-center'>
-			    <ul id='stars'>
-			      <li class='star' title='1점' data-value='1'>
-			        <i class='fa fa-star fa-fw'></i>
-			      </li>
-			      <li class='star' title='2점' data-value='2'>
-			        <i class='fa fa-star fa-fw'></i>
-			      </li>
-			      <li class='star' title='3점' data-value='3'>
-			        <i class='fa fa-star fa-fw'></i>
-			      </li>
-			      <li class='star' title='4점' data-value='4'>
-			        <i class='fa fa-star fa-fw'></i>
-			      </li>
-			      <li class='star' title='5점' data-value='5'>
-			        <i class='fa fa-star fa-fw'></i>
-			      </li>
-			    </ul>
-			  </div>
-			</section>
-			<br>
-		내용 : <input type="text" name="content" size="30"><br>
-		사진 : <input type="file" name="upfile"><br><br>
-		<input type="hidden" name="unum" value="2">
-		<input type="hidden" name="mnum" value="${mnum}">
-		<input type="submit" value="리뷰등록" id="add-btn">
-	</div>
-</form>
+
+<a class="uk-button uk-button-default" href="#modal-sections" uk-toggle>리뷰작성하기</a>
+
+<div id="modal-sections" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">리뷰 작성</h2>
+        </div>
+        <form action="insert.do" method="post" class="form-inline" name="insertForm" enctype="multipart/form-data">
+	        <div class="uk-modal-body">
+				<div class="addReview">
+					평점 : 
+					<section class='rating-widget'>
+					  <div class='rating-stars text-center'>
+					    <ul id='stars'>
+					      <li class='star' title='1점' data-value='1'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='2점' data-value='2'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='3점' data-value='3'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='4점' data-value='4'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='5점' data-value='5'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					    </ul>
+					  </div>
+					</section>
+					<br>
+					내용 : <input type="text" name="content" size="30"><br>
+					사진 : <input type="file" name="upfile"><br><br>
+					<input type="hidden" name="unum" value="2">
+					<input type="hidden" name="mnum" value="${mnum}">
+					<input type="hidden" name="rate" id="insertRate">
+				</div>
+			</div>
+	        <div class="uk-modal-footer uk-text-right">
+	            <button class="uk-button uk-button-default uk-modal-close" type="button">취소</button>
+	            <input type="submit" value="리뷰등록" id="add-btn" class="uk-button uk-button-primary" type="button"></button>
+	        </div>
+        </form>
+    </div>
+</div>
+
+
+
 <hr>
-<a>이미지 모아보기>></a>(나중에 : 클릭하면 이미지들만 크게 보이도록)<br>
+	<a>이미지 모아보기>></a>(나중에 클릭하면 이미지들만 크게 보이도록)<br>
+	
 	<c:forEach var="dto" items="${list}" varStatus="status">
-		<c:forTokens var="myimg" items="${dto.image }" delims=",">
-			<a href="../../save/${myimg }" target="_new">
-			  <img src="../../save/${myimg }" style="width: 100px;">
-			</a>
-		</c:forTokens>
+		<c:if test="${dto.image!='noimage' }">
+			<c:forTokens var="myimg" items="${dto.image }" delims=",">
+				<a href="../../save/${myimg }" target="_new">
+				  <img src="../../save/${myimg }" style="width: 100px;">
+				</a>
+			</c:forTokens>
+		</c:if>
 	</c:forEach>
+	
 <hr>
 <div id="reviewTable">
 </div>
@@ -184,33 +206,25 @@ $(document).ready(function(){
 					</c:if>
 				</td>
 				<td>
+					<!-- 수정폼(배치는 나중에 정리하기) -->
                		<span style="display: block;" class="updatespan">${dto.content}</span>
                		<form style="display: none;" action="update.do" method="post" class="updateform">
                			<input type="hidden" name="num" value="${dto.num}"/>
                   		<input type="hidden" name="unum" value="${dto.unum}"/>
                  		<input type="hidden" name="mnum" value="${dto.mnum}"/>
-                  		<input type="text" name="rate" value="${dto.rate }"/>
+                 		<input type="text" name="rate" value="${dto.rate }">
                   		<input type="file" name="upfile" value="${dto.image }">
                   		<textarea rows="" cols="" name="content">${dto.content}</textarea>
-                  		<button type="submit">수정</button>
+                  		<button type="submit" class="update-cfm">수정</button>
                   		<button type="button" class="cancle">취소</button>
               	 	</form>
             	</td>
 				<td>
-				<%-- <img src="${root}/image/star0.png" style="width: 20px"> --%>
-						<script type="text/javascript">
-							var span = document.getElementById("spanstar");
-							var s = "<img src='${root}/image/star10.png'>";
-							var rate = "<fmt:formatNumber value='${dto.rate }' pattern='0'/>";
-							console.log("rate:"+rate);
-							
-							for(var i=0;i<rate;i++){
-								span.innerHTML+=s;
-							}
-							
-						</script>
 					<span class="star-prototype" id="spanstar">
- 						<fmt:formatNumber value="${dto.rate }" pattern="0"/>
+							<c:forEach var="i" begin="1" end="${dto.rate }">
+								<img src='${root}/image/star10.png'>
+							</c:forEach>
+							(<fmt:formatNumber value="${dto.rate}" pattern="0"/>)
 					</span>
 				</td>
 				<td><fmt:formatDate value="${dto.writeday }" pattern="MM-dd HH:mm"/></td>
@@ -225,5 +239,10 @@ $(document).ready(function(){
 		</c:forEach>
 	</table>
   </div>
+<script type="text/javascript">
+$(function(){
+	
+});
+</script>
 </body>
 </html>
