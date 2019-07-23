@@ -26,8 +26,8 @@ public class QnaController {
 	@Autowired
 	private ReqnaService reqservice;
 	
-	@RequestMapping("/{mainadmin}/qna/{listpartner}.do")
-	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartner, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+	@RequestMapping("/{mainadmin}/{qnauser}/{listpartnermyqna}.do")
+	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartnermyqna, @PathVariable String qnauser, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		ModelAndView model = new ModelAndView();
 		
 		int totalCount = qservice.getTotalCount(); 		// 메뉴 총 개수 가져오기
@@ -91,11 +91,16 @@ public class QnaController {
 		
 		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
 			model.setViewName("/main/service/qnalist"); 	// 일반 모드의 메뉴 목록 화면으로 이동
+			if(qnauser.equals("user")){
+				if(listpartnermyqna.equals("myqna")){
+				model.setViewName("/main/user/qnalist");
+				}
+			}
 		}
 		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
 			model.setViewName("/admin/admin/qna"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
 			
-			if(listpartner.equals("partner")) {
+			if(listpartnermyqna.equals("partner")) {
 				model.setViewName("/admin/partner/partnerqna");
 			}
 		}
@@ -123,6 +128,18 @@ public class QnaController {
 		}		
 	}
 	
+	@RequestMapping("/main/user/uqcontent.do")
+	public String usercontent(@RequestParam int qnum,@RequestParam int pageNum,Model model)
+	{
+		QnaDto qdto=qservice.getData(qnum);
+		model.addAttribute("qdto", qdto);
+		model.addAttribute("pageNum", pageNum);
+		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
+		model.addAttribute("reqlist",reqlist);
+		
+		return "/main/user/qnacontent";
+	}
+	
 	@RequestMapping("/admin/qna/pqcontent.do")
 	public String pqcontent(@RequestParam int qnum,@RequestParam int pageNum,Model model)
 	{
@@ -135,46 +152,66 @@ public class QnaController {
 		return "/admin/partner/qnacontent";
 	}
 	
-	@RequestMapping("/main/qna/form.do")
-	public ModelAndView form(){
+	@RequestMapping("/main/{qnauser}/form.do")
+	public ModelAndView form(@PathVariable String qnauser){
 		ModelAndView model=new ModelAndView();
 		
-		model.setViewName("/main/service/qnaform");
+		if(qnauser.equals("qna")){
+			model.setViewName("/main/service/qnaform");
+		}else{
+			model.setViewName("/main/user/qnaform");
+		}
 		return model;
 	}
 	
-	@RequestMapping(value="/main/qna/write.do",method=RequestMethod.POST)
-	public String readData(@ModelAttribute QnaDto dto)
+	@RequestMapping(value="/main/{qnauser}/write.do",method=RequestMethod.POST)
+	public String readData(@ModelAttribute QnaDto dto,@PathVariable String qnauser)
 	{
-		qservice.qnaInsert(dto);	
-		return "redirect:list.do";
+		qservice.qnaInsert(dto);
+		if(qnauser.equals("qna")){
+			return "redirect:list.do";
+		}else{
+			return "redirect:myqna.do";
+		}
 	}
 	
-	@RequestMapping("/main/qna/updateform.do")
-	public ModelAndView updateForm(@RequestParam int qnum,
+	@RequestMapping("/main/{qnauser}/updateform.do")
+	public ModelAndView updateForm(@RequestParam int qnum,@PathVariable String qnauser,
 			@RequestParam String pageNum)
 	{
 		ModelAndView model=new ModelAndView();
 		QnaDto qdto=qservice.getData(qnum);
 		model.addObject("qdto",qdto);
 		model.addObject("pageNum",pageNum);
-		model.setViewName("/main/service/qnaupdateform");
+		if(qnauser.equals("qna")){
+			model.setViewName("/main/service/qnaupdateform");
+		} else {
+			model.setViewName("/main/user/qnaupdateform");
+		}
 		return model;
 	}
 	
-	@RequestMapping(value="/main/qna/update1.do",method=RequestMethod.POST)
-	public String update1(@ModelAttribute QnaDto qdto,
+	@RequestMapping(value="/main/{qnauser}/update1.do",method=RequestMethod.POST)
+	public String update1(@ModelAttribute QnaDto qdto,@PathVariable String qnauser,
 			@RequestParam String pageNum)
 	{
-		qservice.qnaUpdate(qdto);		
-		return "redirect:content.do?qnum="+qdto.getNum()+"&pageNum="+pageNum;
+		qservice.qnaUpdate(qdto);
+		if(qnauser.equals("qna")){
+			return "redirect:content.do?qnum="+qdto.getNum()+"&pageNum="+pageNum;
+		}else{
+			return "redirect:uqcontent.do?qnum="+qdto.getNum()+"&pageNum="+pageNum;
+		}
 	}
 	
-	@RequestMapping(value="/main/qna/update2.do",method=RequestMethod.POST)
-	public String update2(@ModelAttribute QnaDto qdto)
+	@RequestMapping(value="/main/{qnauser}/update2.do",method=RequestMethod.POST)
+	public String update2(@ModelAttribute QnaDto qdto,@PathVariable String qnauser)
 	{
-		qservice.qnaUpdate(qdto);		
-		return "redirect:list.do";
+		qservice.qnaUpdate(qdto);
+		if(qnauser.equals("qna")){
+			return "redirect:list.do";
+		}else{
+			return "redirect:myqna.do";
+		}
 	}
 
 	// 일반 사용자 -> 문의삭제
@@ -199,6 +236,13 @@ public class QnaController {
 	{
 		qservice.qnaDelete(qnum);
 		return "redirect:partner.do?pageNum="+pageNum;
+	}
+	
+	@RequestMapping("main/user/uqdelete.do")
+	public String uqdelete(@RequestParam int qnum,@RequestParam String pageNum)
+	{
+		qservice.qnaDelete(qnum);
+		return "redirect:myqna.do?pageNum="+pageNum;
 	}
 	
 	/*@RequestMapping("/main/qna/delete.do")

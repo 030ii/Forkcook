@@ -75,16 +75,62 @@ public class CartController {
 			return "{\"mcount\":"+mcount+",\"mtotalprice\":"+mtotalprice+"}";
 		}
 	
+	//메뉴 list -> 장바구니 담기
 	@RequestMapping(value="/main/cart/insert.do",method=RequestMethod.GET)
-	public String write(@RequestParam int unum, @RequestParam int mnum, @RequestParam String mtotalprice){
+	public String insertcart(
+			@RequestParam int unum, 
+			@RequestParam int mnum, 
+			@RequestParam String mtotalprice){
+		
 		CartDto dto = new CartDto();
-		dto.setUnum(unum);
+		dto.setUnum(1);
 		dto.setMnum(mnum);
 		dto.setMtotalprice(mtotalprice);
-		service.insertCart(dto);
+		
+		int cnum=0;
+		try{
+			cnum = service.getMenuCount(dto); //해당메뉴가 장바구니 있는지 없는지 검사해서 insert or update
+		}catch(Exception e){
+			cnum = 0; // cnum에 null 들어감 방지
+		}
+		if(cnum == 0){ // 장바구니에 아직 없으면 새로 추가
+			service.insertCart(dto);
+		} else { // 장바구니에 이미 있으면 update
+			dto.setNum(cnum);
+			service.countUpdatePlus(dto);
+		}
 		return "redirect:list.do";
 	}
 	
+	//메뉴detail -> 장바구니 담기
+	@RequestMapping(value="/main/menu/insertdetail.do",method=RequestMethod.GET)
+	public String insertdetail(
+			@RequestParam int unum, 
+			@RequestParam int mnum,
+			@RequestParam int mcount, 
+			@RequestParam String mtotalprice){
+		
+		CartDto dto = new CartDto();
+		dto.setUnum(unum);
+		dto.setMnum(mnum);
+		dto.setMcount(mcount);
+		dto.setMtotalprice(mtotalprice);
+		
+		int cnum=0;
+		try{
+			cnum = service.getMenuCount(dto); //해당메뉴가 장바구니 있는지 없는지 검사해서 insert or update
+		}catch(Exception e){
+			cnum = 0; // cnum에 null 들어감 방지
+		}
+		if(cnum == 0){ // 장바구니에 아직 없으면 새로 추가
+			service.insertCart(dto);
+		} else { // 장바구니에 이미 있으면 update
+			dto.setNum(cnum);
+			service.cartUpdate(dto);
+		}
+		return "redirect:list.do";
+	}
+		
 	// 삭제
 	@RequestMapping("/main/cart/delete.do")
 	public String delete(@RequestParam int num){

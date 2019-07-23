@@ -32,6 +32,8 @@
 		</tr>
 	</table>
 </c:forEach>
-	<button type="button" onclick="location.href='myupdate.do?num=${dto.num}'">정보수정하기</button>
+						<!-- 일단 num을 1로 해둠. 나중에 세션추가하면 dto.num으로 수정 -->
+	<button type="button" onclick="location.href='myupdate.do?num=1'">정보수정하기</button>
+	<button type="button" onclick="location.href='myqna.do?num=1'">내 문의내역</button>
 </body>
 </html>

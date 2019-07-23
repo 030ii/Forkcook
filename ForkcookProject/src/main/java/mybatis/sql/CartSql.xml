@@ -9,6 +9,11 @@
 		from menu m, cart c
 		where c.mnum = m.num
 	</select>
+	<update id="cartUpdate" parameterType="cdto">
+		update cart
+		set mcount=mcount+#{mcount}, mtotalprice=mtotalprice+#{mtotalprice}
+		where num=#{num}
+	</update>
 	<!-- 장바구니에서 + - 클릭하면 수량 변함 -->
 	<update id="countUpdatePlus" parameterType="cdto">
 		update cart
@@ -20,12 +25,22 @@
 		set mcount=mcount-1, mtotalprice=mtotalprice-(select price from menu where num=#{mnum})
 		where num=#{num}
 	</update>
+	
 	<select id="countSelect" parameterType="int" resultType="cdto">
 		select mcount,mtotalprice from cart where num=#{num}
+	</select>
+	<!-- 장바구니 넣으려는 메뉴가 이미 있는지 검사 -->
+	<select id="cartMenuCount" resultType="int" parameterType="cdto">
+		select num from cart where mnum=#{mnum} and unum=#{unum}
 	</select>
 	<!-- 메뉴에서 카트로 음식 넣기 -->
 	<insert id="cartInsert" parameterType="cdto">
 		insert into cart(num,unum,mnum,mcount,mtotalprice) values (seq_cart.nextval,#{unum},#{mnum},1,#{mtotalprice})
+	</insert>
+	
+	<!-- 메뉴detail에서 카트로 음식 넣기 -->
+	<insert id="cartInsertDetail" parameterType="cdto">
+		insert into cart(num,unum,mnum,mcount,mtotalprice) values (seq_cart.nextval,#{unum},#{mnum},#{mcount},#{mtotalprice})
 	</insert>
 	<delete id="cartDelete" parameterType="int">
 		delete from cart where num=#{num}

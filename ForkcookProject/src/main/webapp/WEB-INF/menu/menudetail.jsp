@@ -77,11 +77,13 @@
 	});
 	
 	$(".intocart-btn").click(function() {
-		var mnum =~~.val();
-		var mcount =~~.val();
+		var mnum =${mdto.num}
+		var mcount =clicks;
 		var mtotalprice =${mdto.price}*clicks;
-		
-		window.location.href="insert.do?mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
+		console.log("mnum:"+mnum);
+		console.log("mcount:"+mcount);
+		console.log("mtotalprice:"+mtotalprice);
+		window.location.href="insertdetail.do?unum=1&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
 	});
 	
 	

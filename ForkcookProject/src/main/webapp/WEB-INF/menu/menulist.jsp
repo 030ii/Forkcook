@@ -51,7 +51,7 @@
 			</div>
 		</div>
 			<button type="button" class="intoCart-btn"
-				onclick="location.href='${root}/main/cart/insert.do?unum=1&mnum=${mdto.num}&mcount=1&mtotalprice=${mdto.price }'">장바구니담기</button>
+				onclick="location.href='${root}/main/cart/insert.do?unum=1&mnum=${mdto.num}&mtotalprice=${mdto.price }'">장바구니담기</button>
 			<button type="button" class="goOrder-btn"
 				onclick="location.href='${root}/main/cart/fkdfkdk.do?num=${mdto.num}'">바로주문하기</button>
 		<br>
