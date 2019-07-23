@@ -88,9 +88,37 @@ public class ReviewController {
 		}
 	
 	//리뷰 수정
-	@RequestMapping("/main/review/update.do")
-	public String update(@RequestParam int num,@ModelAttribute ReviewDto dto){
-		service.reviewUpdate(dto);
+	@RequestMapping(value="/main/review/update.do",method=RequestMethod.POST)
+	public String update(@RequestParam int num,@ModelAttribute ReviewDto dto,
+			HttpServletRequest request){
+		
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+		
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:dto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}if(image.length()==0)//이미지 세개 다 선택 안한경우
+			{
+				image="noimage";
+			}else{
+				//마지막 컴마 제거하기
+				image=image.substring(0,image.length()-1);
+			}
+			//dto에 이미지 이름들 저장
+			dto.setImage(image);
+
+			service.reviewUpdate(dto);
+			
+		}
+		
 		return "redirect:review.do?mnum="+dto.getMnum();
 	}
 	
