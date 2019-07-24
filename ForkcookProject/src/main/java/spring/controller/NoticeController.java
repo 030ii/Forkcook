@@ -128,10 +128,9 @@ public class NoticeController {
 
 	
 	@RequestMapping(value="/admin/notice/write.do",method=RequestMethod.POST)
-	public String readData(@ModelAttribute NoticeDto dto,
-			HttpServletRequest request)
+	public String readData(@ModelAttribute NoticeDto dto,HttpServletRequest request)
 	{
-		//이미지 업로드 경로
+				//이미지 업로드 경로
 				String path=request.getSession().getServletContext().getRealPath("/save");
 				System.out.println(path);
 				
@@ -156,11 +155,10 @@ public class NoticeController {
 				}
 				//dto에 이미지 이름들 저장
 				dto.setImage(image);
-				
-				
-		service.insertNotice(dto);		
+
+				service.insertNotice(dto);		
 		
-		return "redirect:list.do";
+				return "redirect:list.do";
 	}
 	
 	@RequestMapping("/admin/notice/updateform.do")
@@ -177,16 +175,66 @@ public class NoticeController {
 
 	// 컨텐츠(content)에서 바로 수정 눌렀을 경우에는 pageNum가 있어서 파라미터에 pageNum이 있는 경우의 update함수
 	@RequestMapping(value="/admin/notice/updatec.do",method=RequestMethod.POST)
-	public String updatec(@ModelAttribute NoticeDto dto,@RequestParam String pageNum)
+	public String updatec(@ModelAttribute NoticeDto dto,@RequestParam String pageNum,HttpServletRequest request)
 	{
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+		
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:dto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+			
+		}
+		if(image.length()==0)//이미지 세개 다 선택 안한경우
+		{
+			image="noimage";
+		}else{
+			//마지막 컴마 제거하기
+			image=image.substring(0,image.length()-1);
+		}
+		//dto에 이미지 이름들 저장
+		dto.setImage(image);
 		service.noticeUpdate(dto);
 		return "redirect:content.do?num="+dto.getNum()+"&pageNum="+pageNum;
 	}
 	
 	// 목록(list)에서 바로 수정 눌렀을 경우에는 pageNum가 없어서 파라미터에 pageNum이 없는 경우의 update함수
 	@RequestMapping(value="/admin/notice/updatel.do",method=RequestMethod.POST)
-	public String updatel(@ModelAttribute NoticeDto dto)
+	public String updatel(@ModelAttribute NoticeDto dto,HttpServletRequest request)
 	{
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+		
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:dto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+			
+		}
+		if(image.length()==0)//이미지 세개 다 선택 안한경우
+		{
+			image="noimage";
+		}else{
+			//마지막 컴마 제거하기
+			image=image.substring(0,image.length()-1);
+		}
+		//dto에 이미지 이름들 저장
+		dto.setImage(image);
 		service.noticeUpdate(dto);	
 		return "redirect:list.do";
 		

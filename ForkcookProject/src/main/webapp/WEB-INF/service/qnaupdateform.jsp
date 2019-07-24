@@ -13,11 +13,11 @@
 <body>
 <c:choose>
 		<c:when test="${not empty pageNum}">
-			<form action="update1.do" method="post">
+			<form action="update1.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="pageNum" value="${pageNum}">
 		</c:when>
 		<c:otherwise>
-			<form action="update2.do" method="post">	
+			<form action="update2.do" method="post" enctype="multipart/form-data">	
 		</c:otherwise>
 	</c:choose>
 	문의 수정 페이지
@@ -28,6 +28,7 @@
 	<br> 내용 :
 	<textarea class="form-control" name="content">${qdto.content}</textarea>
 	<br> 사진 업로드 :
+	<input type="file" name="upfile">
 
 
 	<c:set var="root" value="<%=request.getContextPath() %>" />

@@ -28,30 +28,26 @@ $(function() {
 
 <br>
 <br>
-<form action="reqwrite.do" method="post">
+<form action="reqwrite.do" method="post" enctype="multipart/form-data">
 	<table class="table">
 		<tr>
-			<th>가맹점</th>
 			<td>
-				<input type="text" name="snum" value="2" readonly>
+				<input type="hidden" name="snum" value="2" readonly>
 			</td>
 		</tr>
 		<tr>
-			<th>제 목</th>
 			<td>
-				<input type="text" name="subject" required>
+				<input type="text" name="subject" required placeholder="제목을 입력해주세요">
 			</td>
 		</tr>
 		<tr>
-			<th>이미지 첨부</th>
 			<td>
-				<input type="text" name="image" value="1.jpg" required>
+				<input type="file" name="upfile" required>
 			</td>
 		</tr>
 		<tr>
-			<th>내 용</th>
 			<td>
-				<textarea name="content" required></textarea>
+				<textarea name="content" required placeholder="내용을 입력해주세요"></textarea>
 			</td>
 		</tr>
 		<tr>

@@ -29,7 +29,17 @@
 	<!-- 답변 있음 -->
 		<div>
 			<c:forEach  var="reqdto" items="${reqlist}">
-				<b>제 목 : </b>${reqdto.subject}<br><br><br>
+				<b>-답 변</b>
+				<b>제 목 : </b>${reqdto.subject}<br><br>
+				<td valign="middle">
+					<c:if test="${reqdto.image!='noimage' }">
+						<c:forTokens var="myimg" items="${reqdto.image }" delims=",">
+							<a href="../../save/${myimg}" target="_new">
+				  			<img src="../../save/${myimg}" style="width: 100px;">
+							</a>
+						</c:forTokens>
+					</c:if><br>
+				</td><br><br>
 				<b>내 용 : </b>${reqdto.content}<br><br>
 				<button type="button" onclick="location.href='pqupdateform.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 수정</button>
 				<button type="button" onclick="location.href='preqdelete.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 삭제</button>

@@ -13,42 +13,41 @@
 
 	<c:choose>
 		<c:when test="${not empty pageNum}">
-			<form action="updatec.do" method="post">
+			<form action="updatec.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="pageNum" value="${pageNum}">
 		</c:when>
 		<c:otherwise>
-			<form action="updatel.do" method="post">	
+			<form action="updatel.do" method="post" enctype="multipart/form-data">	
 		</c:otherwise>
 	</c:choose>
 				
-	<table class="table table-striped" style="width: 400px;">
-		<caption><b>게시판글수정</b></caption>
-		<tr>
-			<th style="width: 100px;">제 목</th>
-			<td>
-				<input type="text" name="subject" class="form-control"
-					value="${dto.subject}">
-			</td>
-		</tr>
-		<tr>			
-			<td colspan="2">
-				<textarea rows="5" cols="40" name="content" class="form-control">${dto.content}</textarea>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="hidden" name="num" value="${dto.num}">
+	<fieldset class="uk-fieldset">
+
+        <legend class="uk-legend">공지글 수정</legend>
+
+        <div class="uk-margin">
+            <input type="text" name="subject" class="form-control" required="required" value="${dto.subject}">
+        </div>
+
+        <div class="uk-margin">
+            <input type="file" name="upfile" class="form-control" value="${dto.image}">
+        </div>
+
+        <div class="uk-margin">
+            <textarea name="content" class="form-control">${dto.content}</textarea>
+        </div>
+
+        <div class="uk-margin">
+            <input type="hidden" name="num" value="${dto.num}">
 				
-				<button style="width: 100px;" type="submit">수정하기</button>
+			<button type="submit">수정하기</button>
 				
-				<button style="width: 100px;" type="button"
-				onclick="location.href='list.do?pageNum=${pageNum}'">목록</button>
+			<button type="button" onclick="location.href='list.do?pageNum=${pageNum}'">목록</button>
 				
-				<button style="width: 100px;" type="button"
-				onclick="history.back()">취소</button>
-			</td>
-		</tr>
-	</table>
+			<button type="button" onclick="history.back()">취소</button>
+        </div>
+
+    </fieldset>
 </form>
 
 </body>
