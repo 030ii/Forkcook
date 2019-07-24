@@ -1,4 +1,11 @@
 @CHARSET "UTF-8";
+/* 영찬씨 여기에 폰트사이트(https://noonnu.cc/)에서 우리 프로젝트랑 어울리는 폰트 5개 정도만 찾아서 넣어주세요!!^^! */
+@font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } @font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyBold.woff') format('woff'); } .lottemarthappy * { font-family: 'LotteMartHappy', sans-serif; }
+
+*{
+	font-family: 'LotteMartHappy' !important; 
+}
+
 
 /* 상단바 */
 .fk-navbar {
