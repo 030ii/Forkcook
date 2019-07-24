@@ -20,16 +20,21 @@
 		    </div>
 		    <div class="uk-navbar-right">
 		        <ul class="uk-navbar-nav">
-		        	<c:if test="${udto.num == null}"><!-- 로그인 세션에 의한 유저 정보가 없으면 -->
-			        	<li><a href="${root}/main/user/login.do">로그인</a></li>
-						<li><a href="${root}/main/user/membership.do">회원가입</a></li>
-						<li><a href="${root}/main/cart/list.do">장바구니</a></li>
-					</c:if>
-	        		<c:if test="${udto.num != null}"><!-- 로그인 세션에 의한 유저 정보가 있으면 -->
-						<li><a href="${root}/main/user/logout.do">로그아웃</a></li>
-						<li><a href="${root}/main/user/mypage.do?num=${udto.num}">마이페이지</a></li>
-						<li><a href="${root}/main/cart/list.do?num=${udto.num}">장바구니</a></li>
-		            </c:if>
+		        	<c:choose> 
+		        		<c:when test="${not empty loginInfo}">
+		        			num : ${loginInfo.num }<br>
+		        			name : ${loginInfo.name }<br>
+		        			usertype : ${loginInfo.usertype}<br>
+					        <li><a href="${root}/main/user/logout.do">로그아웃</a></li>
+							<li><a href="${root}/main/user/mypage.do?num=${udto.num}">마이페이지</a></li>
+							<li><a href="${root}/main/cart/list.do?num=${udto.num}">장바구니</a></li>
+					    </c:when>
+					    <c:otherwise>
+					    	<li><a href="${root}/main/user/login.do">로그인</a></li>
+							<li><a href="${root}/main/user/membership.do">회원가입</a></li>
+							<li><a href="${root}/main/cart/list.do">장바구니</a></li>
+					    </c:otherwise>
+				    </c:choose>	
 		        </ul>
 		    </div>
 		</nav>
