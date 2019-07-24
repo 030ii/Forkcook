@@ -45,8 +45,14 @@ public class UserDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("user.userMypage",num);
 	}
 	
-	public int userUpdate(int num){
-		return getSqlSession().update("user.userUpdate",num);
+	public int userUpdate(UserDto dto){
+		return getSqlSession().update("user.userUpdate",dto);
+	}
+	
+	public int passCheck(String pass)
+	{
+		int n=getSqlSession().selectOne("user.passCheck", pass);
+		return n;
 	}
 	
 	//이 밑으로는 관리자 페이지

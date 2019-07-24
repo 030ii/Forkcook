@@ -19,8 +19,8 @@ public class CartService {
 		return dao.getTotalCount();
 	}
 	
-	public List<CartDto> getList(){
-		return dao.getList();
+	public List<CartDto> getList(int num){
+		return dao.getList(num);
 	}
 	
 	public void cartUpdate(CartDto dto){

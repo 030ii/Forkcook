@@ -32,9 +32,12 @@
 	   	select * from users where num=#{num}
 	</select>
 	<update id="userUpdate" parameterType="udto">
-		update users set name=#{name},phone=#{phone} where num=#{num}
+		update users set name=#{name},pass=#{pass},phone=#{phone} where num=#{num}
 	</update>
-	
+	<!-- 정보수정시 비번확인 -->
+	<select id="passCheck" resultType="int" parameterType="String">
+		select count(pass) from users where pass = #{pass,jdbcType=VARCHAR}
+	</select>
 	<!-- 이 밑으로 관리자 페이지 -->
 	<select id="userList" resultType="udto">
 	   	select * from users

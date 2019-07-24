@@ -50,8 +50,13 @@ public class UserService {
 		return dao.userMypage(num);
 	}
 	
-	public int userUpdate(int num){
-		return dao.userUpdate(num);
+	public int userUpdate(UserDto dto){
+		return dao.userUpdate(dto);
+	}
+	
+	public int passCheck(String pass)
+	{
+		return dao.passCheck(pass);
 	}
 	
 	//이 밑으로는 관리자 페이지

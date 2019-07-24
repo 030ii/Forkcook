@@ -4,10 +4,10 @@
 	<select id="cartTotalCount" resultType="int">
 		select count(*) from cart
 	</select>
-	<select id="cartList" resultType="cdto">
+	<select id="cartList" resultType="cdto" parameterType="int">
 		select c.num, c.unum, c.mnum, c.snum, m.name as menuname, m.price as mprice, c.mcount, c.mtotalprice
 		from menu m, cart c
-		where c.mnum = m.num
+		where c.mnum = m.num and c.unum = #{num}
 	</select>
 	<update id="cartUpdate" parameterType="cdto">
 		update cart

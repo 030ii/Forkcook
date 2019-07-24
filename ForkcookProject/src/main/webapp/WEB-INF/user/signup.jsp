@@ -13,7 +13,7 @@
 $(function(){
 	$("#idchk_btn").click(function(){
 
-		 var id = $("#id").val();
+		var id = $("#id").val();
 		var pass = $("#pass").val();
 		if($("#id").val().length <4){
 			alert("아이디는 4자 이상으로 입력해주세요");
@@ -29,11 +29,11 @@ $(function(){
 					var result = JSON.parse(data);
 					if(result.exist == 1){ // 이미 아이디 존재
 						$("#check").text("사용불가");
-						//$("#signup_btn").attr("disabled","disabled");
+						$("#signup_btn").attr("disabled","disabled");
 						alert("이미 존재하는 아이디입니다.");
 					}else if(result.exist == 0){ // 아직 아이디 없음
 						$("#check").text("사용가능");
-						//$("#signup_btn").removeAttr("disabled");
+						$("#signup_btn").removeAttr("disabled");
 						alert("사용이 가능한 아이디입니다.");
 					}
 				},
@@ -48,25 +48,45 @@ $(function(){
 	
 });
 
-	function check(f){
-	  if(f.pass.value != f.pass2.value){
-	   alert("비밀번호가 맞지 않습니다");
-			f.pass.value='';
-			f.pass2.value='';
-			f.pass.focus();
-			return false;
-	  }
-	  
-	  
-	  return true;//true 가 반환되면 액션파일 호출
-    }
+//pass랑 pass2 비번체크 함수(비밀번호입력(첫번째 비번)칸에 대한것)
+function check(){
+	var pass = document.getElementById('pass').value;
+	var pass2 = document.getElementById('pass2').value;
+	//console.log(pass);
+	if(pass != pass2){
+		document.getElementById('pwchk').style.color = "red";
+		document.getElementById('pwchk').innerHTML = "동일한 암호를 입력하세요.";
+		$("#update_btn").attr("disabled","disabled");
+	  }else{
+		document.getElementById('pwchk').style.color = "black";
+		document.getElementById('pwchk').innerHTML = "암호가 확인 되었습니다."; 
+
+		$("#update_btn").removeAttr("disabled");
+	}
+}
+
+//pass랑 pass2 비번체크 함수(비밀번호입력'확인'칸 대한것)
+function check1(){
+	var pass = document.getElementById('pass').value;
+	var pass2 = document.getElementById('pass2').value;
+	//console.log(pass);
+	if(pass != pass2){
+		document.getElementById('pwchk').style.color = "red";
+		document.getElementById('pwchk').innerHTML = "동일한 암호를 입력하세요.";
+		$("#update_btn").attr("disabled","disabled");
+	  }else{
+		document.getElementById('pwchk').style.color = "black";
+		document.getElementById('pwchk').innerHTML = "암호가 확인 되었습니다."; 
+
+		$("#update_btn").removeAttr("disabled");
+	}
+}
 </script>
 </head>
 <body>
 회원가입 폼<br>
-중복확인결과:<div id="check"></div>
 <br>
-비번확인:<div id="pwchk"></div>
+
 <form action="signupform.do" method="get" onsubmit="return check(this)" name="frm">
 	<table border="1">
 	<caption></caption>
@@ -75,6 +95,7 @@ $(function(){
 		<td>
 			<input type="text" name="id" size="7" id="id" required="required">
 			<button type="button" id="idchk_btn">중복확인</button>
+			중복확인결과:<div id="check"></div>
 		</td>
 	</tr>
 	<tr>
@@ -83,18 +104,18 @@ $(function(){
 	</tr>
 	<tr>
 		<th>비밀번호</th>
-		<td><input type="password" name="pass" size="7" required="required"></td>
+		<td><input type="password" name="pass" size="7" required="required" id="pass" onkeyup="check()"></td>
 	</tr>
 	<tr>
 		<th>비밀번호확인</th>
-		<td><input type="password" name="pass2" size="7" required="required"></td>
+		<td><input type="password" name="pass2" size="7" required="required" id="pass2" onkeyup="check1()">비번확인:<div id="pwchk"></div></td>
 	</tr>
 	<tr>
 		<th>핸드폰( - 빼고 입력)</th>
 		<td><input type="text" name="phone" size="7" required="required"></td>
 	</tr>
 	<tr>
-		<td colspan="2"><input type="submit" value="가입완료" id="signup_btn"></td>
+		<td colspan="2"><input type="submit" value="가입완료" id="signup_btn" disabled="disabled"></td>
 	</tr>
 	</table>
 </form>

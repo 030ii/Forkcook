@@ -12,8 +12,8 @@ public class CartDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("cart.cartTotalCount");
 	}
 	
-	public List<CartDto> getList(){
-		return getSqlSession().selectList("cart.cartList");
+	public List<CartDto> getList(int num){
+		return getSqlSession().selectList("cart.cartList",num);
 	}
 	
 	public void cartUpdate(CartDto dto){

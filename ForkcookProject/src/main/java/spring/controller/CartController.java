@@ -22,11 +22,11 @@ public class CartController {
 	private CartService service;
 	
 	@RequestMapping("/main/cart/list.do")
-	public ModelAndView cartlist(){
+	public ModelAndView cartlist(@RequestParam int num){
 		ModelAndView model=new ModelAndView();
 		
 		int totalCount = service.getTotalCount();
-		List<CartDto> list = service.getList();
+		List<CartDto> list = service.getList(num);
 		
 		model.addObject("totalCount", totalCount);
 		model.addObject("list",list);
@@ -83,7 +83,7 @@ public class CartController {
 			@RequestParam String mtotalprice){
 		
 		CartDto dto = new CartDto();
-		dto.setUnum(1);
+		dto.setUnum(unum);
 		dto.setMnum(mnum);
 		dto.setMtotalprice(mtotalprice);
 		
@@ -99,7 +99,8 @@ public class CartController {
 			dto.setNum(cnum);
 			service.countUpdatePlus(dto);
 		}
-		return "redirect:list.do";
+
+		return "redirect:list.do?num="+unum;
 	}
 	
 	//메뉴detail -> 장바구니 담기
@@ -141,7 +142,7 @@ public class CartController {
 		System.out.println(num);
 		
 		service.cartDelete(num);
-		return "redirect:list.do";
+		return "redirect:list.do?num="+num;
 	}
 	
 	//체크박스 체크한것 삭제

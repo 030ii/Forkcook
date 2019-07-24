@@ -3,7 +3,7 @@ package spring.data;
 import java.sql.Timestamp;
 
 public class UserDto {
-	private String num;
+	private int num;
 	private String id;
 	private String pass;
 	private String name;
@@ -12,10 +12,10 @@ public class UserDto {
 	private String usertype;
 	
 	
-	public String getNum() {
+	public int getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(int num) {
 		this.num = num;
 	}
 	public String getId() {

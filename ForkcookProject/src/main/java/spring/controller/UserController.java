@@ -51,7 +51,6 @@ public class UserController {
 			
 			if(user != null){//비회원 로그인 정보가 DB에 존재할경우
 				session.setAttribute("loginInfo", user);//세션저장
-				model.addObject("udto",user);//값 보내기
 				model.setViewName("/main/user/loginsuccess2");
 				}
 				else {
@@ -77,7 +76,6 @@ public class UserController {
 		if(user != null){
 		// 세션 저장 System.out.println(user.getName());
 		session.setAttribute("loginInfo", user);//세션저장
-		model.addObject("udto",user);//값 보내기
 		
 		model.setViewName("/main/user/loginsuccess");
 		}
@@ -114,7 +112,7 @@ public class UserController {
 		if(n >= 1) {
 			result = 1;
 		}
-		System.out.println(result);
+		System.out.println("idresult:"+result);
 		return "{\"exist\":"+result+"}";
 		
 	}
@@ -128,48 +126,74 @@ public class UserController {
 		return "/main/user/signupsuccess";
 	}
 		
-	//마이페이지로 이동
-		/*@RequestMapping("/main/user/mypage.do")
-		public String mypg(){
-			
-			return "/main/user/mypage";  
-		}*/
-		
 	// 마이페이지 내 정보 출력
-		@RequestMapping("/main/user/mypage.do")
-		public ModelAndView myinfo(@RequestParam int num){
-			ModelAndView model = new ModelAndView();
-			List<UserDto> list = service.userMypage(num);
-			model.addObject("list", list);
-			model.setViewName("/main/user/mypage");
-			return model;
-		}
+	@RequestMapping("/main/user/mypage.do")
+	public ModelAndView myinfo(@RequestParam int num){
+		ModelAndView model = new ModelAndView();
+		List<UserDto> list = service.userMypage(num);
+		model.addObject("list", list);
+		model.setViewName("/main/user/mypage");
+		return model;
+	}
+	
+	//비번확인 페이지 > 정보수정페이지
+	@RequestMapping("/main/user/passconfirm.do")
+	public String passconfirm(){
+				
+		//session.removeAttribute("id"); 세션변수 개별삭제
+		//session.invalidate();//세션 정보 초기화
 		
-	// 마이페이지 > 정보 수정페이지로
-		@RequestMapping("/main/user/myupdate.do")
-		public ModelAndView myupdate(@RequestParam int num, HttpSession session){
-			ModelAndView model = new ModelAndView();
-			List<UserDto> list = service.userMypage(num);
-			service.userUpdate(num);
-			
-			session.setAttribute("loginInfo", list);//세션저장
-			model.addObject("udto",list);//값 보내기
-				
-			model.setViewName("/main/user/mypageupdate");
-				
-			return model;
-			
+		return "/main/user/mypagepass";
+	}
+
+	// 마이페이지 > 비번확인페이지
+	@RequestMapping("/main/user/myinfoupdate.do")
+	public ModelAndView mypage(@RequestParam int num){
+		ModelAndView model = new ModelAndView();
+		List<UserDto> list = service.userMypage(num);
+		model.addObject("list", list);
+		
+		//session.setAttribute("loginInfo", list);//세션저장
+		
+		//model.addObject("udto",list);//값 보내기
+		
+		model.setViewName("/main/user/mypageupdate");
+		return model;
+	}
+	
+	//비번 확인 페이지 > 비번 맞는지 검사
+	@RequestMapping(value = "/main/user/passCheck.do", method = RequestMethod.GET)
+	public @ResponseBody String passCheck(
+			HttpServletRequest req,@RequestParam("pass") String pass){
+		int n = service.passCheck(pass);
+		int result = 0;
+		if(n >= 1) {
+			result = 1;
 		}
+		System.out.println("result:"+result);
+		return "{\"exist\":"+result+"}";
+	}
+	
+	// 정보 수정페이지에서 수정하고 내정보목록으로
+	@RequestMapping(value="/main/user/myupdatedone.do",method=RequestMethod.POST)
+	public String myupdate(@ModelAttribute UserDto dto){
+		
+		service.userUpdate(dto);
+		
+		dto.getNum();
+		//System.out.println(num);
+		return "redirect:mypage.do?num="+dto.getNum();
+	}
 		
 	//로그아웃
-		@RequestMapping("/main/user/logout.do")
-		public String logout(HttpSession session){
-					
-			//session.removeAttribute("id"); 세션변수 개별삭제
-			session.invalidate();//세션 정보 초기화
-			
-			return "/main/user/logout";
-		}
+	@RequestMapping("/main/user/logout.do")
+	public String logout(HttpSession session){
+				
+		//session.removeAttribute("id"); 세션변수 개별삭제
+		session.invalidate();//세션 정보 초기화
+		
+		return "/main/user/logout";
+	}
 		
 	//관리자 user관리
 	@RequestMapping("/admin/user/list.do")
