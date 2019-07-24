@@ -82,6 +82,7 @@ public class ReviewController {
 			//dto에 이미지 이름들 저장
 			dto.setImage(image);
 			//db에 저장
+			
 			service.reviewInsert(dto);
 			
 			return "redirect:review.do?mnum="+dto.getMnum();

@@ -36,7 +36,7 @@ $(function(){
 		console.log("ㅜㅕㅡ"+nums);
 		
 		//컨트롤러 호출
-		location.href="chkdelete.do?nums="+nums;
+		location.href="chkdelete.do?nums="+nums+"&unum="+${loginInfo.num};
 	});
 });
 </script>
@@ -98,7 +98,7 @@ $(function(){
 			<td class="price">${dto.mprice}</td>
 			<td class="mtotalprice" data-mnum="${dto.mnum}">${dto.mtotalprice}</td>
 			<td>
-				<button type="button" onclick="location.href='delete.do?num=${dto.num}'">삭제</button>
+				<button type="button" onclick="location.href='delete.do?cnum=${dto.num}&unum=${loginInfo.num }'">삭제</button>
 			</td>
 		</tr>
 		</c:forEach></c:otherwise></c:choose>

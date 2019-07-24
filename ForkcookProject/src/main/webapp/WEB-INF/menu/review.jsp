@@ -143,7 +143,7 @@ $(document).ready(function(){
 					<br>
 					내용 : <input type="text" name="content" size="30"><br>
 					사진 : <input type="file" name="upfile"><br><br>
-					<input type="hidden" name="unum" value="2">
+					<input type="hidden" name="unum" value="${loginInfo.num }">
 					<input type="hidden" name="mnum" value="${mnum}">
 					<input type="hidden" name="rate" id="insertRate">
 				</div>
@@ -229,11 +229,10 @@ $(document).ready(function(){
 				</td>
 				<td><fmt:formatDate value="${dto.writeday }" pattern="MM-dd HH:mm"/></td>
 				<td>
-					<!-- 해야될것 ------
-						c:if -> 로그인 세션의 user num랑 dto.unum이 같으면 수정 버튼 보여지고, 다르면 안보여짐
-                  		-> 삭제버튼도 같음 -->
-					<button type="button" class="updatebtn">수정</button>
-					<button type="button" onclick="location.href='delete.do?num=${dto.num}&mnum=${dto.mnum }'">삭제</button>
+        			<c:if test="${not empty loginInfo && loginInfo.num == dto.unum}">
+       					<button type="button" class="updatebtn">수정</button>
+						<button type="button" onclick="location.href='delete.do?num=${dto.num}&unum=${loginInfo.num }&mnum=${dto.mnum }'">삭제</button>
+       				</c:if>
 				</td>
 			</tr>
 		</c:forEach>

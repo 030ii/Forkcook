@@ -129,25 +129,19 @@ public class CartController {
 			dto.setNum(cnum);
 			service.cartUpdate(dto);
 		}
-		return "redirect:list.do";
+		return "redirect:list.do?num="+unum;
 	}
 		
 	// 삭제
 	@RequestMapping("/main/cart/delete.do")
-	public String delete(@RequestParam int num){
-		System.out.println(num);
-
-		CartDto dto = new CartDto();
-		dto.setNum(num);
-		System.out.println(num);
-		
-		service.cartDelete(num);
-		return "redirect:list.do?num="+num;
+	public String delete(@RequestParam int cnum, @RequestParam int unum){
+		service.cartDelete(cnum);
+		return "redirect:list.do?num="+unum;
 	}
 	
 	//체크박스 체크한것 삭제
 	@RequestMapping("/main/cart/chkdelete.do")
-	public String chkdelete(@RequestParam String nums)
+	public String chkdelete(@RequestParam String nums, @RequestParam int unum)
 	{
 		//컴마로 분리
 		String []dels=nums.split(",");
@@ -157,6 +151,6 @@ public class CartController {
 			service.cartDelete(num);
 		}
 		
-		return "redirect:list.do";
+		return "redirect:list.do?num="+unum;
 	}
 }

@@ -80,10 +80,11 @@
 		var mnum =${mdto.num}
 		var mcount =clicks;
 		var mtotalprice =${mdto.price}*clicks;
+		var unum = ${loginInfo.num};
 		console.log("mnum:"+mnum);
 		console.log("mcount:"+mcount);
 		console.log("mtotalprice:"+mtotalprice);
-		window.location.href="insertdetail.do?unum=1&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
+		window.location.href="insertdetail.do?unum="+unum+"&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
 	});
 	
 	
