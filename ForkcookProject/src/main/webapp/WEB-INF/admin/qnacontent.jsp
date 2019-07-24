@@ -29,17 +29,17 @@
 	</c:if>
 	<c:if test="${qdto.qnastate==2}">
 	<!-- 답변 있음 -->
-		<div>
+		<dl class="uk-description-list">
 			<c:forEach  var="reqdto" items="${reqlist}">
-				<b> 제 목 : </b>${reqdto.subject}<br><br><br>
-				<b> 내 용 : </b>${reqdto.content}<br><br>
-				<button type="button" onclick="location.href='requpdateform.do?reqnum=${reqdto.num}&pageNum=${pageNum}'"><span uk-icon="file-edit"></span> 답변 수정</button>
-				<button type="button" onclick="location.href='reqdelete.do?reqnum=${reqdto.num}&pageNum=${pageNum}'"><span uk-icon="trash"></span> 답변 삭제</button>
-				<hr>
-			</c:forEach>	
-		</div>
+    			<dt><b>제 목 : ${reqdto.subject}</b></dt><br><br>
+    			<dd>내 용 : ${reqdto.content}</dd><hr>
+    			<button type="button" onclick="location.href='requpdateform.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 수정</button>
+				<button type="button" onclick="location.href='reqdelete.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 삭제</button>
+		</dl>
+			</c:forEach>
 	</c:if>
-	<button type="button" onclick="location.href='list.do?"><span uk-icon="list"></span> 목록</button>
+	<c:set var="root" value="<%=request.getContextPath() %>" />
+	<button type="button" onclick="location.href='${root}/admin/qna/list.do'"><span uk-icon="list"></span> 목록</button>
 	<c:if test="${qdto.qnastate==1}">
 	<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'"><span uk-icon="trash"></span> 해당 문의 삭제</button>
 	</c:if>

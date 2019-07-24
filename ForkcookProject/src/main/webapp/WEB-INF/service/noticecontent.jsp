@@ -10,19 +10,27 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-	<table style="width: 500px;" class="table table-bordered">
-		<tr>
-			<th>제 목 : ${dto.subject}<span style="margin-left: 200px;"> <fmt:formatDate
-						value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm" />
-			</span>
-			</th>
-		</tr>
-		<tr height="250">
-			<td valign="top"><br> 
-				
-					<span>${dto.content}</span>
-			</td>
-		</tr>
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+	    <thead>
+	        <tr>
+				<th>제 목 : ${dto.subject}</th>
+				<th><fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm" /></th>
+	        </tr>
+	    </thead>
+	    <tbody>	    	
+			<tr>
+				<td valign="middle">
+					<c:if test="${dto.image!='noimage' }">
+						<c:forTokens var="myimg" items="${dto.image }" delims=",">
+							<a href="../../save/${myimg}" target="_new">
+				  			<img src="../../save/${myimg}" style="width: 100px;">
+							</a>
+						</c:forTokens>
+					</c:if><br>
+					${dto.content}
+				</td>
+			</tr>
+	    </tbody>
 	</table>
 	<div>
 		<button type="button" style="width: 80px;"

@@ -20,7 +20,16 @@
 	    </thead>
 	    <tbody>	    	
 			<tr>
-				<td>내 용 : ${dto.content}</td>
+				<td valign="middle">
+					<c:if test="${dto.image!='noimage' }">
+						<c:forTokens var="myimg" items="${dto.image }" delims=",">
+							<a href="../../save/${myimg}" target="_new">
+				  			<img src="../../save/${myimg}" style="width: 100px;">
+							</a>
+						</c:forTokens>
+					</c:if><br>
+					${dto.content}
+				</td>
 			</tr>
 	    </tbody>
 	</table>

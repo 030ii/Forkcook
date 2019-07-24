@@ -24,31 +24,35 @@ $(function() {
 </script>
 </head>
 <body>
-공지 작성 페이지<br>
 가맹점이나 관리자만 접근 가능한 페이지 입니다<br>
 <br>
 <br>
-<form action="write.do" method="post">
-	<table class="table" style="width: 400px;">
-		<tr>
-			<th style="width: 100px;">제 목</th>
-			<td>
-				<input type="text" name="subject" class="form-control" required="required">
-			</td>
-		</tr>
-		<tr>			
-			<td colspan="2">
-				<textarea rows="5" cols="40" name="content" class="form-control"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="right">
-				<c:set var="root" value="<%=request.getContextPath() %>" />
+<form action="write.do" method="post" enctype="multipart/form-data">
+	
+	<fieldset class="uk-fieldset">
+
+        <legend class="uk-legend">공지 작성 페이지</legend>
+
+        <div class="uk-margin">
+            <input type="text" name="subject" class="form-control" required="required" placeholder="제목을 입력하세요">
+        </div>
+
+        <div class="uk-margin">
+            <input type="file" name="upfile">
+        </div>
+
+        <div class="uk-margin">
+            <textarea name="content" class="form-control" placeholder="내용을 입력하세요"></textarea>
+        </div>
+
+        <div class="uk-margin">
+            <c:set var="root" value="<%=request.getContextPath() %>" />
             <button type="button" onclick="location.href='${root}/admin/notice/list.do'">취소하기</button>
             <button type="submit" id="wkrtjd">작성하기</button>
-			</td>
-		</tr>
-	</table>
+        </div>
+
+    </fieldset>
+
 </form>
 </body>
 </html>

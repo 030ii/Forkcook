@@ -17,7 +17,7 @@
 				<input type="hidden" name="pageNum" value="${pageNum}">
 		</c:when>
 		<c:otherwise>
-			<form action="update2.do" method="post">	
+			<form action="update2.do" method="post">
 		</c:otherwise>
 	</c:choose>
 	문의 수정 페이지

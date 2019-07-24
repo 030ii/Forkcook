@@ -6,8 +6,8 @@
 	</select>
 	
 	<insert id="noticeInsert" parameterType="ndto">
-		insert into notice values (seq1.nextval,
-		#{subject},#{content},'0.jpg',sysdate)
+		insert into notice values (seq_notice.nextval,
+		#{subject},#{content},#{image},sysdate)
 	</insert>
 	
 	<select id="noticePagingList" parameterType="HashMap" resultType="ndto">

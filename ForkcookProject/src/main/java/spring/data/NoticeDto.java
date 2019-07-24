@@ -1,6 +1,9 @@
 package spring.data;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class NoticeDto {
 	private int num;
@@ -8,9 +11,15 @@ public class NoticeDto {
 	private String content;
 	private String image;
 	private Timestamp writeday;
+	private ArrayList<MultipartFile> upfile;
 	
 	
-	
+	public ArrayList<MultipartFile> getUpfile() {
+		return upfile;
+	}
+	public void setUpfile(ArrayList<MultipartFile> upfile) {
+		this.upfile = upfile;
+	}
 	public String getImage() {
 		return image;
 	}
