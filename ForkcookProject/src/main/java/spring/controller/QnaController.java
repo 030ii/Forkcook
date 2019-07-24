@@ -2,6 +2,8 @@ package spring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.QnaDto;
 import spring.data.ReqnaDto;
 import spring.service.QnaService;
 import spring.service.ReqnaService;
+import upload.util.SpringFileWriter;
 
 
 
@@ -25,13 +29,13 @@ public class QnaController {
 	private QnaService qservice;
 	@Autowired
 	private ReqnaService reqservice;
-	
+
 	@RequestMapping("/{mainadmin}/{qnauser}/{listpartnermyqna}.do")
 	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartnermyqna, @PathVariable String qnauser, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		ModelAndView model = new ModelAndView();
-		
+
 		int totalCount = qservice.getTotalCount(); 		// 메뉴 총 개수 가져오기
-		 					
+
 		//페이징 복사한거
 		//페이징처리에 필요한 변수들 선언
 		int totalPage; //총 페이지수
@@ -88,26 +92,26 @@ public class QnaController {
 		model.addObject("totalCount",totalCount);
 		model.setViewName("/main/service/qnalist");
 
-		
+
 		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
 			model.setViewName("/main/service/qnalist"); 	// 일반 모드의 메뉴 목록 화면으로 이동
 			if(qnauser.equals("user")){
 				if(listpartnermyqna.equals("myqna")){
-				model.setViewName("/main/user/qnalist");
+					model.setViewName("/main/user/qnalist");
 				}
 			}
 		}
 		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
 			model.setViewName("/admin/admin/qna"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
-			
+
 			if(listpartnermyqna.equals("partner")) {
 				model.setViewName("/admin/partner/partnerqna");
 			}
 		}
-		
+
 		return model;
 	}
-	
+
 	@RequestMapping("/{mainadmin}/qna/content.do")
 	public String content(@PathVariable String mainadmin,Model model,@RequestParam int qnum,@RequestParam int pageNum){
 		//데이타 가져오기
@@ -115,10 +119,10 @@ public class QnaController {
 		//model 에 저장
 		model.addAttribute("qdto", qdto);
 		model.addAttribute("pageNum", pageNum);	
-		
+
 		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
-		
+
 		if(mainadmin.equals("main")) { 
 			return "/main/service/qnacontent";// 일반 모드일 경우 
 		}
@@ -127,7 +131,7 @@ public class QnaController {
 			return "/admin/admin/qnacontent"; 	  // 관리자 모드의 메뉴 관리(목록) 화면으로 이동
 		}		
 	}
-	
+
 	@RequestMapping("/main/user/uqcontent.do")
 	public String usercontent(@RequestParam int qnum,@RequestParam int pageNum,Model model)
 	{
@@ -136,10 +140,10 @@ public class QnaController {
 		model.addAttribute("pageNum", pageNum);
 		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
-		
+
 		return "/main/user/qnacontent";
 	}
-	
+
 	@RequestMapping("/admin/qna/pqcontent.do")
 	public String pqcontent(@RequestParam int qnum,@RequestParam int pageNum,Model model)
 	{
@@ -148,14 +152,14 @@ public class QnaController {
 		model.addAttribute("pageNum", pageNum);
 		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
-		
+
 		return "/admin/partner/qnacontent";
 	}
-	
+
 	@RequestMapping("/main/{qnauser}/form.do")
 	public ModelAndView form(@PathVariable String qnauser){
 		ModelAndView model=new ModelAndView();
-		
+
 		if(qnauser.equals("qna")){
 			model.setViewName("/main/service/qnaform");
 		}else{
@@ -163,18 +167,44 @@ public class QnaController {
 		}
 		return model;
 	}
-	
+
 	@RequestMapping(value="/main/{qnauser}/write.do",method=RequestMethod.POST)
-	public String readData(@ModelAttribute QnaDto dto,@PathVariable String qnauser)
+	public String readData(@ModelAttribute QnaDto qdto,@PathVariable String qnauser,HttpServletRequest request)
 	{
-		qservice.qnaInsert(dto);
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:qdto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+
+		}
+		if(image.length()==0)//이미지 세개 다 선택 안한경우
+		{
+			image="noimage";
+		}else{
+			//마지막 컴마 제거하기
+			image=image.substring(0,image.length()-1);
+		}
+		//dto에 이미지 이름들 저장
+		qdto.setImage(image);
+
+		qservice.qnaInsert(qdto);
 		if(qnauser.equals("qna")){
 			return "redirect:list.do";
 		}else{
 			return "redirect:myqna.do";
 		}
 	}
-	
+
 	@RequestMapping("/main/{qnauser}/updateform.do")
 	public ModelAndView updateForm(@RequestParam int qnum,@PathVariable String qnauser,
 			@RequestParam String pageNum)
@@ -190,11 +220,37 @@ public class QnaController {
 		}
 		return model;
 	}
-	
+
 	@RequestMapping(value="/main/{qnauser}/update1.do",method=RequestMethod.POST)
 	public String update1(@ModelAttribute QnaDto qdto,@PathVariable String qnauser,
-			@RequestParam String pageNum)
+			@RequestParam String pageNum,HttpServletRequest request)
 	{
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:qdto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+
+		}
+		if(image.length()==0)//이미지 세개 다 선택 안한경우
+		{
+			image="noimage";
+		}else{
+			//마지막 컴마 제거하기
+			image=image.substring(0,image.length()-1);
+		}
+		//dto에 이미지 이름들 저장
+		qdto.setImage(image);
+
 		qservice.qnaUpdate(qdto);
 		if(qnauser.equals("qna")){
 			return "redirect:content.do?qnum="+qdto.getNum()+"&pageNum="+pageNum;
@@ -202,10 +258,36 @@ public class QnaController {
 			return "redirect:uqcontent.do?qnum="+qdto.getNum()+"&pageNum="+pageNum;
 		}
 	}
-	
+
 	@RequestMapping(value="/main/{qnauser}/update2.do",method=RequestMethod.POST)
-	public String update2(@ModelAttribute QnaDto qdto,@PathVariable String qnauser)
+	public String update2(@ModelAttribute QnaDto qdto,@PathVariable String qnauser,HttpServletRequest request)
 	{
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:qdto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+
+		}
+		if(image.length()==0)//이미지 세개 다 선택 안한경우
+		{
+			image="noimage";
+		}else{
+			//마지막 컴마 제거하기
+			image=image.substring(0,image.length()-1);
+		}
+		//dto에 이미지 이름들 저장
+		qdto.setImage(image);
+
 		qservice.qnaUpdate(qdto);
 		if(qnauser.equals("qna")){
 			return "redirect:list.do";
@@ -221,7 +303,7 @@ public class QnaController {
 	{
 		//삭제
 		qservice.qnaDelete(qnum);
-	
+
 		if(mainadmin.equals("main")) { 
 			return "redirect:list.do?pageNum="+pageNum;// 일반 모드일 경우 
 		}
@@ -230,21 +312,21 @@ public class QnaController {
 			return "redirect:list.do?pageNum="+pageNum; 	  // 관리자 모드의 메뉴 관리(목록) 화면으로 이동
 		}
 	}
-	
+
 	@RequestMapping("admin/qna/pqdelete.do")
 	public String pqdelete(@RequestParam int qnum,@RequestParam String pageNum)
 	{
 		qservice.qnaDelete(qnum);
 		return "redirect:partner.do?pageNum="+pageNum;
 	}
-	
+
 	@RequestMapping("main/user/uqdelete.do")
 	public String uqdelete(@RequestParam int qnum,@RequestParam String pageNum)
 	{
 		qservice.qnaDelete(qnum);
 		return "redirect:myqna.do?pageNum="+pageNum;
 	}
-	
+
 	/*@RequestMapping("/main/qna/delete.do")
 	public String delete(@RequestParam int qnum,@RequestParam String pageNum)
 	{

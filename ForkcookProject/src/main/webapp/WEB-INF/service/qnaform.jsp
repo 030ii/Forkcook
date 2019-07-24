@@ -29,17 +29,18 @@ $(function() {
 
 	<br>
 	<br>
-	<form action="write.do" method="post">
+	<form action="write.do" method="post" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
-				<th>제 목</th>
-				<td><input type="text" name="subject" class="form-control"
-					required="required"></td>
+				<td><input type="text" name="subject" class="form-control" required="required" placeholder="제목을 입력해주세요"></td>
 			</tr>
 			<tr>
-				<th>내 용</th>
-				<td colspan="2"><textarea rows="5" cols="40" name="content"
-						class="form-control" required="required"></textarea></td>
+			<td>
+				<input type="file" name="upfile" required>
+			</td>
+			</tr>
+			<tr>
+				<td><textarea  name="content" class="form-control" required="required" placeholder="내용을 입력해주세요"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><c:set var="root"

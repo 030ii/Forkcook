@@ -25,11 +25,10 @@
 	<br> 작성자 : 
 	<br> 제목 :
 	<input type="text" value="${qdto.subject}" class="form-control" name="subject">
+	<br> 사진 업로드 :
+	<input type="file" name="upfile" value="${qdto.image}">
 	<br> 내용 :
 	<textarea class="form-control" name="content">${qdto.content}</textarea>
-	<br> 사진 업로드 :
-	<input type="file" name="upfile">
-
 
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 	<input type="hidden" name="num" value="${qdto.num}">
