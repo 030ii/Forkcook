@@ -3,7 +3,9 @@
 <mapper namespace="storeuser">
 	<!-- 로그인 정보를  users테이블과 비교 -->
 	<select id="storeuserLogin" parameterType="sudto" resultType="sudto">
-		select * from storeuser where id = #{id} and pass = #{pass}
+		select su.num, su.snum, s.name as sname, s.area as sarea, su.id, su.pass, su.gaipday, su.usertype 
+		from storeuser su, store s 
+		where su.id = #{id} and su.pass = #{pass} and su.snum = s.num
 	</select>
 	<select id="storeuserTotalCount" resultType="int">
 		select count(*) from storeuser
