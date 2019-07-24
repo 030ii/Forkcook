@@ -13,7 +13,6 @@
 	<div class="fk-heading">관리자 메뉴 관리 페이지</div>
 	<p class="fk-desc">총 ${totalCount}개의 메뉴가 있습니다</p>
 	<button type="button" class="fk-float-right uk-button uk-button-default" onclick="location.href='writeform.do'">새로운 메뉴 추가하기</button>
-	
 	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
 	    <thead>
 	        <tr>

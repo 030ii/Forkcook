@@ -32,6 +32,7 @@ public class AdminController {
 		
 		// 참고용) 관리자 세션 불러오기
 		// StoreuserDto storeuser = (StoreuserDto) session.getAttribute("adminLoginInfo"); 
+	
 	}		
 	
 	@RequestMapping("/admin/main.do")	

@@ -16,6 +16,16 @@ public class UserDao extends SqlSessionDaoSupport {
 		return n;
 	}
 	
+	 public int getUsertype1TotalCount()
+	{
+		return getSqlSession().selectOne("user.usertype1TotalCount");
+	}
+	
+	public int getUsertype2TotalCount()
+	{
+		return getSqlSession().selectOne("user.usertype2TotalCount");
+	}
+	
 	public void insertUser(UserDto dto)
 	{
 		getSqlSession().insert("user.userInsert",dto);

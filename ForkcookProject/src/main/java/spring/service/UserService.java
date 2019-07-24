@@ -21,6 +21,16 @@ public class UserService {
 		return dao.getTotalCount();
 	}
 	
+	public int getUsertype1TotalCount()
+	{
+		return dao.getUsertype1TotalCount();
+	}
+
+	public int getUsertype2TotalCount()
+	{
+		return dao.getUsertype2TotalCount();
+	}
+	
 	public void insertUser(UserDto dto)
 	{
 		dao.insertUser(dto);

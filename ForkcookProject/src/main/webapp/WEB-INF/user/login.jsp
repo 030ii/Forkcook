@@ -52,10 +52,6 @@ $(document).ready(function(){
 회원 : 아이디랑 비번 체크해서 로그인성공/실패 나누기 ->성공시 메인화면
 비회원 : 로그인하면 회원데이타 저장하고 장바구니로 이동
 -->
-id : ${udto.id }님 로그인 중<br>
-phone : ${phone }<br>
-pass : ${pass }<br>
-데이터 갯수 : ${totalCount }
 <form method="get" name="form1">
 	아이디 : <input type="text" name="id" size="7" id="id"><br>
 	비밀번호 : <input type="password" name="pass" size="7" id="pass"><br>

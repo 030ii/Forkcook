@@ -5,6 +5,14 @@
 	<select id="userTotalCount" resultType="int">
 		select count(*) from users
 	</select>
+	<!-- 회원수 -->
+	<select id="usertype1TotalCount" resultType="int">
+		select count(*) from users where usertype = 1
+	</select>
+	<!-- 비회원수 -->
+	<select id="usertype2TotalCount" resultType="int">
+		select count(*) from users where usertype = 2
+	</select>
 	<!-- 회원가입 -->
 	<insert id="userInsert" parameterType="udto">
 		insert into users values (seq_users.nextval,#{id},
