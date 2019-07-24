@@ -53,7 +53,5 @@
 	  				onclick="alert('답변이 있는 문의는 삭제 할 수 없습니다.')">삭제</button>
 			</c:otherwise>
 	    </c:choose>
-<c:if test="${qdto.qnastate==1}">
-</c:if>
 </body>
 </html>
