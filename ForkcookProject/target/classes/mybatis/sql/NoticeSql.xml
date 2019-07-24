@@ -25,7 +25,7 @@
 	
 	 <update id="noticeUpdate" parameterType="ndto">
 		update notice set 
-		subject=#{subject},content=#{content},writeday=sysdate
+		subject=#{subject},content=#{content},image=#{image},writeday=sysdate
 		 where num=#{num}
    </update>
    

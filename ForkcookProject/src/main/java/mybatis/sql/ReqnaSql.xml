@@ -18,7 +18,7 @@
 		insert into reqna values (seq_reqna.nextval,#{qnum},#{snum},#{subject},#{content},#{image},sysdate)
 	</insert>
 	<update id="reqnaUpdate" parameterType="rqdto">
-		update reqna set subject=#{subject},content=#{content},writeday=sysdate where num=#{num}
+		update reqna set subject=#{subject},content=#{content},image=#{image},writeday=sysdate where num=#{num}
 	</update>
 	<select id="reqnaSelectData2" parameterType="int" resultType="rqdto">
 		select * from reqna where qnum=#{qnum}

@@ -11,17 +11,18 @@
 
 </head>
 <body>
-	<form action="pqupdate.do" method="post">
+	<form action="pqupdate.do" method="post" enctype="multipart/form-data">
 		문의 답변 수정 페이지<br>
 		<div>
-			제 목 : <input type="text" name="subject" value="${reqdto.subject}" class="form-control"><br><br><br>
-			내 용 : <textarea name="content" class="form-control">${reqdto.content}</textarea><br>
+			<input type="text" name="subject" value="${reqdto.subject}" class="form-control"><br><br>
+			<input type="file" name="upfile" class="form-control" value="${dto.image}"><br><br>
+			<textarea name="content" class="form-control">${reqdto.content}</textarea><br>
 		</div>
 		<input type="hidden" name="qnum" value="${reqdto.qnum}">
 		<input type="hidden" name="num" value="${reqdto.num}">
 		<input type="hidden" name="pageNum" value="${pageNum}">
-		<button type="button" onclick="history.back()">취소하기(뒤로 가기)</button>
-		<button type="submit">수정하기(수정한문의글 페이지로 감)</button>
+		<button type="button" onclick="history.back()">취소하기</button>
+		<button type="submit">수정하기</button>
 	</form>
 </body>
 </html>

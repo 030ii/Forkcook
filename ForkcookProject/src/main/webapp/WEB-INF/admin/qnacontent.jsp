@@ -31,12 +31,23 @@
 	<!-- 답변 있음 -->
 		<dl class="uk-description-list">
 			<c:forEach  var="reqdto" items="${reqlist}">
+				<b>-답 변</b>
     			<dt><b>제 목 : ${reqdto.subject}</b></dt><br><br>
+    			<td valign="middle">
+					<c:if test="${reqdto.image!='noimage' }">
+						<c:forTokens var="myimg" items="${reqdto.image }" delims=",">
+							<a href="../../save/${myimg}" target="_new">
+				  			<img src="../../save/${myimg}" style="width: 100px;">
+							</a>
+						</c:forTokens>
+					</c:if><br>
+				</td><br><br>
     			<dd>내 용 : ${reqdto.content}</dd><hr>
     			<button type="button" onclick="location.href='requpdateform.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 수정</button>
 				<button type="button" onclick="location.href='reqdelete.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 삭제</button>
-		</dl>
 			</c:forEach>
+		</dl>
+			
 	</c:if>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 	<button type="button" onclick="location.href='${root}/admin/qna/list.do'"><span uk-icon="list"></span> 목록</button>
