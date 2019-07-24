@@ -16,7 +16,7 @@
 제목 : ${qdto.subject}
 등록 날짜 : <fmt:formatDate value="${qdto.writeday}"
 				   pattern="yyyy-MM-dd HH:mm"/><br>
-가맹점 : ${sdto.name}<br>
+가맹점 : <br>
 내용 : ${qdto.content}<br>
 사진 : ${qdto.image}
 </pre>
@@ -38,11 +38,22 @@
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" class="btn btn-info btn-sm"
 	  onclick="location.href='${root}/main/qna/list.do'">목록</button>
+	  
+	  <c:choose> 
+			<c:when test="${qdto.qnastate==1}">
+		    	<button type="button" class="btn btn-success btn-sm"
+	  				onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
+	  			<button type="button" class="btn btn-danger btn-sm"
+	  				onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
+	  		</c:when>
+		    <c:otherwise>
+		    	<button type="button" class="btn btn-success btn-sm"
+	  				onclick="alert('답변이 있는 문의는 수정 할 수 없습니다.')">수정</button>
+	  			<button type="button" class="btn btn-danger btn-sm"
+	  				onclick="alert('답변이 있는 문의는 삭제 할 수 없습니다.')">삭제</button>
+			</c:otherwise>
+	    </c:choose>
 <c:if test="${qdto.qnastate==1}">
-<button type="button" class="btn btn-success btn-sm"
-	  onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
-<button type="button" class="btn btn-danger btn-sm"
-	  onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
 </c:if>
 </body>
 </html>

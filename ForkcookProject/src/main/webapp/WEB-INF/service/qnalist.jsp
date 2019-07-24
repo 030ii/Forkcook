@@ -30,7 +30,15 @@
 		<c:forEach var="qdto" items="${qlist}" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
-				<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
+				<c:choose>
+					<c:when test="${not empty loginInfo}">
+						<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
+					</c:when>
+					<c:otherwise>
+						<c:set var="root" value="<%=request.getContextPath() %>" />
+						<td><a href="${root}/main/user/login.do">${qdto.subject}</a></td>
+					</c:otherwise>
+				</c:choose>
 				<td>${qdto.unum}</td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
@@ -70,7 +78,11 @@
 	</ul>
 </div>
 <br>
-<c:set var="root" value="<%=request.getContextPath() %>" />
-<button type="button" onclick="location.href='${root}/main/qna/form.do'">문의 작성</button>
+<c:choose>
+	<c:when test="${not empty loginInfo}">
+		<c:set var="root" value="<%=request.getContextPath() %>" />
+		<button type="button" onclick="location.href='${root}/main/qna/form.do'">문의 작성</button>
+	</c:when>
+</c:choose>
 </body>
 </html>
