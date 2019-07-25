@@ -24,7 +24,7 @@
 					<c:if test="${dto.image!='noimage' }">
 						<c:forTokens var="myimg" items="${dto.image }" delims=",">
 							<a href="../../save/${myimg}" target="_new">
-				  			<img src="../../save/${myimg}" style="width: 100px;">
+				  			<img src="../../save/${myimg}" style="width: 500px;">
 							</a>
 						</c:forTokens>
 					</c:if><br>
