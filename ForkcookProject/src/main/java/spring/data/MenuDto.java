@@ -1,5 +1,9 @@
 package spring.data;
 
+import java.util.ArrayList;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class MenuDto {
 	private int num;
 	private String name;
@@ -10,7 +14,14 @@ public class MenuDto {
 	private String rate;
 	private String shortmsg;
 	private String longimage;
+	private ArrayList<MultipartFile> upfile;
 	
+	public ArrayList<MultipartFile> getUpfile() {
+		return upfile;
+	}
+	public void setUpfile(ArrayList<MultipartFile> upfile) {
+		this.upfile = upfile;
+	}
 	public int getNum() {
 		return num;
 	}

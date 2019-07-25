@@ -13,7 +13,7 @@
 <body>
 메뉴 추가 폼
 	<!-- <form action="write.do" method="post" enctype="multipart/form-data">  -->
-	<form action="write.do" method="post">
+	<form action="write.do" method="post" enctype="multipart/form-data">
 		메뉴 이름 : 
 			<input type="text" name="name" required><br>
 
@@ -35,7 +35,7 @@
 			<input type="text" name="price" required><br>	
 		
 		메뉴 메인사진 :
-			<input type="text" name="mainimage" value="test.png" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
+			<input type="file" name="upfile" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
 			
 		메뉴 요약 : 
 			<input type="text" name="shortmsg" required><br>
