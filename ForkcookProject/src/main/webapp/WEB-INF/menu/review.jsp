@@ -150,7 +150,7 @@ $(document).ready(function(){
 			</div>
 	        <div class="uk-modal-footer uk-text-right">
 	            <button class="uk-button uk-button-default uk-modal-close" type="button">취소</button>
-	            <input type="submit" value="리뷰등록" id="add-btn" class="uk-button uk-button-primary" type="button"></button>
+	            <input type="submit" value="리뷰등록" id="add-btn" class="uk-button uk-button-primary" type="button">
 	        </div>
         </form>
     </div>
@@ -172,8 +172,6 @@ $(document).ready(function(){
 	</c:forEach>
 	
 <hr>
-<div id="reviewTable">
-</div>
   <div id="reviewTable">
 	<table border=1 id="listTable">
 		<tr>
@@ -238,10 +236,5 @@ $(document).ready(function(){
 		</c:forEach>
 	</table>
   </div>
-<script type="text/javascript">
-$(function(){
-	
-});
-</script>
 </body>
 </html>
