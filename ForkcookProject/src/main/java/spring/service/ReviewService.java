@@ -32,6 +32,10 @@ public class ReviewService {
 		return dao.getListUser(mnum);
 	}
 	
+	public List<ReviewDto> getListMypage(int unum){
+		return dao.getListMypage(unum);
+	}
+	
 	public ReviewDto getData(int num)
 	{
 		return dao.getData(num);

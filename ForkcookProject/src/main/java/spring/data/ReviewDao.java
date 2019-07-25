@@ -24,6 +24,10 @@ public class ReviewDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("review.reviewListUser",mnum);
 	}
 	
+	public List<ReviewDto> getListMypage(int unum){
+		return getSqlSession().selectList("review.reviewListMypage",unum);
+	}
+	
 	//전체데이타얻기
 	public ReviewDto getData(int num)
 	{

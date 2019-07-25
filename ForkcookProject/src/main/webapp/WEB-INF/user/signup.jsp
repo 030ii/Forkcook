@@ -84,40 +84,39 @@ function check1(){
 </script>
 </head>
 <body>
-회원가입 폼<br>
-<br>
-
-<form action="signupform.do" method="get" onsubmit="return check(this)" name="frm">
-	<table border="1">
-	<caption></caption>
-	<tr>
-		<th>아이디</th>
-		<td>
-			<input type="text" name="id" size="7" id="id" required="required">
-			<button type="button" id="idchk_btn">중복확인</button>
-			중복확인결과:<div id="check"></div>
-		</td>
-	</tr>
-	<tr>
-		<th>이름(닉네임)</th>
-		<td><input type="text" name="name" size="7" required="required"></td>
-	</tr>
-	<tr>
-		<th>비밀번호</th>
-		<td><input type="password" name="pass" size="7" required="required" id="pass" onkeyup="check()"></td>
-	</tr>
-	<tr>
-		<th>비밀번호확인</th>
-		<td><input type="password" name="pass2" size="7" required="required" id="pass2" onkeyup="check1()">비번확인:<div id="pwchk"></div></td>
-	</tr>
-	<tr>
-		<th>핸드폰( - 빼고 입력)</th>
-		<td><input type="text" name="phone" size="7" required="required"></td>
-	</tr>
-	<tr>
-		<td colspan="2"><input type="submit" value="가입완료" id="signup_btn" disabled="disabled"></td>
-	</tr>
-	</table>
-</form>
+<div class="signupform">
+회원가입 폼<br><br>
+	<form action="signupForm.do" method="get" onsubmit="return check(this)" name="frm">
+		<table class="signupTable">
+		<tr>
+			<th>아이디</th>
+			<td>
+				<input type="text" name="id" id="id" required="required" class="uk-input uk-form-width-medium">
+				<button type="button" id="idchk_btn" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">중복확인</button>
+				중복확인결과:<div id="check"></div>
+			</td>
+		</tr>
+		<tr>
+			<th>이름(닉네임)</th>
+			<td><input type="text" name="name" required="required" class="uk-input uk-form-width-medium"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th>
+			<td><input type="password" name="pass" required="required" id="pass" onkeyup="check()" class="uk-input uk-form-width-medium"></td>
+		</tr>
+		<tr>
+			<th>비밀번호확인</th>
+			<td><input type="password" name="pass2" required="required" id="pass2" onkeyup="check1()" class="uk-input uk-form-width-medium">비번확인:<div id="pwchk"></div></td>
+		</tr>
+		<tr>
+			<th>핸드폰( - 빼고 입력)</th>
+			<td><input type="text" name="phone" required="required" class="uk-input uk-form-width-medium"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="가입완료" id="signup_btn" disabled="disabled"></td>
+		</tr>
+		</table>
+	</form>
+</div>
 </body>
 </html>

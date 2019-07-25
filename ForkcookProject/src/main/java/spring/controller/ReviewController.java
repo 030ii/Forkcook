@@ -157,6 +157,24 @@ public class ReviewController {
 		}
 		return mainadmin;
 	}
+	
+	//마이페이지 >> review목록 출력
+	@RequestMapping("/main/{reviewuser}/myreview.do")
+	public ModelAndView myreview(@PathVariable String reviewuser,@RequestParam int unum){
+
+		ModelAndView model = new ModelAndView();
+		
+		if(reviewuser.equals("user")){
+			
+			List<ReviewDto> list = service.getListUser(unum);
+			
+			model.addObject("list", list);
+			model.addObject("unum", unum);
+			
+			model.setViewName("/main/user/myreview");
+		}
+		return model;
+	}
 
 	//관리자 >> review목록 출력
 	@RequestMapping("/admin/review/list.do")

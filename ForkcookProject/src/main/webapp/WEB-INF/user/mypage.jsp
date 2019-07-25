@@ -32,8 +32,8 @@
 		</tr>
 	</table>
 </c:forEach>
-						<!-- 일단 num을 1로 해둠. 나중에 세션추가하면 dto.num으로 수정 -->
 	<button type="button" onclick="location.href='passconfirm.do?num=${loginInfo.num}'">정보수정하기</button>
+	<button type="button" onclick="location.href='myreview.do?unum=${loginInfo.num}'">내가쓴 리뷰</button>
 	<button type="button" onclick="location.href='myqna.do?num=${loginInfo.num}'">내 문의내역</button>
 </body>
 </html>
