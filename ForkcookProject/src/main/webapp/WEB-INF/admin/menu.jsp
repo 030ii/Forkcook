@@ -13,7 +13,7 @@
 	<div class="fk-heading">관리자 메뉴 관리 페이지</div>
 	<p class="fk-desc">총 ${totalCount}개의 메뉴가 있습니다</p>
 	<button type="button" class="fk-float-right uk-button uk-button-default" onclick="location.href='writeform.do'">새로운 메뉴 추가하기</button>
-	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped fk-table">
 	    <thead>
 	        <tr>
 	            <th>No.</th>
@@ -35,7 +35,7 @@
 					<td>${dto.category}</td>
 					<td>${dto.persons}</td>
 					<td>${dto.price}</td>
-					<td>${dto.mainimage}</td>
+					<td><img src="../../save/${dto.mainimage}"></td>
 					<td>${dto.rate}</td>
 					<td>${dto.shortmsg}</td>
 					<td>

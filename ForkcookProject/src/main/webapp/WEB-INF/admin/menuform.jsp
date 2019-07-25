@@ -35,13 +35,13 @@
 			<input type="text" name="price" required><br>	
 		
 		메뉴 메인사진 :
-			<input type="file" name="upfile" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
+			<input type="file" name="upfile" required><br>
 			
 		메뉴 요약 : 
 			<input type="text" name="shortmsg" required><br>
 		
 		메뉴 상세사진 :
-			<input type="text" name="longimage" value="test.png" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
+			<input type="file" name="upfile" required><br>
 		
 		<button type="submit">추가하기</button>
 		<button type="button" onclick="location.href='list.do'">취소하기</button>

@@ -68,38 +68,28 @@ public class MenuController {
 	// 관리자 -> 메뉴 관리 -> DB에 메뉴 추가한 뒤 목록으로 redirect 
 	@RequestMapping(value="/admin/menu/write.do",method=RequestMethod.POST)
 	public String write(@ModelAttribute MenuDto dto, HttpServletRequest request){
-		//일단 파일명이 어떻게 넘어오는지부터 확인 - 입력안했을시에
-		for(MultipartFile f:dto.getUpfile()){
-			System.out.println("파일명:"+f.getOriginalFilename());
-		}
-		 //-> 이미지선택 안할경우 null값이 아닌 그냥 빈 문자열로 출력됨
-		
 		//이미지 업로드 경로
 		String path=request.getSession().getServletContext().getRealPath("/save");
 		System.out.println(path);
 		
 		String mainimage="";
+		String longimage="";
+		
 		//path경로에 이미지 저장
 		SpringFileWriter fileWriter=new SpringFileWriter();
-		for(MultipartFile f:dto.getUpfile())
-		{
+		int count = 0;
+		for(MultipartFile f:dto.getUpfile()){
+			count++;
 			//빈 문자열이 아닐 경우에만 저장
 			if(f.getOriginalFilename().length()>0){
-				mainimage+=f.getOriginalFilename()+",";
+				if(count == 1) mainimage=f.getOriginalFilename();
+				else if(count == 2) longimage=f.getOriginalFilename();
 				fileWriter.writeFile(f, path, f.getOriginalFilename());
 			}
-			
 		}
-		if(mainimage.length()==0)//이미지 세개 다 선택 안한경우
-		{
-			mainimage="noimage";
-		}else{
-			//마지막 컴마 제거하기
-			mainimage=mainimage.substring(0,mainimage.length()-1);
-		}
-		//dto에 이미지 이름들 저장
-		dto.setMainimage(mainimage);
 		
+		dto.setMainimage(mainimage);
+		dto.setLongimage(longimage);
 		
 		service.insertMenu(dto); // DB에 추가
 		return "redirect:list.do"; // 목록 새로고침
