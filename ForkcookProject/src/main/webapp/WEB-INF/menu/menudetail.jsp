@@ -20,10 +20,10 @@
 		category : ${mdto.category}<br>  
 		persons : ${mdto.persons}<br>
 		price : ${mdto.price}<br>
-		image : ${mdto.image}<br>
+		mainimage : ${mdto.mainimage}<br>
 		rate : ${mdto.rate}<br>
 		shortmsg : ${mdto.shortmsg}<br>
-		longmsg : ${mdto.longmsg}<br>
+		longimage : ${mdto.longimage}<br>
 		<br><br><hr><br><br>
     </tr>
     

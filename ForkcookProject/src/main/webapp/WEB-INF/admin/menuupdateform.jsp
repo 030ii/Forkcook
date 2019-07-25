@@ -34,14 +34,14 @@
 		메뉴 가격 :
 			<input type="text" name="price" value="${dto.price}" required><br>	
 		
-		메뉴 사진 :
-			<input type="text" name="image" value="${dto.image}" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
+		메뉴 메인사진 :
+			<input type="text" name="mainimage" value="${dto.mainimage}" required><br><!-- TODO : 추후 이미지 업로드 붙일 것 -->
 			
 		메뉴 요약 : 
 			<input type="text" name="shortmsg" value="${dto.shortmsg}" required><br>
 		
-		메뉴 설명 :
-			<input type="textarea" name="longmsg" value="${dto.longmsg}" required><br>
+		메뉴 상세사진 :
+			<input type="text" name="longimage" value="${dto.longimage}" required><br>
 		
 		<input type="hidden" name="num" value="${dto.num}">
 		<input type="hidden" name="rate" value="${dto.rate}">

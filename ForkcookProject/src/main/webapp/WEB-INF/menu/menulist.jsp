@@ -43,7 +43,7 @@
 </table>
 	<c:forEach var="mdto" items="${list}">
 		<div class="card" style="width: 20rem;">
-			<img class="card-img-top" src="../../image/${mdto.image}" alt="Card image cap">
+			<img class="card-img-top" src="../../image/${mdto.mainimage}" alt="Card image cap">
 			<div class="card-body">
 				<h4 class="card-title">${mdto.name}</h4>
 				<p class="card-text">${mdto.shortmsg}</p>

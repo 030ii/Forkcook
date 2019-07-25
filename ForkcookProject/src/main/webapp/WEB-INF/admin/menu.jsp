@@ -21,7 +21,7 @@
 				<th>카테고리</th>
 				<th>인분</th>
 				<th>가격</th>
-				<th>사진</th>
+				<th>메인사진</th>
 				<th>평점</th>
 				<th>요약</th>
 				<th>수정/삭제</th>
@@ -35,7 +35,7 @@
 					<td>${dto.category}</td>
 					<td>${dto.persons}</td>
 					<td>${dto.price}</td>
-					<td>${dto.image}</td>
+					<td>${dto.mainimage}</td>
 					<td>${dto.rate}</td>
 					<td>${dto.shortmsg}</td>
 					<td>
