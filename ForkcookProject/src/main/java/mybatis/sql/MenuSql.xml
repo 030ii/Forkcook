@@ -5,7 +5,7 @@
 		select count(*) from menu
 	</select>
 	<insert id="menuInsert" parameterType="mdto">
-		insert into menu values (seq_menu.nextval,#{name},#{category},#{persons},#{price},#{image},'0.0',#{shortmsg},#{longmsg})
+		insert into menu values (seq_menu.nextval,#{name},#{category},#{persons},#{price},#{mainimage},'0.0',#{shortmsg},#{longimage})
 	</insert>
 	<select id="menuList" resultType="mdto">
 	   	select * from menu	
@@ -14,7 +14,7 @@
 		select * from menu where num=#{num}
 	</select>
 	<update id="menuUpdate" parameterType="mdto">
-		update menu set name=#{name},category=#{category},persons=#{persons},price=#{price},image=#{image},rate=#{rate},shortmsg=#{shortmsg},longmsg=#{longmsg} 
+		update menu set name=#{name},category=#{category},persons=#{persons},price=#{price},mainimage=#{mainimage},rate=#{rate},shortmsg=#{shortmsg},longimage=#{longimage} 
 		where num=#{num}
 	</update>
 	<delete id="menuDelete" parameterType="int">

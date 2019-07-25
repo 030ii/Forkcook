@@ -6,10 +6,10 @@ public class MenuDto {
 	private String category;
 	private String persons;
 	private String price;
-	private String image;
+	private String mainimage;
 	private String rate;
 	private String shortmsg;
-	private String longmsg;
+	private String longimage;
 	
 	public int getNum() {
 		return num;
@@ -41,11 +41,11 @@ public class MenuDto {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getImage() {
-		return image;
+	public String getMainimage() {
+		return mainimage;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setMainimage(String mainimage) {
+		this.mainimage = mainimage;
 	}
 	public String getRate() {
 		return rate;
@@ -59,10 +59,10 @@ public class MenuDto {
 	public void setShortmsg(String shortmsg) {
 		this.shortmsg = shortmsg;
 	}
-	public String getLongmsg() {
-		return longmsg;
+	public String getLongimage() {
+		return longimage;
 	}
-	public void setLongmsg(String longmsg) {
-		this.longmsg = longmsg;
+	public void setLongimage(String longimage) {
+		this.longimage = longimage;
 	}
 }
