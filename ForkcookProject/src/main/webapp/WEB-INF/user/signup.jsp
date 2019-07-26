@@ -28,11 +28,13 @@ $(function(){
 				success : function(data){
 					var result = JSON.parse(data);
 					if(result.exist == 1){ // 이미 아이디 존재
-						$("#check").text("사용불가");
+						$("#check_span").text("사용불가");
+						$("#check_span").css("color","red");
 						$("#signup_btn").attr("disabled","disabled");
 						alert("이미 존재하는 아이디입니다.");
 					}else if(result.exist == 0){ // 아직 아이디 없음
-						$("#check").text("사용가능");
+						$("#check_span").text("사용가능");
+						$("#check_span").css("color","blue");
 						$("#signup_btn").removeAttr("disabled");
 						alert("사용이 가능한 아이디입니다.");
 					}
@@ -52,16 +54,17 @@ $(function(){
 function check(){
 	var pass = document.getElementById('pass').value;
 	var pass2 = document.getElementById('pass2').value;
+	var span = document.getElementById('pwchk_span');
 	//console.log(pass);
 	if(pass != pass2){
-		document.getElementById('pwchk').style.color = "red";
-		document.getElementById('pwchk').innerHTML = "동일한 암호를 입력하세요.";
-		$("#update_btn").attr("disabled","disabled");
+		span.style.color = "red";
+		span.innerHTML = "동일한 암호를 입력하세요.";
+		$("#signup_btn").attr("disabled","disabled");
 	  }else{
-		document.getElementById('pwchk').style.color = "black";
-		document.getElementById('pwchk').innerHTML = "암호가 확인 되었습니다."; 
+		  span.style.color = "black";
+		  span.innerHTML = "암호가 확인 되었습니다."; 
 
-		$("#update_btn").removeAttr("disabled");
+		$("#signup_btn").removeAttr("disabled");
 	}
 }
 
@@ -69,54 +72,57 @@ function check(){
 function check1(){
 	var pass = document.getElementById('pass').value;
 	var pass2 = document.getElementById('pass2').value;
+	var span = document.getElementById('pwchk_span');
 	//console.log(pass);
 	if(pass != pass2){
-		document.getElementById('pwchk').style.color = "red";
-		document.getElementById('pwchk').innerHTML = "동일한 암호를 입력하세요.";
-		$("#update_btn").attr("disabled","disabled");
+		span.style.color = "red";
+		span.innerHTML = "동일한 암호를 입력하세요.";
+		$("#signup_btn").attr("disabled","disabled");
 	  }else{
-		document.getElementById('pwchk').style.color = "black";
-		document.getElementById('pwchk').innerHTML = "암호가 확인 되었습니다."; 
+		  span.style.color = "blue";
+		  span.innerHTML = "암호가 확인 되었습니다."; 
 
-		$("#update_btn").removeAttr("disabled");
+		$("#signup_btn").removeAttr("disabled");
 	}
 }
 </script>
 </head>
 <body>
-<div class="signupform">
-회원가입 폼<br><br>
+<div class="signupform-big uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
+  <div class="signupform uk-card uk-card-default uk-card-body">
+  <hr class="uk-divider-small signup-hr">
+	<div class="signup_title">
+		포크쿡 회원가입<br><br>
+	</div>
 	<form action="signupForm.do" method="get" onsubmit="return check(this)" name="frm">
-		<table class="signupTable">
-		<tr>
-			<th>아이디</th>
-			<td>
-				<input type="text" name="id" id="id" required="required" class="uk-input uk-form-width-medium">
+		<div class="signup_wrapper">
+			<div class="signup_smallDiv">
+				아이디<br>
+				<input type="text" name="id" id="id" required="required" class="uk-input uk-form-width-medium signupId-input" placeholder="4자이상 입력">
 				<button type="button" id="idchk_btn" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">중복확인</button>
-				중복확인결과:<div id="check"></div>
-			</td>
-		</tr>
-		<tr>
-			<th>이름(닉네임)</th>
-			<td><input type="text" name="name" required="required" class="uk-input uk-form-width-medium"></td>
-		</tr>
-		<tr>
-			<th>비밀번호</th>
-			<td><input type="password" name="pass" required="required" id="pass" onkeyup="check()" class="uk-input uk-form-width-medium"></td>
-		</tr>
-		<tr>
-			<th>비밀번호확인</th>
-			<td><input type="password" name="pass2" required="required" id="pass2" onkeyup="check1()" class="uk-input uk-form-width-medium">비번확인:<div id="pwchk"></div></td>
-		</tr>
-		<tr>
-			<th>핸드폰( - 빼고 입력)</th>
-			<td><input type="text" name="phone" required="required" class="uk-input uk-form-width-medium"></td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="submit" value="가입완료" id="signup_btn" disabled="disabled"></td>
-		</tr>
-		</table>
+				<br><span id="check_span"></span>
+			</div>
+			<div class="signup_smallDiv">
+				이름<br>
+				<input type="text" name="name" required="required" class="uk-input uk-form-width-medium signup-input" placeholder="이름 혹은 닉네임">
+			</div>
+			<div class="signup_smallDiv">
+				비밀번호<br>
+				<input type="password" name="pass" required="required" id="pass" onkeyup="check()" class="uk-input uk-form-width-medium signup-input"  placeholder="비밀번호">
+			</div>
+			<div class="signup_smallDiv">
+				비밀번호확인<br>
+				<input type="password" name="pass2" required="required" id="pass2" onkeyup="check1()" class="uk-input uk-form-width-medium signup-input"  placeholder="비밀번호확인">
+				<br><span id="pwchk_span"></span>
+			</div>
+			<div class="signup_smallDiv">
+				핸드폰( - 빼고 입력)<br>
+				<input type="text" name="phone" required="required" class="uk-input uk-form-width-medium signup-input" placeholder="'-'제외하고 입력">
+			</div><br>
+				<button type="submit" id="signup_btn" disabled="disabled" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">가입완료</button>
+		</div>
 	</form>
+  </div>
 </div>
 </body>
 </html>

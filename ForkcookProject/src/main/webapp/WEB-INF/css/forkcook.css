@@ -139,8 +139,8 @@
 }
 
 /* 로그인페이지 login.jsp 스타일*/
-.loginuser{
-	margin-top: 180px;
+.loginuser_wrap{
+	margin-top: 140px;
 	margin-left: 150px;
 	position: absolute;
 }
@@ -150,23 +150,22 @@
 	height: 300px;
 	position: absolute;
 }
-.loginnotuser{
-	margin-top: 180px;
+.loginNotUser_wrap{
+	margin-top: 140px;
 	margin-left: 750px;
 	position: absolute;
 }
-
-.loginform #login_btn{
+.loginform .login_btn{
 	background-color: #706243 !important;
 	color: #ffffff;
 	width: 400px;
 }
-.loginuser #signup_btn{
+#gosignup_btn{
 	background-color: #ffffff !important;
 	color: #000000;
 	width: 400px;
 }
-.loginform .logininput{
+.loginform .login-input{
 	width: 400px;
 }
 .login_text1{
@@ -177,9 +176,8 @@
 	margin-left: 120px;
 	font-size: 18pt;
 }
-.loginuser a{
-	margin-left: 270px;
-	font-size: 17pt;
+.loginFail_span{
+	margin-bottom: 30px;
 }
 
 /*membership.jsp*/
@@ -232,14 +230,160 @@ div .nextStep_div{
 }
 
 /*signup.jsp*/
+.signupform{
+	margin-top: 60px;
+	margin-left: 450px;
+	width: 480px;
+}
+.signupform-big{
+	height: 700px;
+	background: #fdfdfd;
+}
+.signup_title{
+	font-size: 20pt;
+	font-weight: bold;
+	margin-left: 110px;
+	margin-bottom: 40px;
+}
+.signup-hr:after{
+	margin-top:75px;
+	width: 400px;
+	position: absolute;
+}
 #idchk_btn{
-	background-color: #f1f1f1 !important;
+	background-color: #f5f5f5 !important;
 	color: #000000;
 	width: 120px;
-	height: 45px;
+	height: 41px;
+	font-size: 9pt;
+	margin-top: 10px;
+}
+#signup_btn{
+	background-color: #706243 !important;
+	color: #ffffff;
+	width: 400px;
+	height: 55px;
+	font-size: 15pt;
+}
+.signupId-input{
+	width: 275px;
 	font-size: 9pt;
 }
-.signupform{
-	margin-top: 10px;
-	margin-left: 350px;
+.signup-input{
+	width: 400px;
+	font-size: 9pt;
+	margin-top: 3px;
+	margin-bottom: 13px;
+}
+
+/*mypage.jsp*/
+.myPage-wrapper{
+	margin-top: 80px;
+	margin-left: 310px;
+	width: 700px;
+	border: 0px gray solid;
+}
+.mypageTitle_div{
+	margin-bottom: 40px;
+}
+.mypageTap_btn{
+	width: 230px;
+	height: 40px;
+}
+.myinfo_table{
+	width: 400px;
+	margin-top: 50px;
+	margin-left: 140px;
+	border: 0px gray solid;
+}
+.updateInfo_btn{
+	background-color: #706243 !important;
+	color: #ffffff;
+	width: 400px;
+	margin-top: 30px;
+	margin-left: 140px;
+}
+
+/*review.jsp*/
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+  
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
+.reviewTitle-div{
+	margin-top:30px;
+	margin-left:100px;
+	margin-bottom:100px;
+	width: 1100px;
+}
+.reviewCount-span{
+	float: right;
+	font-size: 10pt;
+	margin-bottom: 30px;
+}
+.reviewImageOnly-wrap{
+	margin-left: 100px;
+}
+#reviewTable-wrap{
+	width: 1000px;
+	margin-top: 50px;
+	margin-left: 150px;
+}
+.reviewInsert_wrap{
+	border: 0px solid;
+	margin-top: 50px;
+	margin-left: 300px;
+}
+.reviewImageOnly-wrap{
+	float: right;
+	margin-right: 100px;
+}
+.reviewListTable{
+	background-color: gray;
+}
+.updateContent-tr{
+	height: 120px;
+	border: 0px solid;
+}
+.reviewImg{
+	max-width: 80px;
+	border: 0px solid;
+}
+.reviewDelete-btn{
+	background-color: #ff8080;
+}
+.reviewInsert-btn{
+	width: 660px;
+	height: 60px;
+	background-color: #4b4b4b;
+	font-size: 18pt;
+	
+}
+
+/* cart.jsp*/
+.cartCount{
+	width: 280px;
 }

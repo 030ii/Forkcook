@@ -36,25 +36,29 @@ $(document).ready(function(){
 비회원 : 로그인하면 회원데이타 저장하고 장바구니로 이동 action="login1.do"
 -->
 
-<div class="loginuser">
+<div class="loginuser_wrap">
 <b class="login_text1">회원 로그인</b><br><br>
 	<form method="get" name="form1" class="loginform" id="form1">
 	    <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: user"></span>
-	            <input class="uk-input logininput" type="text" name="id" id="id" placeholder="ID">
+	            <input class="uk-input login-input" type="text" name="id" id="id" placeholder="ID">
 	        </div>
 	    </div>
 	
 	    <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-	            <input class="uk-input logininput" type="password" name="pass" id="pass" placeholder="password">
+	            <input class="uk-input login-input" type="password" name="pass" id="pass" placeholder="password">
 	        </div>
 	    </div>
-		<button type="submit" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" id="login_btn">회원로그인</button>
+		<button type="submit" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom login_btn" id="login_btn">회원로그인</button>
 	</form>
-	<button type="button" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" id="signup_btn" onclick="location.href='membership.do'">회원가입</button>
+	<button type="button" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" id="gosignup_btn" onclick="location.href='membership.do'">회원가입</button>
+	<br><br>
+    <c:if test="${not empty msg}">
+		<span class="uk-label uk-label-danger loginFail_span">로그인에 실패했습니다. 다시 로그인해주세요.</span>
+	</c:if>
 </div>
 
 <div>
@@ -63,23 +67,23 @@ $(document).ready(function(){
 </div>
 
 <!-- (로그인과 동시에 회원정보 테이블에 insert) -->
-<div class="loginnotuser">
+<div class="loginNotUser_wrap">
 <b class="login_text2">비회원 주문조회</b><br><br>
 	<form action="login2.do" method="get" name="form2" class="loginform">
 	    <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: user"></span>
-	            <input class="uk-input logininput" type="text" name="name" id="name" placeholder="name">
+	            <input class="uk-input login-input" type="text" name="name" id="name" placeholder="name">
 	        </div>
 	    </div>
 	
 	    <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: receiver"></span>
-	            <input class="uk-input logininput" type="text" name="phone" id="phone" placeholder="phone">
+	            <input class="uk-input login-input" type="text" name="phone" id="phone" placeholder="phone">
 	        </div>
 	    </div>
-		<button type="submit" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">비회원로그인</button>
+		<button type="submit" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom login_btn">비회원로그인</button>
 	</form>
 </div>
 </body>

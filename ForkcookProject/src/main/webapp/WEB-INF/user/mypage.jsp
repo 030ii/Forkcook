@@ -10,30 +10,42 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-마이페이지
-<!-- 나중에 탭 형식으로 /주문내역/리뷰내역/문의내역/내 정보/ 표시할것 -->
-<c:forEach var="dto" items="${list}" varStatus="status">
-	<table border=1>
-		<tr>
-			<th>id</th>
-			<td>${dto.id}</td>
-		</tr>
-		<tr>
-			<th>pass</th>
-			<td>${dto.pass}</td>
-		</tr>
-		<tr>
-			<th>name(nickname)</th>
-			<td>${dto.name}</td>
-		</tr>
-		<tr>
-			<th>phone</th>
-			<td>${dto.phone}</td>
-		</tr>
-	</table>
-</c:forEach>
-	<button type="button" onclick="location.href='passconfirm.do?num=${loginInfo.num}'">정보수정하기</button>
-	<button type="button" onclick="location.href='myreview.do?unum=${loginInfo.num}'">내가쓴 리뷰</button>
-	<button type="button" onclick="location.href='myqna.do?num=${loginInfo.num}'">내 문의내역</button>
+<c:set var="root" value="<%=request.getContextPath() %>" />
+<div class="myPage-wrapper">
+	<div class="mypageTitle_div">
+		<img src="${root}/image/mypage.png">
+	</div>
+	<div uk-switcher="animation: uk-animation-fade; toggle: > *">
+	    <button class="uk-button uk-button-default mypageTap_btn" type="button">내 정보</button>
+	    <button class="uk-button uk-button-default mypageTap_btn" type="button" onclick="location.href='myreview.do?unum=${loginInfo.num}'">내가 쓴 리뷰</button>
+	    <button class="uk-button uk-button-default mypageTap_btn" type="button" onclick="location.href='myqna.do?num=${loginInfo.num}'">문의내역</button>
+	</div>
+	
+	<ul class="uk-switcher uk-margin">
+	    <li>
+			<c:forEach var="dto" items="${list}" varStatus="status">
+				<table class="uk-table uk-table-responsive uk-table-divider myinfo_table">
+					<tr>
+						<th>아이디</th>
+						<td>${dto.id}</td>
+					</tr>
+					<tr>
+						<th>이름(닉네임)</th>
+						<td>${dto.name}</td>
+					</tr>
+					<tr>
+						<th>핸드폰</th>
+						<td>${dto.phone}</td>
+					</tr>
+				</table>
+			</c:forEach>
+			<button type="button" onclick="location.href='passconfirm.do?num=${loginInfo.num}'"
+				 class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom updateInfo_btn">정보수정하기</button>
+	    </li>
+	    
+	    <li>내 리뷰 출력</li>
+	    <li>내 문의내역 출력</li>
+	</ul>
+</div>
 </body>
 </html>

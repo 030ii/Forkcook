@@ -59,16 +59,18 @@ $(function(){
 		</c:when>
 		
 	<c:otherwise>
-총 ${totalCount}개의 장바구니 내역이 있습니다.<br>
+	<input class="uk-input uk-form-success uk-form-width-medium cartCount" type="text" placeholder="form-success" value="총 ${totalCount}개의 장바구니 내역이 있습니다">
 	<div class="chkAll">
-  		<input type="checkbox" name="allCheck" id="allCheck">모두선택
+		<label>
+		<input type="checkbox" name="allCheck" id="allCheck" class="uk-checkbox">
+		&nbsp;&nbsp;모두선택
+		</label>
 	</div>
 	<div class="selDel" style="display: block;">
-		<button type="button" id="delBtn">선택삭제</button>
+		<button type="button" id="delBtn" class="uk-button uk-button-primary">선택삭제</button>
 	</div>
 
-	<table border=1>
-		<caption>장바구니 목록</caption>
+	<table class="uk-table uk-table-hover uk-table-divider">
 		<tr>
 			<th>메뉴</th>
 			<th>수량</th>
@@ -80,33 +82,36 @@ $(function(){
 		<c:forEach var="dto" items="${list}" varStatus="status">
 		<tr class="cartitem">
 			<td>
-				<div class="checkBox">
-  	  				<input type="checkbox" name="chkBox" class="chkBox" data-num="${dto.num}">
-  	  			</div>
-  	  			${dto.menuname}
+				<label>
+  	  			<input type="checkbox" name="chkBox" class="uk-checkbox chkBox" data-num="${dto.num}">
+  	  			&nbsp;&nbsp;${dto.menuname}
+  	  			</label>
   	  		</td>
 			<td>
 			  <div class="count">
-				<!-- <button type="button" class="minus">-</button> -->
-				<img src="${root}/image/menu-minus.png" class="minus" style="width: 30px;">
+			  	<!-- <span uk-icon="minus-circle" class="minus"></span> -->
+				<img src="${root}/image/menu-minus.png" class="minus" style="width: 25px;">
 				<input type="hidden" name="num" value="${dto.num}"/>
 				<span class="mcount" data-num="${dto.num}">${dto.mcount }</span>
-				<img src="${root}/image/menu-plus.png" class="plus" style="width: 30px;">
-				<!-- <button type="button" class="plus">+</button> -->
+				<!-- <span uk-icon="plus-circle" class="plus"></span> -->
+				<img src="${root}/image/menu-plus.png" class="plus" style="width: 25px;">
 			  </div>
 			</td>
 			<td class="price">${dto.mprice}</td>
 			<td class="mtotalprice" data-mnum="${dto.mnum}">${dto.mtotalprice}</td>
 			<td>
-				<button type="button" onclick="location.href='delete.do?cnum=${dto.num}&unum=${loginInfo.num }'">삭제</button>
+				<button type="button" class="uk-button uk-button-primary" onclick="location.href='delete.do?cnum=${dto.num}&unum=${loginInfo.num }'">삭제</button>
 			</td>
 		</tr>
 		</c:forEach></c:otherwise></c:choose>
 	</table>
 </div>
 <br>장바구니 총 금액 :
-<button type="button" onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
-<button type="button" onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
+<br>
+<button type="button" class="uk-button uk-button-primary"
+	onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
+<button type="button" class="uk-button uk-button-primary"
+	onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
 
 <script type="text/javascript">
 //수량 조절
