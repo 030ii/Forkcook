@@ -27,6 +27,7 @@ import upload.util.SpringFileWriter;
 public class QnaController {
 	@Autowired
 	private QnaService qservice;
+	
 	@Autowired
 	private ReqnaService reqservice;
 
@@ -90,25 +91,20 @@ public class QnaController {
 		model.addObject("no", no);
 		model.addObject("totalPage", totalPage);
 		model.addObject("totalCount",totalCount);
-		model.setViewName("/main/service/qnalist");
 
-
-		if(mainadmin.equals("main")) { 					// 일반 모드일 경우 
-			model.setViewName("/main/service/qnalist"); 	// 일반 모드의 메뉴 목록 화면으로 이동
-			if(qnauser.equals("user")){
-				if(listpartnermyqna.equals("myqna")){
-					model.setViewName("/main/user/qnalist");
-				}
-			}
+		if(mainadmin.equals("main")) { 											 // 일반 모드일 경우 
+			if(qnauser.equals("user") && listpartnermyqna.equals("myqna")){ 	 // main/user/myqna.do
+				model.setViewName("/main/user/qnalist"); 						 // 일반 모드의 마이페이지 문의 목록 화면으로 이동
+			} else if(qnauser.equals("qna") && listpartnermyqna.equals("list")){ // main/qna/list.do
+				model.setViewName("/main/service/qnalist"); 					 // 일반 모드의 문의 목록 화면으로 이동
+			} 
+		} else if(mainadmin.equals("admin") && qnauser.equals("qna")) { // 관리자 모드일 경우
+			if(listpartnermyqna.equals("list")){ 					    // admin/qna/list.do
+				model.setViewName("/admin/admin/qna"); 				    // 관리자 모드의 문의 관리(목록) 화면으로 이동
+			} else if(listpartnermyqna.equals("partner")) {        	    // admin/qna/partner.do
+				model.setViewName("/admin/partner/partnerqna"); 	    // 가맹점 모드의 문의 관리(목록) 화면으로 이동
+			} 
 		}
-		else if(mainadmin.equals("admin")) { 			// 관리자 모드일 경우
-			model.setViewName("/admin/admin/qna"); 	// 관리자 모드의 메뉴 관리(목록) 화면으로 이동
-
-			if(listpartnermyqna.equals("partner")) {
-				model.setViewName("/admin/partner/partnerqna");
-			}
-		}
-
 		return model;
 	}
 
