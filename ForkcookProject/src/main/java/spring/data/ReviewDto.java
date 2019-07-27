@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ReviewDto {
 	private int num;
 	private int unum;
+	private String uname;
 	private int mnum;
 	private String content;
 	private double rate;
@@ -15,6 +16,12 @@ public class ReviewDto {
 	private String image;
 	private ArrayList<MultipartFile> upfile;
 	
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	public int getNum() {
 		return num;
 	}

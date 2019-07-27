@@ -109,8 +109,8 @@ function check1(){
 			<div class="signup_smallDiv">
 				비밀번호<br>
 				<input type="password" name="pass" required="required" id="pass" onkeyup="check()" class="uk-input uk-form-width-medium signup-input"  placeholder="비밀번호">
-			</div>
-			<div class="signup_smallDiv">
+			<!-- </div>
+			<div class="signup_smallDiv"> -->
 				비밀번호확인<br>
 				<input type="password" name="pass2" required="required" id="pass2" onkeyup="check1()" class="uk-input uk-form-width-medium signup-input"  placeholder="비밀번호확인">
 				<br><span id="pwchk_span"></span>

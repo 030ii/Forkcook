@@ -43,7 +43,9 @@
 				 class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom updateInfo_btn">정보수정하기</button>
 	    </li>
 	    
-	    <li>내 리뷰 출력</li>
+	    <li>
+	    	내 리뷰 출력
+	    </li>
 	    <li>내 문의내역 출력</li>
 	</ul>
 </div>

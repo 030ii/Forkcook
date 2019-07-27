@@ -172,6 +172,7 @@ public class ReviewController {
 			model.addObject("unum", unum);
 			
 			model.setViewName("/main/user/myreview");
+			
 		}
 		return model;
 	}

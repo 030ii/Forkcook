@@ -14,10 +14,11 @@
 	   	select * from review order by writeday desc
 	</select>
 	<select id="reviewListUser" resultType="rdto" parameterType="rdto">
-	   select * from review where mnum=#{mnum} order by writeday desc
-	   	<!-- select r.*,u.name
+		<!-- select * from review where mnum=#{mnum} -->
+	    select r.*,u.name as uname
  		from review r, users u
- 		where  mnum=#{mnum} and r.unum=#{num} -->
+ 		where r.unum=u.num and mnum=#{mnum} and r.unum = #{num}
+ 		order by r.writeday desc
 	</select>
 	<select id="reviewListMypage" resultType="rdto" parameterType="int">
 	   	select * from review where unum=#{unum} order by writeday desc

@@ -56,7 +56,7 @@ $(document).ready(function(){
 	</form>
 	<button type="button" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" id="gosignup_btn" onclick="location.href='membership.do'">회원가입</button>
 	<br><br>
-    <c:if test="${not empty msg}">
+    <c:if test="${msg == 'failure'}">
 		<span class="uk-label uk-label-danger loginFail_span">로그인에 실패했습니다. 다시 로그인해주세요.</span>
 	</c:if>
 </div>

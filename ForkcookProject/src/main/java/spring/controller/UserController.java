@@ -54,22 +54,25 @@ public class UserController {
 		
 	//로그인하기 버튼 클릭->로그인되고 메인으로 포워드(일단 loginsuccess로 이동,나중에수정)
 	@RequestMapping("/main/user/login1.do")
-	public String login1(@ModelAttribute UserDto dto, HttpSession session)
+	public ModelAndView login1(@ModelAttribute UserDto dto, HttpSession session)
 	{
-		//ModelAndView model = new ModelAndView();
+		ModelAndView model = new ModelAndView();
 		UserDto user = service.userLogin(dto);
 		
 		if(user != null){
 			// 세션 저장 System.out.println(user.getName());
 			session.setAttribute("loginInfo", user);//세션저장
-			//model.setViewName("/main/user/loginsuccess");
+			model.setViewName("redirect:/main/main.do");
+			
+			//return "redirect:/main/main.do";
 		} else {
-			session.setAttribute("msg", "failure");
-			//model.setViewName("/main/user/loginfail");
+			model.addObject("msg", "failure");
+			
+			model.setViewName("/main/user/login");
+			//return "redirect:/main/user/login.do";
 		}
-		
-		return "redirect:/main/main.do";
-		//return model;
+
+		return model;
 	}
 	
 	//회원가입 약관으로 이동

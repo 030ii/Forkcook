@@ -48,41 +48,21 @@ $(document).ready(function(){
 	 });
 });
 
-/* $(function(){
-	$(".reviewDelete-btn").click(function(e){
-		var result = confirm("정말로 삭제하시겠습니까?");
-		
-		if(result == true){
-			alert("삭제되었습니다.");
-			document.action="delete.do?num=${dto.num}&unum=${loginInfo.num }&mnum=${dto.mnum }";
-			//onclick="location.href='delete.do?num=${dto.num}&unum=${loginInfo.num }&mnum=${dto.mnum }'"
-			
-		}else{
-			return false;
-		}
-		
-	});
-}); */
-function del(){
-	var result = confirm("정말로 삭제하시겠습니까?");
-	if(result == true){
-		var num=$("#num").val();
-		alert(num);
-		//alert("Ffff");
-		
-		alert("삭제되었습니다.");
-		
-		//document.insertForm.action="delete.do?num="+${dto.num}+"&unum="+${loginInfo.num }+"&mnum="+${dto.mnum };
-		document.insertForm.action="delete.do?num="+num+"&unum=${loginInfo.num }&mnum=${dto.mnum }";
-		document.insertForm.submit();
-
-		//onclick="location.href='delete.do?num=${dto.num}&unum=${loginInfo.num }&mnum=${dto.mnum }'"
-		
-	}else{
-		return false;
-	}
-	
-}
+function deleteReview(num,unum,mnum){
+    var result = confirm('상태를 변경하시겠습니까?'); 
+    if(result) { //yes 
+        $.ajax({
+            url: 'delete.do?num='+num+'&unum='+unum+'&mnum='+mnum,
+            method: 'get',
+            success: function () {
+                location.reload(); // 새로고침
+            },
+            error: function (error) {
+                alert('문제가 발생하여 주문 상태가 변경되지 않았습니다. 관리자에게 문의해주세요.');
+            }
+        });
+     }
+ }
 </script>
 </head>
 <body>
@@ -114,7 +94,7 @@ function del(){
       <c:forEach var="dto" items="${list}" varStatus="status">
         <tr class="updateContent-tr">
         	<td>${status.count}</td>
-        	<td>이름출력(출력어떻게해..ㅜ)</td>
+        	<td>x${dto.unum }</td>
             <td>
 				<c:if test="${dto.image!='noimage' }">
 					<c:forTokens var="myimg" items="${dto.image }" delims=",">
@@ -136,9 +116,8 @@ function del(){
 			<td><fmt:formatDate value="${dto.writeday }" pattern="MM-dd HH:mm"/></td>
 			<td>
 				<c:if test="${not empty loginInfo && loginInfo.num == dto.unum}">
-	      			<!-- <button type="button" class="updatebtn">수정</button> -->
 					<button type="button" class="uk-button uk-button-danger reviewDelete-btn"
-            	 		onclick="del();">삭제</button>
+            	 		onclick="deleteReview(${dto.num },${loginInfo.num},${dto.mnum})">삭제</button>
 	      		</c:if>
 	      	</td>
         </tr>
