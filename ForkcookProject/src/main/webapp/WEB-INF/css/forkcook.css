@@ -8,6 +8,7 @@
 	font-style: normal; 
 }
 
+/*
 @font-face { 
 	font-family: 'S-CoreDream-5Medium'; 
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
@@ -20,6 +21,7 @@
 	font-weight: normal; 
 	font-style: normal; 
 }
+*/
 
 /* 본문용*/
 @font-face { 
@@ -29,18 +31,23 @@
 	font-style: normal; 
 }
 
+/*
 @font-face {
-	 font-family: 'S-CoreDream-2ExtraLight';
-	 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
-	 font-weight: normal;
-	 font-style: normal;
-  }
+	font-family: 'S-CoreDream-2ExtraLight';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+*/
 
-/* 실제 적용 */
-*:not(.fa-star){
-	font-family: 'S-CoreDream-3Light' !important; 
+/* 폰트 적용 */
+#header *, #header-admin * {
+	font-family: 'S-CoreDream-6Bold' !important; 
 }
 
+#main *:not(.fa-star), #main-admin *, .uk-modal-dialog * {
+	font-family: 'S-CoreDream-3Light' !important; 
+}
 
 /* 상단바 */
 .fk-navbar {
@@ -51,7 +58,6 @@
 
 .fk-navbar li a {
 	color: #706243 !important;
-	font-weight: bold;
 	font-size: 15px !important;
 }
 
@@ -86,7 +92,6 @@
 
 .fk-left-slidebar ul li a {
 	color:#ffffff;
-	font-weight:bold;
 	margin-left: 20px;
 }
 
