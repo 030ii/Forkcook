@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cart">
-	<select id="cartTotalCount" resultType="int">
-		select count(*) from cart
+	<select id="cartTotalCount" resultType="int" parameterType="int">
+		select count(*) from cart where unum=#{num}
 	</select>
 	<select id="cartList" resultType="cdto" parameterType="int">
 		select c.num, c.unum, c.mnum, c.snum, m.name as menuname, m.price as mprice, c.mcount, c.mtotalprice

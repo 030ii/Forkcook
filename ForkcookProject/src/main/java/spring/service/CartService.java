@@ -14,9 +14,9 @@ public class CartService {
 	@Autowired
 	private CartDao dao;
 	
-	public int getTotalCount()
+	public int getTotalCount(int num)
 	{
-		return dao.getTotalCount();
+		return dao.getTotalCount(num);
 	}
 	
 	public List<CartDto> getList(int num){

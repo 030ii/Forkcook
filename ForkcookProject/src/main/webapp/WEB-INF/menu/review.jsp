@@ -94,7 +94,7 @@ function deleteReview(num,unum,mnum){
       <c:forEach var="dto" items="${list}" varStatus="status">
         <tr class="updateContent-tr">
         	<td>${status.count}</td>
-        	<td>x${dto.unum }</td>
+        	<td>unum:${dto.unum }/uname:${dto.uname}</td>
             <td>
 				<c:if test="${dto.image!='noimage' }">
 					<c:forTokens var="myimg" items="${dto.image }" delims=",">
@@ -127,7 +127,7 @@ function deleteReview(num,unum,mnum){
 </div>
 
 <div class="reviewImageOnly-wrap">
-	<a>이미지 모아보기>></a>(나중에 클릭하면 이미지들만 크게 보이도록)<br>
+	<a>이미지 모아보기>></a><br>(나중에 클릭하면 이미지들만 크게 보이도록)<br>
 	<c:forEach var="dto" items="${list}" varStatus="status">
 		<c:if test="${dto.image!='noimage' }">
 			<c:forTokens var="myimg" items="${dto.image }" delims=",">

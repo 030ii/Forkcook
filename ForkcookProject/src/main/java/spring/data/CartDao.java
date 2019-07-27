@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CartDao extends SqlSessionDaoSupport {
 
-	public int getTotalCount(){
-		return getSqlSession().selectOne("cart.cartTotalCount");
+	public int getTotalCount(int num){
+		return getSqlSession().selectOne("cart.cartTotalCount",num);
 	}
 	
 	public List<CartDto> getList(int num){

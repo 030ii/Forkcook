@@ -25,7 +25,7 @@ public class CartController {
 	public ModelAndView cartlist(@RequestParam int num){
 		ModelAndView model=new ModelAndView();
 		
-		int totalCount = service.getTotalCount();
+		int totalCount = service.getTotalCount(num);
 		List<CartDto> list = service.getList(num);
 		
 		model.addObject("totalCount", totalCount);
