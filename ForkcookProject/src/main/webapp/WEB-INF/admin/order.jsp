@@ -2,12 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 // 주문 삭제
 function deleteOrder(ordernum){
@@ -26,27 +20,27 @@ function deleteOrder(ordernum){
     }
 }
 </script>
-</head>
-<body>
-	관지라 주문 페이지<br>
-	총 ${totalCount}개의 주문이 있습니다.<br>
-	
-	<table border=1>
-		<tr>
-			<th>No.</th>
+
+<div class="fk-heading">관지라 주문 페이지</div>
+<p class="fk-desc">총 ${totalCount}개의 주문이 있습니다.</p>
+<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped fk-table">
+    <thead>
+        <tr>
+            <th>No.</th>
 			<th>주문번호</th>
 			<th>주문자명</th>
-			<!-- <th>주문자 연락처</th> -->
 			<th>매장명</th>
 			<th>총 결제 금액</th>
 			<th>주문 유형</th>
 			<th>주문 날짜</th>
 			<th>주문 상태</th>
 			<th>관리</th>
-		</tr>
-		<c:forEach var="dto" items="${list}" varStatus="status">
-			<tr>
-				<td>${totalCount}</td>
+        </tr>
+    </thead>
+    <tbody>
+    	<c:forEach var="dto" items="${list}" varStatus="status">
+	        <tr>
+	        	<td>${totalCount}</td>
 				<c:set var="totalCount" value="${totalCount-1}"/>
 				<td>${dto.ordernum}</td>
 				<td>${dto.uname}</td>
@@ -60,7 +54,10 @@ function deleteOrder(ordernum){
 					    <c:otherwise>잘못된 주문</c:otherwise>
 					</c:choose>
 				</td>
-				<td>${dto.orderdate}</td>
+				<td>
+					<fmt:formatDate var="orderDate" value="${dto.orderdate}" pattern="yyyy-MM-dd"/>
+					${orderDate}
+				</td>
 				<td>
 					<c:choose>
 					    <c:when test="${dto.orderstate eq 1}">접수 완료</c:when>
@@ -73,11 +70,10 @@ function deleteOrder(ordernum){
 					</c:choose>
 				</td>
 				<td>
-					<button type="button" onclick="location.href='content.do?ordernum=${dto.ordernum}'">상세보기</button>
-					<button type="button" onclick="deleteOrder(${dto.ordernum})">주문 삭제</button>
+					<button type="button" class="fk-btn" onclick="location.href='content.do?ordernum=${dto.ordernum}'"><span uk-icon="icon: file-text"></span> 상세보기</button>
+					<button type="button" class="fk-btn" onclick="deleteOrder(${dto.ordernum})"><span uk-icon="icon: trash"></span> 주문 삭제</button>
 				</td>
-			</tr>
+	        </tr>     
 		</c:forEach>
-	</table>
-</body>
-</html>
+    </tbody>
+</table>

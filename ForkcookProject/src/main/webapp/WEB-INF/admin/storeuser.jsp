@@ -25,7 +25,10 @@
 					<td>${dto.id}</td>
 					<td>${dto.sarea}</td>
 					<td>${dto.sname}</td>
-					<td>${dto.gaipday}</td>
+					<td>
+						<fmt:formatDate var="gaipDate" value="${dto.gaipday}" pattern="yyyy-MM-dd"/>
+						${gaipDate}
+					</td>
 					<td>
 						<button type="button" class="fk-btn" onclick="location.href='updateform.do?num=${dto.num}'"><span uk-icon="icon: file-edit"></span> 수정</button>
 						<button type="button" class="fk-btn" onclick="location.href='delete.do?num=${dto.num}'"><span uk-icon="icon: trash"></span> 삭제</button>

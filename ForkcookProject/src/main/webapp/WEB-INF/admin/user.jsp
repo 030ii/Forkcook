@@ -32,7 +32,10 @@
 							<td>${dto.id}</td>
 							<td>${dto.name}</td>
 							<td>${dto.phone}</td>
-							<td>${dto.gaipday}</td>
+							<td>
+								<fmt:formatDate var="gaipDate" value="${dto.gaipday}" pattern="yyyy-MM-dd"/>
+								${gaipDate}
+							</td>
 							<td>
 								<button type="button" class="fk-btn" onclick="location.href='delete.do?num=${dto.num}'">
 									<span uk-icon="icon: trash"></span> 삭제

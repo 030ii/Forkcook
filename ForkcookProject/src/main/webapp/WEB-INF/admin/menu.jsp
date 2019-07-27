@@ -16,7 +16,6 @@
 			<th>가격</th>
 			<th>메인사진</th>
 			<th>평점</th>
-			<th>요약</th>
 			<th>관리</th>
         </tr>
     </thead>
@@ -29,8 +28,7 @@
 				<td>${dto.persons}</td>
 				<td>${dto.price}</td>
 				<td><img src="../../save/${dto.mainimage}"></td>
-				<td>${dto.rate}</td>
-				<td>${dto.shortmsg}</td>
+				<td>${dto.rate}</td>	
 				<td>
 					<button type="button" class="fk-btn" onclick="location.href='updateform.do?num=${dto.num}'"><span uk-icon="icon: file-edit"></span> 수정</button>
 					<button type="button" class="fk-btn" onclick="location.href='delete.do?num=${dto.num}'"><span uk-icon="icon: trash"></span> 삭제</button>

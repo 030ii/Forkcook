@@ -28,7 +28,10 @@
 				<td><img src="../../save/${dto.image}"></td>
 				<td>${dto.content}</td>
 				<td>${dto.rate}</td>
-				<td><fmt:formatDate value="${dto.writeday}" pattern="MM-dd HH:mm"/></td>
+				<td>
+					<fmt:formatDate var="writeDate" value="${dto.writeday}" pattern="yyyy-MM-dd"/>
+					${writeDate}
+				</td>
 				<td>
 					<button type="button" class="fk-btn" onclick="location.href='delete.do?num=${dto.num}&mnum=${dto.mnum}'"><span uk-icon="icon: trash"></span> 삭제</button>
 				</td>
