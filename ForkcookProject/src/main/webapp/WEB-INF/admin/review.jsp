@@ -30,7 +30,7 @@
 				<td>${dto.rate}</td>
 				<td><fmt:formatDate value="${dto.writeday}" pattern="MM-dd HH:mm"/></td>
 				<td>
-					<button type="button" class="fk-btn" onclick="location.href='delete.do?num=${dto.num}'"><span uk-icon="icon: trash"></span> 삭제</button>
+					<button type="button" class="fk-btn" onclick="location.href='delete.do?num=${dto.num}&mnum=${dto.mnum}'"><span uk-icon="icon: trash"></span> 삭제</button>
 				</td>
 	        </tr>     
 		</c:forEach>

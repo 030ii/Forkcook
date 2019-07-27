@@ -153,7 +153,7 @@ public class ReviewController {
 			return "redirect:review.do?mnum="+mnum;
 		}
 		else if(mainadmin.equals("admin")) { // 관리자 모드일 경우
-			return "redirect:list.do?mnum="+mnum;
+			return "redirect:list.do";
 		}
 		return mainadmin;
 	}
