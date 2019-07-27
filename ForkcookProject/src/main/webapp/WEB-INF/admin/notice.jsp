@@ -2,17 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-
-</script>
-</head>
-<body>
 
 <div class="fk-heading">공지사항 게시판</div>
 	<br><br>
@@ -74,6 +63,3 @@
 <br><br>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <button type="button" class="fk-btn" onclick="location.href='${root}/admin/notice/form.do'"><span uk-icon="icon: pencil"></span> 게시글 작성</button>
-
-</body>
-</html>
