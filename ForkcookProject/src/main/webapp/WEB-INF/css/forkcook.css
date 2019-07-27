@@ -8,7 +8,6 @@
 	font-style: normal; 
 }
 
-/*
 @font-face { 
 	font-family: 'S-CoreDream-5Medium'; 
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
@@ -21,7 +20,6 @@
 	font-weight: normal; 
 	font-style: normal; 
 }
-*/
 
 /* 본문용*/
 @font-face { 
@@ -31,23 +29,18 @@
 	font-style: normal; 
 }
 
-/*
 @font-face {
-	font-family: 'S-CoreDream-2ExtraLight';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-*/
+	 font-family: 'S-CoreDream-2ExtraLight';
+	 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
+	 font-weight: normal;
+	 font-style: normal;
+  }
 
-/* 폰트 적용 */
-#header *, #header-admin * {
-	font-family: 'S-CoreDream-6Bold' !important; 
-}
-
-#main *:not(.fa-star), #main-admin *, .uk-modal-dialog * {
+/* 실제 적용 */
+*:not(.fa-star){
 	font-family: 'S-CoreDream-3Light' !important; 
 }
+
 
 /* 상단바 */
 .fk-navbar {
@@ -58,6 +51,7 @@
 
 .fk-navbar li a {
 	color: #706243 !important;
+	font-weight: bold;
 	font-size: 15px !important;
 }
 
@@ -92,6 +86,7 @@
 
 .fk-left-slidebar ul li a {
 	color:#ffffff;
+	font-weight:bold;
 	margin-left: 20px;
 }
 
@@ -235,14 +230,14 @@ div .nextStep_div{
 }
 
 /*signup.jsp*/
+.signupform-big{
+	height: 700px;
+	background: #fdfdfd;
+}
 .signupform{
 	margin-top: 60px;
 	margin-left: 450px;
 	width: 480px;
-}
-.signupform-big{
-	height: 700px;
-	background: #fdfdfd;
 }
 .signup_title{
 	font-size: 20pt;
@@ -270,6 +265,9 @@ div .nextStep_div{
 	height: 55px;
 	font-size: 15pt;
 }
+#signup_btn:hover{
+	background-color: #605439 !important;
+}
 .signupId-input{
 	width: 275px;
 	font-size: 9pt;
@@ -280,6 +278,14 @@ div .nextStep_div{
 	margin-top: 3px;
 	margin-bottom: 13px;
 }
+.signup_smallDiv{
+	border: 0px solid black;
+	margin-bottom: 10px;
+}
+#check_span, #pwchk_span{
+	font-size: 9pt;
+	float: right;
+}
 
 /*mypage.jsp*/
 .myPage-wrapper{
@@ -289,11 +295,15 @@ div .nextStep_div{
 	border: 0px gray solid;
 }
 .mypageTitle_div{
-	margin-bottom: 40px;
+	margin-bottom: 70px;
 }
 .mypageTap_btn{
 	width: 230px;
 	height: 40px;
+}
+.mypageTap_btn:hover{
+	background-color: #fcfaf8;
+	border-color: #cfc5b4;
 }
 .myinfo_table{
 	width: 400px;
@@ -307,6 +317,10 @@ div .nextStep_div{
 	width: 400px;
 	margin-top: 30px;
 	margin-left: 140px;
+}
+.updateInfo_btn:hover{
+	background-color: #605439;
+	color: #ffffff;
 }
 
 /*review.jsp*/
@@ -391,4 +405,34 @@ div .nextStep_div{
 /* cart.jsp*/
 .cartCount{
 	width: 280px;
+}
+
+/*mypagepass.jsp*/
+.pwChk-big{
+	height: 400px;
+	background: #fdfdfd;
+}
+.pwChk_div{
+	margin-left: 450px;
+	width: 480px;
+}
+.pwChk-msg{
+	
+}
+.pwChk_input{
+	width: 400px;
+	font-size: 9pt;
+}
+#passCheck_div{
+	color: #e41242;
+	float: right;
+	margin-bottom: 30px;
+}
+#pwChk_btn{
+	margin-top: 30px;
+	width: 400px;
+	background: #706243;
+}
+#pwChk_btn:hover{
+	background: #605439;
 }
