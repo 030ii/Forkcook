@@ -28,11 +28,13 @@
 					        <li><a href="${root}/main/user/logout.do">로그아웃</a></li>
 							<li><a href="${root}/main/user/mypage.do?num=${loginInfo.num}">마이페이지</a></li>
 							<li><a href="${root}/main/cart/list.do?num=${loginInfo.num}">장바구니</a></li>
+							
+							
 					    </c:when>
 					    <c:otherwise>
 					    	<li><a href="${root}/main/user/login.do">로그인</a></li>
 							<li><a href="${root}/main/user/membership.do">회원가입</a></li>
-							<li><a href="${root}/main/cart/list.do">장바구니</a></li>
+							<li><a href="${root}/main/user/login.do" onclick="alert('먼저 로그인해주세요')">장바구니</a></li>
 					    </c:otherwise>
 				    </c:choose>	
 		        </ul>
