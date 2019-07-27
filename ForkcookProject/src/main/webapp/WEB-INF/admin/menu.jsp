@@ -17,7 +17,7 @@
 			<th>메인사진</th>
 			<th>평점</th>
 			<th>요약</th>
-			<th>수정/삭제</th>
+			<th>관리</th>
         </tr>
     </thead>
     <tbody>

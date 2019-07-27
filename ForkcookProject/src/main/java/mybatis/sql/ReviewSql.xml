@@ -11,7 +11,10 @@
 		select * from review where num=#{num}
 	</select>
 	<select id="reviewListAdmin" resultType="rdto">
-	   	select * from review order by writeday desc
+	   	select r.*, u.name as uname, m.name as mname 
+	   	from review r, users u, menu m
+		where r.unum = u.num and r.mnum = m.num
+		order by r.writeday desc
 	</select>
 	<select id="reviewListUser" resultType="rdto" parameterType="rdto">
 		<!-- select * from review where mnum=#{mnum} -->

@@ -10,12 +10,19 @@ public class ReviewDto {
 	private int unum;
 	private String uname;
 	private int mnum;
+	private String mname;
 	private String content;
 	private double rate;
 	private Timestamp writeday;
 	private String image;
 	private ArrayList<MultipartFile> upfile;
 	
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
 	public String getUname() {
 		return uname;
 	}
