@@ -14,21 +14,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.data.StoreDto;
 import spring.data.StoreuserDto;
+import spring.service.StoreService;
 import spring.service.StoreuserService;
 
 @Controller
 public class StoreuserController {
 	@Autowired
-	private StoreuserService service;
+	private StoreuserService suservice;
+	
+	@Autowired
+	private StoreService sservice;
 	 
 	// 관리자 -> 가맹점 회원 관리 페이지로 이동
 	@RequestMapping("/admin/storeuser/list.do")
 	public ModelAndView list(){
 		ModelAndView model = new ModelAndView();
 		
-		int totalCount = service.getTotalCount(); 		
-		List<StoreuserDto> list = service.getList(); 		
+		int totalCount = suservice.getTotalCount(); 		
+		List<StoreuserDto> list = suservice.getList(); 		
 	
 		model.addObject("totalCount", totalCount); 		
 		model.addObject("list", list); 					
@@ -48,7 +53,7 @@ public class StoreuserController {
 	//아이디 중복확인
 	@RequestMapping(value = "/admin/storeuser/idCheck.do", method = RequestMethod.GET)
 	public @ResponseBody String postIdCheck(HttpServletRequest req,@RequestParam("id") String id){
-		int n = service.idCheck(id);
+		int n = suservice.idCheck(id);
 		int result = 0;
 		if(n >= 1) {
 			result = 1;
@@ -58,10 +63,38 @@ public class StoreuserController {
 		
 	}
 	
+	// 가맹점명 리스트 불러오기
+//	@RequestMapping(value="/admin/storeuser/getSname.do",produces="application/json;charset=utf8",method=RequestMethod.GET)
+//	public @ResponseBody String getSname(HttpServletRequest req, @RequestParam("sarea") String sarea){
+//		List<String> list = sservice.getStoreNameList(sarea);
+//		return "{\"result\":'"+list+"'}";
+//	}
+	@RequestMapping(value="/admin/storeuser/getSname.do",produces="application/json;charset=utf8",method=RequestMethod.GET)
+	public @ResponseBody String getSname(HttpServletRequest req, @RequestParam("sarea") String sarea){
+		List<StoreDto> list = sservice.getStoreNameList(sarea);
+		
+//		String strJson="{\"result\":["
+//				+ "{\"name\":\"name1\",\"num\":\"num1\"},"
+//				+ "{\"name\":\"name2\",\"num\":\"num2\"},"
+//				+ "{\"name\":\"name3\",\"num\":\"num3\"}]}";
+		
+		String strJson="{\"result\":[";
+		for(StoreDto sdto : list){
+			strJson += "{\"num\":\""+ sdto.getNum() +"\",\"name\":\""+ sdto.getName() +"\"},";
+		}
+		
+		strJson=strJson.substring(0,strJson.length()-1); // 마지막 쉼표 제거
+		strJson+="]}";
+		
+		return strJson;
+	}
+	
+	
+	
 	// 관리자 -> 가맹점 회원 관리 -> DB에 가맹점 회원 추가한 뒤 목록으로 redirect 
 	@RequestMapping(value="/admin/storeuser/insert.do",method=RequestMethod.POST)
 	public String write(@ModelAttribute StoreuserDto dto){
-		service.insertStoreuser(dto); // 추가
+		suservice.insertStoreuser(dto); // 추가
 		return "redirect:list.do"; // 목록 새로고침
 	}	
 	
@@ -69,7 +102,7 @@ public class StoreuserController {
 	@RequestMapping("/admin/storeuser/updateform.do")
 	public ModelAndView updateform(@RequestParam int num){
 		ModelAndView model=new ModelAndView();
-		StoreuserDto dto=service.getData(num);
+		StoreuserDto dto=suservice.getData(num);
 		model.addObject("dto",dto);
 		model.setViewName("/admin/admin/storeuserupdateform");
 		return model;
@@ -78,7 +111,7 @@ public class StoreuserController {
 	// 관리자 -> 가맹점 회원 관리 -> DB에 가맹점 회원 정보 수정한 뒤 목록으로 redirect 
 	@RequestMapping(value="/admin/storeuser/update.do",method=RequestMethod.POST)
 	public String update(@ModelAttribute StoreuserDto dto){
-		service.storeuserUpdate(dto); // 추가
+		suservice.storeuserUpdate(dto); // 추가
 		return "redirect:list.do"; // 목록 새로고침
 	}	
 	
@@ -86,7 +119,7 @@ public class StoreuserController {
 	@RequestMapping("/admin/storeuser/delete.do")
 	public String delete(@RequestParam int num){
 		// 삭제
-		service.storeuserDelete(num);
+		suservice.storeuserDelete(num);
 		return "redirect:list.do"; // 목록 새로고침
 	}	
 	

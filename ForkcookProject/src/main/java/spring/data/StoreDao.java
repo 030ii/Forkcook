@@ -1,8 +1,6 @@
 package spring.data;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -31,6 +29,10 @@ public class StoreDao extends SqlSessionDaoSupport {
 	
 	public void storeDelete(int num){
 		getSqlSession().delete("store.storeDelete",num);
+	}
+	
+	public List<StoreDto> getStoreNameList(String area){
+		return getSqlSession().selectList("store.getStoreNameList",area);
 	}
 }
 

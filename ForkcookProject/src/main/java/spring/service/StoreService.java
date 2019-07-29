@@ -37,4 +37,8 @@ public class StoreService {
 	public void storeDelete(int num){
 		dao.storeDelete(num);
 	}
+	
+	public List<StoreDto> getStoreNameList(String area){
+		return dao.getStoreNameList(area);
+	}
 }

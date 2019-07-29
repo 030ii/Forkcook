@@ -20,4 +20,7 @@
 	<delete id="storeDelete" parameterType="int">
 		delete from store where num=#{num}
 	</delete>
+	<select id="getStoreNameList" parameterType="String" resultType="sdto">
+		select num, name from store where area = #{area}
+	</select>
 </mapper>

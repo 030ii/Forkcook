@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +39,26 @@ $(function(){
 		//폼 내부의 데이터를 전송할 주소 (form에 action으로 매핑주소를 주면 아이디 입력 안했는데도 페이지 넘어가버림)
 		//document.form1.action="signupform.do"
 	});
+	
+	 $(document).on("change","select[name='sarea']",function(){
+		 var sarea = $(this).val();
+		 console.log(sarea);
+		 $.ajax({
+			type:'get',
+			url:'getSname.do',
+			data:{'sarea':sarea},
+			dataType:"json",
+			success : function(data){
+				$("select[name='snum']").html("<option value=''>지점 선택</option>");
+				for(var i=0; i<data.result.length; i++){
+					$("select[name='snum']").append("<option value='"+data.result[i].num+"'>"+data.result[i].name+"</option>");
+				}
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		});
+    });
 });
 
 function check(f){
@@ -66,16 +85,25 @@ function check(f){
 			
 		가맹점 회원 비밀번호 확인 : 
 			<input type="password" name="pass2" required><br>
-<!-- 
+
 		가맹점 지역 : 
-			<input type="text" name="sarea" required><br>
+			<select name="sarea" required>
+				<option value="">지역 선택</option>
+				<option value="강원">강원</option>
+				<option value="경기">경기</option>
+				<option value="대구">대구</option>
+				<option value="부산">부산</option>
+				<option value="서울">서울</option>
+				<option value="인천">인천</option>
+				<option value="제주">제주</option>
+				<option value="충청">충청</option>
+			</select><br>
 			
-		가맹점명 : 
-			<input type="text" name="sname" required><br>
-	 -->		
-		가맹점 num : 
-			<input type="text" name="snum" required><br>
-			
+		가맹점 지점 선택 : 
+			<select name="snum" required>
+				<option value="">지점 선택</option>
+			</select><br>
+
 		<button type="submit">추가하기</button>
 		<button type="button" onclick="location.href='list.do'">취소하기</button>
 	</form>

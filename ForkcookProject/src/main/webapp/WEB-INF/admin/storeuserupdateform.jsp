@@ -23,30 +23,18 @@ function check(f){
 </head>
 <body>
 가맹점 회원 수정 폼
-	<form action="update.do?num=${dto.num}" method="post" onsubmit="return check(this)">
-		가맹점 회원 아이디 : 
-			<input type="text" name="id" value="${dto.id}" disabled><br>
-
+	<form action="update.do" method="post" onsubmit="return check(this)">
+		가맹점 회원 아이디 : <input type="text" name="id" value="${dto.id}" disabled><br>
+		가맹점 지역 : <input type="text" name="sarea" value="${dto.sarea}" disabled><br>
+		가맹점명 : <input type="text" name="sname" value="${dto.sname}" disabled><br>
 <!-- 
 		가맹점 회원 현재 비밀번호 : 
 			<input type="password" name="pass-original" required><br>
  -->			
-			
-		가맹점 회원 새 비밀번호 : 
-			<input type="password" name="pass" required><br>
-		
-		가맹점 회원 새 비밀번호 확인 : 
-			<input type="password" name="pass2" required><br>
-<!-- 
-		가맹점 지역 : 
-			<input type="text" name="sarea" required><br>
-			
-		가맹점명 : 
-			<input type="text" name="sname" required><br>
-	 -->		
-		가맹점 num : 
-			<input type="text" name="snum" value="${dto.snum}" required><br>
-			
+		가맹점 회원 새 비밀번호 : <input type="password" name="pass" required><br>
+		가맹점 회원 새 비밀번호 확인 : <input type="password" name="pass2" required><br>
+
+		<input type="hidden" name="num" value="${dto.num}" required><br>
 		<button type="submit">수정하기</button>
 		<button type="button" onclick="location.href='list.do'">취소하기</button>
 	</form>

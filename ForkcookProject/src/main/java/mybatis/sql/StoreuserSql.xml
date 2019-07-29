@@ -22,10 +22,12 @@
 		where su.snum = s.num
 	</select>
 	<select id="storeuserSelectData" parameterType="int" resultType="sudto">
-		select * from storeuser where num=#{num}
+		select su.num, su.id, s.name as sname, s.area as sarea 
+	   	from storeuser su, store s
+	   	where su.snum = s.num and su.num=#{num}
 	</select>
 	<update id="storeuserUpdate" parameterType="sudto">
-		update storeuser set snum=#{snum}, pass=#{pass}
+		update storeuser set pass=#{pass}
 		where num=#{num}
 	</update>
 	<delete id="storeuserDelete" parameterType="int">
