@@ -9,8 +9,22 @@ public class CartDto {
 	private String mprice;
 	private int mcount;
 	private String mtotalprice;
+	private int totalcount;
+	private int totalprice;
 	
 	
+	public int getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
+	public int getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(int totalprice) {
+		this.totalprice = totalprice;
+	}
 	public String getMprice() {
 		return mprice;
 	}

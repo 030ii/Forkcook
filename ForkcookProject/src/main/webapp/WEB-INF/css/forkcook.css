@@ -45,7 +45,7 @@
 	font-family: 'S-CoreDream-6Bold' !important; 
 }
 
-#main *:not(.fa-star), #main-admin *, .uk-modal-dialog * {
+#main *, #main-admin *, .uk-modal-dialog *:not(.fa-star) {
 	font-family: 'S-CoreDream-3Light' !important; 
 }
 

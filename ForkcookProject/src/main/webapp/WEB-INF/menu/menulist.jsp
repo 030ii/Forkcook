@@ -40,14 +40,15 @@
 			</div>
 			<c:choose>
 					<c:when test="${not empty loginInfo}">
+					<!-- 컨펌창으로 장바구니로갈지 계속 쇼핑할지 띄우기,. 에이젝스 -->
 						<button type="button" class="intoCart-btn"
-							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">장바구니담기</button>
+							onclick="location.href='${root}/main/cart/insertcart.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">장바구니담기</button>
 						<button type="button" class="goOrder-btn"
-							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
+							onclick="alert('상품을 장바구니에 담았습니다. 장바구니로 이동합니다.');location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 			<br>
@@ -74,8 +75,8 @@
 							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 				<br>
@@ -103,8 +104,8 @@
 							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 				<br>
@@ -132,8 +133,8 @@
 							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 				<br>
@@ -161,8 +162,8 @@
 							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 				<br>
@@ -190,8 +191,8 @@
 							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 				<br>
@@ -219,8 +220,8 @@
 							onclick="location.href='${root}/main/cart/insert.do?unum=${loginInfo.num }&mnum=${mdto.num}&mtotalprice=${mdto.price }'">바로주문하기</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요')">장바구니담기</button>
-						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요')">바로주문하기</button>
+						<button type="button" class="intoCart-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">장바구니담기</button>
+						<button type="button" class="goOrder-btn" onclick="alert('먼저 로그인 해주세요');location.href='${root}/main/user/login.do'">바로주문하기</button>
 					</c:otherwise>
 				</c:choose>
 				<br>

@@ -39,17 +39,16 @@ public class UserController {
 	public ModelAndView login2(@ModelAttribute UserDto dto, HttpSession session)
 	{
 		ModelAndView model = new ModelAndView();
-		UserDto user = service.userLogin2(dto);
+		UserDto user;
+		user = service.userLogin2(dto); // DB 정보 가져오기
+		if(user == null){
+			service.insertUser2(dto);//존재하지 않는 회원정보로 로그인시도할경우 회원가입시킴
+		} 
 		
-		if(user != null){//비회원 로그인 정보가 DB에 존재할경우
-			session.setAttribute("loginInfo", user);//세션저장
-			model.setViewName("/main/user/loginsuccess2");//나중에 주문내역페이지로 이동
-			}
-			else {
-				service.insertUser2(dto);//존재하지 않는 회원정보로 로그인시도할경우 회원가입시킴
-				model.setViewName("/main/user/notuser");
-			}
-			return model;
+		user = service.userLogin2(dto); // DB 정보 가져오기
+		session.setAttribute("loginInfo", user);//세션저장
+		model.setViewName("/main/user/loginsuccess2");//나중에 주문내역페이지로 이동
+		return model;
 	}
 		
 	//로그인하기 버튼 클릭->로그인되고 메인으로 포워드(일단 loginsuccess로 이동,나중에수정)

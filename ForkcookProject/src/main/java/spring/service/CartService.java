@@ -57,4 +57,12 @@ public class CartService {
 		dao.cartDelete(num);
 	}
 
+	public int getmyTotalCount(int num)
+	{
+		return dao.getmyTotalCount(num);
+	}
+	public int getmyTotalPrice(int num)
+	{
+		return dao.getmyTotalPrice(num);
+	}
 }

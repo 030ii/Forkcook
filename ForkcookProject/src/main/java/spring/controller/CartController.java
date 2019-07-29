@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,9 +27,14 @@ public class CartController {
 		ModelAndView model=new ModelAndView();
 		
 		int totalCount = service.getTotalCount(num);
+		int mytotalCount = service.getmyTotalCount(num);
+		int mytotalPrice = service.getmyTotalPrice(num);
+		
 		List<CartDto> list = service.getList(num);
 		
 		model.addObject("totalCount", totalCount);
+		model.addObject("mytotalCount", mytotalCount);
+		model.addObject("mytotalPrice", mytotalPrice);
 		model.addObject("list",list);
 		
 		model.setViewName("/main/user/cart");
@@ -55,32 +61,35 @@ public class CartController {
 		return "{\"mcount\":"+mcount+",\"mtotalprice\":"+mtotalprice+"}";
 	}
 	
-	//장바구니 수량 minus
-		@RequestMapping(value="/main/cart/updateminus.aj", method=RequestMethod.GET)
-		public @ResponseBody String countMinus(
-				HttpServletRequest req, 
-				@RequestParam("num") int num,
-				@RequestParam("mnum") int mnum
-				)
-		{
-			CartDto dtobefore = new CartDto();
-			dtobefore.setNum(num);
-			dtobefore.setMnum(mnum);
-			service.countUpdateMinus(dtobefore); // mcount(수량), mtotalcount(메뉴별 총 금액) 감소
-			
-			CartDto dtoafter =service.countSelect(num); // 증가된 mcount(수량), mtotalcount(메뉴별 총 금액) 가져오기
-			int mcount = dtoafter.getMcount();
-			String mtotalprice = dtoafter.getMtotalprice();
-			
-			return "{\"mcount\":"+mcount+",\"mtotalprice\":"+mtotalprice+"}";
-		}
-	
-	//메뉴 list -> 장바구니 담기
-	@RequestMapping(value="/main/cart/insert.do",method=RequestMethod.GET)
-	public String insertcart(
+//장바구니 수량 minus
+	@RequestMapping(value="/main/cart/updateminus.aj", method=RequestMethod.GET)
+	public @ResponseBody String countMinus(
+			HttpServletRequest req, 
+			@RequestParam("num") int num,
+			@RequestParam("mnum") int mnum
+			)
+	{
+		CartDto dtobefore = new CartDto();
+		dtobefore.setNum(num);
+		dtobefore.setMnum(mnum);
+		service.countUpdateMinus(dtobefore); // mcount(수량), mtotalcount(메뉴별 총 금액) 감소
+		
+		CartDto dtoafter =service.countSelect(num); // 증가된 mcount(수량), mtotalcount(메뉴별 총 금액) 가져오기
+		int mcount = dtoafter.getMcount();
+		String mtotalprice = dtoafter.getMtotalprice();
+		
+		return "{\"mcount\":"+mcount+",\"mtotalprice\":"+mtotalprice+"}";
+	}
+		
+	//메뉴 list -> 바로주문하기 버튼
+	@RequestMapping(value="/main/cart/{insertcartinsert}.do",method=RequestMethod.GET)
+	public ModelAndView insert(
+			@PathVariable String insertcartinsert,
 			@RequestParam int unum, 
 			@RequestParam int mnum, 
 			@RequestParam String mtotalprice){
+		
+		ModelAndView model = new ModelAndView();
 		
 		CartDto dto = new CartDto();
 		dto.setUnum(unum);
@@ -100,7 +109,16 @@ public class CartController {
 			service.countUpdatePlus(dto);
 		}
 
-		return "redirect:list.do?num="+unum;
+		if(insertcartinsert.equals("insertcart")) {
+			model.setViewName("redirect:/main/menu/list.do");
+		}
+		else if(insertcartinsert.equals("insert")) {
+			model.setViewName("redirect:list.do?num="+unum);
+		}
+		
+		return model;
+		
+		//return "redirect:list.do?num="+unum;
 	}
 	
 	//메뉴detail -> 장바구니 담기

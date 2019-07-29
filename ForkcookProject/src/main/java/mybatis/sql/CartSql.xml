@@ -45,4 +45,18 @@
 	<delete id="cartDelete" parameterType="int">
 		delete from cart where num=#{num}
 	</delete>
+	
+	<!-- 장바구니에 총 금액& 총 수량 가져오기-->
+	<select id="getmyTotalCount" resultType="int" parameterType="int">
+		select sum(mcount) as totalcount
+		from cart
+		where unum = #{num}
+		group by unum
+	</select>
+	<select id="getmyTotalPrice" resultType="int" parameterType="int">
+		select sum(mtotalprice) as totalprice
+		from cart
+		where unum = #{num}
+		group by unum
+	</select>
 </mapper>

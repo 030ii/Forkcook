@@ -59,7 +59,7 @@ $(function(){
 		</c:when>
 		
 	<c:otherwise>
-	<input class="uk-input uk-form-success uk-form-width-medium cartCount" type="text" placeholder="form-success" value="총 ${totalCount}개의 장바구니 내역이 있습니다">
+	<input class="uk-input uk-form-success uk-form-width-medium cartCount" type="text" placeholder="form-success" value="총 ${totalCount}개의 장바구니 항목이 있습니다">
 	<div class="chkAll">
 		<label>
 		<input type="checkbox" name="allCheck" id="allCheck" class="uk-checkbox">
@@ -103,10 +103,14 @@ $(function(){
 				<button type="button" class="uk-button uk-button-primary" onclick="location.href='delete.do?cnum=${dto.num}&unum=${loginInfo.num }'">삭제</button>
 			</td>
 		</tr>
-		</c:forEach></c:otherwise></c:choose>
+		</c:forEach>
 	</table>
+	</c:otherwise>
+</c:choose>
+	
 </div>
-<br>장바구니 총 금액 :
+<br>장바구니 총 금액 : ${mytotalPrice}
+<br>장바구니 총 상품갯수 : ${mytotalCount}
 <br>
 <button type="button" class="uk-button uk-button-primary"
 	onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>

@@ -49,7 +49,7 @@ $(document).ready(function(){
 });
 
 function deleteReview(num,unum,mnum){
-    var result = confirm('상태를 변경하시겠습니까?'); 
+    var result = confirm('삭제하시겠습니까?'); 
     if(result) { //yes 
         $.ajax({
             url: 'delete.do?num='+num+'&unum='+unum+'&mnum='+mnum,
@@ -58,7 +58,7 @@ function deleteReview(num,unum,mnum){
                 location.reload(); // 새로고침
             },
             error: function (error) {
-                alert('문제가 발생하여 주문 상태가 변경되지 않았습니다. 관리자에게 문의해주세요.');
+                alert('문제가 발생하였습니다. 관리자에게 문의해주세요.');
             }
         });
      }
