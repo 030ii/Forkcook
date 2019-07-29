@@ -28,7 +28,7 @@
 	</insert>
 	<update id="qnaUpdate" parameterType="qdto">
 		update qna set
-		subject=#{subject},content=#{content},image=#{image},writeday=sysdate
+		snum=#{snum},subject=#{subject},content=#{content},image=#{image},writeday=sysdate
 		 where num=#{num}
 	</update>
  	<update id="qnastateUpdate1" parameterType="int">

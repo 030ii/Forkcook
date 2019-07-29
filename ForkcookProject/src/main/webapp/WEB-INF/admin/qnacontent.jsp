@@ -10,17 +10,30 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-	<p class="fk-desc">문의글 입니다</p>
-	<table class="uk-table uk-table-middle uk-table-divider">
-			<tr>
-				<th>
-				<b>제 목 : ${qdto.subject}</b>
-				<br>날 짜 : <fmt:formatDate value="${qdto.writeday}" pattern="yyyy-MM-dd HH:mm"/>
-	        	<br>가맹점 : ${qdto.unum}
-	        	<br>사 진 : ${qdto.image}
-	        	<br><br>내 용 : ${qdto.content}<hr>
-	        	</th>
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+	    <thead>
+	        <tr>
+				<th>제 목 : ${qdto.subject}</th>
+				<th><fmt:formatDate value="${qdto.writeday}" pattern="yyyy-MM-dd HH:mm" /></th>
 	        </tr>
+	        <tr>
+	        <th>가맹점 : ${slist[qdto.snum-1].name}</th>
+	        </tr>
+	    </thead>
+	    <tbody>	    	
+			<tr>
+				<td valign="middle">
+					<c:if test="${qdto.image!='noimage' }">
+						<c:forTokens var="myimg" items="${qdto.image }" delims=",">
+							<a href="../../save/${myimg}" target="_new">
+				  			<img src="../../save/${myimg}" style="width: 100px;">
+							</a>
+						</c:forTokens>
+					</c:if><br><br>
+					${qdto.content}
+				</td>
+			</tr>
+	    </tbody>
 	</table>
 		<c:if test="${qdto.qnastate==1}">
 		<!-- 답변 없음 -->
