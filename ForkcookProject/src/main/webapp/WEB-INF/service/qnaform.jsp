@@ -37,7 +37,7 @@ $(function() {
 			<tr>
 				<td>
 					<select name="snum" required>
-						<option value="1">전체</option>
+						<option value="">전체</option>
 						<option value="2">강남점</option>
 						<option value="3">분당점</option>
 						<option value="4">삼성점</option>
