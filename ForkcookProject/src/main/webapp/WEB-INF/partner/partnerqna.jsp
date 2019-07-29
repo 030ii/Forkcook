@@ -28,7 +28,7 @@
 		<c:if test="${qdto.snum == 2}">
 	    <tbody>
 		    <tr>
-		        <td>${status.count}</td>
+		        <td>${status.count} ${sdto.num}</td>
 				<td><a href="pqcontent.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   	pattern="yyyy-MM-dd"/></td>

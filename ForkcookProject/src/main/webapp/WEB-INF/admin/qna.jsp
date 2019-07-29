@@ -27,7 +27,7 @@
 		<tr>
 			<td>${status.count}</td>
 			<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
-			<td>${qdto.unum}</td>
+			<td>${qdto.snum}</td>
 			<td><fmt:formatDate value="${qdto.writeday }"
 			   pattern="yyyy-MM-dd"/></td>
 		</tr>

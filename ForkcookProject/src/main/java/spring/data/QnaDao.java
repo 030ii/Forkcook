@@ -35,6 +35,10 @@ public class QnaDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("qna.qnaSelectData",num); // 바로 리턴해도 됨 
 	}
 	
+	public List<QnaDto> getJoinData(){
+		return getSqlSession().selectList("qna.qnaJoinData");
+	}
+	
 	public void qnaUpdate(QnaDto qdto){
 		getSqlSession().update("qna.qnaUpdate",qdto);
 	}

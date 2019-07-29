@@ -36,6 +36,11 @@ public class QnaService {
 		return dao.getData(num);
 	}
 	
+	public List<QnaDto> getJoinData()
+	{
+		return dao.getJoinData();
+	}
+	
 	public void qnaDelete(int num)
 	{
 		dao.qnaDelete(num);
