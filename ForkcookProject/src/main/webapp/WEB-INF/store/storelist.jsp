@@ -26,34 +26,39 @@
 	  float: left;
 	  height: 540px;
 	}
+	.selectMap {
+		background-color: red;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-$(function(){
+<script type="text/javascript">  
+function go_branch(city_do) {
+    var Arr = Array("sejong","chungnam","jeju","gyeongnam","gyeongbuk","jeonbuk","chungbuk","gangwon","gyeonggi","jeonnam","ulsan","busan","daegu","daejeon","incheon","seoul","gwangju");
+    var strArr = Array("세종","충남","제주","경남","경북","전북","충북","강원","경기","전남","울산","부산","대구","대전","인천","서울","광주");
+	console.log(city_do);
+	// city_do를 id 값으로 하는 요소 배경 색칠! 그 외는 배경 흰색!
+    var idx = Arr.indexOf(city_do);
+    console.log(strArr[idx]);
+    //location.href="./branches.php?stx="+strArr[idx];
+  }
+  
+$(document).ready(function(){
 	/*가맹점 지도*/
-	$(".dg-map svg").mouseover(function(event) {
-	  var _path = event.target;
-	  var city_name = _path.id;
-	  var new_p = document.createElement('p');
-	  var province = $(_path).parent()[0].id;
-	  d3.select(_path).style("fill", "#cbc3ac");
-	  //console.log(city_name);
-	}).mouseout(function(event) {
-	  var _path = event.target;
-	  d3.select(_path).style("fill", "#fff");
-	});
-	
-	function go_branch(city_do) {
-	  var Arr = Array("sejong","chungnam","jeju","gyeongnam","gyeongbuk","jeonbuk","chungbuk","gangwon","gyeonggi","jeonnam","ulsan","busan","daegu","daejeon","incheon","seoul","gwangju");
-	  var strArr = Array("세종","충남","제주","경남","경북","전북","충북","강원","경기","전남","울산","부산","대구","대전","인천","서울","광주");
-	  console.log(city_do);
-	  var idx = Arr.indexOf(city_do);
-	  console.log(strArr[idx]);
-	  //location.href="./branches.php?stx="+strArr[idx];
-	}
-	
-	/*가맹점 지도 색칠*/
-	$(document).ready(function(){
+	  $(".dg-map svg").mouseover(function(event) {
+	    var _path = event.target;
+	    var city_name = _path.id;
+	    var new_p = document.createElement('p');
+	    var province = $(_path).parent()[0].id;
+	    d3.select(_path).style("fill", "#cbc3ac");
+	    //console.log(city_name);
+	  }).mouseout(function(event) {
+	    var _path = event.target;
+	    d3.select(_path).style("fill", "#fff");
+	  });
+
+	  
+
+	  /*가맹점 지도 색칠*/
 	  var mapCondition = '<?=$stx?>';
 	  if (mapCondition == '세종') {
 	    $('#sejong').css("fill", "#cbc3ac");
@@ -87,8 +92,8 @@ $(function(){
 	    $('#seoul').css("fill", "#cbc3ac");
 	  }else if (mapCondition =='광주') {
 	    $('#gwangju').css("fill", "#cbc3ac");
-	  }
-	});
+	  } 
+
 });
 </script>
 </head>
