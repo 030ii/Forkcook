@@ -94,7 +94,7 @@ function check1(){
 	<div class="signup_title">
 		포크쿡 회원가입<br><br>
 	</div>
-	<form action="signupForm.do" method="get" onsubmit="return check(this)" name="frm">
+	<form action="signupform.do" method="get" onsubmit="return check(this)" name="frm">
 		<div class="signup_wrapper">
 			<div class="signup_smallDiv">
 				아이디<br>

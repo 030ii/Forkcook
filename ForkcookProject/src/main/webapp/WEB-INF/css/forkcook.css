@@ -119,10 +119,11 @@
 /*footer.jsp*/
 .footer_wrapper{
 	background-color: gray;
-	position: absolute;
+	position: inherit;
     bottom:0;
     height: 170px;
     width:100%;
+    margin-top: 100px;
 }
 
 /* 관리자 왼쪽 메뉴 */
@@ -211,6 +212,11 @@
 }
 
 /* 로그인페이지 login.jsp 스타일*/
+.noFooter_div{
+	border: 0px gray solid;
+	width: 100px;
+	height: 500px;
+}
 .loginuser_wrap{
 	margin-top: 140px;
 	margin-left: 150px;
@@ -253,6 +259,11 @@
 }
 
 /*membership.jsp*/
+.noFooterM_div{
+	border: 0px gray solid;
+	width: 1220px;
+	height: 1200px;
+}
 div .logoImg{
 	margin-left: 500px;
 	width: 300px;
