@@ -19,7 +19,7 @@
 				<th><fmt:formatDate value="${qdto.writeday}" pattern="yyyy-MM-dd HH:mm" /></th>
 	        </tr>
 	        <tr>
-	        <th>가맹점 : </th>
+	        <th>가맹점 : ${slist[qdto.snum-1].name}</th>
 	        </tr>
 	    </thead>
 	    <tbody>	    	

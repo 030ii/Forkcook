@@ -23,12 +23,12 @@
 		select * from qna inner join store on qna.snum = store.num where qna.snum = store.num
 	</select>
 	<insert id="qnaInsert" parameterType="qdto">
-		insert into qna values (seq_qna.nextval,2,2,
+		insert into qna values (seq_qna.nextval,2,#{snum},
 		#{subject},#{content},#{image},sysdate,1)
 	</insert>
 	<update id="qnaUpdate" parameterType="qdto">
 		update qna set
-		subject=#{subject},content=#{content},image=#{image},writeday=sysdate
+		snum=#{snum},subject=#{subject},content=#{content},image=#{image},writeday=sysdate
 		 where num=#{num}
 	</update>
  	<update id="qnastateUpdate1" parameterType="int">

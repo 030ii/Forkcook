@@ -127,6 +127,8 @@ public class QnaController {
 
 		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
+		List<StoreDto> slist=storeservice.getList();
+		model.addAttribute("slist", slist);
 
 		if(mainadmin.equals("main")) { 
 			return "/main/service/qnacontent";// 일반 모드일 경우 
@@ -145,6 +147,8 @@ public class QnaController {
 		model.addAttribute("pageNum", pageNum);
 		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
+		List<StoreDto> slist=storeservice.getList();
+		model.addAttribute("slist", slist);
 
 		return "/main/user/qnacontent";
 	}
@@ -157,6 +161,8 @@ public class QnaController {
 		model.addAttribute("pageNum", pageNum);
 		List<ReqnaDto> reqlist=reqservice.getReqnaList(qdto.getNum());
 		model.addAttribute("reqlist",reqlist);
+		List<StoreDto> slist=storeservice.getList();
+		model.addAttribute("slist", slist);
 
 		return "/admin/partner/qnacontent";
 	}
