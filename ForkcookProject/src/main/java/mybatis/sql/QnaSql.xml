@@ -14,6 +14,14 @@
 		where a.RNUM>=#{start} and a.RNUM<=#{end}
 		 ]]>		
 	</select>
+	<select id="qnaPagingList2" resultType="qdto">
+	   <![CDATA[
+	   	select * from qna order by num desc
+		 ]]>		
+	</select>
+	<select id="qnaJoinData" resultType="qdto">
+		select * from qna inner join store on qna.snum = store.num where qna.snum = store.num
+	</select>
 	<insert id="qnaInsert" parameterType="qdto">
 		insert into qna values (seq_qna.nextval,2,2,
 		#{subject},#{content},#{image},sysdate,1)

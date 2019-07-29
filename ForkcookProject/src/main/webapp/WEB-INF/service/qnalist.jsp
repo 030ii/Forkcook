@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-	<b>문의 게시판</b>
+	<div class="fk-heading">문의 게시판</div>
 	<br><br>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 매장별 보기 : <a href="${root}/main/qna/list.do">전체</a> |
@@ -18,16 +18,18 @@
  			<a href="">분당점</a> |
  			<a href="">부산점</a>
  <br>
-	<div>총 ${totalCount}개의 문의글이 있습니다</div>
-	<table border=1>
+	<p class="fk-desc">총 ${totalCount}개의 문의글이 있습니다</p>
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+		<thead>
 		<tr>
 			<th>No.</th>
 			<th>제목</th>
 			<th>매장</th>
 			<th>날짜</th>
-			<th>수정/삭제</th>
 		</tr>
+		</thead>
 		<c:forEach var="qdto" items="${qlist}" varStatus="status">
+			<tbody>
 			<tr>
 				<td>${status.count}</td>
 				<c:choose>
@@ -39,25 +41,19 @@
 						<td><a href="${root}/main/user/login.do">${qdto.subject}</a></td>
 					</c:otherwise>
 				</c:choose>
-				<td>${qdto.unum}</td>
+				<td>${qdto.snum}</td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
-				<td>
-					<c:if test="${qdto.qnastate==1}">
-						<button type="button"
-	  						onclick="location.href='updateform.do?qnum=${qdto.num}&pageNum=${pageNum}'">수정</button>
-						<button type="button" onclick="location.href='delete.do?qnum=${qdto.num}&pageNum=${pageNum}'">삭제</button>
-					</c:if>
-				</td>
 			</tr>
+			</tbody>
 		</c:forEach>
 	</table>
 	<!-- 페이지 번호 출력 -->
 <div style="width: 600px;text-align: center;">
-	<ul  class="pagination">
+	<ul  class="pagination uk-pagination uk-flex-center" uk-margin>
 		<c:if test="${startPage>1}">
 			<li>
-				<a href="list.do?pageNum=${startPage-1}">◀</a>
+				<a href="list.do?pageNum=${startPage-1}"><span uk-pagination-previous></span></a>
 			</li>
 		</c:if>
 		<c:forEach var="pp" begin="${startPage}" end="${endPage}">
@@ -72,7 +68,7 @@
 		</c:forEach>
 		<c:if test="${endPage<totalPage}">	
 			<li>
-				<a href="list.do?pageNum=${endPage+1}">▶</a>
+				<a href="list.do?pageNum=${endPage+1}"><span uk-pagination-next></span></a>
 			</li>
 		</c:if>
 	</ul>

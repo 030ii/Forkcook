@@ -26,10 +26,19 @@ public class QnaService {
 	{
 		return dao.getList(start, end);
 	}
+	public List<QnaDto> getList2()
+	{
+		return dao.getList2();
+	}
 	
 	public QnaDto getData(int num)
 	{
 		return dao.getData(num);
+	}
+	
+	public List<QnaDto> getJoinData()
+	{
+		return dao.getJoinData();
 	}
 	
 	public void qnaDelete(int num)

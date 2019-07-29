@@ -82,9 +82,13 @@ public class QnaController {
 
 		//2. 리스트 가져오기
 		List<QnaDto> qlist=qservice.getList(startNum, endNum);
+		List<QnaDto> qlist2=qservice.getList2();
+		List<QnaDto> Joinlist=qservice.getJoinData();
 
 		//3. 페이징에 필요한 변수들 request에 저장		
 		model.addObject("qlist", qlist);
+		model.addObject("qlist2", qlist2);
+		model.addObject("Joinlist", Joinlist);
 		model.addObject("currentPage", currentPage);
 		model.addObject("startPage", startPage);
 		model.addObject("endPage", endPage);
