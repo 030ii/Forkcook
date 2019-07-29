@@ -42,15 +42,7 @@ $(function() {
 						<option value="3">분당점</option>
 						<option value="4">삼성점</option>
 						<option value="5">가로수길점</option>
-						<option value="6">홍대점</option>
-						<option value="7">삼산점</option>
-						<option value="8">부평점</option>
-						<option value="9">부천점</option>
-						<option value="10">해운대점</option>
-						<option value="11">반월당점</option>
-						<option value="12">춘천점</option>
-						<option value="13">제주점</option>
-						<option value="14">청주점</option>
+						<!-- @채영 지역선택 후 매장목록 나오기 구현하기 -->
 					</select>
 					<br>
 				</td>
