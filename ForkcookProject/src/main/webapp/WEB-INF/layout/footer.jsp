@@ -8,16 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-$(function(){
-	if(window.location.pathname == 'http://localhost:9000/ForkcookProject/main/user/membership.do'){
-		document.write('<style>.footer_wrapper{display:none !important;}</style>');
-	}
-});
-
-</script>
 </head>
 <body>
+<script type="text/javascript">
+	if(window.location.pathname == 'http://localhost:9000/ForkcookProject/main/user/login.do'){
+		document.write('<style>.footer_wrapper{display:none !important;}</style>');
+	};
+</script>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <div class="footer_wrapper">
 	<img class="logo" src="${root}/image/logo.png"><br>

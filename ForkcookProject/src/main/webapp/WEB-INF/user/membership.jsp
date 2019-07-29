@@ -22,6 +22,7 @@ $(document).ready(function(){
 });
 </script>
 <body>
+<div class="noFooterM_div">
 <c:set var="root" value="<%=request.getContextPath()%>"/>
 
 <div class="logoImg">
@@ -119,6 +120,7 @@ $(document).ready(function(){
 	<div class="nextStep_div">
 		<button type="button" id="nextStep" class="uk-button uk-button-default">약관 확인</button>
 	</div>
+</div>
 </div>
 </body>
 </html>
