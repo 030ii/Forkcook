@@ -32,5 +32,6 @@ public class StoreDao extends SqlSessionDaoSupport {
 	public void storeDelete(int num){
 		getSqlSession().delete("store.storeDelete",num);
 	}
+
 }
 

@@ -37,4 +37,5 @@ public class StoreService {
 	public void storeDelete(int num){
 		dao.storeDelete(num);
 	}
+
 }

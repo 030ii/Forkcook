@@ -36,10 +36,10 @@
 </table>
 <!-- 페이지 번호 출력 -->
 <div style="width: 600px;text-align: center;">
-	<ul  class="pagination">
+	<ul  class="pagination uk-pagination uk-flex-center" uk-margin>
 		<c:if test="${startPage>1}">
 			<li>
-				<a href="list.do?pageNum=${startPage-1}">◀</a>
+				<a href="list.do?pageNum=${startPage-1}"><span uk-pagination-previous></span></a>
 			</li>
 		</c:if>
 		<c:forEach var="pp" begin="${startPage}" end="${endPage}">
@@ -54,7 +54,7 @@
 		</c:forEach>
 		<c:if test="${endPage<totalPage}">	
 			<li>
-				<a href="list.do?pageNum=${endPage+1}">▶</a>
+				<a href="list.do?pageNum=${endPage+1}"><span uk-pagination-next></span></a>
 			</li>
 		</c:if>
 	</ul>

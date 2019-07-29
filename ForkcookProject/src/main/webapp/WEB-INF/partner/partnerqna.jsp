@@ -24,8 +24,8 @@
 				<th>날짜</th>
 	        </tr>
 	    </thead>
-	    <c:forEach var="qdto" items="${qlist}" varStatus="status">
-		<c:if test="${qdto.snum == '2'}">
+	    <c:forEach var="qdto" items="${qlist2}" varStatus="status">
+		<c:if test="${qdto.snum == 2}">
 	    <tbody>
 		    <tr>
 		        <td>${status.count}</td>
@@ -34,15 +34,15 @@
 				   	pattern="yyyy-MM-dd"/></td>
 		    </tr>    
 	    </tbody>
-	    </c:if>
-		</c:forEach>	
+	   </c:if>
+	   </c:forEach>
 	</table>
 	<!-- 페이지 번호 출력 -->
-	<div style="width: 600px;text-align: center;">
-		<ul  class="pagination">
+	<%-- <div style="width: 600px;text-align: center;">
+		<ul  class="pagination uk-pagination uk-flex-center" uk-margin>
 			<c:if test="${startPage>1}">
 				<li>
-					<a href="partner.do?pageNum=${startPage-1}">◀</a>
+					<a href="partner.do?pageNum=${startPage-1}"><span uk-pagination-previous></span></a>
 				</li>
 			</c:if>
 			<c:forEach var="pp" begin="${startPage}" end="${endPage}">
@@ -57,11 +57,11 @@
 			</c:forEach>
 			<c:if test="${endPage<totalPage}">	
 				<li>
-					<a href="partner.do?pageNum=${endPage+1}">▶</a>
+					<a href="partner.do?pageNum=${endPage+1}"><span uk-pagination-next></span></a>
 				</li>
 			</c:if>
 		</ul>
-	</div>
+	</div> --%>
 	<br>
 </body>
 </html>
