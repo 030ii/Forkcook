@@ -13,12 +13,12 @@
 	<b>내 문의 내역</b>
 	<br><br>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-매장별 보기 : <a href="${root}/main/qna/list.do">전체</a> |
+매장별 보기 : <a href="${root}/main/user/myqna.do">전체</a> |
  			<a href="">강남점</a> |
  			<a href="">분당점</a> |
  			<a href="">부산점</a>
  <br>
-	<table border=1>
+	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
 		<tr>
 			<th>No.</th>
 			<th>제목</th>
@@ -47,25 +47,25 @@
 	</table>
 	<!-- 페이지 번호 출력 -->
 <div style="width: 600px;text-align: center;">
-	<ul  class="pagination">
+	<ul  class="pagination uk-pagination uk-flex-center" uk-margin>
 		<c:if test="${startPage>1}">
 			<li>
-				<a href="list.do?pageNum=${startPage-1}">◀</a>
+				<a href="myqna.do?pageNum=${startPage-1}"><span uk-pagination-previous></span></a>
 			</li>
 		</c:if>
 		<c:forEach var="pp" begin="${startPage}" end="${endPage}">
 			<li>
 			  <c:if test="${pp==currentPage}">
-				<a href="list.do?pageNum=${pp}">${pp}</a>
+				<a href="myqna.do?pageNum=${pp}">${pp}</a>
 			  </c:if>
 			  <c:if test="${pp!=currentPage}">
-				<a href="list.do?pageNum=${pp}">${pp}</a>
+				<a href="myqna.do?pageNum=${pp}">${pp}</a>
 			  </c:if>	
 			</li>
 		</c:forEach>
 		<c:if test="${endPage<totalPage}">	
 			<li>
-				<a href="list.do?pageNum=${endPage+1}">▶</a>
+				<a href="myqna.do?pageNum=${endPage+1}"><span uk-pagination-next></span></a>
 			</li>
 		</c:if>
 	</ul>

@@ -29,17 +29,39 @@ $(function() {
 
 	<br>
 	<br>
-	<form action="write.do" method="post">
+	<form action="write.do" method="post" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
-				<th>제 목</th>
-				<td><input type="text" name="subject" class="form-control"
-					required="required"></td>
+				<td><input type="text" name="subject" class="form-control" required="required" placeholder="제목을 입력해주세요"></td>
 			</tr>
 			<tr>
-				<th>내 용</th>
-				<td colspan="2"><textarea rows="5" cols="40" name="content"
-						class="form-control" required="required"></textarea></td>
+				<td>
+					<select name="snum" required>
+						<option value="">전체</option>
+						<option value="2">강남점</option>
+						<option value="3">분당점</option>
+						<option value="4">삼성점</option>
+						<option value="5">가로수길점</option>
+						<option value="6">홍대점</option>
+						<option value="7">삼산점</option>
+						<option value="8">부평점</option>
+						<option value="9">부천점</option>
+						<option value="10">해운대점</option>
+						<option value="11">반월당점</option>
+						<option value="12">춘천점</option>
+						<option value="13">제주점</option>
+						<option value="14">청주점</option>
+					</select>
+					<br>
+				</td>
+			</tr>
+			<tr>
+			<td>
+				<input type="file" name="upfile" required>
+			</td>
+			</tr>
+			<tr>
+				<td><textarea  name="content" class="form-control" required="required" placeholder="내용을 입력해주세요"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><c:set var="root"

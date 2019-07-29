@@ -51,7 +51,8 @@ $(function() {
 						<option value="12">춘천점</option>
 						<option value="13">제주점</option>
 						<option value="14">청주점</option>
-			</select><br>
+					</select>
+					<br>
 				</td>
 			</tr>
 			<tr>
