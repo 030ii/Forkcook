@@ -31,7 +31,7 @@
 			<tr>
 				<td>${status.count}</td>
 				<td><a href="uqcontent.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
-				<td>${qdto.unum}</td>
+				<td>${slist[qdto.snum-1].name}</td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 				<td>

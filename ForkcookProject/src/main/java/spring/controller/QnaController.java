@@ -17,8 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.QnaDto;
 import spring.data.ReqnaDto;
+import spring.data.StoreDto;
 import spring.service.QnaService;
 import spring.service.ReqnaService;
+import spring.service.StoreService;
 import upload.util.SpringFileWriter;
 
 
@@ -30,6 +32,9 @@ public class QnaController {
 	
 	@Autowired
 	private ReqnaService reqservice;
+	
+	@Autowired
+	private StoreService storeservice;
 
 	@RequestMapping("/{mainadmin}/{qnauser}/{listpartnermyqna}.do")
 	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartnermyqna, @PathVariable String qnauser, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
@@ -83,12 +88,12 @@ public class QnaController {
 		//2. 리스트 가져오기
 		List<QnaDto> qlist=qservice.getList(startNum, endNum);
 		List<QnaDto> qlist2=qservice.getList2();
-		List<QnaDto> Joinlist=qservice.getJoinData();
+		List<StoreDto> slist=storeservice.getList();
 
 		//3. 페이징에 필요한 변수들 request에 저장		
 		model.addObject("qlist", qlist);
 		model.addObject("qlist2", qlist2);
-		model.addObject("Joinlist", Joinlist);
+		model.addObject("slist", slist);
 		model.addObject("currentPage", currentPage);
 		model.addObject("startPage", startPage);
 		model.addObject("endPage", endPage);

@@ -41,12 +41,13 @@
 						<td><a href="${root}/main/user/login.do">${qdto.subject}</a></td>
 					</c:otherwise>
 				</c:choose>
-				<td>${qdto.snum}</td>
+				<td>${slist[qdto.snum-1].name}</td>
 				<td><fmt:formatDate value="${qdto.writeday }"
 				   pattern="yyyy-MM-dd"/></td>
 			</tr>
 			</tbody>
 		</c:forEach>
+		
 	</table>
 	<!-- 페이지 번호 출력 -->
 <div style="width: 600px;text-align: center;">
