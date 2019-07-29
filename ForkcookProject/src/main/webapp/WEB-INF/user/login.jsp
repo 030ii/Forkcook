@@ -10,6 +10,9 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$("footer_wrapper").attr("style","display:none !important");
+	
 	$("#login_btn").click(function(){
 		var id = $("#id").val();
 		var pass = $("#pass").val();

@@ -128,15 +128,22 @@ function deleteReview(num,unum,mnum){
 
 <div class="reviewImageOnly-wrap">
 	<a>이미지 모아보기>></a><br>(나중에 클릭하면 이미지들만 크게 보이도록)<br>
-	<c:forEach var="dto" items="${list}" varStatus="status">
-		<c:if test="${dto.image!='noimage' }">
-			<c:forTokens var="myimg" items="${dto.image }" delims=",">
-				<a href="../../save/${myimg }" target="_new">
-				  <img src="../../save/${myimg }" style="max-width: 50px;">
-				</a>
-			</c:forTokens>
-		</c:if>
-	</c:forEach>
+	
+		<div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide">
+		    <div><ul class="uk-thumbnav" uk-margin>
+				<c:forEach var="dto" items="${list}" varStatus="status">
+					<c:if test="${dto.image!='noimage' }">
+						<c:forTokens var="myimg" items="${dto.image }" delims=",">
+							<a href="../../save/${myimg }" target="_new">
+							  <li><img src="../../save/${myimg }" style="max-width: 50px;" alt=""></li>
+							</a>
+						</c:forTokens>
+					</c:if>
+				</c:forEach></ul>
+		    </div>
+		</div>
+
+
 </div>
 
   <!-- 등록폼 -->
