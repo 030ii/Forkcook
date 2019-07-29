@@ -12,6 +12,7 @@ $(function(){
 	$("#idchk_btn").click(function(){
 		var id = $("#id").val();
 		if($("#id").val().length <4){
+			$("#insert-btn").attr('disabled', true);
 			alert("아이디는 4자 이상으로 입력해주세요");
 		}
 		else{ 
@@ -26,9 +27,11 @@ $(function(){
 					if(result.exist == 1){ // 이미 아이디 존재
 						$("#check").text("사용불가");
 						alert("이미 존재하는 아이디입니다.");
+						$("#insert-btn").attr('disabled', true);
 					}else if(result.exist == 0){ // 아직 아이디 없음
 						$("#check").text("사용가능");
 						alert("사용이 가능한 아이디입니다.");
+						$("#insert-btn").attr('disabled', false);
 					}
 				},
 				error:function(request,status,error){
@@ -104,8 +107,8 @@ function check(f){
 				<option value="">지점 선택</option>
 			</select><br>
 
-		<button type="submit">추가하기</button>
-		<button type="button" onclick="location.href='list.do'">취소하기</button>
+		<button type="submit" id="insert-btn" class="uk-button uk-button-default" disabled>추가하기</button>
+		<button type="button" class="uk-button uk-button-default" onclick="location.href='list.do'">취소하기</button>
 	</form>
 </body>
 </html>

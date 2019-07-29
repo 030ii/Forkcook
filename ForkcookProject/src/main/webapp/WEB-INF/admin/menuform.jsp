@@ -29,10 +29,10 @@
 			</select><br>
 			
 		메뉴 인분 : 
-			<input type="text" name="persons" required><br>
+			<input type="text" name="persons" placeholder="3인분" required><br>
 			
 		메뉴 가격 :
-			<input type="text" name="price" required><br>	
+			<input type="text" name="price" placeholder="10000" required><br>	
 		
 		메뉴 메인사진 :
 			<input type="file" name="upfile" required><br>
