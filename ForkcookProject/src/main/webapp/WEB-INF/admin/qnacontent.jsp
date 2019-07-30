@@ -59,8 +59,7 @@
 				</p>
 				<p>${reqdto.content}</p>
 				<hr>
-			</c:forEach>
-			<div class="uk-margin fk-txt-center">
+				<div class="uk-margin fk-txt-center">
 				<button type="button" class="fk-btn" onclick="location.href='list.do?pageNum=${pageNum}'">
 					<span uk-icon="icon: list"></span> 목록
 				</button>
@@ -71,6 +70,7 @@
 					<span uk-icon="icon: trash"></span> 답변 삭제
 				</button>
 			</div>
+			</c:forEach>
 		</c:if>
 	</article>
 </div>

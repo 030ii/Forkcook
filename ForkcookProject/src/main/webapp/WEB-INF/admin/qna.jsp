@@ -19,8 +19,9 @@
         <tr>
 	        <th>No.</th>
 			<th>제목</th>
-			<th>매장</th>
-			<th>관리</th>
+			<th>문의 매장</th>
+			<th>답변 여부</th>
+			<th>문의 날짜</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,6 +30,10 @@
 				<td>${status.count}</td>
 				<td><a href="content.do?qnum=${qdto.num}&pageNum=${currentPage}">${qdto.subject}</a></td>
 				<td>${slist[qdto.snum-1].name}</td>
+				<td>
+					<c:if test="${qdto.qnastate==1}">답변 없음</c:if>
+					<c:if test="${qdto.qnastate==2}">답변 완료</c:if>
+				</td>
 				<td><fmt:formatDate value="${qdto.writeday}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
