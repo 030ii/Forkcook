@@ -110,17 +110,6 @@ public class StoreController {
 	public String update(@ModelAttribute StoreDto dto, HttpServletRequest request){
 		// @TODO : 기존 이미지 삭제
 		
-		System.out.println(dto.getNum());
-		System.out.println("name:"+dto.getName());
-		System.out.println("area:"+dto.getArea());
-		System.out.println(dto.getAddr());
-		System.out.println(dto.getPhone());
-		System.out.println(dto.getMainimage());
-		System.out.println(dto.getMapimage());
-		System.out.println(dto.getOpertime());
-		System.out.println(dto.getShortmsg());
-		System.out.println(dto.getLongmsg());
-		
 		// 기존 사진 가져오기
 		StoreDto originalDto=service.getData(dto.getNum());
 		String mainimage=originalDto.getMainimage(); 

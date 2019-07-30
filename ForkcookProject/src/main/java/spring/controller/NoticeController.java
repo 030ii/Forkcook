@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.NoticeDto;
+import spring.data.StoreDto;
 import spring.service.NoticeService;
 import upload.util.SpringFileWriter;
 
@@ -130,35 +131,33 @@ public class NoticeController {
 	@RequestMapping(value="/admin/notice/write.do",method=RequestMethod.POST)
 	public String readData(@ModelAttribute NoticeDto dto,HttpServletRequest request)
 	{
-				//이미지 업로드 경로
-				String path=request.getSession().getServletContext().getRealPath("/save");
-				System.out.println(path);
-				
-				String image="";
-				//path경로에 이미지 저장
-				SpringFileWriter fileWriter=new SpringFileWriter();
-				for(MultipartFile f:dto.getUpfile())
-				{
-					//빈 문자열이 아닐 경우에만 저장
-					if(f.getOriginalFilename().length()>0){
-						image+=f.getOriginalFilename()+",";
-						fileWriter.writeFile(f, path, f.getOriginalFilename());
-					}
-					
-				}
-				if(image.length()==0)//이미지 세개 다 선택 안한경우
-				{
-					image="noimage";
-				}else{
-					//마지막 컴마 제거하기
-					image=image.substring(0,image.length()-1);
-				}
-				//dto에 이미지 이름들 저장
-				dto.setImage(image);
-
-				service.insertNotice(dto);		
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
 		
-				return "redirect:list.do";
+		String image="";
+		//path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		for(MultipartFile f:dto.getUpfile())
+		{
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				image+=f.getOriginalFilename()+",";
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+		}
+		if(image.length()==0)//이미지 세개 다 선택 안한경우
+		{
+			image="noimage";
+		}else{
+			//마지막 컴마 제거하기
+			image=image.substring(0,image.length()-1);
+		}
+		//dto에 이미지 이름들 저장
+		dto.setImage(image);
+
+		service.insertNotice(dto);		
+		return "redirect:list.do";
 	}
 	
 	@RequestMapping("/admin/notice/updateform.do")
@@ -177,29 +176,30 @@ public class NoticeController {
 	@RequestMapping(value="/admin/notice/updatec.do",method=RequestMethod.POST)
 	public String updatec(@ModelAttribute NoticeDto dto,@RequestParam String pageNum,HttpServletRequest request)
 	{
+		// @TODO : 기존 이미지 삭제
+		
+		// 기존 사진 가져오기
+		NoticeDto originalDto=service.getData(dto.getNum());
+		String image=originalDto.getImage(); 
+		
 		//이미지 업로드 경로
 		String path=request.getSession().getServletContext().getRealPath("/save");
 		System.out.println(path);
 		
-		String image="";
-		//path경로에 이미지 저장
+		// 수정한 사진이 있을 경우에만 path경로에 이미지 저장
 		SpringFileWriter fileWriter=new SpringFileWriter();
-		for(MultipartFile f:dto.getUpfile())
-		{
+		for(MultipartFile f:dto.getUpfile()){
 			//빈 문자열이 아닐 경우에만 저장
 			if(f.getOriginalFilename().length()>0){
-				image+=f.getOriginalFilename()+",";
+				image=f.getOriginalFilename();
 				fileWriter.writeFile(f, path, f.getOriginalFilename());
 			}
-			
 		}
-		if(image.length()==0)//이미지 세개 다 선택 안한경우
-		{
+		
+		if(image.length()==0){ //이미지 세개 다 선택 안한경우
 			image="noimage";
-		}else{
-			//마지막 컴마 제거하기
-			image=image.substring(0,image.length()-1);
 		}
+		
 		//dto에 이미지 이름들 저장
 		dto.setImage(image);
 		service.noticeUpdate(dto);
@@ -210,29 +210,30 @@ public class NoticeController {
 	@RequestMapping(value="/admin/notice/updatel.do",method=RequestMethod.POST)
 	public String updatel(@ModelAttribute NoticeDto dto,HttpServletRequest request)
 	{
+		// @TODO : 기존 이미지 삭제
+		
+		// 기존 사진 가져오기
+		NoticeDto originalDto=service.getData(dto.getNum());
+		String image=originalDto.getImage(); 
+		
 		//이미지 업로드 경로
 		String path=request.getSession().getServletContext().getRealPath("/save");
 		System.out.println(path);
 		
-		String image="";
-		//path경로에 이미지 저장
+		// 수정한 사진이 있을 경우에만 path경로에 이미지 저장
 		SpringFileWriter fileWriter=new SpringFileWriter();
-		for(MultipartFile f:dto.getUpfile())
-		{
+		for(MultipartFile f:dto.getUpfile()){
 			//빈 문자열이 아닐 경우에만 저장
 			if(f.getOriginalFilename().length()>0){
-				image+=f.getOriginalFilename()+",";
+				image=f.getOriginalFilename();
 				fileWriter.writeFile(f, path, f.getOriginalFilename());
 			}
-			
 		}
-		if(image.length()==0)//이미지 세개 다 선택 안한경우
-		{
+		
+		if(image.length()==0){ //이미지 세개 다 선택 안한경우
 			image="noimage";
-		}else{
-			//마지막 컴마 제거하기
-			image=image.substring(0,image.length()-1);
 		}
+		
 		//dto에 이미지 이름들 저장
 		dto.setImage(image);
 		service.noticeUpdate(dto);	
