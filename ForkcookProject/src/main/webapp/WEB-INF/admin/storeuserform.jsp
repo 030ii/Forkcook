@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<style>
+.fk-section {
+	margin: 0 auto;
+	min-width:375px;
+	max-width:500px;
+}
+.fk-form-width {
+	width:375px;
+}
+.fk-49 {
+	width:49%;
+}
+</style>
 <script type="text/javascript">
 $(function(){
 	$("#idchk_btn").click(function(){
@@ -75,49 +82,62 @@ function check(f){
 	return true;//true 가 반환되면 액션파일 호출
 }
 </script>
-</head>
-<body>
-가맹점 회원 추가 폼
-	<form action="insert.do" method="post" onsubmit="return check(this)">
-		가맹점 회원 아이디 : 
-			<input type="text" name="id" id="id" required>
-			<button type="button" id="idchk_btn">아이디 중복확인</button><br>
-		
-		가맹점 회원 비밀번호 : 
-			<input type="password" name="pass" required><br>
-			
-		가맹점 회원 비밀번호 확인 : 
-			<input type="password" name="pass2" required><br>
-
-		가맹점 지역 : 
-			<select name="sarea" required>
-				<option value="">지역 선택</option>
-				<option value="강원">강원</option>
-				<option value="경기">경기</option>
-				<option value="경남">경남</option>
-				<option value="경북">경북</option>
-				<option value="광주">광주</option>
-				<option value="대구">대구</option>
-				<option value="대전">대전</option>
-				<option value="부산">부산</option>
-				<option value="서울">서울</option>
-				<option value="세종">세종</option>
-				<option value="울산">울산</option>
-				<option value="인천">인천</option>
-				<option value="전남">전남</option>
-				<option value="전북">전북</option>
-				<option value="제주">제주</option>
-				<option value="충북">충북</option>
-				<option value="충청">충청</option>
-			</select><br>
-			
-		가맹점 지점 선택 : 
-			<select name="snum" required>
-				<option value="">지점 선택</option>
-			</select><br>
-
-		<button type="submit" id="insert-btn" class="uk-button uk-button-default" disabled>추가하기</button>
-		<button type="button" class="uk-button uk-button-default" onclick="location.href='list.do'">취소하기</button>
+<div class="fk-section">
+	<div class="fk-heading">관리자 가맹점 회원 추가하기</div>
+	<p class="fk-desc">가맹점 회원을 추가하고 관리하세요</p>
+	<br><br><br>
+	
+	<form class="uk-form-stacked" action="insert.do" method="post" onsubmit="return check(this)">
+	    <div class="uk-margin">
+	        <label class="uk-form-label" for="form-stacked-text">가맹점 아이디</label>
+	        <div class="uk-form-controls">
+	            <input class="uk-input fk-form-width" id="id" type="text" placeholder="아이디를 입력해주세요" name="id" required>
+	        	<button type="button" class="uk-button uk-button-default" id="idchk_btn">중복확인</button>
+	        </div>
+	    </div>
+	    <div class="uk-margin">
+	        <label class="uk-form-label" for="form-stacked-text">가맹점 비밀번호</label>
+	        <div class="uk-form-controls">
+	            <input class="uk-input" type="password" placeholder="비밀번호를 입력해주세요" name="pass" required>
+	        </div>
+	    </div>
+	    <div class="uk-margin">
+	        <label class="uk-form-label" for="form-stacked-text">가맹점 비밀번호 확인</label>
+	        <div class="uk-form-controls">
+	            <input class="uk-input" type="password" placeholder="비밀번호를 다시 입력해주세요" name="pass2" required>
+	        </div>
+	    </div>
+	    <div class="uk-margin">
+	        <label class="uk-form-label" for="form-stacked-select">가맹점 지역/지점 선택</label>
+	        <div class="uk-form-controls">
+	            <select class="uk-select fk-49" name="sarea" required>
+	                <option value="">지역 선택</option>
+					<option value="강원">강원</option>
+					<option value="경기">경기</option>
+					<option value="경남">경남</option>
+					<option value="경북">경북</option>
+					<option value="광주">광주</option>
+					<option value="대구">대구</option>
+					<option value="대전">대전</option>
+					<option value="부산">부산</option>
+					<option value="서울">서울</option>
+					<option value="세종">세종</option>
+					<option value="울산">울산</option>
+					<option value="인천">인천</option>
+					<option value="전남">전남</option>
+					<option value="전북">전북</option>
+					<option value="제주">제주</option>
+					<option value="충북">충북</option>
+					<option value="충청">충청</option>
+	            </select>
+				<select class="uk-select fk-49" name="snum" required>
+	                <option value="">지점 선택</option>
+	            </select>
+        	</div>
+	    </div>
+	    <div class="uk-margin">
+			<button type="submit" id="insert-btn" class="uk-button uk-button-primary fk-49" disabled>추가하기</button>
+			<button type="button" class="uk-button uk-button-secondary fk-49" onclick="location.href='list.do'">취소하기</button>
+		</div>
 	</form>
-</body>
-</html>
+</div>
