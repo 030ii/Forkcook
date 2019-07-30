@@ -22,7 +22,7 @@
 		where su.snum = s.num
 	</select>
 	<select id="storeuserSelectData" parameterType="int" resultType="sudto">
-		select su.num, su.id, s.name as sname, s.area as sarea 
+		select su.num, su.id, su.snum, s.name as sname, s.area as sarea 
 	   	from storeuser su, store s
 	   	where su.snum = s.num and su.num=#{num}
 	</select>
