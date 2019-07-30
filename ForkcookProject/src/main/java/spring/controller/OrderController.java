@@ -3,6 +3,7 @@ package spring.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.OrderDto;
+import spring.data.StoreuserDto;
 import spring.service.OrderService;
 
 @Controller
@@ -52,9 +54,11 @@ public class OrderController {
 	// 가맹점 -> 완료주문 관리(finish.do) -> 완료주문 목록 페이지로 이동
 	//@RequestMapping("/admin/order/list.do")
 	@RequestMapping("/admin/order/{listpage}")
-	public ModelAndView list(@PathVariable String listpage){
+	public ModelAndView list(@PathVariable String listpage, HttpSession session){
 		int totalCount = 0;
-		int snum = 3; // TODO : 아직 가맹점 로그인 세션 저장을 안하므로 일단 임의로 snum을 3으로 세팅
+		
+		StoreuserDto storeuser = (StoreuserDto) session.getAttribute("adminLoginInfo"); 
+		int snum = storeuser.getSnum();
 		
 		ModelAndView model = new ModelAndView();
 		List<OrderDto> list = service.getList();
@@ -64,12 +68,18 @@ public class OrderController {
 			model.setViewName("/admin/admin/order");
 		} else if(listpage.equals("now")){ 			// 가맹점용 -> 현장주문 관리
 			totalCount = service.getNowTotalCount(snum);
+			//session.removeAttribute("nowTotalCount"); 
+			//session.setAttribute("nowTotalCount", totalCount);
 			model.setViewName("/admin/partner/now");
 		} else if(listpage.equals("reserve")){		// 가맹점용 -> 예약주문 관리
 			totalCount = service.getReserveTotalCount(snum);
+			//session.removeAttribute("reserveTotalCount"); 
+			//session.setAttribute("reserveTotalCount", totalCount);
 			model.setViewName("/admin/partner/reserve");
 		} else if(listpage.equals("finish")){		// 가맹점용 -> 완료주문 관리
 			totalCount = service.getFinishTotalCount(snum);
+			//session.removeAttribute("finishTotalCount"); 
+			//session.setAttribute("finishTotalCount", totalCount);
 			model.setViewName("/admin/partner/finish");
 		}
 		

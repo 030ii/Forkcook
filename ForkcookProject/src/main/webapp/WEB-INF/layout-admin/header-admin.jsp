@@ -49,10 +49,29 @@
 		    </c:when>
 		    <c:otherwise>
 				<!----가맹점용 페이지---->
-				<li><a href="${root}/admin/order/now.do"><span uk-icon="icon: file-text"></span> 현장주문 관리</a></li>
-				<li><a href="${root}/admin/order/reserve.do"><span uk-icon="icon: future"></span> 예약주문 관리</a></li>
-				<li><a href="${root}/admin/order/finish.do"><span uk-icon="icon: check"></span> 완료주문 관리</a></li>
-				<li><a href="${root}/admin/qna/partner.do"><span uk-icon="icon: question"></span> 매장문의 관리</a></li>
+				<li>
+					<a href="${root}/admin/order/now.do">
+						<span uk-icon="icon: file-text"></span> 현장주문 관리
+						<span class="uk-badge">${nowTotalCount}</span>
+					</a>
+				</li>
+				<li>
+					<a href="${root}/admin/order/reserve.do">
+						<span uk-icon="icon: future"></span> 예약주문 관리
+						<span class="uk-badge">${reserveTotalCount}</span>
+					</a>
+				</li>
+				<li>
+					<a href="${root}/admin/order/finish.do">
+						<span uk-icon="icon: check"></span> 완료주문 관리
+						<span class="uk-badge">${finishTotalCount}</span>
+					</a>
+				</li>
+				<li>
+					<a href="${root}/admin/qna/partner.do">
+						<span uk-icon="icon: question"></span> 매장문의 관리
+					</a>
+				</li>
 		    </c:otherwise>
 	    </c:choose>	
 	</ul>
