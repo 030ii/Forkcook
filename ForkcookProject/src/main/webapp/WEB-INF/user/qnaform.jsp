@@ -86,7 +86,7 @@ $(function() {
 			</tr>
 			<tr>
 			<td>
-				<input type="file" name="upfile" required>
+				이미지 : <input type="file" name="upfile" required>
 			</td>
 			</tr>
 			<tr>
