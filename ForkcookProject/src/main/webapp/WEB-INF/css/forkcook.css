@@ -643,4 +643,8 @@ div .nextStep_div{
 }
 .fk-49 {
    width:49%;
+   display: inline-block;
+}
+.fk-100 {
+	width:100%;
 }

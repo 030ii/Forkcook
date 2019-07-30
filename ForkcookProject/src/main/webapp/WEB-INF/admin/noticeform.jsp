@@ -2,12 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <script type="text/javascript">
 $(function() {
    $("#wkrtjd").click(function() {
@@ -22,8 +17,7 @@ $(function() {
   });
 });
 </script>
-</head>
-<body>
+
 가맹점이나 관리자만 접근 가능한 페이지 입니다<br>
 <br>
 <br>
@@ -54,5 +48,4 @@ $(function() {
     </fieldset>
 
 </form>
-</body>
-</html>
+

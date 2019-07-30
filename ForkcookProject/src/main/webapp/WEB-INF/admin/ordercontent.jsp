@@ -2,12 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <script type="text/javascript">
 	// 주문 삭제
 	function deleteOrder(ordernum){
@@ -26,8 +21,7 @@
 	    }
 	}
 </script>
-</head>
-<body>
+
 주문 상세보기 페이지 
 <div>
 	<h3>주문 기본 정보(주문 목록에서 + 고객 연락처 정보가 추가된 거임)</h3>
@@ -68,5 +62,4 @@
 </div>
 <button type="button" onclick="history.back()">목록</button>
 <button type="button" onclick="deleteOrder(${ld.ordernum})">해당 주문 삭제</button><!-- TODO : 관리자만 해당 버튼 보이도록 하기 -->
-</body>
-</html>
+

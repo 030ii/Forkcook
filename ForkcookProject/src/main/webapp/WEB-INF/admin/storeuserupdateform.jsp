@@ -1,20 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<style>
-.fk-section {
-	margin: 0 auto;
-	min-width:375px;
-	max-width:500px;
-}
-.fk-form-width {
-	width:375px;
-}
-.fk-49 {
-	width:49%;
-}
-</style>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <script type="text/javascript">
 $(function(){
 	 $(document).on("change","select[name='sarea']",function(){
@@ -61,22 +48,22 @@ function check(f){
 	            <input class="uk-input" id="id" type="text" name="id" value="${dto.id}" disabled>
 	        </div>
 	    </div>
-	    <div class="uk-margin">
-	        <label class="uk-form-label" for="form-stacked-text">가맹점 새 비밀번호</label>
+	    <div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-text">새 비밀번호</label>
 	        <div class="uk-form-controls">
 	            <input class="uk-input" type="password" placeholder="새 비밀번호를 입력해주세요" name="pass" required>
 	        </div>
 	    </div>
-	    <div class="uk-margin">
-	        <label class="uk-form-label" for="form-stacked-text">가맹점 새 비밀번호 확인</label>
+	    <div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-text">새 비밀번호 확인</label>
 	        <div class="uk-form-controls">
 	            <input class="uk-input" type="password" placeholder="새 비밀번호를 다시 입력해주세요" name="pass2" required>
 	        </div>
 	    </div>
-	    <div class="uk-margin">
-	        <label class="uk-form-label" for="form-stacked-select">가맹점 지역/지점 변경</label>
+	    <div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-select">가맹점 지역</label>
 	        <div class="uk-form-controls">
-	            <select class="uk-select fk-49" name="sarea" disabled>
+	            <select class="uk-select" name="sarea" disabled>
 	                <option value="${dto.sarea}">${dto.sarea}</option>
 					<option value="강원">강원</option>
 					<option value="경기">경기</option>
@@ -96,7 +83,12 @@ function check(f){
 					<option value="충북">충북</option>
 					<option value="충청">충청</option>
 	            </select>
-				<select class="uk-select fk-49" name="snum" disabled>
+			</div>
+		</div>
+		<div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-select">가맹점 지점</label>
+	        <div class="uk-form-controls">	
+				<select class="uk-select" name="snum" disabled>
 	                <option value="${dto.snum}">${dto.sname}</option>
 	                <option value="">변경하시려면 지역을 먼저 선택해주세요</option>
 	            </select>

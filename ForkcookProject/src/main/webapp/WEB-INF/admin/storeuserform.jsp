@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
-<style>
-.fk-section {
-	margin: 0 auto;
-	min-width:375px;
-	max-width:500px;
-}
-.fk-form-width {
-	width:375px;
-}
-.fk-49 {
-	width:49%;
-}
-</style>
 <script type="text/javascript">
 $(function(){
 	$("#idchk_btn").click(function(){
@@ -95,22 +82,22 @@ function check(f){
 	        	<button type="button" class="uk-button uk-button-default" id="idchk_btn">중복확인</button>
 	        </div>
 	    </div>
-	    <div class="uk-margin">
-	        <label class="uk-form-label" for="form-stacked-text">가맹점 비밀번호</label>
+	    <div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-text">비밀번호</label>
 	        <div class="uk-form-controls">
 	            <input class="uk-input" type="password" placeholder="비밀번호를 입력해주세요" name="pass" required>
 	        </div>
 	    </div>
-	    <div class="uk-margin">
-	        <label class="uk-form-label" for="form-stacked-text">가맹점 비밀번호 확인</label>
+	    <div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-text">비밀번호 확인</label>
 	        <div class="uk-form-controls">
 	            <input class="uk-input" type="password" placeholder="비밀번호를 다시 입력해주세요" name="pass2" required>
 	        </div>
 	    </div>
-	    <div class="uk-margin">
-	        <label class="uk-form-label" for="form-stacked-select">가맹점 지역/지점 선택</label>
+	    <div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-select">가맹점 지역</label>
 	        <div class="uk-form-controls">
-	            <select class="uk-select fk-49" name="sarea" required>
+	            <select class="uk-select" name="sarea" required>
 	                <option value="">지역 선택</option>
 					<option value="강원">강원</option>
 					<option value="경기">경기</option>
@@ -130,7 +117,12 @@ function check(f){
 					<option value="충북">충북</option>
 					<option value="충청">충청</option>
 	            </select>
-				<select class="uk-select fk-49" name="snum" required>
+	    	</div>
+	    </div>
+		<div class="uk-margin fk-49">
+	        <label class="uk-form-label" for="form-stacked-select">가맹점 지점</label>
+	        <div class="uk-form-controls">
+				<select class="uk-select" name="snum" required>
 	                <option value="">지점 선택</option>
 	            </select>
         	</div>

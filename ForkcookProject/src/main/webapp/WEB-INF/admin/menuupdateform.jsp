@@ -2,14 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-</head>
-<body>
+
 메뉴 수정 폼
 	<!-- <form action="update.do" method="post" enctype="multipart/form-data">  -->
 	<form action="update.do?num=${dto.num}" method="post">
@@ -48,5 +41,4 @@
 		<button type="submit">수정하기</button>
 		<button type="button" onclick="location.href='list.do'">취소하기</button>
 	</form>
-</body>
-</html>
+
