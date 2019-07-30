@@ -107,8 +107,34 @@ public class MenuController {
 	
 	// 관리자 -> 메뉴 관리 -> DB에 메뉴 수정한 뒤 목록으로 redirect 
 	@RequestMapping(value="/admin/menu/update.do",method=RequestMethod.POST)
-	public String update(@ModelAttribute MenuDto dto){
-		service.menuUpdate(dto); // 추가
+	public String update(@ModelAttribute MenuDto dto, HttpServletRequest request){
+		// @TODO : 기존 이미지 삭제
+		
+		// 기존 사진 가져오기
+		MenuDto originalDto=service.getData(dto.getNum());
+		String mainimage=originalDto.getMainimage(); 
+		String longimage=originalDto.getLongimage();
+		
+		//이미지 업로드 경로
+		String path=request.getSession().getServletContext().getRealPath("/save");
+		System.out.println(path);
+		
+		// 수정한 사진이 있을 경우에만 path경로에 이미지 저장
+		SpringFileWriter fileWriter=new SpringFileWriter();
+		int count = 0;
+		for(MultipartFile f:dto.getUpfile()){
+			count++;
+			//빈 문자열이 아닐 경우에만 저장
+			if(f.getOriginalFilename().length()>0){
+				if(count == 1) mainimage=f.getOriginalFilename();
+				else if(count == 2) longimage=f.getOriginalFilename();
+				fileWriter.writeFile(f, path, f.getOriginalFilename());
+			}
+		}
+		dto.setMainimage(mainimage);
+		dto.setLongimage(longimage);
+		
+		service.menuUpdate(dto); // 수정
 		return "redirect:list.do"; // 목록 새로고침
 	}	
 	
