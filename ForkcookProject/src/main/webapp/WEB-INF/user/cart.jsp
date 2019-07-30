@@ -66,7 +66,7 @@ $(function(){
 		&nbsp;&nbsp;모두선택
 		</label>
 	</div>
-	<div class="selDel" style="display: block;">
+	<div class="selDel">
 		<button type="button" id="delBtn" class="uk-button uk-button-primary">선택삭제</button>
 	</div>
 	
@@ -85,7 +85,7 @@ $(function(){
 	  </label>
 		<table class="cartTable">
 			<tr class="cartitem">
-				<td style="border: 1px solid green;" rowspan="2">
+				<td class="countTd" style="border: 1px solid green;">
 				  <div class="count">
 				  	<!-- <span uk-icon="minus-circle" class="minus"></span> -->
 					<img src="${root}/image/menu-minus.png" class="minus" style="width: 35px;">
@@ -95,13 +95,11 @@ $(function(){
 					<img src="${root}/image/menu-plus.png" class="plus" style="width: 35px;">
 				  </div>
 				</td>
-				<td></td>
 			</tr>
-				<td></td>
+			<tr>
 				<td class="mtotalprice" data-mnum="${dto.mnum}">
 					메뉴 개별 총 가격 :￦<fmt:formatNumber value="${dto.mtotalprice}" pattern="#,###" />
 				</td>
-			<tr>
 			</tr>
 		</table>
 	</div>
@@ -109,24 +107,49 @@ $(function(){
  </ul>
 </c:forEach>
 
-	</c:otherwise>
-</c:choose>
-    
+<div class="totalBox_wrapper uk-section uk-section-primary uk-preserve-color">
+    <div class="uk-container">
+
+        <div class="uk-panel uk-light uk-margin-medium">
+            <h3>계산 영수증</h3>
+        </div>
+
+        <div class="uk-grid-match uk-child-width-expand@m" uk-grid>
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <p>
+                    	장바구니 총 상품갯수 : ${mytotalCount}<br>
+                    	장바구니 총 금액 : ￦<fmt:formatNumber value="${mytotalPrice}" pattern="#,###" />
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 </div>
-<br>장바구니 총 금액 : ${mytotalPrice}
-<br>장바구니 총 상품갯수 : ${mytotalCount}
-<br>
-<button type="button" class="uk-button uk-button-primary"
-	onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
-<button type="button" class="uk-button uk-button-primary"
-	onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
+
+	</c:otherwise>
+  </c:choose>
+</div>
+
+<div class="cartBtn_div">
+	<button type="button" class="cartBtn uk-button uk-button-primary"
+		onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
+	<button type="button" class="cartBtn uk-button uk-button-primary"
+		onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
+</div>
 
 <script type="text/javascript">
+//가격에 콤마찍어줌
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 //수량 조절
 $(function(){
 	$(".plus").click(function(){
 		var mcount = $(this).parent('div.count').children('span.mcount');
-		var mtotalprice = $(this).parents('tr.cartitem').find('td.mtotalprice');
+		var mtotalprice = $(this).parents('table.cartTable').find('td.mtotalprice');
 		var num = mcount.data("num");
 		var mnum = mtotalprice.data("mnum");
 		//console.log(mnum);
@@ -142,7 +165,7 @@ $(function(){
 				//console.log(result.mtotalprice);
 				
 				mcount.text(result.mcount);
-				mtotalprice.text(result.mtotalprice);
+				mtotalprice.text("메뉴 개별 총 가격 : ￦"+numberWithCommas(result.mtotalprice));
 			},
 			error:function(err){
 				alert("errorcode:"+err.status+"message:"+err.responseText);
@@ -151,7 +174,7 @@ $(function(){
 	});
 	$(".minus").click(function(){
 		var mcount = $(this).parent('div.count').children('span.mcount');
-		var mtotalprice = $(this).parents('tr.cartitem').find('td.mtotalprice');
+		var mtotalprice = $(this).parents('table.cartTable').find('td.mtotalprice');
 		var num = mcount.data("num");
 		var mnum = mtotalprice.data("mnum");
 		var mcountnum = parseInt(mcount.text());
@@ -167,7 +190,8 @@ $(function(){
 					var result = JSON.parse(redata);
 					
 					mcount.text(result.mcount);
-					mtotalprice.text(result.mtotalprice);
+					//mtotalprice.text("메뉴 개별 총 가격 :￦"+result.mtotalprice);
+					mtotalprice.text("메뉴 개별 총 가격 : ￦"+numberWithCommas(result.mtotalprice));
 				},
 				error:function(err){
 					alert("errorcode:"+err.status+"message:"+err.responseText);

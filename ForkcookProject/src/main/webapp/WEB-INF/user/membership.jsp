@@ -79,7 +79,7 @@ $(document).ready(function(){
 	</div><br>
 	<div class="agreebox">
 		<label class="agree1">
-			<input type="checkbox" name="agree1" id="agree1" class="uk-checkbox" style="width: 30px;height: 30px;">&nbsp;동의
+			<input type="checkbox" name="agree1" id="agree1" class="agreeChkBox uk-checkbox" style="width: 30px;height: 30px;">&nbsp;동의
 		</label>
 	</div>
 </div>
@@ -113,7 +113,7 @@ $(document).ready(function(){
 	</div><br>
 	<div class="agreebox">
 		<label class="agree2">
-			<input type="checkbox" name="agree2" id="agree2" class="uk-checkbox" style="width: 30px;height: 30px;">&nbsp;동의
+			<input type="checkbox" name="agree2" id="agree2" class="agreeChkBox uk-checkbox" style="width: 30px;height: 30px;">&nbsp;동의
 		</label>
 	</div>
 

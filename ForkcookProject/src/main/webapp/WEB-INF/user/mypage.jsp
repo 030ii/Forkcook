@@ -8,6 +8,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+function deleteReview(num,unum,mnum){
+    var result = confirm('삭제하시겠습니까?'); 
+    if(result) { //yes 
+        $.ajax({
+            url: 'delete.do?num='+num+'&unum='+unum+'&mnum='+mnum,
+            method: 'get',
+            success: function () {
+                location.reload(); // 새로고침
+            },
+            error: function (error) {
+                alert('문제가 발생하였습니다. 관리자에게 문의해주세요.');
+            }
+        });
+     }
+ }
+</script>
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath() %>" />

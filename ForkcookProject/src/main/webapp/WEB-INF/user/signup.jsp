@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 $(function(){
-	$("#idchk_btn").click(function(){
+	$("#idchk_btnU").click(function(){
 
 		var id = $("#id").val();
 		var pass = $("#pass").val();
@@ -99,7 +99,7 @@ function check1(){
 			<div class="signup_smallDiv">
 				아이디<br>
 				<input type="text" name="id" id="id" required="required" class="uk-input uk-form-width-medium signupId-input" placeholder="4자이상 입력">
-				<button type="button" id="idchk_btn" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">중복확인</button>
+				<button type="button" id="idchk_btnU" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">중복확인</button>
 				<br><span id="check_span"></span>
 			</div>
 			<div class="signup_smallDiv">

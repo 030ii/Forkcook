@@ -44,13 +44,11 @@
     </table>
     
     <div class="count">
-		수량:<br>
-		<button type="button" id="minus">-</button>
-		<!-- <input type="text" value=0 id="count"> -->
-		<span class="count-span">1</span>
-		<button type="button" id="plus">+</button>
-		가격:<span class="price">${mdto.price}</span>
-	</div>
+		<img src="${root}/image/menu-minus.png" class="minus" style="width: 25px;">
+		<input type="hidden" name="num" value="${dto.num}"/>
+		<span class="mcount" data-num="${dto.num}">${dto.mcount }</span>
+		<img src="${root}/image/menu-plus.png" class="plus" style="width: 25px;">
+	  </div>
 	<div class="intocart">
 		<button type="button" class="intocart-btn">장바구니담기</button>
 	</div>

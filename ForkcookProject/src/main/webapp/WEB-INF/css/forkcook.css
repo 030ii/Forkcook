@@ -118,7 +118,7 @@
 
 /*footer.jsp*/
 .footer_wrapper{
-	background-color: gray;
+	background-color: #e0e0e0;
 	position: inherit;
     bottom:0;
     height: 170px;
@@ -307,6 +307,9 @@ div .agreebox{
 	float: right;
 	font-size: 18pt;
 }
+.uk-checkbox:checked{
+	background-color: #706243;
+}
 div .nextStep_div{
 	margin-top: 100px;
 	margin-left: 300px;
@@ -332,6 +335,14 @@ div .nextStep_div{
 	margin-top:75px;
 	width: 400px;
 	position: absolute;
+}
+#idchk_btnU{
+	background-color: #f5f5f5 !important;
+	color: #000000;
+	width: 120px;
+	height: 41px;
+	font-size: 9pt;
+	margin-top: 10px;
 }
 #idchk_btn{
 	background-color: #f5f5f5 !important;
@@ -502,24 +513,34 @@ div .nextStep_div{
 
 /* cart.jsp*/
 .cartCount{
+	margin-top: 30px;
+	margin-left: 30px;
 	width: 280px;
-	float: right;
 }
 #allCheck{
 	width: 40px;
 	height: 40px;
 }
+#delBtn{
+	margin-left: 700px;
+	margin-bottom: 30px;
+}
+.chkAll{
+	margin-top: 30px;
+	margin-left: 30px;
+	font-size: 15pt;
+}
 .cartCard_wrapper{
 	border: 1px solid gray;
-	width: 900px;
+	width: 770px;
 	height: 350px;
 	margin-left: 50px;
 }
 .cartPtag{
-	font-size: 28pt;
+	font-size: 32pt;
 	border: 1px solid black;
-	width: 460px;
-	height: 100px;
+	width: 330px;
+	height: 120px;
 	float: left;
 	text-align: right;
 }
@@ -527,7 +548,7 @@ div .nextStep_div{
 	float: right;
 }
 .cartImage{
-	width: 300px; height: 300px;
+	width: 280px; height: 280px;
 	border: 1px solid black;
 	float: left;"
  }
@@ -539,16 +560,41 @@ div .nextStep_div{
 .cartTable{
 	font-size: 14pt;
 	border: 1px red solid;
-	width: 450px;
-	height: 130px;
+	width: 330px;
+	height: 120px;
+	margin-right: 20px;
+}
+.countTd{
 	float: right;
-	margin-right: 25px;
 }
 .mtotalprice{
 	border: 3px green solid;
+	height: 25px;
+	margin-top: 90px;
+	color: #2D8BA8;
+	font-weight: bold;
 	font-size: 12pt;
-	float: right;
+	text-align: right;
 }
+.totalBox_wrapper{
+	position: fixed;
+	top: 200px;
+	right: 100px;
+	background-color: #706243;
+	width: 400px;
+	height: 300px;
+}
+.cartBtn_div{
+	margin-top: 50px;
+	margin-left: 200px;
+}
+.cartBtn{
+	background-color: #706243;
+}
+.cartBtn:hover{
+	background-color: #605439;
+}
+
 /*mypagepass.jsp*/
 .pwChk-big{
 	height: 400px;
@@ -621,8 +667,19 @@ div .nextStep_div{
 .menulist_wrapper{
 	width: 400px;
 	height: 600px;
-	margin-left: 30px;
+	margin-left: 40px;
 	margin-bottom: 50px;
+}
+.menuList_ul{
+	 margin-left: 40px;
+	 width: 1240px;
+	 background-color: #e6e6e6;
+	 height: 31px;
+	 font-weight: bold;
+}
+.menulist_aTag{
+	margin-left: 40px;
+	margin-right: 50px;
 }
 .menulist_body{
 	height: 100px;
@@ -631,10 +688,40 @@ div .nextStep_div{
 	width:400px;
 	height: 280px;
 }
-
+.menuHeading {
+    padding-top: 60px;
+	color: #3971AA;
+    font-weight: bold;
+    font-size: 45px;
+}
+.menu-mini-heading{
+	font-size: 18px;
+	margin-top: 30px;
+}
+a.menuLink:hover{
+	color:#2D8BA8;
+	font-weight: bold;
+	text-decoration: none;
+}
+.uk-subnav-pill>.uk-active>a{
+	background-color: #3B76BB;
+}
+.uk-overlay-default{
+	border: 1px #e8e3d9 solid;
+}
+.intoCart-btn,.goOrder-btn{
+	margin-bottom: 10px;
+	border: 1px solid #5f413a;
+}
+.goOrder-btn{
+	background-color: #605439;
+}
+.goOrder-btn:hover{
+	background-color: #706243;
+}
 
 .fk-section {
-   margin: 0 auto;
+   margin: 30px auto;
    min-width:375px;
    max-width:500px;
 }
@@ -647,4 +734,35 @@ div .nextStep_div{
 }
 .fk-100 {
 	width:100%;
+}
+
+/*order.jsp*/
+.order_Allwrapper{
+	
+}
+.orderHr{
+	margin-left: 30px;
+	width: 1000px;	
+}
+.orderInfo_div{
+	border: 3px solid green;
+	width: 1000px;
+	margin-left: 30px;
+}
+.orderForm_li{
+	font-size: 20px;
+	border: 5px red solid;
+	width: 180px;
+}
+.orderForm_div{
+	margin-left: 50px;
+	border: 1px red solid;
+	height: 300px;
+}
+.orderSelect_div{
+	margin-left: 100px;
+	border: 3px orange solid;
+}
+.fk-txt-center{
+  text-align: center;
 }
