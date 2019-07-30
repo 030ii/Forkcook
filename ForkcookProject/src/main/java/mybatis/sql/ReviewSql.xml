@@ -24,7 +24,11 @@
  		order by r.writeday desc
 	</select>
 	<select id="reviewListMypage" resultType="rdto" parameterType="int">
-	   	select * from review where unum=#{unum} order by writeday desc
+	   	<!-- select * from review where unum=#{unum} order by writeday desc -->
+	   	select r.*,m.name as mname
+ 		from review r, menu m
+ 		where r.mnum=m.num and r.unum = #{num}
+ 		order by r.writeday desc
 	</select>
 	<delete id="reviewDelete" parameterType="int">
 		delete from review where num=#{num}

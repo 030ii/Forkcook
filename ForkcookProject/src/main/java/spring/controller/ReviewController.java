@@ -33,7 +33,7 @@ public class ReviewController {
 		ModelAndView model = new ModelAndView();
 		
 		int totalCount = service.getMenuCount(mnum);
-		List<ReviewDto> list = service.getListUser(mnum);
+		List<ReviewDto> list = service.reviewListUser(mnum);
 		
 		model.addObject("totalCount", totalCount);
 		model.addObject("list", list);
@@ -159,11 +159,11 @@ public class ReviewController {
 	}
 	
 	//마이페이지 >> review목록 출력
-	@RequestMapping("/main/{reviewuser}/myreview.do")
+	/*@RequestMapping("/main/{reviewuser}/myreview.do")
 	public ModelAndView myreview(@PathVariable String reviewuser,@RequestParam int unum){
 
 		ModelAndView model = new ModelAndView();
-		
+		System.out.println("reviewuser="+reviewuser);
 		if(reviewuser.equals("user")){
 			
 			List<ReviewDto> list = service.getListUser(unum);
@@ -175,7 +175,7 @@ public class ReviewController {
 			
 		}
 		return model;
-	}
+	}*/
 
 	//관리자 >> review목록 출력
 	@RequestMapping("/admin/review/list.do")

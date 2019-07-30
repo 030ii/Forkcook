@@ -69,45 +69,49 @@ $(function(){
 	<div class="selDel" style="display: block;">
 		<button type="button" id="delBtn" class="uk-button uk-button-primary">선택삭제</button>
 	</div>
+	
+<c:forEach var="dto" items="${list}" varStatus="status">
+ <ul class="uk-grid-small uk-child-width-1-2 uk-child-width-1-4@s uk-text-center" uk-sortable="handle: .uk-card" uk-grid>
+  <li>
+	<div class="cartCard_wrapper uk-card uk-card-default uk-card-hover uk-card-body">
+	  <button class="cartClose_btn uk-close-large" type="button" uk-close onclick="location.href='delete.do?cnum=${dto.num}&unum=${loginInfo.num }'"></button>
+	  <label>
+  		<input type="checkbox" name="chkBox" class="uk-checkbox chkBox" data-num="${dto.num}">
+		<img src="../../save/${dto.mainimage}" class="cartImage">
+		<p class="cartPtag uk-card-title">
+			${dto.menuname}<br>
+			￦<fmt:formatNumber value="${dto.mprice }" pattern="#,###" />
+		</p>
+	  </label>
+		<table class="cartTable">
+			<tr class="cartitem">
+				<td style="border: 1px solid green;" rowspan="2">
+				  <div class="count">
+				  	<!-- <span uk-icon="minus-circle" class="minus"></span> -->
+					<img src="${root}/image/menu-minus.png" class="minus" style="width: 35px;">
+					<input type="hidden" name="num" value="${dto.num}"/>
+					<span class="mcount" data-num="${dto.num}" style="font-size: 20pt;">${dto.mcount }</span>
+					<!-- <span uk-icon="plus-circle" class="plus"></span> -->
+					<img src="${root}/image/menu-plus.png" class="plus" style="width: 35px;">
+				  </div>
+				</td>
+				<td></td>
+			</tr>
+				<td></td>
+				<td class="mtotalprice" data-mnum="${dto.mnum}">
+					메뉴 개별 총 가격 :￦<fmt:formatNumber value="${dto.mtotalprice}" pattern="#,###" />
+				</td>
+			<tr>
+			</tr>
+		</table>
+	</div>
+   </li>
+ </ul>
+</c:forEach>
 
-	<table class="uk-table uk-table-hover uk-table-divider">
-		<tr>
-			<th>메뉴</th>
-			<th>수량</th>
-			<th>가격</th>
-			<th>해당 메뉴 총 가격</th>
-			<th>삭제</th>
-		</tr>
-		
-		<c:forEach var="dto" items="${list}" varStatus="status">
-		<tr class="cartitem">
-			<td>
-				<label>
-  	  			<input type="checkbox" name="chkBox" class="uk-checkbox chkBox" data-num="${dto.num}">
-  	  			&nbsp;&nbsp;${dto.menuname}
-  	  			</label>
-  	  		</td>
-			<td>
-			  <div class="count">
-			  	<!-- <span uk-icon="minus-circle" class="minus"></span> -->
-				<img src="${root}/image/menu-minus.png" class="minus" style="width: 25px;">
-				<input type="hidden" name="num" value="${dto.num}"/>
-				<span class="mcount" data-num="${dto.num}">${dto.mcount }</span>
-				<!-- <span uk-icon="plus-circle" class="plus"></span> -->
-				<img src="${root}/image/menu-plus.png" class="plus" style="width: 25px;">
-			  </div>
-			</td>
-			<td class="price">${dto.mprice}</td>
-			<td class="mtotalprice" data-mnum="${dto.mnum}">${dto.mtotalprice}</td>
-			<td>
-				<button type="button" class="uk-button uk-button-primary" onclick="location.href='delete.do?cnum=${dto.num}&unum=${loginInfo.num }'">삭제</button>
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
 	</c:otherwise>
 </c:choose>
-	
+    
 </div>
 <br>장바구니 총 금액 : ${mytotalPrice}
 <br>장바구니 총 상품갯수 : ${mytotalCount}

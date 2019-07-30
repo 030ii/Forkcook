@@ -63,6 +63,7 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'">상세보기→</a>
 							</p>
 			            </div>
 			        </div>

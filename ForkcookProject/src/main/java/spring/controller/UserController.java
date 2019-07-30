@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.data.ReviewDto;
 import spring.data.UserDao;
 import spring.data.UserDto;
+import spring.service.ReviewService;
 import spring.service.UserService;
 
 @Controller
@@ -25,6 +27,9 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	UserDao userDao;
+	
+	@Autowired
+	private ReviewService rservice;
 	
 	//로그인페이지
 	@RequestMapping("/main/user/login.do")
@@ -113,6 +118,11 @@ public class UserController {
 		ModelAndView model = new ModelAndView();
 		List<UserDto> list = service.userMypage(num);
 		model.addObject("list", list);
+		
+		List<ReviewDto> rlist = rservice.reviewListMypage(num);
+		model.addObject("rlist", rlist);
+		model.addObject("num", num);
+		
 		model.setViewName("/main/user/mypage");
 		return model;
 	}

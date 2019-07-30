@@ -11,8 +11,14 @@ public class CartDto {
 	private String mtotalprice;
 	private int totalcount;
 	private int totalprice;
+	private String mainimage;
 	
-	
+	public String getMainimage() {
+		return mainimage;
+	}
+	public void setMainimage(String mainimage) {
+		this.mainimage = mainimage;
+	}
 	public int getTotalcount() {
 		return totalcount;
 	}

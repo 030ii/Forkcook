@@ -28,12 +28,12 @@ public class ReviewService {
 		return dao.getListAdmin();
 	}
 	
-	public List<ReviewDto> getListUser(int mnum){
-		return dao.getListUser(mnum);
+	public List<ReviewDto> reviewListUser(int mnum){
+		return dao.reviewListUser(mnum);
 	}
 	
-	public List<ReviewDto> getListMypage(int unum){
-		return dao.getListMypage(unum);
+	public List<ReviewDto> reviewListMypage(int unum){
+		return dao.reviewListMypage(unum);
 	}
 	
 	public ReviewDto getData(int num)

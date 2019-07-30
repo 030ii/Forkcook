@@ -20,11 +20,11 @@ public class ReviewDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("review.reviewListAdmin");
 	}
 	
-	public List<ReviewDto> getListUser(int mnum){
+	public List<ReviewDto> reviewListUser(int mnum){
 		return getSqlSession().selectList("review.reviewListUser",mnum);
 	}
 	
-	public List<ReviewDto> getListMypage(int unum){
+	public List<ReviewDto> reviewListMypage(int unum){
 		return getSqlSession().selectList("review.reviewListMypage",unum);
 	}
 	

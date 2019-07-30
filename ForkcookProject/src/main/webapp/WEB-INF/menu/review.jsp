@@ -94,12 +94,12 @@ function deleteReview(num,unum,mnum){
       <c:forEach var="dto" items="${list}" varStatus="status">
         <tr class="updateContent-tr">
         	<td>${status.count}</td>
-        	<td>unum:${dto.unum }/uname:${dto.uname}</td>
+        	<td>${dto.uname}</td>
             <td>
 				<c:if test="${dto.image!='noimage' }">
 					<c:forTokens var="myimg" items="${dto.image }" delims=",">
 						<a href="../../save/${myimg }" target="_new">
-						  <img src="../../save/${myimg }" style="width: 100px;" class="reviewImg">
+						  <img src="../../save/${myimg }" style="width: 100px; height: 100px;" class="reviewImg">
 						</a>
 					</c:forTokens>
 				</c:if>

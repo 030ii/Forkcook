@@ -5,7 +5,7 @@
 		select count(*) from cart where unum=#{num}
 	</select>
 	<select id="cartList" resultType="cdto" parameterType="int">
-		select c.num, c.unum, c.mnum, c.snum, m.name as menuname, m.price as mprice, c.mcount, c.mtotalprice
+		select c.*,m.mainimage, m.name as menuname, m.price as mprice
 		from menu m, cart c
 		where c.mnum = m.num and c.unum = #{num}
 	</select>
