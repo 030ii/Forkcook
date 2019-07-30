@@ -5,11 +5,6 @@
 
 <div class="fk-heading">공지사항 게시판</div>
 	<br><br>
-	<c:set var="root" value="<%=request.getContextPath() %>" />
-매장별 보기 : <a href="${root}/admin/notice/list.do">전체</a> |
- 			<a href="">강남점</a> |
- 			<a href="">분당점</a> |
- 			<a href="">부산점</a><br>
 	<p class="fk-desc">총 ${totalCount}개의 공지글이 있습니다</p>
 	<br><br><br>
 	<input type="text" id="word" list="list">	
