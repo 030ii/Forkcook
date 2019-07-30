@@ -83,7 +83,7 @@ function check(f){
 }
 </script>
 <div class="fk-section">
-	<div class="fk-heading">관리자 가맹점 회원 추가하기</div>
+	<div class="fk-heading">가맹점 회원 추가하기</div>
 	<p class="fk-desc">가맹점 회원을 추가하고 관리하세요</p>
 	<br><br><br>
 	
