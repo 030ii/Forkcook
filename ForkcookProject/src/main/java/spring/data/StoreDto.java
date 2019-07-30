@@ -1,5 +1,9 @@
 package spring.data;
 
+import java.util.ArrayList;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class StoreDto {
 	private int num;
 	private String name;
@@ -11,7 +15,16 @@ public class StoreDto {
 	private String opertime;
 	private String shortmsg;
 	private String longmsg;
+	private ArrayList<MultipartFile> upfile;
 	
+	
+	
+	public ArrayList<MultipartFile> getUpfile() {
+		return upfile;
+	}
+	public void setUpfile(ArrayList<MultipartFile> upfile) {
+		this.upfile = upfile;
+	}
 	public int getNum() {
 		return num;
 	}

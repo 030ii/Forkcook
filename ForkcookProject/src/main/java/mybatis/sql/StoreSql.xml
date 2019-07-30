@@ -14,7 +14,7 @@
 		select * from store where num=#{num}
 	</select>
 	<update id="storeUpdate" parameterType="sdto">
-		update store set name=#{name},area=#{area},addr=#{addr},phone=#{phone},mainimage=#{mainimage},mapimage=#{mapimage},opertime=#{opertime},shortmsg=#{shortmsg},longmsg=#{longmsg} 
+		update store set addr=#{addr},phone=#{phone},mainimage=#{mainimage},mapimage=#{mapimage},opertime=#{opertime},shortmsg=#{shortmsg},longmsg=#{longmsg} 
 		where num=#{num}
 	</update>
 	<delete id="storeDelete" parameterType="int">
