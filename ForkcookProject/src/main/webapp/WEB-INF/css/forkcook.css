@@ -99,7 +99,7 @@
 }
 .mainMenuList_wrapper{
 	position: absolute;
-	top: 620px;
+	top: 580px;
 	border: 0px red solid;
 	width: 1345px;
 	height: 470px;
@@ -115,7 +115,7 @@
 .foodListImg{
 	width: 80px;
 	height: 80px;
-	border: 1px red solid;
+	border: 0px red solid;
 }
 .mainLabel{
 	background-color: #f08a00;
@@ -765,6 +765,96 @@ a.menuLink:hover{
 	width:100%;
 }
 
+/*menudetail.jsp*/
+.menuDetail_wrapper{
+	border: 0px green solid;
+	width: 1200px;
+    height: 100%;
+    margin-left: 80px;
+}
+.menuHr{
+	width: 220px;
+	position: absolute;
+	top: 390px;
+	border: solid black 0.5px;
+}
+.menuDetail-msg{
+	border: 0px solid;
+    margin-top: 300px;
+    margin-left: 150px;
+    position: absolute;
+	font-size: 40pt;
+	text-shadow: 1px 1px 2px black, 0 0 1em #706243, 0 0 0.2em #706243;
+	color: white;
+	
+}
+.menuDetail_cate{
+    margin-top: 380px;
+    margin-left: 160px;
+    position: absolute;
+    font-size: 15pt;
+    color: #3971AA;
+    font-weight: bold;
+}
+.menuDetail-img{
+	margin-left: 300px;
+	width: 600px;
+	height: 600px;
+}
+.menuDetail-Info{
+	border: 0px blue solid;
+	margin-top: 400px;
+	margin-right: 30px;
+	font-size: 14pt;
+	position: absolute;
+    margin-top: -110px;
+    margin-left: 850px;
+}
+.intocart{
+	border: 0px red solid;
+	position: absolute;
+	margin-top: -50px;
+    margin-left: 710px;
+}
+.menuD_cartbtn{
+	width: 240px;
+	height: 60px;
+	background-color: #3971AA;
+	color: white;
+	text-align: left;
+	margin-bottom: 10px;
+	font-size: 20pt;
+	border: #3971AA 2px solid;
+}
+.menuD_cartbtn:hover{
+	background-color:#4885c1;
+	color: white;
+	border: #3971AA 2px solid;
+}
+.menuD_backbtn{
+	width: 240px;
+	height: 60px;
+	font-size: 20pt;
+	font-weight: bold;
+	text-align: left;
+	color: #3971AA;
+	border: #3971AA 2px solid;
+}
+.menuD_backbtn:hover{
+	border: #4885c1 2px solid;
+}
+.count_div{
+	border: 0px green solid;
+	margin-left: 560px;
+    margin-top: -50px;
+    position: absolute;
+}
+.MD_price{
+	margin-top: 30px;
+	font-size: 15pt;
+}
+
+
 /*order.jsp*/
 .order_Allwrapper{
 	
@@ -839,4 +929,27 @@ a.menuLink:hover{
 
 .fk-pink {
 	background: #f5bb92;
+}
+
+/*ordercontent.jsp*/
+.adminOrder_wrapper{
+	margin-left: 70px;
+	width: 700px;
+}
+.adminOrder-card{
+	margin-top: 30px;
+	width: 600px;
+	margin-left: 40px;
+}
+.adminOrder-Table{
+	text-align: right;
+	margin-left: 30px;
+}
+.adminOrderBtn_div{
+	float: right;
+}
+.adminOrderUserInfo{
+	width: 400px;
+	margin-left: 50px;
+	text-align: right;
 }

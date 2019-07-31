@@ -12,8 +12,10 @@
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-브랜드 소개 페이지입니다.
-<button type="button" onclick="location.href='${root}/main/store/list.do'">매장 보러가기</button>
-<button type="button" onclick="location.href='${root}/main/menu/list.do'">메뉴 구경하기</button>
+<img src="${root}/image/brandinfo.png">
+<div>
+	<button type="button" onclick="location.href='${root}/main/store/list.do'" class="uk-button uk-button-default">매장 보러가기</button>
+	<button type="button" onclick="location.href='${root}/main/menu/list.do'" class="uk-button uk-button-default">메뉴 구경하기</button>
+</div>
 </body>
 </html>
