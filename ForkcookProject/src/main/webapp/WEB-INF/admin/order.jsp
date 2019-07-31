@@ -21,7 +21,7 @@ function deleteOrder(ordernum){
 }
 </script>
 
-<div class="fk-heading">관지라 주문 페이지</div>
+<div class="fk-heading">관리자 주문 페이지</div>
 <p class="fk-desc">총 ${totalCount}개의 주문이 있습니다.</p>
 <table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped fk-table">
     <thead>

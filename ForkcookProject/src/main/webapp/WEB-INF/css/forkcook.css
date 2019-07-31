@@ -750,6 +750,13 @@ a.menuLink:hover{
 .fk-form-width {
    width:375px;
 }
+.fk-form-width-63 {
+   width:63px;
+}
+.fk-20 {
+   width:20%;
+   display: inline-block;
+}
 .fk-49 {
    width:49%;
    display: inline-block;
@@ -767,24 +774,19 @@ a.menuLink:hover{
 	width: 1000px;	
 }
 .orderInfo_div{
-	border: 3px solid green;
-	width: 1000px;
+	width: 765px;
 	margin-left: 30px;
 }
 .orderForm_li{
-	font-size: 20px;
-	border: 5px red solid;
 	width: 180px;
+}
+.orderForm_li a {
+	font-size: 20px;
 }
 .orderForm_div{
 	margin-left: 50px;
-	border: 1px red solid;
-	height: 300px;
 }
-.orderSelect_div{
-	margin-left: 100px;
-	border: 3px orange solid;
-}
+
 .fk-txt-center{
   text-align: center;
 }

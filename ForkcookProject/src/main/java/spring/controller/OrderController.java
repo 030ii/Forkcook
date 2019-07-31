@@ -15,14 +15,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.data.CartDto;
 import spring.data.OrderDto;
 import spring.data.StoreuserDto;
+import spring.data.UserDto;
+import spring.service.CartService;
 import spring.service.OrderService;
 
 @Controller
 public class OrderController {
 	@Autowired
-	private OrderService service;
+	private OrderService oservice;
+	
+	@Autowired
+	private CartService cservice;
+	
 	
 	@RequestMapping("/main/order/order.do")
 	public ModelAndView order(){
@@ -31,10 +38,22 @@ public class OrderController {
 		return model;
 	}
 	
-	//결제페이지에서 결제완료페이지로
+	// 장바구니에서 결제페이지로
 	@RequestMapping("/main/order/orderform.do")
-	public ModelAndView orderform(){
+	public ModelAndView orderform(HttpSession session){
 		ModelAndView model = new ModelAndView();
+		
+		UserDto user = (UserDto) session.getAttribute("loginInfo"); 
+		int unum = user.getNum();
+		
+		List<CartDto> list = cservice.getList(unum);
+		int mytotalCount = cservice.getmyTotalCount(unum);
+		int mytotalPrice = cservice.getmyTotalPrice(unum);
+		
+		model.addObject("list",list);
+		model.addObject("mytotalCount", mytotalCount);
+		model.addObject("mytotalPrice", mytotalPrice);
+		
 		model.setViewName("/main/order/order");
 		return model;
 	}
@@ -58,10 +77,10 @@ public class OrderController {
 		StoreuserDto storeuser = (StoreuserDto) session.getAttribute("adminLoginInfo"); 
 		int snum = storeuser.getSnum();
 		
-		int totalCount = service.getTotalCount();
-		int nowTotalCount = service.getNowTotalCount(snum);
-		int reserveTotalCount = service.getReserveTotalCount(snum);
-		int finishTotalCount = service.getFinishTotalCount(snum);
+		int totalCount = oservice.getTotalCount();
+		int nowTotalCount = oservice.getNowTotalCount(snum);
+		int reserveTotalCount = oservice.getReserveTotalCount(snum);
+		int finishTotalCount = oservice.getFinishTotalCount(snum);
 		
 		// 세션에 업데이트
 		session.setAttribute("nowTotalCount", nowTotalCount);
@@ -69,7 +88,7 @@ public class OrderController {
 		session.setAttribute("finishTotalCount", finishTotalCount);
 		
 		ModelAndView model = new ModelAndView();
-		List<OrderDto> list = service.getList();
+		List<OrderDto> list = oservice.getList();
 		
 		if(listpage.equals("list")){ 				// 관리자용 -> 주문 관리
 			model.setViewName("/admin/admin/order");
@@ -91,8 +110,8 @@ public class OrderController {
 	public ModelAndView content(@RequestParam String ordernum){
 		ModelAndView model = new ModelAndView();
 		
-		OrderDto ld = service.getListData(ordernum); // 기본 주문 정보 데이터 가져오기
-		List<OrderDto> md = service.getMenuData(ordernum); // 메뉴 주문 정보 데이터 가져오기
+		OrderDto ld = oservice.getListData(ordernum); // 기본 주문 정보 데이터 가져오기
+		List<OrderDto> md = oservice.getMenuData(ordernum); // 메뉴 주문 정보 데이터 가져오기
 		
 		model.addObject("ld",ld);
 		model.addObject("md",md);
@@ -104,7 +123,7 @@ public class OrderController {
 	@RequestMapping(value="/admin/order/delete.do",method=RequestMethod.DELETE)
 	@CrossOrigin
 	public @ResponseBody void dataDelete(HttpServletRequest req,@RequestParam String ordernum){
-		service.orderDelete(ordernum);
+		oservice.orderDelete(ordernum);
 	}
 	
 	// 가맹점 -> 주문 상태 변경(2:조리중)
@@ -115,11 +134,11 @@ public class OrderController {
 	@RequestMapping(value="/admin/order/update/{state}.do",method=RequestMethod.POST)
 	@CrossOrigin
 	public @ResponseBody void orderstate(@PathVariable String state, HttpServletRequest req,@RequestParam String ordernum){
-		if(state.equals("state2")) service.orderUpdateState2(ordernum);
-		else if(state.equals("state3")) service.orderUpdateState3(ordernum);
-		else if(state.equals("state4")) service.orderUpdateState4(ordernum);
-		else if(state.equals("state7")) service.orderUpdateState7(ordernum);
-		else if(state.equals("state8")) service.orderUpdateState8(ordernum);
+		if(state.equals("state2")) oservice.orderUpdateState2(ordernum);
+		else if(state.equals("state3")) oservice.orderUpdateState3(ordernum);
+		else if(state.equals("state4")) oservice.orderUpdateState4(ordernum);
+		else if(state.equals("state7")) oservice.orderUpdateState7(ordernum);
+		else if(state.equals("state8")) oservice.orderUpdateState8(ordernum);
 	}
 	
 }
