@@ -14,14 +14,14 @@
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
 	font-weight: normal; 
 	font-style: normal; 
-}
+} */
 @font-face { 
 	font-family: 'S-CoreDream-4Regular'; 
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); 
 	font-weight: normal; 
 	font-style: normal; 
 }
-*/
+
 
 /* 본문용*/
 @font-face { 
@@ -47,6 +47,10 @@
 
 #main *, #main-admin *, .uk-modal-dialog *:not(.fa-star) {
 	font-family: 'S-CoreDream-3Light' !important; 
+}
+
+.loginAdmin_wrap {
+	font-family: 'S-CoreDream-4Regular' !important; 
 }
 
 
@@ -787,9 +791,15 @@ a.menuLink:hover{
 
 /*layout-admin.jsp*/
 .loginAdmin_wrap{
+<<<<<<< HEAD
 	width: 1360px;
 	height: 660px;
 	border: 1px green solid;
+=======
+	text-align: center;
+    margin: 200px auto;
+    width: 400px;
+>>>>>>> branch 'master' of https://github.com/030ii/forkcook
 }
 .adminLogin-text{
 	margin-left: 350px;
@@ -813,4 +823,20 @@ a.menuLink:hover{
 	background-color: #706243 !important;
 	color: #ffffff;
 	width: 400px;
+}
+
+.uk-badge {
+    background: #0ec6c7 !important;
+}
+
+.fk-green {
+	background: #caf592;
+}
+
+.fk-yellow {
+	background: #eff592;
+}
+
+.fk-pink {
+	background: #f5bb92;
 }

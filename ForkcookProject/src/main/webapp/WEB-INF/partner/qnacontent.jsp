@@ -1,72 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-</head>
-<body>
-	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
-	    <thead>
-	        <tr>
-				<th>제 목 : ${qdto.subject}</th>
-				<th><fmt:formatDate value="${qdto.writeday}" pattern="yyyy-MM-dd HH:mm" /></th>
-	        </tr>
-	        <tr>
-	        <th>가맹점 : ${slist[qdto.snum-1].name}</th>
-	        </tr>
-	    </thead>
-	    <tbody>	    	
-			<tr>
-				<td valign="middle">
-					<c:if test="${qdto.image!='noimage' }">
-						<c:forTokens var="myimg" items="${qdto.image }" delims=",">
-							<a href="../../save/${myimg}" target="_new">
-				  			<img src="../../save/${myimg}" style="width: 100px;">
-							</a>
-						</c:forTokens>
-					</c:if><br><br>
-					${qdto.content}
-				</td>
-			</tr>
-	    </tbody>
-	</table>
-	<hr>
-	<c:if test="${qdto.qnastate==1}">
-		<!-- 답변 없음 -->
-		<div>답변이 없습니다. 답변을 작성해주세요.</div><br><br>
-		<button type="button" onclick="location.href='preqform.do?qnum=${qdto.num}&pageNum=${pageNum}'">답변 추가</button>
-	</c:if>
-	<c:if test="${qdto.qnastate==2}">
-	<!-- 답변 있음 -->
-		<div>
-			<c:forEach  var="reqdto" items="${reqlist}">
-				<b>-답 변</b>
-				<b>제 목 : </b>${reqdto.subject}<br><br>
-				<td valign="middle">
+<div class="fk-section">
+	<article class="uk-article">
+		<h1 class="uk-article-title">
+			<a class="uk-link-reset" href="">${qdto.subject}</a>
+		</h1>
+		<p>
+			문의 가맹점 : ${slist[qdto.snum-1].name}
+		</p>
+		<p class="uk-article-meta">
+			문의 작성일 : <fmt:formatDate value="${qdto.writeday}" pattern="yyyy-MM-dd" />
+		</p>
+		<p>
+			<c:if test="${qdto.image!='noimage' }">
+				<c:forTokens var="myimg" items="${qdto.image }" delims=",">
+					<a href="../../save/${myimg}" target="_new"> 
+						<img src="../../save/${myimg}" style="width: 100px;">
+					</a>
+				</c:forTokens>
+			</c:if>
+		</p>
+		<p>${qdto.content}</p>
+		<hr>
+		<c:if test="${qdto.qnastate==1}"><!-- 답변 없음 -->
+			<p class="uk-text-lead">답변이 없습니다. 답변을 작성해주세요.</p>
+			<br>
+			<br>
+			<hr>
+			<div class="uk-margin fk-txt-center">
+				<button type="button" class="fk-btn" onclick="location.href='partner.do'">
+					<span uk-icon="icon: list"></span> 목록
+				</button>
+				<button type="button" class="fk-btn" onclick="location.href='preqform.do?qnum=${qdto.num}&pageNum=${pageNum}'">
+					<span uk-icon="comments"></span> 답변 추가
+				</button>
+			</div>
+		</c:if>
+		<c:if test="${qdto.qnastate==2}"><!-- 답변 있음 -->
+			<c:forEach var="reqdto" items="${reqlist}">
+				<p class="uk-text-lead">[답변] ${reqdto.subject}</p>
+				<p class="uk-article-meta">
+					답변 작성일 : <fmt:formatDate value="${reqdto.writeday}" pattern="yyyy-MM-dd" />
+				</p>
+				<p>
 					<c:if test="${reqdto.image!='noimage' }">
 						<c:forTokens var="myimg" items="${reqdto.image }" delims=",">
-							<a href="../../save/${myimg}" target="_new">
-				  			<img src="../../save/${myimg}" style="width: 100px;">
+							<a href="../../save/${myimg}" target="_new"> 
+								<img src="../../save/${myimg}" style="width: 100px;">
 							</a>
 						</c:forTokens>
-					</c:if><br>
-				</td><br><br>
-				<b>내 용 : </b>${reqdto.content}<br><br>
-				<button type="button" onclick="location.href='pqupdateform.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 수정</button>
-				<button type="button" onclick="location.href='preqdelete.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">답변 삭제</button>
+					</c:if>
+				</p>
+				<p>${reqdto.content}</p>
 				<hr>
-			</c:forEach>	
-		</div>
-	</c:if>
-	<button type="button" onclick="location.href='partner.do?'">목록</button>
-	<c:if test="${qdto.qnastate==1}">
-	<button type="button" onclick="location.href='pqdelete.do?qnum=${qdto.num}&pageNum=${pageNum}'">해당 문의 삭제하기</button>
-	</c:if>
-</body>
-</html>
+				<div class="uk-margin fk-txt-center">
+				<button type="button" class="fk-btn" onclick="location.href='partner.do'">
+					<span uk-icon="icon: list"></span> 목록
+				</button>
+				<button type="button" class="fk-btn" onclick="location.href='pqupdateform.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">
+					<span uk-icon="icon: file-edit"></span> 답변 수정
+				</button>
+				<button type="button" class="fk-btn" onclick="location.href='preqdelete.do?reqnum=${reqdto.num}&pageNum=${pageNum}'">
+					<span uk-icon="icon: trash"></span> 답변 삭제
+				</button>
+			</div>
+			</c:forEach>
+		</c:if>
+	</article>
+</div>

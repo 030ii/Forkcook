@@ -28,7 +28,7 @@
 	        </div>
 	    </div> 
 	    <div class="uk-margin">
-	    	<input type="hidden" name="snum" value="2">
+	    	<input type="hidden" name="snum" value="${adminLoginInfo.snum}">
 			<input type="hidden" name="qnum" value="${qnum}">
 			<input type="hidden" name="pageNum" value="${pageNum}">
 			<button type="submit" class="uk-button uk-button-primary fk-49">답변 작성하기</button>
