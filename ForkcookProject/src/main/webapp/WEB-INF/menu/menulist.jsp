@@ -136,6 +136,8 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" class="menuLink"
+									style="float: right; color: #2D8BA8; font-size: 10pt;">상세보기<span uk-icon="arrow-right"></span></a>
 							</p>
 			            </div>
 			        </div>
@@ -185,6 +187,8 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" class="menuLink"
+									style="float: right; color: #2D8BA8; font-size: 10pt;">상세보기<span uk-icon="arrow-right"></span></a>
 							</p>
 			            </div>
 			        </div>
@@ -234,6 +238,8 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" class="menuLink"
+									style="float: right; color: #2D8BA8; font-size: 10pt;">상세보기<span uk-icon="arrow-right"></span></a>
 							</p>
 			            </div>
 			        </div>
@@ -283,6 +289,8 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" class="menuLink"
+									style="float: right; color: #2D8BA8; font-size: 10pt;">상세보기<span uk-icon="arrow-right"></span></a>
 							</p>
 			            </div>
 			        </div>
@@ -332,6 +340,8 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" class="menuLink"
+									style="float: right; color: #2D8BA8; font-size: 10pt;">상세보기<span uk-icon="arrow-right"></span></a>
 							</p>
 			            </div>
 			        </div>
@@ -381,6 +391,8 @@
 			                <p style="color: #999999;">
 			                	<span uk-icon="icon: user"></span>${mdto.persons }
 								<span uk-icon="icon: star"></span>${mdto.rate }
+								<a onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" class="menuLink"
+									style="float: right; color: #2D8BA8; font-size: 10pt;">상세보기<span uk-icon="arrow-right"></span></a>
 							</p>
 			            </div>
 			        </div>

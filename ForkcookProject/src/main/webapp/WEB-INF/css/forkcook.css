@@ -317,11 +317,11 @@ div .nextStep_div{
 
 /*signup.jsp*/
 .signupform-big{
-	height: 700px;
+	height: 800px;
 	background: #fdfdfd;
 }
 .signupform{
-	margin-top: 60px;
+	margin-top: 100px;
 	margin-left: 450px;
 	width: 480px;
 }
@@ -512,6 +512,10 @@ div .nextStep_div{
 }
 
 /* cart.jsp*/
+.cartform-big{
+	height: 100%;
+	background: #fdfdfd;
+}
 .cartCount{
 	margin-top: 30px;
 	margin-left: 30px;
@@ -522,8 +526,9 @@ div .nextStep_div{
 	height: 40px;
 }
 #delBtn{
-	margin-left: 700px;
-	margin-bottom: 30px;
+	margin-left: 190px;
+	margin-bottom: 50px;
+	margin-top: -40px;
 }
 .chkAll{
 	margin-top: 30px;
@@ -531,15 +536,15 @@ div .nextStep_div{
 	font-size: 15pt;
 }
 .cartCard_wrapper{
-	border: 1px solid gray;
-	width: 770px;
+	border: 0px solid gray;
+	width: 800px;
 	height: 350px;
 	margin-left: 50px;
 }
 .cartPtag{
-	font-size: 32pt;
-	border: 1px solid black;
-	width: 330px;
+	font-size: 30pt;
+	border: 0px solid black;
+	width: 370px;
 	height: 120px;
 	float: left;
 	text-align: right;
@@ -549,7 +554,7 @@ div .nextStep_div{
 }
 .cartImage{
 	width: 280px; height: 280px;
-	border: 1px solid black;
+	border: 0px solid black;
 	float: left;"
  }
 .chkBox{
@@ -559,8 +564,8 @@ div .nextStep_div{
 }
 .cartTable{
 	font-size: 14pt;
-	border: 1px red solid;
-	width: 330px;
+	border: 0px red solid;
+	width: 370px;
 	height: 120px;
 	margin-right: 20px;
 }
@@ -568,7 +573,7 @@ div .nextStep_div{
 	float: right;
 }
 .mtotalprice{
-	border: 3px green solid;
+	border: 0px green solid;
 	height: 25px;
 	margin-top: 90px;
 	color: #2D8BA8;
@@ -579,20 +584,26 @@ div .nextStep_div{
 .totalBox_wrapper{
 	position: fixed;
 	top: 200px;
-	right: 100px;
-	background-color: #706243;
-	width: 400px;
-	height: 300px;
+	right: 60px;
+}
+.totalBoxBack{
+	background: #58433a;
+	color: white;
+}
+.cartBtag{
+	float: right;
 }
 .cartBtn_div{
-	margin-top: 50px;
-	margin-left: 200px;
+	margin-top: 0px;
+	margin-left: 0px;
 }
 .cartBtn{
-	background-color: #706243;
+	background-color: #ffffff;
+	color: black;
 }
 .cartBtn:hover{
-	background-color: #605439;
+	background-color: #f5f1f3;
+	color: #444444;
 }
 
 /*mypagepass.jsp*/
@@ -765,4 +776,22 @@ a.menuLink:hover{
 }
 .fk-txt-center{
   text-align: center;
+}
+
+/*layout-admin.jsp*/
+.loginAdmin_wrap{
+	margin-top: 150px;
+	margin-left: 300px;
+}
+.adminLogin-text{
+	margin-bottom: 30px;
+	font-size: 25px;
+}
+.adminlogin-input{
+	width: 400px;
+}
+#adminLogin_btn{
+	background-color: #706243 !important;
+	color: #ffffff;
+	width: 400px;
 }

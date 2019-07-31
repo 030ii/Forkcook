@@ -51,6 +51,7 @@ $(function(){
 <body>
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <!-- 로그인 안했을 시에 장바구니 누르면 '먼저로그인하세요' 창 뜨게 해야함  -->
+<div class="cartform-big uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
 
 <div class="cartlist">
 <c:choose>
@@ -67,7 +68,7 @@ $(function(){
 		</label>
 	</div>
 	<div class="selDel">
-		<button type="button" id="delBtn" class="uk-button uk-button-primary">선택삭제</button>
+		<button type="button" id="delBtn" class="uk-button uk-button-danger reviewDelete-btn">선택삭제</button>
 	</div>
 	
 <c:forEach var="dto" items="${list}" varStatus="status">
@@ -85,7 +86,7 @@ $(function(){
 	  </label>
 		<table class="cartTable">
 			<tr class="cartitem">
-				<td class="countTd" style="border: 1px solid green;">
+				<td class="countTd" style="border: 0px solid green; margin-top: 25px;">
 				  <div class="count">
 				  	<!-- <span uk-icon="minus-circle" class="minus"></span> -->
 					<img src="${root}/image/menu-minus.png" class="minus" style="width: 35px;">
@@ -107,38 +108,29 @@ $(function(){
  </ul>
 </c:forEach>
 
-<div class="totalBox_wrapper uk-section uk-section-primary uk-preserve-color">
-    <div class="uk-container">
+<div class="totalBox_wrapper uk-flex">
+    <div class="totalBoxBack uk-card uk-card-default uk-card-body">
+		<h3 style="color: white;font-size: 20pt; margin-left:130px; border: 0px white solid;">계산 영수증</h3>
+		<p>
+        	장바구니 총 상품갯수 : <b class="cartBtag">${mytotalCount}개</b><br>
+        	장바구니 총 금액 : <b class="cartBtag">￦<fmt:formatNumber value="${mytotalPrice}" pattern="#,###" /></b>
+        </p>
+	    
+		<div class="cartBtn_div">
+			<button type="button" class="cartBtn uk-button uk-button-primary"
+				onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
+			<button type="button" class="cartBtn uk-button uk-button-primary"
+				onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
+		</div>
+	</div>
+</div> 
 
-        <div class="uk-panel uk-light uk-margin-medium">
-            <h3>계산 영수증</h3>
-        </div>
-
-        <div class="uk-grid-match uk-child-width-expand@m" uk-grid>
-            <div>
-                <div class="uk-card uk-card-default uk-card-body">
-                    <p>
-                    	장바구니 총 상품갯수 : ${mytotalCount}<br>
-                    	장바구니 총 금액 : ￦<fmt:formatNumber value="${mytotalPrice}" pattern="#,###" />
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
 
 	</c:otherwise>
   </c:choose>
 </div>
 
-<div class="cartBtn_div">
-	<button type="button" class="cartBtn uk-button uk-button-primary"
-		onclick="location.href='${root}/main/menu/list.do'">메뉴추가하기</button>
-	<button type="button" class="cartBtn uk-button uk-button-primary"
-		onclick="location.href='${root}/main/order/orderform.do'">결제하러가기</button>
 </div>
-
 <script type="text/javascript">
 //가격에 콤마찍어줌
 function numberWithCommas(x) {
