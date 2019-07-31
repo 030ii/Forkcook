@@ -76,14 +76,14 @@ $(document).ready(function(){
 	    <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: user"></span>
-	            <input class="uk-input login-input" type="text" name="name" id="name" placeholder="name">
+	            <input class="uk-input login-input" type="text" name="name" id="name" placeholder="name" required="required">
 	        </div>
 	    </div>
 	
 	    <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: receiver"></span>
-	            <input class="uk-input login-input" type="text" name="phone" id="phone" placeholder="phone">
+	            <input class="uk-input login-input" type="text" name="phone" id="phone" placeholder="phone" required="required">
 	        </div>
 	    </div>
 		<button type="submit" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom login_btn">비회원로그인</button>

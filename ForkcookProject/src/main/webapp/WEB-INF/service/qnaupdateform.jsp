@@ -50,7 +50,7 @@
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 	<input type="hidden" name="num" value="${qdto.num}">
 	<button type="button" onclick="history.back()">취소하기</button>
-	<button type="submit" onclick="location.href='${root}/main/qna/content.do'">수정하기(수정한문의글 페이지로 감)</button>
+	<button type="submit" onclick="content.do?qnum=${qdto.num}">수정하기(수정한문의글 페이지로 감)</button>
 </form>
 </body>
 </html>
