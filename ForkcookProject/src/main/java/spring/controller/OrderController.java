@@ -55,31 +55,29 @@ public class OrderController {
 	//@RequestMapping("/admin/order/list.do")
 	@RequestMapping("/admin/order/{listpage}")
 	public ModelAndView list(@PathVariable String listpage, HttpSession session){
-		int totalCount = 0;
-		
 		StoreuserDto storeuser = (StoreuserDto) session.getAttribute("adminLoginInfo"); 
 		int snum = storeuser.getSnum();
+		
+		int totalCount = service.getTotalCount();
+		int nowTotalCount = service.getNowTotalCount(snum);
+		int reserveTotalCount = service.getReserveTotalCount(snum);
+		int finishTotalCount = service.getFinishTotalCount(snum);
+		
+		// 세션에 업데이트
+		session.setAttribute("nowTotalCount", nowTotalCount);
+		session.setAttribute("reserveTotalCount", reserveTotalCount);
+		session.setAttribute("finishTotalCount", finishTotalCount);
 		
 		ModelAndView model = new ModelAndView();
 		List<OrderDto> list = service.getList();
 		
 		if(listpage.equals("list")){ 				// 관리자용 -> 주문 관리
-			totalCount = service.getTotalCount();
 			model.setViewName("/admin/admin/order");
 		} else if(listpage.equals("now")){ 			// 가맹점용 -> 현장주문 관리
-			totalCount = service.getNowTotalCount(snum);
-			//session.removeAttribute("nowTotalCount"); 
-			//session.setAttribute("nowTotalCount", totalCount);
 			model.setViewName("/admin/partner/now");
 		} else if(listpage.equals("reserve")){		// 가맹점용 -> 예약주문 관리
-			totalCount = service.getReserveTotalCount(snum);
-			//session.removeAttribute("reserveTotalCount"); 
-			//session.setAttribute("reserveTotalCount", totalCount);
 			model.setViewName("/admin/partner/reserve");
 		} else if(listpage.equals("finish")){		// 가맹점용 -> 완료주문 관리
-			totalCount = service.getFinishTotalCount(snum);
-			//session.removeAttribute("finishTotalCount"); 
-			//session.setAttribute("finishTotalCount", totalCount);
 			model.setViewName("/admin/partner/finish");
 		}
 		

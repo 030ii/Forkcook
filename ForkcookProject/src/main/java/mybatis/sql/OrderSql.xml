@@ -6,15 +6,15 @@
 	</select>
 	<select id="orderNowTotalCount" parameterType="int" resultType="int">
 		select count(distinct ordernum) from orders 
-		where ordertype = 'A' and snum = #{snum}
+		where snum = #{snum} and ordertype = 'A' and orderstate != 4
 	</select>
 	<select id="orderReserveTotalCount" parameterType="int" resultType="int">
 		select count(distinct ordernum) from orders
-		where ordertype = 'B' and snum = #{snum}
+		where snum = #{snum} and ordertype = 'B' and orderstate != 4
 	</select>
 	<select id="orderFinishTotalCount" parameterType="int" resultType="int">
 		select count(distinct ordernum) from orders
-		where orderstate = 4 and snum = #{snum}
+		where snum = #{snum} and orderstate = 4
 	</select>
 	<insert id="orderInsert">
 	

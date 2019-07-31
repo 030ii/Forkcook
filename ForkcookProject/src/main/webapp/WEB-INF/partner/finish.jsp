@@ -29,10 +29,8 @@
 </head>
 <body>
 	가맹점용 완료주문 관리 페이지<br>
-	아직 가맹점 회원 로그인 세션의 코드가 없으므로,<br>
-	일단 '포크쿡 분당점(snum값=3)'의 화면이라고 가정하여 구현하겠음<br>
 	
-	총 ${totalCount}개의 주문이 있습니다.<br>
+	총 ${finishTotalCount}개의 주문이 있습니다.<br>
 	
 	<table border=1>
 		<tr>
@@ -47,10 +45,10 @@
 			<th>관리</th>
 		</tr>
 		<c:forEach var="dto" items="${list}" varStatus="status">
-			<c:if test="${dto.snum == '3' && dto.orderstate=='4'}">
+			<c:if test="${dto.snum == adminLoginInfo.snum && dto.orderstate=='4'}">
 				<tr>
-					<td>${totalCount}</td>
-					<c:set var="totalCount" value="${totalCount-1}"/>
+					<td>${finishTotalCount}</td>
+					<c:set var="finishTotalCount" value="${finishTotalCount-1}"/>
 					<td>${dto.ordernum}</td>
 					<td>${dto.uname}</td>
 					<td>${dto.totalprice}</td>
