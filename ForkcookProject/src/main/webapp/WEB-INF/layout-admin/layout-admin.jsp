@@ -30,8 +30,7 @@
 		    
 <div class="loginAdmin_wrap">
 	<div class="adminLogin-text">
-	      포크쿡 관리자/가맹점용 페이지 입니다<br>
-	      로그인 해주세요<br>	        
+	      포크쿡 관리자 로그인<br>	        
     </div>
         <form action="adminlogin.do" method="get">
 		  <div class="uk-margin">

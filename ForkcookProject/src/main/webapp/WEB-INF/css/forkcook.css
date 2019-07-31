@@ -14,14 +14,14 @@
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
 	font-weight: normal; 
 	font-style: normal; 
-}
+} */
 @font-face { 
 	font-family: 'S-CoreDream-4Regular'; 
 	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); 
 	font-weight: normal; 
 	font-style: normal; 
 }
-*/
+
 
 /* 본문용*/
 @font-face { 
@@ -47,6 +47,10 @@
 
 #main *, #main-admin *, .uk-modal-dialog *:not(.fa-star) {
 	font-family: 'S-CoreDream-3Light' !important; 
+}
+
+.loginAdmin_wrap {
+	font-family: 'S-CoreDream-4Regular' !important; 
 }
 
 
@@ -780,8 +784,9 @@ a.menuLink:hover{
 
 /*layout-admin.jsp*/
 .loginAdmin_wrap{
-	margin-top: 150px;
-	margin-left: 300px;
+	text-align: center;
+    margin: 200px auto;
+    width: 400px;
 }
 .adminLogin-text{
 	margin-bottom: 30px;
@@ -794,4 +799,8 @@ a.menuLink:hover{
 	background-color: #706243 !important;
 	color: #ffffff;
 	width: 400px;
+}
+
+.uk-badge {
+    background: #0ec6c7 !important;
 }

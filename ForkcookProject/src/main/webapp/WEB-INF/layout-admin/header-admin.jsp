@@ -52,19 +52,25 @@
 				<li>
 					<a href="${root}/admin/order/now.do">
 						<span uk-icon="icon: file-text"></span> 현장주문 관리
-						<span class="uk-badge">${nowTotalCount}</span>
+						<c:if test="${nowTotalCount != 0}">
+							<span class="uk-badge">${nowTotalCount}</span>
+						</c:if>
 					</a>
 				</li>
 				<li>
 					<a href="${root}/admin/order/reserve.do">
 						<span uk-icon="icon: future"></span> 예약주문 관리
-						<span class="uk-badge">${reserveTotalCount}</span>
+						<c:if test="${reserveTotalCount != 0}">
+							<span class="uk-badge">${reserveTotalCount}</span>
+						</c:if>
 					</a>
 				</li>
 				<li>
 					<a href="${root}/admin/order/finish.do">
 						<span uk-icon="icon: check"></span> 완료주문 관리
-						<span class="uk-badge">${finishTotalCount}</span>
+						<c:if test="${finishTotalCount != 0}">
+							<span class="uk-badge">${finishTotalCount}</span>
+						</c:if>
 					</a>
 				</li>
 				<li>
