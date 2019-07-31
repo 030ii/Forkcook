@@ -15,8 +15,7 @@
 	</select>
 	<!-- 회원가입 -->
 	<insert id="userInsert" parameterType="udto">
-		insert into users values (seq_users.nextval,#{id},
-		#{name},#{pass},#{phone},sysdate,1)
+		insert into users values (seq_users.nextval,#{id},#{pass},#{name},#{phone},sysdate,1)
 	</insert>
 	<!-- 비회원으로 로그인(비회원 회원가입) -->
 	<insert id="userInsert2" parameterType="udto">

@@ -55,7 +55,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<c:choose>
 			            		<c:when test="${mdto.category == '피자' }">
 				            		<span class="uk-label" style="font-size: 9pt;background-color: #f0506e;">
@@ -128,7 +128,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<span class="uk-label" style="font-size: 9pt;background-color: #f0506e;">
 			            		<b>${mdto.category }</b>
 			            	</span>
@@ -179,7 +179,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<span class="uk-label" style="font-size: 9pt;background-color: #faa05a;">
 			            		<b>${mdto.category }</b>
 			            	</span>
@@ -230,7 +230,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<span class="uk-label" style="font-size: 9pt;background-color: #F4D603;">
 			            		<b>${mdto.category }</b>
 			            	</span>
@@ -281,7 +281,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<span class="uk-label" style="font-size: 9pt;background-color: #32d296;">
 			            		<b>${mdto.category }</b>
 			            	</span>
@@ -332,7 +332,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<span class="uk-label" style="font-size: 9pt;background-color: #1e87f0;">
 			            		<b>${mdto.category }</b>
 			            	</span>
@@ -383,7 +383,7 @@
 						    </div>
 					    
 			            </div>
-			            <div class="menulist_body uk-card-body">
+			            <div class="menulist_body uk-card-body" onclick="location.href='${root}/main/menu/detail.do?num=${mdto.num}'" >
 			            	<span class="uk-label" style="font-size: 9pt;background-color: #DA27FF;">
 			            		<b>${mdto.category }</b>
 			            	</span>

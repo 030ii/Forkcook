@@ -37,7 +37,7 @@
     <tr>
       <td colspan="2" align="right">     
       	<button type="button" style="width: 100px;" class="btn btn-basic btn-sm" onclick="location.href='${root}/main/review/review.do?mnum=${mdto.num}'">리뷰보기</button>	
-        <button type="button" style="width: 100px; margin-left: 175px;" class="btn btn-basic btn-sm" onclick="history.back()">닫 기</button>		
+        <button type="button" style="width: 100px; margin-left: 175px;" class="btn btn-basic btn-sm" onclick="history.back()">목록</button>		
       </td>
     </tr> 
 
