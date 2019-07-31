@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import spring.data.MenuDto;
 import spring.data.OrderDao;
 import spring.data.OrderDto;
 
@@ -31,6 +32,10 @@ public class OrderService {
 	
 	public List<OrderDto> getList(){
 		return dao.getList();
+	}
+	
+	public void insertOrder(OrderDto dto){
+		dao.insertOrder(dto);
 	}
 	
 	public OrderDto getListData(String ordernum){

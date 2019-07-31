@@ -1,5 +1,8 @@
 package spring.controller;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,11 +20,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.CartDto;
+import spring.data.MenuDto;
 import spring.data.OrderDto;
 import spring.data.StoreuserDto;
 import spring.data.UserDto;
 import spring.service.CartService;
 import spring.service.OrderService;
+
+
+//GET DATE & TIME IN ANY FORMAT
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
 
 @Controller
 public class OrderController {
@@ -36,6 +47,14 @@ public class OrderController {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("/main/order/order");
 		return model;
+	}
+	
+	public static final String DATE_FORMAT_NOW = "yyyyMMddHHmmss";
+	
+	public static String now() {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+		return sdf.format(cal.getTime());
 	}
 	
 	// 장바구니에서 결제페이지로
@@ -60,8 +79,49 @@ public class OrderController {
 	
 	//결제페이지에서 결제완료페이지로
 	@RequestMapping("/main/order/ordersuccess.do")
-	public ModelAndView ordersuccess(){
+	public ModelAndView ordersuccess(@ModelAttribute OrderDto dto, HttpSession session){
 		ModelAndView model = new ModelAndView();
+//		private String ordernum; --
+//		private int unum; -- 
+//		private int snum; -- 
+//		private int mnum; ---
+//		private int mcount;--
+//		private String mtotalprice;--
+//		private String ordertype;--
+		
+//		System.out.println("orderdateLocal:"+orderdateLocal);
+		// HttpServletRequest request, 
+		//orderdateLocal.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); // 2018-07-26 00:42:24
+		//String orderdateLocal = request.getParameter("orderdateLocal");
+		//LocalDateTime sightingDate = LocalDateTime.parse(orderdateLocal.replace("T"," "), DateTimeFormatter.ISO_DATE_TIME);
+		System.out.println("ordernum : "+dto.getOrdernum()); // 만듬
+		System.out.println("unum : "+dto.getUnum()); // 세션
+		System.out.println("snum : "+dto.getSnum());// 가져옴
+		System.out.println("mnum : "+dto.getMnum()); 
+		System.out.println("mcount : "+dto.getMcount());
+		System.out.println("mtotalprice : "+dto.getMtotalprice());
+		System.out.println("ordertype : "+dto.getOrdertype()); // 가져옴
+		
+		
+		System.out.println("now: " + now());
+		
+		UserDto user = (UserDto) session.getAttribute("loginInfo"); 
+		int unum = user.getNum();
+		dto.setUnum(unum);
+		List<CartDto> clist = cservice.getList(unum);
+		
+		String ordernum = now()+unum;
+		dto.setOrdernum(ordernum);
+		
+		//for문으로 clist 돌리면서 mnum, mcount, mtotalprice set 해주면서 insert하기
+		for(CartDto c : clist){
+			dto.setMnum(c.getMnum());
+			dto.setMcount(c.getMcount());
+			dto.setMtotalprice(c.getMtotalprice());
+			// insert 문
+			oservice.insertOrder(dto);
+		}
+		
 		model.setViewName("/main/order/ordersuccess");
 		return model;
 	}

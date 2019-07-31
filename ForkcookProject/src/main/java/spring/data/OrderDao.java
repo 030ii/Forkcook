@@ -35,6 +35,10 @@ public class OrderDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("order.orderMenuData", ordernum);
 	}
 	
+	public void insertOrder(OrderDto dto){
+		getSqlSession().insert("order.orderInsert",dto);
+	}
+	
 	public void orderDelete(String ordernum){
 		getSqlSession().delete("order.orderDelete",ordernum);
 	}

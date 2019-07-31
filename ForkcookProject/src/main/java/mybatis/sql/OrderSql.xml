@@ -16,8 +16,9 @@
 		select count(distinct ordernum) from orders
 		where snum = #{snum} and orderstate = 4
 	</select>
-	<insert id="orderInsert">
-	
+	<insert id="orderInsert" parameterType="cdto">
+		insert into orders 
+		values (seq_orders.nextval,#{ordernum},#{unum},#{snum},#{mnum},#{mcount},#{mtotalprice},#{ordertype},sysdate,1)
 	</insert>
 	<update id="orderUpdate">
 		

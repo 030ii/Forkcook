@@ -41,7 +41,7 @@ $(function() {
 			<ul class="uk-switcher uk-margin">
 			    <!-- 현장주문 -->
 	            <li>
-		            <form class="uk-form-stacked" action="insert.do" method="post">
+		            <form class="uk-form-stacked" action="ordersuccess.do" method="post">
 		            	<div class="uk-margin fk-49">
 					        <label class="uk-form-label" for="form-stacked-select">가맹점 지역</label>
 					        <div class="uk-form-controls">
@@ -75,11 +75,62 @@ $(function() {
 					            </select>
 				        	</div>
 					    </div>
-				    </form>
+					    <h3 class="uk-card-title fk-margin-40">결제 정보</h3>
+				        <br>
+						<div class="">
+							<div class="uk-margin fk-20">
+						        <label class="uk-form-label" for="form-stacked-text">카드 선택</label>
+						        <div class="uk-form-controls">
+						            <select class="uk-select" required>
+						                <option value="">카드 선택</option>
+										<option value="KB카드">KB카드</option>
+										<option value="BC카드">BC카드</option>
+										<option value="삼성카드">삼성카드</option>
+										<option value="신한카드">신한카드</option>
+										<option value="외환카드">외환카드</option>
+										<option value="하나카드">하나카드</option>
+										<option value="롯데카드">롯데카드</option>
+										<option value="씨티카드">씨티카드</option>
+										<option value="NH카드">NH카드</option>
+										<option value="현대카드">현대카드</option>
+										<option value="우리카드">우리카드</option>
+									</select>
+						        </div>
+						    </div>
+						    &nbsp;&nbsp;
+						    <div class="uk-margin fk-49">
+						        <label class="uk-form-label" for="form-stacked-text">카드 번호</label>
+						        <div class="uk-form-controls">
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						            -
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						            -
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						            -
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						        </div>
+						    </div>
+						    <div class="uk-margin fk-49">
+						        <label class="uk-form-label" for="form-stacked-text">CVC 번호</label>
+						        <div class="uk-form-controls">
+						            <input class="uk-input" type="text" placeholder="카드 뒷면 숫자 3자리" required>
+						        </div>
+						    </div>
+						    <div class="uk-margin fk-49">
+						        <label class="uk-form-label" for="form-stacked-text">카드 비밀번호</label>
+						        <div class="uk-form-controls">
+						            <input class="uk-input" type="password" placeholder="카드 비밀번호 앞 2자리" required>
+						        </div>
+						    </div>
+						    <br><br>
+						    <input type="hidden" name="ordertype" value="A"/>
+						    <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">결제 완료하기</button>
+						</div>
+					</form>
 	            </li>
 	            <!-- 예약주문 -->
 	            <li>
-					<form class="uk-form-stacked" action="insert.do" method="post">
+					<form class="uk-form-stacked" action="ordersuccess.do" method="post">
 		            	<div class="uk-margin fk-49">
 					        <label class="uk-form-label" for="form-stacked-select">가맹점 지역</label>
 					        <div class="uk-form-controls">
@@ -116,66 +167,64 @@ $(function() {
 					   <div class="uk-margin">
 					        <label class="uk-form-label" for="form-stacked-text">방문 예정 일시</label>
 					        <div class="uk-form-controls">
-					            <input class="uk-input" type="datetime-local" name="orderdate" required>
+					            <input class="uk-input" type="datetime-local" required>
 					        </div>
 					    </div>
+					    <h3 class="uk-card-title fk-margin-40">결제 정보</h3>
+				        <br>
+						<div>
+							<div class="uk-margin fk-20">
+						        <label class="uk-form-label" for="form-stacked-text">카드 선택</label>
+						        <div class="uk-form-controls">
+						            <select class="uk-select" required>
+						                <option value="">카드 선택</option>
+										<option value="KB카드">KB카드</option>
+										<option value="BC카드">BC카드</option>
+										<option value="삼성카드">삼성카드</option>
+										<option value="신한카드">신한카드</option>
+										<option value="외환카드">외환카드</option>
+										<option value="하나카드">하나카드</option>
+										<option value="롯데카드">롯데카드</option>
+										<option value="씨티카드">씨티카드</option>
+										<option value="NH카드">NH카드</option>
+										<option value="현대카드">현대카드</option>
+										<option value="우리카드">우리카드</option>
+									</select>
+						        </div>
+						    </div>
+						    &nbsp;&nbsp;
+						    <div class="uk-margin fk-49">
+						        <label class="uk-form-label" for="form-stacked-text">카드 번호</label>
+						        <div class="uk-form-controls">
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						            -
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						            -
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						            -
+						            <input class="uk-input fk-form-width-63" type="text" required>
+						        </div>
+						    </div>
+						    <div class="uk-margin fk-49">
+						        <label class="uk-form-label" for="form-stacked-text">CVC 번호</label>
+						        <div class="uk-form-controls">
+						            <input class="uk-input" type="text" placeholder="카드 뒷면 숫자 3자리" required>
+						        </div>
+						    </div>
+						    <div class="uk-margin fk-49">
+						        <label class="uk-form-label" for="form-stacked-text">카드 비밀번호</label>
+						        <div class="uk-form-controls">
+						            <input class="uk-input" type="password" placeholder="카드 비밀번호 앞 2자리" required>
+						        </div>
+						    </div>
+						    <br><br>
+						    <input type="hidden" name="ordertype" value="B"/>
+						    <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">결제 완료하기</button>
+						</div>
 					</form>
 				</li>
 	        </ul>	
 	    </div>
-	    <h3 class="uk-card-title">결제 정보</h3>
-        <br>
-		<div class="orderForm_div">
-			<form class="uk-form-stacked" action="insert.do" method="post">	
-            	<div class="uk-margin fk-20">
-			        <label class="uk-form-label" for="form-stacked-text">카드 선택</label>
-			        <div class="uk-form-controls">
-			            <select class="uk-select" required>
-			                <option value="">카드 선택</option>
-							<option value="KB카드">KB카드</option>
-							<option value="BC카드">BC카드</option>
-							<option value="삼성카드">삼성카드</option>
-							<option value="신한카드">신한카드</option>
-							<option value="외환카드">외환카드</option>
-							<option value="하나카드">하나카드</option>
-							<option value="롯데카드">롯데카드</option>
-							<option value="씨티카드">씨티카드</option>
-							<option value="NH카드">NH카드</option>
-							<option value="현대카드">현대카드</option>
-							<option value="우리카드">우리카드</option>
-						</select>
-			        </div>
-			    </div>
-			    &nbsp;&nbsp;
-			    <div class="uk-margin fk-49">
-			        <label class="uk-form-label" for="form-stacked-text">카드 번호</label>
-			        <div class="uk-form-controls">
-			            <input class="uk-input fk-form-width-63" type="text" required>
-			            -
-			            <input class="uk-input fk-form-width-63" type="text" required>
-			            -
-			            <input class="uk-input fk-form-width-63" type="text" required>
-			            -
-			            <input class="uk-input fk-form-width-63" type="text" required>
-			        </div>
-			    </div>
-			    <div class="uk-margin fk-49">
-			        <label class="uk-form-label" for="form-stacked-text">CVC 번호</label>
-			        <div class="uk-form-controls">
-			            <input class="uk-input" type="text" placeholder="카드 뒷면 숫자 3자리" required>
-			        </div>
-			    </div>
-			    <div class="uk-margin fk-49">
-			        <label class="uk-form-label" for="form-stacked-text">카드 비밀번호</label>
-			        <div class="uk-form-controls">
-			            <input class="uk-input" type="password" placeholder="카드 비밀번호 앞 2자리" required>
-			        </div>
-			    </div>
-			    <br><br>
-			    <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">주문하기</button>
-			    
-		    </form>
-		</div>
 	    <div class="totalBox_wrapper uk-flex">
 		    <div class="totalBoxBack uk-card uk-card-default uk-card-body">
 				<h3 style="color: white;font-size: 20pt; margin-left:130px; border: 0px white solid;">계산 영수증</h3>
@@ -196,7 +245,4 @@ $(function() {
 			</div>
 		</div> 
 	</div>
-
-	<!-- 일단 페이지만 이동되도록 넣어놓은 버튼 -->
-	<button type="button" onclick="location.href='${root}/main/order/ordersuccess.do'">결제 완료</button>
 </div>
