@@ -28,12 +28,12 @@
 		    </c:when>
 		    <c:otherwise>
 		    
-<div class="loginAdmin_wrap">
-	<div class="adminLogin-text">
-	      포크쿡 관리자/가맹점용 페이지 입니다<br>
-	      로그인 해주세요<br>	        
-    </div>
-        <form action="adminlogin.do" method="get">
+<div class="loginAdmin_wrap uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
+<!-- <div class="loginAdmin_wrap"> -->
+	<div class="adminLogin-text uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
+	      <p class="adminLogintext">포크쿡 관리자/가맹점용 페이지 입니다<br>
+	      				로그인 해주세요<br></p>
+        <form action="adminlogin.do" method="get" class="adminloginForm">
 		  <div class="uk-margin">
 	        <div class="uk-inline">
 	            <span class="uk-form-icon" uk-icon="icon: user"></span>
@@ -53,8 +53,8 @@
 				<span class="uk-label uk-label-danger">로그인에 실패했습니다. 다시 로그인해주세요.</span>
 			</c:if>
 		</form>
+</div>    
 </div>
-
 		    </c:otherwise>                  
 		</c:choose>
 	</body>

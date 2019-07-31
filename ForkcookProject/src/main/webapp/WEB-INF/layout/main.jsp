@@ -15,13 +15,13 @@
 <div class="uk-position-relative uk-visible-toggle uk-light mainBig_div" tabindex="-1" uk-slideshow>
    <ul class="uk-slideshow-items mainImg1">
 	   <li>
-		<img src="${root}/image/maindish.png" alt="" uk-cover uk-img="target: !.uk-slideshow-items" class="mainImg">
+		<img src="${root}/image/main1.png" alt="" uk-cover uk-img="target: !.uk-slideshow-items" class="mainImg">
        </li>
        <li>
-           <img src="${root}/image/main2.jpg" alt="" uk-cover uk-img="target: !.uk-slideshow-items" class="mainImg">
+           <img src="${root}/image/main2.png" alt="" uk-cover uk-img="target: !.uk-slideshow-items" class="mainImg">
        </li>
        <li>
-           <img src="${root}/image/main3.jpg" alt="" uk-cover uk-img="target: !.uk-slideshow-items" class="mainImg">
+           <img src="${root}/image/maindish.png" alt="" uk-cover uk-img="target: !.uk-slideshow-items" class="mainImg">
        </li>
    </ul>
   <div class="uk-position-bottom-center uk-position-small">
@@ -36,7 +36,7 @@
 </div>
 
 <div class="mainBig_div2">
-    <img src="${root}/image/imsi1.png" class="mainImg2">
+    <img src="${root}/image/m_side1.png" class="mainImg2">
 </div>
 
 <div class="mainMenuList_wrapper uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
@@ -75,7 +75,7 @@
 	<div class="mainMenuList_smallWrapper uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
 		<div class="uk-text-center">
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
-	            <img src="${root}/image/m5_dessert.PNG" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
+	            <img src="${root}/image/m5_dessert.png" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
         	<span class="uk-label" style="font-size: 9pt;background-color: #1e87f0;">디저트</span>
     	</div>
