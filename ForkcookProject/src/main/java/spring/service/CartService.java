@@ -56,7 +56,9 @@ public class CartService {
 	public void cartDelete(int num){
 		dao.cartDelete(num);
 	}
-
+	public void cartDeleteAfterOrder(int unum){
+		dao.cartDeleteAfterOrder(unum);
+	}
 	public int getmyTotalCount(int num)
 	{
 		return dao.getmyTotalCount(num);

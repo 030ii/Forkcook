@@ -25,17 +25,20 @@ public class CartController {
 	@RequestMapping("/main/cart/list.do")
 	public ModelAndView cartlist(@RequestParam int num){
 		ModelAndView model=new ModelAndView();
-		
 		int totalCount = service.getTotalCount(num);
-		int mytotalCount = service.getmyTotalCount(num);
-		int mytotalPrice = service.getmyTotalPrice(num);
 		
-		List<CartDto> list = service.getList(num);
 		
+		System.out.println(totalCount);
+		if(totalCount != 0){
+			int mytotalCount = service.getmyTotalCount(num);
+			int mytotalPrice = service.getmyTotalPrice(num);
+			List<CartDto> list = service.getList(num);
+
+			model.addObject("mytotalCount", mytotalCount);
+			model.addObject("mytotalPrice", mytotalPrice);
+			model.addObject("list",list);
+		}
 		model.addObject("totalCount", totalCount);
-		model.addObject("mytotalCount", mytotalCount);
-		model.addObject("mytotalPrice", mytotalPrice);
-		model.addObject("list",list);
 		
 		model.setViewName("/main/user/cart");
 		return model;

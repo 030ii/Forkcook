@@ -46,6 +46,11 @@
 		delete from cart where num=#{num}
 	</delete>
 	
+	<!-- 주문 완료 후 카트 삭제 -->
+	<delete id="cartDeleteAfterOrder" parameterType="int">
+		delete from cart where unum=#{unum}
+	</delete>
+	
 	<!-- 장바구니에 총 금액& 총 수량 가져오기-->
 	<select id="getmyTotalCount" resultType="int" parameterType="int">
 		select sum(mcount) as totalcount

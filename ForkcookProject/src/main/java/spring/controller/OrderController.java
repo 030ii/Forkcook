@@ -118,9 +118,9 @@ public class OrderController {
 			dto.setMnum(c.getMnum());
 			dto.setMcount(c.getMcount());
 			dto.setMtotalprice(c.getMtotalprice());
-			// insert 문
-			oservice.insertOrder(dto);
+			oservice.insertOrder(dto); // insert 문
 		}
+		cservice.cartDeleteAfterOrder(unum); // insert 완료 후에는 기존 cart에 있는 내역 삭제하기
 		
 		model.setViewName("/main/order/ordersuccess");
 		return model;

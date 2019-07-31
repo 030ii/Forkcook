@@ -48,6 +48,10 @@ public class CartDao extends SqlSessionDaoSupport {
 		getSqlSession().delete("cart.cartDelete",num);
 	}
 	
+	public void cartDeleteAfterOrder(int unum){
+		getSqlSession().delete("cart.cartDeleteAfterOrder",unum);
+	}
+	
 	public int getmyTotalCount(int num){
 		return getSqlSession().selectOne("cart.getmyTotalCount",num);
 	}
