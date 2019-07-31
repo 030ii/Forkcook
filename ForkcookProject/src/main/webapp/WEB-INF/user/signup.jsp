@@ -88,11 +88,11 @@ function check1(){
 </script>
 </head>
 <body>
+<c:set var="root" value="<%=request.getContextPath() %>" />
 <div class="signupform-big uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
   <div class="signupform uk-card uk-card-default uk-card-body">
-  <hr class="uk-divider-small signup-hr">
 	<div class="signup_title">
-		포크쿡 회원가입<br><br>
+		<img src="${root}/image/signup_forkcook.png"><br><br>
 	</div>
 	<form action="signupform.do" method="get" onsubmit="return check(this)" name="frm">
 		<div class="signup_wrapper">

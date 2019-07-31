@@ -26,7 +26,7 @@ $(document).ready(function(){
 <c:set var="root" value="<%=request.getContextPath()%>"/>
 
 <div class="logoImg">
-	<img src="${root}/image/logo1.png">(이미지 나중에수정하기)<br><br>
+	<img src="${root}/image/lgoo_white.png"><br><br>
 </div>
 <hr class="uk-divider-small" id="membershiphr"><br><br>
 

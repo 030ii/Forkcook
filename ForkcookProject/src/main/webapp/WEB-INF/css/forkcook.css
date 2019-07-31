@@ -75,12 +75,12 @@
 .mainBig_div{
 	width: 900px;
 	height: 500px;
-	border: 1px red solid;
+	border: 0px red solid;
 	position: relative;
 }
 .mainImg1{
 	height: 500px;
-	border:3px green solid;
+	border:0px green solid;
 }
 .mainImageOverray{
 	height: 100px;
@@ -88,7 +88,7 @@
 .mainBig_div2{
 	width: 445px;
 	height: 500px;
-	border: 1px red solid;
+	border: 0px red solid;
 	position: relative;
 	top: -503px; left: 900px;
 }
@@ -99,22 +99,23 @@
 }
 .mainMenuList_wrapper{
 	position: absolute;
-	top: 600px;
-	border: 1px red solid;
+	top: 620px;
+	border: 0px red solid;
 	width: 1345px;
 	height: 470px;
 }
 .mainMenuList_smallWrapper{
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	margin-left: 130px;
 	margin-right:90px;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
 .foodListImg{
-	width: 180px;
-	height: 180px;
+	width: 80px;
+	height: 80px;
+	border: 1px red solid;
 }
 .mainLabel{
 	background-color: #f08a00;
@@ -128,6 +129,11 @@
     height: 170px;
     width:100%;
     margin-top: 100px;
+}
+.footerPtag{
+	font-size: 9pt;
+	margin-left: 50px;
+	margin-top: 5pt;
 }
 
 /* 관리자 왼쪽 메뉴 */
@@ -330,10 +336,11 @@ div .nextStep_div{
 	width: 480px;
 }
 .signup_title{
-	font-size: 20pt;
-	font-weight: bold;
-	margin-left: 110px;
-	margin-bottom: 40px;
+	width: 470px;
+	margin-top:30px;
+	margin-bottom: 50px;
+	margin-left: -30px;
+	
 }
 .signup-hr:after{
 	margin-top:75px;
@@ -784,13 +791,30 @@ a.menuLink:hover{
 
 /*layout-admin.jsp*/
 .loginAdmin_wrap{
+<<<<<<< HEAD
+	width: 1360px;
+	height: 660px;
+	border: 1px green solid;
+=======
 	text-align: center;
     margin: 200px auto;
     width: 400px;
+>>>>>>> branch 'master' of https://github.com/030ii/forkcook
 }
 .adminLogin-text{
+	margin-left: 350px;
 	margin-bottom: 30px;
+	width: 600px;
+	height: 400px;
+}
+.adminLogintext{
 	font-size: 25px;
+	margin-top:30px;
+	margin-bottom: 40px;
+	margin-left: 60px;
+}
+.adminloginForm{
+	margin-left: 70px;
 }
 .adminlogin-input{
 	width: 400px;
