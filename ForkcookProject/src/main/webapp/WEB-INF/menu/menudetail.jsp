@@ -43,27 +43,29 @@
 
     </table>
     
-    <div class="count">
-		수량:<br>
-		<button type="button" id="minus">-</button>
-		<!-- <input type="text" value=0 id="count"> -->
-		<span class="count-span">1</span>
-		<button type="button" id="plus">+</button>
-		가격:<span class="price">${mdto.price}</span>
-	</div>
+      <div class="count">
+		<img src="${root}/image/menu-minus.png" class="minus_btn" style="width: 35px;">
+			<input type="hidden" name="num" value="${dto.num}"/>
+			<span class="count-span" data-num="${dto.num}" style="font-size: 20pt;">1</span>
+		<img src="${root}/image/menu-plus.png" class="plus_btn" style="width: 35px; border: 1px red solid;">
+			가격 : <span class="price">${mdto.price}</span>
+	  </div>
+	  
 	<div class="intocart">
-		<button type="button" class="intocart-btn">장바구니담기</button>
+		<button type="button" id="intocart-btn" style="border: 1px red solid;">장바구니담기</button>
 	</div>
 		
 <script type="text/javascript">
 //수량 증가, 감소
 	var clicks = 1;
-	$("#plus").click(function() {
+	$(".plus_btn").click(function() {
 		clicks++;
+		console.log(clicks);
 		$('.count-span').html(clicks);
 		$('.price').html(clicks*${mdto.price});
 	});
-	$("#minus").click(function() {
+
+	$(".minus_btn").click(function() {
 		clicks--;
 		if (clicks < 1) {
 			clicks=1;
@@ -75,16 +77,17 @@
 		}
 	});
 	
-	$(".intocart-btn").click(function() {
+	/* $("#intocart-btn").click(function() {
 		var mnum =${mdto.num}
 		var mcount =clicks;
 		var mtotalprice =${mdto.price}*clicks;
 		var unum = ${loginInfo.num};
-		console.log("mnum:"+mnum);
-		console.log("mcount:"+mcount);
-		console.log("mtotalprice:"+mtotalprice);
+		//console.log("mnum:"+mnum);
+		//console.log("mcount:"+mcount);
+		//console.log("mtotalprice:"+mtotalprice);
+		console.log(unum);
 		window.location.href="insertdetail.do?unum="+unum+"&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
-	});
+	}); */
 	
 	
 </script>
