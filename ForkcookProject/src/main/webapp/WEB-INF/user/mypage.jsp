@@ -35,7 +35,7 @@ function deleteReview(num,unum,mnum){
 	<div class="mypageTap_div" uk-switcher="animation: uk-animation-fade; toggle: > *">
 	    <button class="uk-button uk-button-default mypageTap_btn" type="button">내 정보</button>
 	    <button class="uk-button uk-button-default mypageTap_btn" type="button">내가 쓴 리뷰</button>
-	    <button class="uk-button uk-button-default mypageTap_btn" type="button" onclick="location.href='myqna.do?num=${loginInfo.num}'">문의내역</button>
+	    <button class="uk-button uk-button-default mypageTap_btn" type="button">문의내역</button>
 	</div>
 	<ul class="uk-switcher uk-margin">
 	    <li class="mypageInfoLi">
@@ -92,7 +92,30 @@ function deleteReview(num,unum,mnum){
 				</c:forEach>
 			</table>
 	    </li>
-	    <li>내 문의내역 출력</li>
+	    <li>
+	    	<c:set var="root" value="<%=request.getContextPath() %>" />
+				 <br>
+					<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
+						<tr>
+							<th>No.</th>
+							<th>제목</th>
+							<!-- <th>매장</th> -->
+							<th>날짜</th>
+						</tr>
+						<c:forEach var="qdto" items="${qlist}" varStatus="status">
+							<tr>
+								<td>${status.count}</td>
+								<td>${qdto.subject}</td>
+								<%-- <td>${slist[qdto.snum-1].name}</td> --%>
+								<td><fmt:formatDate value="${qdto.writeday }"
+								   pattern="yyyy-MM-dd"/></td>
+							</tr>
+						</c:forEach>
+					</table>
+					<!-- 페이지 번호 출력 -->
+				<br>
+			<c:set var="root" value="<%=request.getContextPath() %>" />
+	    </li>
 	</ul>
 </div>
 </body>

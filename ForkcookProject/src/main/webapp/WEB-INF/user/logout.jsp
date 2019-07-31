@@ -10,6 +10,8 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-로그아웃되었습니다
+	<div style="font-size: 20pt; color: #3B76BB;margin-left: 100px;margin-top: 100px;border: 0px green solid; height: 300px;">
+		로그아웃 되었습니다.
+	</div>
 </body>
 </html>

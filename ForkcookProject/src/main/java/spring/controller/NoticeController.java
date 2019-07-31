@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.data.NoticeDto;
-import spring.data.StoreDto;
 import spring.service.NoticeService;
 import upload.util.SpringFileWriter;
 

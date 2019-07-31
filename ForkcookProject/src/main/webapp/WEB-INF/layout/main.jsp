@@ -45,7 +45,7 @@
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
 	            <img src="${root}/image/m1_pizza.png" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
-        	<span class="uk-label mainLabel">피자</span>
+        	<span class="uk-label" style="font-size: 9pt;background-color: #f0506e;">피자</span>
     	</div>
 	</div>
     <div class="mainMenuList_smallWrapper uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
@@ -53,7 +53,7 @@
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
 	            <img src="${root}/image/m2_pasta.png" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
-        	<span class="uk-label mainLabel">파스타</span>
+        	<span class="uk-label" style="font-size: 9pt;background-color: #faa05a;">파스타</span>
     	</div>
 	</div>
 	<div class="mainMenuList_smallWrapper uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
@@ -61,7 +61,7 @@
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
 	            <img src="${root}/image/m3_steak.png" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
-        	<span class="uk-label mainLabel">스테이크</span>
+        	<span class="uk-label" style="font-size: 9pt;background-color: #F4D603;">스테이크</span>
     	</div>
 	</div>
 	<div class="mainMenuList_smallWrapper uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
@@ -69,7 +69,7 @@
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
 	            <img src="${root}/image/m4_salad.png" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
-        	<span class="uk-label mainLabel">샐러드</span>
+        	<span class="uk-label" style="font-size: 9pt;background-color: #32d296;">샐러드</span>
     	</div>
 	</div>
 	<div class="mainMenuList_smallWrapper uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
@@ -77,7 +77,7 @@
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
 	            <img src="${root}/image/m5_dessert.PNG" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
-        	<span class="uk-label mainLabel">디저트</span>
+        	<span class="uk-label" style="font-size: 9pt;background-color: #1e87f0;">디저트</span>
     	</div>
 	</div>
 	<div class="mainMenuList_smallWrapper uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small">
@@ -85,7 +85,7 @@
 	        <div class="mainFood_div uk-inline-clip uk-transition-toggle" tabindex="0">
 	            <img src="${root}/image/m6_drink.png" class="foodListImg uk-transition-scale-up uk-transition-opaque" alt="">
 	        </div><br>
-        	<span class="uk-label mainLabel">음료</span>
+        	<span class="uk-label" style="font-size: 9pt;background-color: #DA27FF;">음료</span>
     	</div>
 	</div>
 </div>

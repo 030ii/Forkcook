@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.data.MenuDto;
 import spring.data.StoreDto;
 import spring.service.StoreService;
 import upload.util.SpringFileWriter;

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import spring.data.MenuDto;
 import spring.data.ReqnaDto;
 import spring.service.QnaService;
 import spring.service.ReqnaService;
