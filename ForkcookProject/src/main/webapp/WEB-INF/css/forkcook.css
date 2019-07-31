@@ -791,15 +791,8 @@ a.menuLink:hover{
 
 /*layout-admin.jsp*/
 .loginAdmin_wrap{
-<<<<<<< HEAD
-	width: 1360px;
-	height: 660px;
-	border: 1px green solid;
-=======
-	text-align: center;
-    margin: 200px auto;
-    width: 400px;
->>>>>>> branch 'master' of https://github.com/030ii/forkcook
+	width: 100vw;
+	height: 100vh;
 }
 .adminLogin-text{
 	margin-left: 350px;
