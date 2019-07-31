@@ -4,6 +4,9 @@
 	<select id="qnaTotalCount" resultType="int">
 		select count(*) from qna
 	</select>
+	<select id="qnaStoreTotalCount" parameterType="int" resultType="int">
+		select count(*) from qna where snum = #{snum}
+	</select>
 	<select id="qnaSelectData" parameterType="int" resultType="qdto">
 		select * from qna where num=#{num}
 	</select>

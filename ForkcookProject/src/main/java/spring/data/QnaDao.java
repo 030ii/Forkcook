@@ -14,6 +14,10 @@ public class QnaDao extends SqlSessionDaoSupport{
 		return n;
 	}
 	
+	public int getStoreTotalCount(int snum){
+		return getSqlSession().selectOne("qna.qnaStoreTotalCount",snum);
+	}
+	
 	public void qnaInsert(QnaDto qdto){
 		getSqlSession().insert("qna.qnaInsert",qdto);
 	}

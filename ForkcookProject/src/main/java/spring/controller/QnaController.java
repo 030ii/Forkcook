@@ -3,6 +3,7 @@ package spring.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import spring.data.QnaDto;
 import spring.data.ReqnaDto;
 import spring.data.StoreDto;
+import spring.data.StoreuserDto;
 import spring.service.QnaService;
 import spring.service.ReqnaService;
 import spring.service.StoreService;
@@ -37,11 +39,15 @@ public class QnaController {
 	private StoreService storeservice;
 
 	@RequestMapping("/{mainadmin}/{qnauser}/{listpartnermyqna}.do")
-	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartnermyqna, @PathVariable String qnauser, @RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+	public ModelAndView list(@PathVariable String mainadmin,@PathVariable String listpartnermyqna, @PathVariable String qnauser, @RequestParam(value="pageNum",defaultValue="1") int currentPage, HttpSession session) {
 		ModelAndView model = new ModelAndView();
-
-		int totalCount = qservice.getTotalCount(); 		// 메뉴 총 개수 가져오기
-
+		
+		StoreuserDto storeuser = (StoreuserDto) session.getAttribute("adminLoginInfo"); 
+		int snum = storeuser.getSnum();
+		
+		int totalCount = qservice.getTotalCount(); 		// 문의 총 개수 가져오기
+		int storeTotalCount = qservice.getStoreTotalCount(snum); // 상점별 문의 총 개수 가져오기
+		
 		//페이징 복사한거
 		//페이징처리에 필요한 변수들 선언
 		int totalPage; //총 페이지수
@@ -100,7 +106,8 @@ public class QnaController {
 		model.addObject("no", no);
 		model.addObject("totalPage", totalPage);
 		model.addObject("totalCount",totalCount);
-
+		model.addObject("storeTotalCount",storeTotalCount);
+		
 		if(mainadmin.equals("main")) { 											 // 일반 모드일 경우 
 			if(qnauser.equals("user") && listpartnermyqna.equals("myqna")){ 	 // main/user/myqna.do
 				model.setViewName("/main/user/qnalist"); 						 // 일반 모드의 마이페이지 문의 목록 화면으로 이동

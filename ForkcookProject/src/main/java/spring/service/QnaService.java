@@ -17,6 +17,11 @@ public class QnaService {
 	public int getTotalCount(){
 		return dao.getTotalCount();
 	}
+	
+	public int getStoreTotalCount(int snum){
+		return dao.getStoreTotalCount(snum);
+	}
+	
 	public void qnaInsert(QnaDto qdto)
 	{
 		dao.qnaInsert(qdto);
