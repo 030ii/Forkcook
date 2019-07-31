@@ -11,14 +11,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>" />
 <script type="text/javascript">
 $(function() {
-   $("#inqna").click(function() {
-     if($("#subject").val()!==""){
-        alert("저장 되었습니다");
-      }else{
-		alert("내용을 입력해주세요");
-   	  }
-	});
-   
+
    $(document).on("change","select[name='sarea']",function(){
 		 var sarea = $(this).val();
 		 console.log(sarea);
@@ -96,7 +89,7 @@ $(function() {
 			<tr>
 				<td colspan="2" align="right"><c:set var="root"
 						value="<%=request.getContextPath()%>" />
-					<button type="submit" id="inqna">작성하기</button>
+					<button type="submit">작성하기</button>
 					<button type="button"
 						onclick="location.href='${root}/main/qna/list.do'">취소하기</button></td>
 			</tr>
