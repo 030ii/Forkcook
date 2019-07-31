@@ -804,3 +804,15 @@ a.menuLink:hover{
 .uk-badge {
     background: #0ec6c7 !important;
 }
+
+.fk-green {
+	background: #caf592;
+}
+
+.fk-yellow {
+	background: #eff592;
+}
+
+.fk-pink {
+	background: #f5bb92;
+}
