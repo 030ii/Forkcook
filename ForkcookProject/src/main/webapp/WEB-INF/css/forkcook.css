@@ -874,6 +874,13 @@ a.menuLink:hover{
 	margin-top: 30px;
 	font-size: 15pt;
 }
+.goReview-btn{
+    width: 770px;
+    height: 100px;
+    margin-left: 215px;
+    font-size: 20pt;
+    
+}
 
 
 /*order.jsp*/

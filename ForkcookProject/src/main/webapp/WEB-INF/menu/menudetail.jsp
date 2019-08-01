@@ -35,11 +35,13 @@
 	
 	<div class="intocart">
 		<button type="button" class="menuD_cartbtn uk-button uk-button-default" id="intocart-btn">장바구니담기</button><br>
-		<button type="button" class="menuD_backbtn uk-button uk-button-default" onclick="history.back()">목록</button>
+		<button type="button" class="menuD_backbtn uk-button uk-button-default" onclick="history.back()">목록으로</button><br>
 	</div>
 	<div>
 		<img src="../../save/${mdto.longimage}" style="margin-top: 50px;">
 	</div>
+		<button type="button" class="goReview-btn uk-button uk-button-default" onclick="location.href='${root}/main/review/review.do?mnum=${mdto.num}'">리뷰보기</button>
+	
   
 </div>
 
