@@ -35,6 +35,9 @@
 	    color: #716344;
 	    font-weight: bold;
 	}
+	.mapclicked{
+		fill : #78dcbf !important;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript"> 
@@ -45,7 +48,9 @@ function go_branch(city_do) {
     var Arr = Array("sejong","chungnam","jeju","gyeongnam","gyeongbuk","jeonbuk","chungbuk","gangwon","gyeonggi","jeonnam","ulsan","busan","daegu","daejeon","incheon","seoul","gwangju");
     var strArr = Array("세종","충남","제주","경남","경북","전북","충북","강원","경기","전남","울산","부산","대구","대전","인천","서울","광주");
 	console.log(city_do);
-	// city_do를 id 값으로 하는 요소 배경 색칠! 그 외는 배경 흰색!
+	// 선택한 지역에 색상 표시 (city_do를 id 값으로 하는 요소 배경 색칠)
+	// $("#"+city_do).addClass('mapclicked');
+	
     var idx = Arr.indexOf(city_do);
     console.log(strArr[idx]);
     var selectedArea = strArr[idx];
@@ -55,7 +60,6 @@ function go_branch(city_do) {
     
     // 선택한 지역으로 목록 표시 
 	$('tbody *').remove();
-	
     <c:forEach var="dto" items="${list}" varStatus="status">
 		if('${dto.area}'==selectedArea){
 		    console.log("${dto.area}");
@@ -87,7 +91,7 @@ $(document).ready(function(){
 	  }else if (mapCondition == '충남') {
 	    $('#chungnam').css("fill", "#cbc3ac");
 	  }else if (mapCondition =='제주') {
-	    $('#jeju').css("fill", "#cbc3ac");
+	    $('#jeju').css("fill", "#78dcbf");
 	  }else if (mapCondition =='경남') {
 	    $('#gyeongnam').css("fill", "#cbc3ac");
 	  }else if (mapCondition == '경북') {
