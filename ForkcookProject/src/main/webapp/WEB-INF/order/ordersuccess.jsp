@@ -10,8 +10,11 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-주문이 완료되었습니다
-<c:set var="root" value="<%=request.getContextPath() %>" />
-<a href="${root}/main/main.do">메인페이지로</a>
+<div class="orderSuccess_wrapper uk-card uk-card-default uk-card-body uk-width-1-2@m">
+	<p class="orderMsg">주문이 완료되었습니다.</p>
+	
+	<c:set var="root" value="<%=request.getContextPath() %>" />
+	<a href="${root}/main/main.do" class="orderSuccess_Atag">메인페이지로→</a>
+</div>
 </body>
 </html>

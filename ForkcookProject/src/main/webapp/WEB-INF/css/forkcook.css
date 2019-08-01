@@ -99,18 +99,20 @@
 }
 .mainMenuList_wrapper{
 	position: absolute;
-	top: 580px;
+	top: 587px;
 	border: 0px red solid;
 	width: 1345px;
 	height: 470px;
 }
+.mainMenuList_Wrap{
+	margin-left: 10px;
+	margin-top: 30px;
+	border: 0px solid green;
+}
 .mainMenuList_smallWrapper{
 	width: 150px;
 	height: 150px;
-	margin-left: 130px;
-	margin-right:90px;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 .foodListImg{
 	width: 80px;
@@ -119,6 +121,13 @@
 }
 .mainLabel{
 	background-color: #f08a00;
+}
+.mainNotice_wrapper{
+	border: 0px blue solid;
+    position: absolute;
+    left: 600px;
+    margin-top: -400px;
+	width: 600px;
 }
 
 /*footer.jsp*/
@@ -438,7 +447,19 @@ div .nextStep_div{
 	color: #ffffff;
 }
 
-/*review.jsp*/
+/* logout.jsp */
+.logout_wrapper{
+	margin-top: 120px;
+    margin-left: 400px;
+    margin-bottom:200px;
+    width: 500px;
+    height: 230px;
+	border: 0px red solid;
+	font-size: 30pt;
+	color: #3971AA;
+}
+
+/* review.jsp */
 /* Rating Star Widgets Style */
 .rating-stars ul {
   list-style-type:none;
@@ -853,6 +874,13 @@ a.menuLink:hover{
 	margin-top: 30px;
 	font-size: 15pt;
 }
+.goReview-btn{
+    width: 770px;
+    height: 100px;
+    margin-left: 215px;
+    font-size: 20pt;
+    
+}
 
 
 /*order.jsp*/
@@ -884,6 +912,31 @@ a.menuLink:hover{
 
 .fk-txt-center{
   text-align: center;
+}
+
+/* ordersuccess.jsp */
+.orderSuccess_wrapper{
+	margin-top: 120px;
+    margin-left: 400px;
+    margin-bottom:200px;
+    width: 500px;
+    height: 230px;
+	border: 0px red solid;
+}
+.orderMsg{
+	font-size: 30pt;
+	color: #3971AA;
+}
+.orderSuccess_Atag{
+	font-size: 12pt;
+	color: #786d5a;
+	float: right;
+	margin-top: 50px;
+}
+.orderSuccess_Atag:hover{
+	color: #9c917c;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 /*layout-admin.jsp*/
