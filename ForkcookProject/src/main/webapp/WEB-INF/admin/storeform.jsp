@@ -1,7 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
+<c:set var="root" value="<%=request.getContextPath() %>" />  
+<script>
+$(function(){
+	 $(document).on("change","select[name='sarea']",function(){
+		 var sarea = $(this).val();
+		 console.log(sarea);
+		 $.ajax({
+			type:'get',
+			url:'${root}/admin/storeuser/getSname.do',
+			data:{'sarea':sarea},
+			dataType:"json",
+			success : function(data){
+				$("select[name='snum']").html("<option value=''>지점 선택</option>");
+				for(var i=0; i<data.result.length; i++){
+					$("select[name='snum']").append("<option value='"+data.result[i].num+"'>"+data.result[i].name+"</option>");
+				}
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		});
+   });
+});
+</script>  
 <div class="fk-section">
 	<div class="fk-heading">포크쿡 매장 정보 추가하기</div>
 	<p class="fk-desc">매장을 추가하고 관리하세요</p>
