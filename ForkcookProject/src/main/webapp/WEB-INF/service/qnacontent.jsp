@@ -11,7 +11,6 @@
 
 </head>
 <body>
-문의글 입니다 <br>
 <table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
 	    <thead>
 	        <tr>
