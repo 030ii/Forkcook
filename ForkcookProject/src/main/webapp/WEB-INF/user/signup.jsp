@@ -61,7 +61,7 @@ function check(){
 		span.innerHTML = "동일한 암호를 입력하세요.";
 		$("#signup_btn").attr("disabled","disabled");
 	  }else{
-		  span.style.color = "black";
+		  span.style.color = "blue";
 		  span.innerHTML = "암호가 확인 되었습니다."; 
 
 		$("#signup_btn").removeAttr("disabled");

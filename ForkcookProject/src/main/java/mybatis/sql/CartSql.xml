@@ -7,7 +7,8 @@
 	<select id="cartList" resultType="cdto" parameterType="int">
 		select c.*,m.mainimage, m.name as menuname, m.price as mprice
 		from menu m, cart c
-		where c.mnum = m.num and c.unum = #{num}
+		where c.mnum = m.num
+		order by c.num desc
 	</select>
 	<update id="cartUpdate" parameterType="cdto">
 		update cart

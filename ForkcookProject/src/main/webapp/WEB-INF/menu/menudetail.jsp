@@ -77,7 +77,7 @@
 		console.log("mcount:"+mcount);
 		console.log("mtotalprice:"+mtotalprice);
 		console.log(unum); */
-		
+		alert("장바구니에 담았습니다. 메뉴페이지로 이동합니다.");
 		window.location.href="insertdetail.do?unum="+unum+"&mnum="+mnum+"&mcount="+mcount+"&mtotalprice="+mtotalprice;
 	});
 	
