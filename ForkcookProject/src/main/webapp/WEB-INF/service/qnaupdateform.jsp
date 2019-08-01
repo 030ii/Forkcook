@@ -2,29 +2,73 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<c:set var="root" value="<%=request.getContextPath() %>" />
+<script>
+$(function(){
+	 $(document).on("change","select[name='sarea']",function(){
+		 var sarea = $(this).val();
+		 console.log(sarea);
+		 $.ajax({
+			type:'get',
+			url:'${root}/admin/storeuser/getSname.do',
+			data:{'sarea':sarea},
+			dataType:"json",
+			success : function(data){
+				$("select[name='snum']").html("<option value=''>지점 선택</option>");
+				for(var i=0; i<data.result.length; i++){
+					$("select[name='snum']").append("<option value='"+data.result[i].num+"'>"+data.result[i].name+"</option>");
+				}
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		});
+   });
+});
+</script>
 
-</head>
-<body>
-<c:choose>
+<div class="fk-section">
+	<div class="fk-heading">문의 수정하기</div>
+	<p class="fk-desc">문의를 수정하세요</p>
+	<br><br><br>
+	
+	<c:choose>
 		<c:when test="${not empty pageNum}">
-			<form action="update1.do" method="post" enctype="multipart/form-data">
+			<form class="uk-form-stacked" action="update1.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="pageNum" value="${pageNum}">
 		</c:when>
 		<c:otherwise>
-			<form action="update2.do" method="post" enctype="multipart/form-data">	
+			<form class="uk-form-stacked" action="update2.do" method="post" enctype="multipart/form-data">	
 		</c:otherwise>
 	</c:choose>
-	문의 수정 페이지
-	<br> 아래 폼에 값들이 채워있어야 합니다
-	<br> 작성자 : 
-	<br> 제목 :
-	<input type="text" value="${qdto.subject}" class="form-control" name="subject">
+	    <div class="uk-margin">
+	        <label class="uk-form-label" for="form-stacked-text">문의 제목</label>
+	        <div class="uk-form-controls">
+	            <input class="uk-input" type="text" value="${qdto.subject}" name="subject" required>
+	        </div>
+	    </div>
+	    <div class="uk-margin" uk-margin>
+	        <div uk-form-custom="target: true" class="fk-100">
+		    	<label class="uk-form-label" for="form-stacked-text">공지 사진 변경</label>
+	            <input type="file" name="upfile" value="${dto.image}">
+	            <input class="uk-input" type="text" placeholder="${dto.image}" disabled>
+	        </div>
+	    </div>
+	    
+	    <div class="uk-margin">
+	        <label class="uk-form-label" for="form-stacked-text">메뉴 요약</label>
+	        <div class="uk-form-controls">
+	            <input class="uk-textarea" type="textarea" value="${dto.content}" name="content" required>
+	        </div>
+	    </div>
+	    
+	    <div class="uk-margin">
+	    	<input type="hidden" name="num" value="${dto.num}">
+			<button type="submit" class="uk-button uk-button-primary fk-49">수정하기</button>
+			<button type="button" class="uk-button uk-button-secondary fk-49" onclick="history.back()">취소하기</button>
+		</div>
+	</form>
+</div>
 	<br> 가맹점 :
 	<select name="snum" required>
 		<option value="">전체</option>
@@ -49,8 +93,6 @@
 
 	<c:set var="root" value="<%=request.getContextPath() %>" />
 	<input type="hidden" name="num" value="${qdto.num}">
-	<button type="button" onclick="history.back()">취소하기</button>
-	<button type="submit" onclick="content.do?qnum=${qdto.num}">수정하기(수정한문의글 페이지로 감)</button>
+	<button type="button" class="fk-btn" onclick="history.back()">취소하기</button>
+	<button type="submit" class="fk-btn" onclick="content.do?qnum=${qdto.num}">수정하기</button>
 </form>
-</body>
-</html>

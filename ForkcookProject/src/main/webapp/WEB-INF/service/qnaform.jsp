@@ -89,8 +89,8 @@ $(function() {
 			<tr>
 				<td colspan="2" align="right"><c:set var="root"
 						value="<%=request.getContextPath()%>" />
-					<button type="submit">작성하기</button>
-					<button type="button"
+					<button type="submit" class="fk-btn" >작성하기</button>
+					<button type="button" class="fk-btn" 
 						onclick="location.href='${root}/main/qna/list.do'">취소하기</button></td>
 			</tr>
 		</table>

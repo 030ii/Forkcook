@@ -11,12 +11,7 @@
 </head>
 <body>
 	<div class="fk-heading">문의 게시판</div>
-	<br><br>
 	<c:set var="root" value="<%=request.getContextPath() %>" />
-매장별 보기 : <a href="${root}/main/qna/list.do">전체</a> |
- 			<a href="#">강남점</a> |
- 			<a href="#">분당점</a> |
- 			<a href="#">부산점</a>
  <br>
 	<p class="fk-desc">총 ${totalCount}개의 문의글이 있습니다</p><br><br>
 	<table class="uk-table uk-table-hover uk-table-divider uk-table-middle uk-table-striped">
@@ -79,7 +74,7 @@
 <c:choose>
 	<c:when test="${not empty loginInfo}">
 		<c:set var="root" value="<%=request.getContextPath() %>" />
-		<button type="button" onclick="location.href='${root}/main/qna/form.do'">문의 작성</button>
+		<button type="button" class="fk-btn" onclick="location.href='${root}/main/qna/form.do'"><span uk-icon="icon: file-edit"></span> 문의 작성</button>
 	</c:when>
 </c:choose>
 </body>
