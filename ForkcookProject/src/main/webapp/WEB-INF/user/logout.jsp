@@ -10,8 +10,9 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-	<div style="font-size: 20pt; color: #3B76BB;margin-left: 100px;margin-top: 100px;border: 0px green solid; height: 300px;">
+	<div class="logout_wrapper uk-card uk-card-default uk-card-body uk-width-1-2@m">
 		로그아웃 되었습니다.
+		<%-- <a href="${root}/main/main.do" class="orderSuccess_Atag">메인페이지로→</a> --%>
 	</div>
 </body>
 </html>
