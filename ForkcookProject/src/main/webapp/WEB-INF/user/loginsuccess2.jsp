@@ -10,7 +10,9 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-비회원로그인성공
-(나중에 주문내역페이지로 이동하도록 수정)
+	<div class="logout_wrapper uk-card uk-card-default uk-card-body uk-width-1-2@m">
+		비회원로그인성공
+		<%-- <a href="${root}/main/main.do" class="orderSuccess_Atag">메인페이지로→</a> --%>
+	</div>
 </body>
 </html>
