@@ -4,4 +4,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 
     <c:set var="root" value="<%=request.getContextPath() %>" />
-    <img src="${root}/image/adminmain.jpg" style="width: 1200px;">
+    <img src="${root}/image/adminmain.png" style="width: 100%;">

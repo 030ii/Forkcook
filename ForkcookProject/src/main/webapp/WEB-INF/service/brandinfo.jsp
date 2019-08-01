@@ -12,10 +12,6 @@
 </head>
 <body>
 <c:set var="root" value="<%=request.getContextPath() %>" />
-<img src="${root}/image/brandinfo.png">
-<div>
-	<button type="button" onclick="location.href='${root}/main/store/list.do'" class="uk-button uk-button-default">매장 보러가기</button>
-	<button type="button" onclick="location.href='${root}/main/menu/list.do'" class="uk-button uk-button-default">메뉴 구경하기</button>
-</div>
+<img src="../../save/brandinfo.png" style="width: 2000px;">
 </body>
 </html>
