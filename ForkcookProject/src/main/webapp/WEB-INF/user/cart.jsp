@@ -36,11 +36,7 @@
 			console.log("ㅜㅕㅡ" + nums);
 
 			//컨트롤러 호출
-			location.href = "chkdelete.do?nums=" + nums + "&unum=" + $
-			{
-				loginInfo.num
-			}
-			;
+			location.href = "chkdelete.do?nums=" + nums + "&unum=" + ${loginInfo.num};
 		});
 	});
 </script>

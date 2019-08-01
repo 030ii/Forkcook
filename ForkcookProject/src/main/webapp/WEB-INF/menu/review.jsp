@@ -127,8 +127,7 @@ function deleteReview(num,unum,mnum){
 </div>
 
 <div class="reviewImageOnly-wrap">
-	<a>이미지 모아보기>></a><br>(나중에 클릭하면 이미지들만 크게 보이도록)<br>
-	
+	<a>이미지 모아보기>></a>
 		<div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide">
 		    <div><ul class="uk-thumbnav" uk-margin>
 				<c:forEach var="dto" items="${list}" varStatus="status">
