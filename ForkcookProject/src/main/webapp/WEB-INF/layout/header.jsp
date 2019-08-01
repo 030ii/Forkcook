@@ -22,9 +22,6 @@
 		        <ul class="uk-navbar-nav">
 		        	<c:choose> 
 		        		<c:when test="${not empty loginInfo}">
-		        			num : ${loginInfo.num }<br>
-		        			name : ${loginInfo.name }<br>
-		        			usertype : ${loginInfo.usertype}<br>
 					        <li><a href="${root}/main/user/logout.do">로그아웃</a></li>
 							<li><a href="${root}/main/user/mypage.do?num=${loginInfo.num}">마이페이지</a></li>
 							<li><a href="${root}/main/cart/list.do?num=${loginInfo.num}">장바구니</a></li>
